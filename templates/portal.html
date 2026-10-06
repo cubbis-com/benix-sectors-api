@@ -278,6 +278,9 @@
         [data-theme="light"] .logo-sub {
             color: var(--accent-orange);
         }
+        @media (max-width: 1200px) {
+            .logo-sub { display: none; }
+        }
 
         .live-badge {
             background: rgba(16, 185, 129, 0.15);
@@ -293,6 +296,9 @@
             font-family: var(--font-sans);
             letter-spacing: 0.5px;
             white-space: nowrap;
+        }
+        @media (max-width: 980px) {
+            .live-badge { display: none; }
         }
         .live-dot {
             width: 5px;
@@ -333,10 +339,10 @@
             padding: 0;
         }
         .nav-link {
-            padding: 6px 11px;
+            padding: 5px 9px;
             border-radius: 6px;
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.15s ease;
@@ -554,12 +560,14 @@
         /* ================= ROOT APPLICATION LAYOUT ================= */
         .app-layout {
             display: flex;
-            min-height: 100vh;
+            min-height: calc(100vh - 38px);
+            margin-bottom: 38px;
             width: 100%;
             align-items: stretch;
             --garda-width: 440px;
             transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            box-sizing: border-box;
         }
         .app-layout.chat-wide {
             --garda-width: 660px;
@@ -593,7 +601,7 @@
         .garda-chat-col {
             width: var(--garda-width, 440px);
             flex-shrink: 0;
-            height: 100vh;
+            height: calc(100vh - 38px);
             position: sticky;
             top: 0;
             display: flex;
@@ -773,16 +781,28 @@
             border-radius: 4px;
             overflow: hidden;
             box-shadow: none;
+            width: 100%;
+            min-width: 0;
+        }
+        .app-layout:not(.garda-closed) .market-snapshot-strip {
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 1540px) {
+            .app-layout:not(.garda-closed) .market-snapshot-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         @media (max-width: 900px) {
-            .market-snapshot-strip { grid-template-columns: 1fr; }
+            .market-snapshot-strip { grid-template-columns: 1fr !important; }
         }
         .snapshot-col {
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
+            min-width: 0;
+            overflow: hidden;
         }
         .snapshot-col:last-child {
             border-right: none;
@@ -790,6 +810,22 @@
         @media (max-width: 900px) {
             .snapshot-col { border-right: none; border-bottom: 1px solid var(--border); }
             .snapshot-col:last-child { border-bottom: none; }
+        }
+        .app-layout:not(.garda-closed) .snapshot-col {
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+        }
+        .app-layout:not(.garda-closed) .snapshot-col:last-child {
+            border-bottom: none;
+        }
+        @media (min-width: 1540px) {
+            .app-layout:not(.garda-closed) .snapshot-col {
+                border-right: 1px solid var(--border);
+                border-bottom: none;
+            }
+            .app-layout:not(.garda-closed) .snapshot-col:last-child {
+                border-right: none;
+            }
         }
         .snapshot-header {
             display: flex;
@@ -803,6 +839,13 @@
             font-family: var(--font-mono);
             border-bottom: 1px solid var(--border);
             padding-bottom: 6px;
+            white-space: nowrap;
+            gap: 8px;
+        }
+        .snapshot-header span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .snapshot-list {
             display: flex;
@@ -813,10 +856,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12.5px;
+            font-size: 12px;
             font-family: var(--font-mono);
+            white-space: nowrap;
+            gap: 8px;
         }
-        .snapshot-row .sym { font-weight: 700; color: var(--text-main); }
+        .snapshot-row .sym { font-weight: 700; color: var(--text-main); flex-shrink: 0; }
+        .snapshot-row .val { white-space: nowrap; flex-shrink: 0; }
         .snapshot-row .val.up { color: var(--green-gain); font-weight: 600; }
         .snapshot-row .val.down { color: var(--red-loss); font-weight: 600; }
         .snapshot-row .val.cyan { color: var(--accent-cyan); font-weight: 600; }
@@ -826,28 +872,40 @@
             background: var(--bg-surface);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 14px 20px;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
             box-shadow: none;
+            min-width: 0;
+        }
+        .generator-title {
+            flex: 1;
+            min-width: 220px;
         }
         .generator-title h3 {
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--text-main);
+            margin: 0;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .generator-title p {
             font-size: 11.5px;
             color: var(--text-muted);
-            margin-top: 2px;
+            margin: 2px 0 0 0;
+            line-height: 1.35;
         }
         .generator-form {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-shrink: 0;
         }
         .generator-input {
             background: var(--input-bg);
@@ -864,35 +922,82 @@
         .generator-input:focus {
             border-color: var(--accent-orange);
         }
+        .btn-generate {
+            background: var(--accent-orange);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            height: 35px;
+            flex-shrink: 0;
+        }
+        .btn-generate:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+        .btn-generate:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
 
         /* ARTICLES GRID */
         .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 10px;
             margin-top: 6px;
+            min-width: 0;
+            flex-wrap: nowrap;
         }
         .section-header h2 {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 8px;
+            line-height: 1.3;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
         }
         .news-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 14px;
         }
-        @media (max-width: 768px) {
-            .news-grid { grid-template-columns: 1fr; }
+        .app-layout:not(.garda-closed) .news-grid {
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 1440px) {
+            .app-layout:not(.garda-closed) .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 860px) {
+            .news-grid { grid-template-columns: 1fr !important; }
         }
         .article-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 18px;
+            padding: 16px 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -905,21 +1010,22 @@
             background: var(--bg-surface);
         }
         .article-card .title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
             color: var(--text-main);
-            line-height: 1.4;
-            margin: 8px 0;
+            line-height: 1.35;
+            margin: 8px 0 6px 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            word-break: break-word;
         }
         .article-card .summary {
-            font-size: 12.5px;
+            font-size: 12px;
             color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 12px;
+            line-height: 1.45;
+            margin-bottom: 10px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -1425,30 +1531,41 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
             gap: 12px;
             margin-top: 14px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .feed-tabs-header::-webkit-scrollbar {
+            display: none;
         }
         .feed-tabs-group {
             display: flex;
+            align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
         .feed-tab-btn {
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 12.5px;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            line-height: 1;
         }
         .feed-tab-btn:hover {
             color: var(--text-main);
@@ -1467,34 +1584,51 @@
             background: var(--bg-surface);
             color: var(--accent-orange);
             font-weight: 700;
+            line-height: 1;
         }
         .wire-controls-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 12px 16px;
-            border-radius: 4px;
+            padding: 10px 14px;
+            border-radius: 6px;
             margin-top: 14px;
+            min-width: 0;
+            overflow: hidden;
         }
         .wire-country-filters {
             display: flex;
+            align-items: center;
             gap: 6px;
-            flex-wrap: wrap;
+            flex: 1;
+            min-width: 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .wire-country-filters::-webkit-scrollbar {
+            display: none;
         }
         .country-pill {
             background: var(--bg-surface);
             border: 1px solid var(--border);
             color: var(--text-secondary);
             padding: 5px 12px;
-            border-radius: 20px;
+            border-radius: 6px;
             font-size: 11.5px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.15s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            line-height: 1;
         }
         .country-pill:hover {
             border-color: var(--border-hover);
@@ -1509,9 +1643,11 @@
         .wire-status-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-size: 11px;
             font-family: var(--font-mono);
+            flex-shrink: 0;
+            white-space: nowrap;
         }
         .wire-shield-pill {
             color: var(--green-gain);
@@ -1522,6 +1658,7 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            line-height: 1;
         }
         .wire-sync-btn {
             background: var(--bg-surface);
@@ -1533,6 +1670,7 @@
             font-size: 11px;
             font-weight: 600;
             transition: all 0.2s;
+            line-height: 1;
         }
         .wire-sync-btn:hover {
             border-color: var(--accent-cyan);
@@ -1544,8 +1682,16 @@
             gap: 14px;
             margin-top: 14px;
         }
+        .app-layout:not(.garda-closed) .wire-grid {
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 1440px) {
+            .app-layout:not(.garda-closed) .wire-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         @media (max-width: 860px) {
-            .wire-grid { grid-template-columns: 1fr; }
+            .wire-grid { grid-template-columns: 1fr !important; }
         }
         .wire-card {
             background: var(--bg-card);
@@ -1555,7 +1701,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 10px;
+            gap: 8px;
             transition: border-color 0.2s ease, background 0.2s ease;
             box-shadow: none;
         }
@@ -1569,6 +1715,8 @@
             align-items: center;
             gap: 8px;
             font-size: 11.5px;
+            min-width: 0;
+            flex-wrap: nowrap;
         }
         .wire-portal-title {
             font-family: var(--font-mono);
@@ -1577,6 +1725,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            max-width: 170px;
         }
         .wire-country-flag {
             padding: 2px 6px;
@@ -1588,11 +1741,16 @@
             color: var(--text-secondary);
         }
         .wire-headline {
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.35;
             color: var(--text-main);
-            margin: 4px 0 6px 0;
+            margin: 6px 0 4px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-word;
         }
         .wire-headline a {
             color: inherit;
@@ -1602,29 +1760,35 @@
             color: var(--accent-cyan);
         }
         .wire-snippet {
-            font-size: 12.5px;
+            font-size: 12px;
             color: var(--text-secondary);
-            line-height: 1.55;
+            line-height: 1.45;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 6px;
         }
         .wire-card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border);
-            padding-top: 12px;
-            margin-top: 4px;
+            padding-top: 10px;
+            margin-top: auto;
             font-size: 11px;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            min-width: 0;
         }
         .wire-tickers {
             display: flex;
             gap: 5px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
         }
         .wire-ticker-pill {
             font-family: var(--font-mono);
@@ -1635,6 +1799,8 @@
             padding: 2px 6px;
             border-radius: 4px;
             border: 1px solid rgba(56, 189, 248, 0.2);
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .wire-ask-btn {
             background: var(--bg-surface);
@@ -1649,6 +1815,8 @@
             align-items: center;
             gap: 5px;
             transition: all 0.15s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .wire-ask-btn:hover {
             background: var(--accent-cyan);
@@ -1656,31 +1824,38 @@
             border-color: var(--accent-cyan);
         }
 
-        /* ================= STICKY PORTAL FOOTER ================= */
+        /* ================= FIXED FULL-WIDTH PORTAL FOOTER (FIT WIDTH, SITS BELOW MENU & CHAT) ================= */
         .portal-footer {
-            position: sticky;
+            position: fixed;
             bottom: 0;
-            z-index: 45;
+            left: 0;
+            right: 0;
+            z-index: 100;
             background: var(--nav-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-top: 1px solid var(--border);
-            padding: 8px 24px;
+            padding: 0 18px;
+            height: 38px;
+            line-height: 38px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11.5px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-top: auto;
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.35);
+            white-space: nowrap;
+            overflow: hidden;
+            user-select: none;
         }
         .footer-left {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .footer-brand {
             color: var(--text-main);
@@ -1710,18 +1885,33 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            line-height: 1;
         }
         .footer-center {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            flex: 1;
+            padding: 0 10px;
         }
         .footer-right {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-secondary);
             font-family: var(--font-mono);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        @media (max-width: 1080px) {
+            .footer-center { display: none; }
+        }
+        @media (max-width: 680px) {
+            .footer-right { display: none; }
         }
         .market-status-dot {
             width: 7px;
@@ -1737,7 +1927,7 @@
         .right-thumb-dock {
             width: 54px;
             flex-shrink: 0;
-            height: 100vh;
+            height: calc(100vh - 38px);
             position: sticky;
             top: 0;
             right: 0;
@@ -2256,9 +2446,18 @@
             width: 100%;
             min-width: 0;
         }
+        /* When Garda panel is open, collapse macro bar to 1fr on screens <= 1440px to give BMKG & Forex ample width */
+        .app-layout:not(.garda-closed) .macro-intel-bar {
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 1540px) {
+            .app-layout:not(.garda-closed) .macro-intel-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
         @media (max-width: 1080px) {
             .macro-intel-bar {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
         }
         .macro-weather-card, .macro-forex-card {
@@ -2281,22 +2480,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 8px;
             min-width: 0;
+            flex-wrap: nowrap;
         }
         .macro-title-group {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             min-width: 0;
             flex: 1;
             overflow: hidden;
+            white-space: nowrap;
         }
         .macro-icon {
             font-size: 16px;
             flex-shrink: 0;
+            line-height: 1;
         }
         .macro-title {
             font-size: 13px;
@@ -2305,6 +2507,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            line-height: 1.2;
         }
         .macro-sub-info {
             font-size: 11px;
@@ -2324,9 +2527,10 @@
             outline: none;
             cursor: pointer;
             flex-shrink: 0;
-            max-width: 180px;
+            max-width: 160px;
             white-space: nowrap;
             text-overflow: ellipsis;
+            line-height: 1.2;
         }
         .weather-now-strip {
             display: flex;
@@ -2608,12 +2812,15 @@
             transform: scale(1);
         }
         .modal-custom-header {
-            padding: 16px 24px;
+            padding: 14px 20px;
             background: var(--bg-surface);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            flex-wrap: nowrap;
         }
         .modal-custom-body {
             padding: 20px 24px;
@@ -2883,11 +3090,11 @@
                     </a>
 
                     <ul class="nav-links">
-                        <li><a class="nav-link active" onclick="filterCategory(null)">Semua Berita</a></li>
-                        <li><a class="nav-link" onclick="openSentinelFlowModal()">🛡️ Sentinel Flow</a></li>
-                        <li><a class="nav-link" onclick="openRowletRadarModal()">🦉 Rowlet Radar</a></li>
-                        <li><a class="nav-link" onclick="openCompanyDrawer()">🏢 Direktori Emiten</a></li>
-                        <li><a class="nav-link" onclick="scrollToSection('macro-intel-bar')">🌦️ BMKG & Kurs</a></li>
+                        <li><a class="nav-link active" onclick="filterCategory(null)">Semua</a></li>
+                        <li><a class="nav-link" onclick="openSentinelFlowModal()">🛡️ Sentinel</a></li>
+                        <li><a class="nav-link" onclick="openRowletRadarModal()">🦉 Radar</a></li>
+                        <li><a class="nav-link" onclick="openCompanyDrawer()">🏢 Direktori</a></li>
+                        <li><a class="nav-link" onclick="scrollToSection('macro-intel-bar')">🌦️ Cuaca & Kurs</a></li>
                     </ul>
 
                     <div class="nav-right">
@@ -2980,8 +3187,8 @@
                         <div class="macro-card-header">
                             <div class="macro-title-group">
                                 <span class="macro-icon">🌦️</span>
-                                <span class="macro-title">BMKG Cuaca & Komoditas</span>
-                                <span class="tag-pill cyan" style="font-size:9.5px;">0 CREDIT BMKG</span>
+                                <span class="macro-title">Cuaca BMKG</span>
+                                <span class="tag-pill cyan" style="font-size:9.5px;">0 Kredit</span>
                             </div>
                             <select id="bmkg-station-select" class="macro-select" onchange="changeBmkgStation(this.value)">
                                 <option value="jakarta">Jakarta (BEI / Finansial)</option>
@@ -3001,10 +3208,10 @@
                         <div class="macro-card-header">
                             <div class="macro-title-group">
                                 <span class="macro-icon">💱</span>
-                                <span class="macro-title">Kurs Valas Realtime & Transmisi Emiten</span>
-                                <span class="tag-pill green" style="font-size:9.5px;">LIVE FOREX</span>
+                                <span class="macro-title">Kurs Valas (IDR)</span>
+                                <span class="tag-pill green" style="font-size:9.5px;">Live</span>
                             </div>
-                            <span class="macro-sub-info">Rupiah (IDR)</span>
+                            <span class="macro-sub-info">Realtime</span>
                         </div>
                         <div id="macro-forex-content">
                             <div style="font-size:12px;color:var(--text-muted);padding:6px 0;">Memuat kurs valas realtime...</div>
@@ -3022,7 +3229,7 @@
                     <!-- Col 1: Top Gainers -->
                     <div class="snapshot-col">
                         <div class="snapshot-header">
-                            <span>Top Gainers Hari Ini</span>
+                            <span>Top Gainers</span>
                             <span>1D Change</span>
                         </div>
                         <div class="snapshot-list" id="gainers-list">
@@ -3035,8 +3242,8 @@
                     <!-- Col 2: Most Active Volume -->
                     <div class="snapshot-col">
                         <div class="snapshot-header">
-                            <span>Saham Paling Ramai</span>
-                            <span>Volume Saham</span>
+                            <span>Paling Ramai</span>
+                            <span>Volume</span>
                         </div>
                         <div class="snapshot-list" id="active-list">
                             <div class="snapshot-row"><span class="sym">GOTO</span><span class="val cyan">3.12M Lembar</span></div>
@@ -3048,13 +3255,13 @@
                     <!-- Col 3: Due Diligence & Dividen Kas UMKM -->
                     <div class="snapshot-col">
                         <div class="snapshot-header">
-                            <span>Radar Mitra & Dividen Kas</span>
-                            <span>Solvabilitas & Yield</span>
+                            <span>Radar Mitra</span>
+                            <span>Solvabilitas</span>
                         </div>
                         <div class="snapshot-list">
-                            <div class="snapshot-row"><span class="sym">TLKM</span><span class="val up">DER 0.85 (Aman)</span></div>
-                            <div class="snapshot-row"><span class="sym">ASII</span><span class="val up">Dividen 8.2%</span></div>
-                            <div class="snapshot-row"><span class="sym">ICBP</span><span class="val cyan">NPM 12.8% (Benchmark)</span></div>
+                            <div class="snapshot-row"><span class="sym">TLKM</span><span class="val up">DER 0.85 (Sehat)</span></div>
+                            <div class="snapshot-row"><span class="sym">ASII</span><span class="val up">Yield 8.2%</span></div>
+                            <div class="snapshot-row"><span class="sym">ICBP</span><span class="val cyan">NPM 12.8%</span></div>
                         </div>
                     </div>
                 </div>
@@ -3062,8 +3269,8 @@
                 <!-- QUICK GENERATOR TOOL (Wartawan AI on Demand) -->
                 <div class="quick-generator">
                     <div class="generator-title">
-                        <h3>⚡ Perintahkan Wartawan AI Menulis Berita</h3>
-                        <p>Wartawan AI akan menarik data Sectors, analisis valuasi trader, dan menerbitkan berita baru.</p>
+                        <h3>⚡ Wartawan AI on Demand</h3>
+                        <p>Generate riset berita otomatis berbasis Sectors API & data emiten.</p>
                     </div>
                     <div class="generator-form">
                         <input type="text" id="gen-ticker-input" class="generator-input" placeholder="Ketik ticker e.g. TLKM, BREN, ASII" maxlength="5">
@@ -3077,16 +3284,16 @@
                 <div class="feed-tabs-header">
                     <div class="feed-tabs-group">
                         <button class="feed-tab-btn active" id="btn-tab-editorial" onclick="switchMainTab('editorial')">
-                            <span>📰 Analisis & Editorial Emiten</span>
+                            <span>📰 Riset & Editorial</span>
                             <span class="feed-tab-badge" id="editorial-count-badge">5 Riset</span>
                         </button>
                         <button class="feed-tab-btn" id="btn-tab-wire" onclick="switchMainTab('wire')">
-                            <span>🌐 Regional News Wire (ID · SG · MY · JP)</span>
+                            <span>🌐 Regional Wire (80 Portal)</span>
                             <span class="feed-tab-badge" id="wire-count-badge">64+ Live</span>
                         </button>
                     </div>
-                    <div style="font-size:12px;color:var(--text-muted);" id="feed-header-info">
-                        Sumber: Sectors API & 20 Portal Keuangan per Negara
+                    <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);white-space:nowrap;flex-shrink:0;" id="feed-header-info">
+                        ⚡ 20 Portal / Negara
                     </div>
                 </div>
 
@@ -3139,7 +3346,7 @@
                 <!-- TAB 1: EDITORIAL ARTICLES VIEW -->
                 <div id="editorial-view">
                     <div class="section-header" style="margin-top:14px;">
-                        <h2 style="font-size:16px;">📰 Riset & Berita Terbitan Wartawan AI</h2>
+                        <h2 style="font-size:16px;">📰 Berita & Riset AI</h2>
                         <span style="font-size:12px;color:var(--text-muted);" id="article-count-label">Memuat artikel...</span>
                     </div>
                     <div class="news-grid" id="articles-grid" style="margin-top:14px;">
@@ -3151,15 +3358,15 @@
                 <div id="wire-view" style="display:none;">
                     <div class="wire-controls-bar">
                         <div class="wire-country-filters">
-                            <button class="country-pill active" onclick="filterWireCountry('ALL', this)">🌍 Semua (80 Portal)</button>
-                            <button class="country-pill" onclick="filterWireCountry('ID', this)">🇮🇩 Indonesia (CNBC, Bisnis, Kontan)</button>
-                            <button class="country-pill" onclick="filterWireCountry('SG', this)">🇸🇬 Singapura (The Business Times, CNA)</button>
-                            <button class="country-pill" onclick="filterWireCountry('MY', this)">🇲🇾 Malaysia (The Star, The Edge MY)</button>
-                            <button class="country-pill" onclick="filterWireCountry('JP', this)">🇯🇵 Jepang (Nikkei Asia, NHK)</button>
+                            <button class="country-pill active" onclick="filterWireCountry('ALL', this)">🌍 Semua (80)</button>
+                            <button class="country-pill" onclick="filterWireCountry('ID', this)">🇮🇩 Indonesia</button>
+                            <button class="country-pill" onclick="filterWireCountry('SG', this)">🇸🇬 Singapura</button>
+                            <button class="country-pill" onclick="filterWireCountry('MY', this)">🇲🇾 Malaysia</button>
+                            <button class="country-pill" onclick="filterWireCountry('JP', this)">🇯🇵 Jepang</button>
                         </div>
                         <div class="wire-status-info">
-                            <span class="wire-shield-pill">⚡ Scraper Harian: Aktif (0 Kredit API)</span>
-                            <button class="wire-sync-btn" onclick="syncDailyWire()">🔄 Sync Wire</button>
+                            <span class="wire-shield-pill">⚡ 0 Kredit API</span>
+                            <button class="wire-sync-btn" onclick="syncDailyWire()">🔄 Sync</button>
                         </div>
                     </div>
 
@@ -3175,7 +3382,7 @@
                 <div class="footer-left">
                     <strong class="footer-brand">BE.N.IX</strong> 
                     <span class="footer-sep">•</span> 
-                    <span class="footer-sub">Anvieo Trading Analytics</span>
+                    <span class="footer-sub">Anvieo Analytics</span>
                     <span class="footer-badge-shield">⚡ ZERO QUOTA ACTIVE • 0 CREDIT CACHE</span>
                 </div>
                 <div class="footer-center">
@@ -3205,7 +3412,7 @@
                     </div>
                     <div class="chat-title">
                         <h3>Garda AI Concierge <span class="live-dot" style="margin-left:3px;"></span></h3>
-                        <p>Advisory Saham & Bisnis UMKM • Gemma 4 Neural Core</p>
+                        <p>Advisory Bisnis & Saham • Gemma 4 Core</p>
                     </div>
                     <div class="chat-header-actions">
                         <!-- Voice TTS Audio Button (Default Enabled) -->
@@ -3507,23 +3714,23 @@
     <div class="modal-overlay-center" id="company-sentiment-modal" onclick="closeSentimentModalOnOverlay(event)">
         <div class="sentiment-modal-container">
             <div class="modal-custom-header">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <div style="width:38px;height:38px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;">
+                <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+                    <div style="width:38px;height:38px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">
                         📊
                     </div>
-                    <div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <span class="card-ticker" id="sent-modal-ticker" style="font-size:18px;">BBCA</span>
+                    <div style="min-width:0;">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span class="card-ticker" id="sent-modal-ticker" style="font-size:17px;">BBCA</span>
                             <span class="tag-pill cyan" id="sent-modal-sector">Perbankan</span>
-                            <span class="tag-pill green">0 CREDIT ANALYTICS</span>
+                            <span class="tag-pill green" style="font-size:9.5px;">0 CREDIT</span>
                         </div>
-                        <h3 id="sent-modal-name" style="font-size:16px;font-weight:700;color:var(--text-main);margin-top:2px;">PT Bank Central Asia Tbk</h3>
+                        <h3 id="sent-modal-name" style="font-size:15px;font-weight:700;color:var(--text-main);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">PT Bank Central Asia Tbk</h3>
                     </div>
                 </div>
-                <div style="display:flex;align-items:center;gap:12px;">
+                <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
                     <div style="text-align:right;">
-                        <div id="sent-modal-price" style="font-family:var(--font-mono);font-size:18px;font-weight:800;color:var(--text-main);">-</div>
-                        <div id="sent-modal-chg" style="font-family:var(--font-mono);font-size:12px;font-weight:700;color:var(--green-gain);">0.0%</div>
+                        <div id="sent-modal-price" style="font-family:var(--font-mono);font-size:17px;font-weight:800;color:var(--text-main);">-</div>
+                        <div id="sent-modal-chg" style="font-family:var(--font-mono);font-size:11.5px;font-weight:700;color:var(--green-gain);">0.0%</div>
                     </div>
                     <button type="button" class="drawer-close-btn" onclick="closeCompanySentimentModal()">✕</button>
                 </div>
@@ -3540,20 +3747,20 @@
     <div class="modal-overlay-center" id="sentinel-flow-modal" onclick="closeSentinelModalOnOverlay(event)">
         <div class="competitor-modal-container">
             <div class="modal-custom-header">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#ef4444;">
+                <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#ef4444;flex-shrink:0;">
                         🛡️
                     </div>
-                    <div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <span style="font-size:16px;font-weight:800;color:var(--text-main);">Sentinel Flow — Anomaly Watchdog</span>
-                            <span class="tag-pill orange" style="font-size:10px;">KOMPETITOR 1 BENCHMARK</span>
+                    <div style="min-width:0;">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span style="font-size:15px;font-weight:800;color:var(--text-main);white-space:nowrap;">Sentinel Flow — Anomaly Watchdog</span>
+                            <span class="tag-pill orange" style="font-size:10px;">KOMPETITOR 1</span>
                             <span class="tag-pill green" style="font-size:10px;">100% DETERMINISTIK</span>
                         </div>
-                        <p style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Smart Staleness Check • 3 Deterministic Statistical Anomaly Rules • Anti-Spam Telegram Dispatcher</p>
+                        <p style="font-size:11.5px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Smart Staleness Check • 3 Deterministic Statistical Anomaly Rules • Anti-Spam Telegram</p>
                     </div>
                 </div>
-                <button type="button" class="drawer-close-btn" onclick="closeSentinelFlowModal()">✕</button>
+                <button type="button" class="drawer-close-btn" onclick="closeSentinelFlowModal()" style="flex-shrink:0;">✕</button>
             </div>
             <div class="modal-custom-body" id="sentinel-modal-body">
                 <div style="padding:40px;text-align:center;color:var(--text-muted);font-family:var(--font-mono);">
@@ -3567,20 +3774,20 @@
     <div class="modal-overlay-center" id="rowlet-radar-modal" onclick="closeRowletModalOnOverlay(event)">
         <div class="competitor-modal-container">
             <div class="modal-custom-header">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#a855f7;">
+                <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#a855f7;flex-shrink:0;">
                         🦉
                     </div>
-                    <div>
-                        <div style="display:flex;align-items:center;gap:8px;">
-                            <span style="font-size:16px;font-weight:800;color:var(--text-main);">RowletAI — 4D Bagger Radar & Peer Group</span>
-                            <span class="tag-pill cyan" style="font-size:10px;">KOMPETITOR 2 BENCHMARK</span>
-                            <span class="tag-pill green" style="font-size:10px;">0 FLUFF FACTOR MODEL</span>
+                    <div style="min-width:0;">
+                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                            <span style="font-size:15px;font-weight:800;color:var(--text-main);white-space:nowrap;">RowletAI — 4D Bagger Radar & Peers</span>
+                            <span class="tag-pill cyan" style="font-size:10px;">KOMPETITOR 2</span>
+                            <span class="tag-pill green" style="font-size:10px;">0 FLUFF MODEL</span>
                         </div>
-                        <p style="font-size:11.5px;color:var(--text-muted);margin-top:2px;">Composite Radar Scores (Fundamentals, Momentum, Valuation, Risk) • Curated Peer Head-to-Head</p>
+                        <p style="font-size:11.5px;color:var(--text-muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Composite Radar Scores (Fundamentals, Momentum, Valuation, Risk) • Peer Head-to-Head</p>
                     </div>
                 </div>
-                <button type="button" class="drawer-close-btn" onclick="closeRowletRadarModal()">✕</button>
+                <button type="button" class="drawer-close-btn" onclick="closeRowletRadarModal()" style="flex-shrink:0;">✕</button>
             </div>
             <div class="modal-custom-body" id="rowlet-modal-body">
                 <div style="padding:40px;text-align:center;color:var(--text-muted);font-family:var(--font-mono);">
@@ -3826,9 +4033,9 @@
                         <div class="hero-badge-row">
                             <span class="tag-pill orange">BREAKING EDITORIAL</span>
                             <span class="sentiment-badge ${hero.sentiment}">${hero.sentiment}</span>
-                            <span style="font-size:11px;color:var(--text-muted);">${hero.read_time_minutes} min read</span>
-                            <button type="button" class="wire-ask-btn" onclick="event.stopPropagation(); openCompanySentimentModal('${heroPrimaryTicker}')" style="margin-left:auto;padding:3px 10px;font-size:11px;">
-                                <span>📊 Analisis Sentimen ${heroPrimaryTicker}</span>
+                            <span style="font-size:11px;color:var(--text-muted);white-space:nowrap;">${hero.read_time_minutes} min read</span>
+                            <button type="button" class="wire-ask-btn" onclick="event.stopPropagation(); openCompanySentimentModal('${heroPrimaryTicker}')" style="margin-left:auto;padding:3px 9px;font-size:11px;">
+                                <span>📊 Sentimen ${heroPrimaryTicker}</span>
                             </button>
                         </div>
                         <h2 class="hero-title">${hero.title}</h2>
@@ -3837,7 +4044,7 @@
                             <div class="hero-tickers">
                                 ${(hero.tickers || []).map(t => `<span class="hero-ticker-pill" onclick="event.stopPropagation(); openCompanySentimentModal('${t}')" title="Klik untuk analisis sentimen $${t}">$${t}</span>`).join('')}
                             </div>
-                            <div>Oleh: <strong>${hero.author}</strong> • ${heroDate} WIB</div>
+                            <div style="white-space:nowrap;flex-shrink:0;">Oleh: <strong>${hero.author}</strong> • ${heroDate} WIB</div>
                         </div>
                     </div>
                 `;
@@ -3860,13 +4067,13 @@
                                 <p class="summary">${a.summary}</p>
                             </div>
                             <div class="card-footer">
-                                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;">
                                     ${(a.tickers || []).map(t => `<span class="hero-ticker-pill" onclick="event.stopPropagation(); openCompanySentimentModal('${t}')" title="Sentimen $${t}">$${t}</span>`).join(' ')}
                                     <button type="button" class="wire-ask-btn" onclick="event.stopPropagation(); openCompanySentimentModal('${primTicker}')" style="padding:2px 7px;font-size:9.5px;">
                                         <span>📊 Sentimen</span>
                                     </button>
                                 </div>
-                                <span>${d} WIB</span>
+                                <span style="white-space:nowrap;flex-shrink:0;">${d} WIB</span>
                             </div>
                         </div>
                     `;
