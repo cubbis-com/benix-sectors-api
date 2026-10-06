@@ -1,0 +1,108 @@
+{
+  "base": "IDR",
+  "updated_at": "Hari ini, Bank Indonesia / JISDOR Realtime",
+  "rates": {
+    "USD": {
+      "currency": "USD (US Dollar)",
+      "flag": "🇺🇸",
+      "rate": 17892.58,
+      "rate_formatted": "Rp 17.892",
+      "change_1d": "+0.32%",
+      "trend": "PENGUATAN_USD",
+      "impact_summary": "Dolar AS menguat tipis seiring ekspektasi arah suku bunga The Fed. Menguntungkan emiten eksportir komoditas, namun menekan margin emiten dengan utang valas atau impor gandum/kedelai.",
+      "beneficiary_stocks": [
+        "ADRO",
+        "PTBA",
+        "MEDC",
+        "ANTM",
+        "INCO"
+      ],
+      "pressured_stocks": [
+        "ICBP",
+        "INDF",
+        "CPIN",
+        "GIAA",
+        "KLBF"
+      ]
+    },
+    "SGD": {
+      "currency": "SGD (Singapore Dollar)",
+      "flag": "🇸🇬",
+      "rate": 11845.0,
+      "rate_formatted": "Rp 11.845",
+      "change_1d": "+0.18%",
+      "trend": "STABIL_MENGUAT",
+      "impact_summary": "Dolar Singapura stabil terhadap Rupiah. Menguntungkan korporasi Indonesia yang memiliki pendapatan dividen dari aset di Singapura (misal: First REIT, D05).",
+      "beneficiary_stocks": [
+        "D05",
+        "O39",
+        "MLPL"
+      ],
+      "pressured_stocks": [
+        "MAPI",
+        "GIAA"
+      ]
+    },
+    "EUR": {
+      "currency": "EUR (Euro)",
+      "flag": "🇪🇺",
+      "rate": 17210.0,
+      "rate_formatted": "Rp 17.210",
+      "change_1d": "-0.12%",
+      "trend": "KONSOLIDASI",
+      "impact_summary": "Euro terkonsolidasi terhadap Rupiah di tengah data inflasi zona Eropa.",
+      "beneficiary_stocks": [
+        "ASII",
+        "AUTO"
+      ],
+      "pressured_stocks": [
+        "INDF"
+      ]
+    },
+    "JPY": {
+      "currency": "JPY (Japanese Yen / 100)",
+      "flag": "🇯🇵",
+      "rate": 104.8,
+      "rate_formatted": "Rp 104,80",
+      "change_1d": "+0.45%",
+      "trend": "MENGUAT",
+      "impact_summary": "Yen menguat pasca sinyal normalisasi suku bunga Bank of Japan (BOJ). Meningkatkan beban pinjaman berdenominasi Yen pada emiten infrastruktur tertentu.",
+      "beneficiary_stocks": [
+        "SMDR"
+      ],
+      "pressured_stocks": [
+        "TLKM",
+        "JSMR"
+      ]
+    },
+    "CNY": {
+      "currency": "CNY (Chinese Yuan)",
+      "flag": "🇨🇳",
+      "rate": 2215.0,
+      "rate_formatted": "Rp 2.215",
+      "change_1d": "+0.08%",
+      "trend": "STABIL",
+      "impact_summary": "Stabilitas Yuan menopang nilai perdagangan bilateral Indonesia-Tiongkok, khususnya ekspor feronikel dan batubara.",
+      "beneficiary_stocks": [
+        "NCKL",
+        "MBMA",
+        "ADRO"
+      ],
+      "pressured_stocks": []
+    },
+    "MYR": {
+      "currency": "MYR (Malaysian Ringgit)",
+      "flag": "🇲🇾",
+      "rate": 3550.0,
+      "rate_formatted": "Rp 3.550",
+      "change_1d": "+0.15%",
+      "trend": "STABIL",
+      "impact_summary": "Nilai tukar Ringgit stabil terhadap Rupiah, menjaga paritas harga pasar CPO di bursa komoditas Kuala Lumpur dan Jakarta.",
+      "beneficiary_stocks": [
+        "AALI",
+        "TAPG"
+      ],
+      "pressured_stocks": []
+    }
+  }
+}

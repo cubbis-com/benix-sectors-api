@@ -1,0 +1,167 @@
+{
+  "jakarta": {
+    "station": "DKI Jakarta (Bursa Efek Indonesia / Finansial)",
+    "adm4_code": "31.72.05.1003",
+    "current": {
+      "temp_c": 31,
+      "humidity_pct": 62,
+      "condition": "Berawan",
+      "weather_code": "3",
+      "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg",
+      "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg",
+      "wind_speed_kmh": 60.5,
+      "wind_dir": "N",
+      "updated_at": "2026-10-06 15:00:00"
+    },
+    "forecast_3d": [
+      {
+        "day": "Hari Ini",
+        "date": "2026-10-06",
+        "condition": "Berawan",
+        "temp_min": 29,
+        "temp_max": 31,
+        "rain_prob": "2%",
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg"
+      },
+      {
+        "day": "Besok",
+        "date": "2026-10-07",
+        "condition": "Cerah",
+        "temp_min": 25,
+        "temp_max": 30,
+        "rain_prob": "0%",
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
+      },
+      {
+        "day": "Lusa",
+        "date": "2026-10-08",
+        "condition": "Cerah",
+        "temp_min": 26,
+        "temp_max": 30,
+        "rain_prob": "0%",
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
+      }
+    ],
+    "sector_impact": {
+      "impact_status": "KONDUSIF",
+      "summary": "Cuaca cerah berawan di kawasan Jabodetabek mendukung mobilitas pekerja, aktivitas transaksi mall/ritel konsumen, dan operasional bursa lancar.",
+      "affected_stocks": [
+        {
+          "sector": "Consumer Cyclicals & Retail (MAPI, AMRT)",
+          "signal": "POSITIF",
+          "note": "Kunjungan gerai fisik optimal."
+        },
+        {
+          "sector": "Transportasi & Logistik (SMDR, GIAA)",
+          "signal": "NORMAL",
+          "note": "Visibilitas bandara dan pelabuhan prima."
+        }
+      ]
+    }
+  },
+  "balikpapan": {
+    "station": "Balikpapan & IKN (Hub Energi, Migas & Batubara)",
+    "current": {
+      "temp_c": 29.0,
+      "humidity_pct": 82,
+      "condition": "Hujan Ringan",
+      "weather_code": "60",
+      "icon": "🌧️",
+      "wind_speed_kmh": 18.5,
+      "wind_dir": "Barat Daya",
+      "updated_at": "Hari ini, Realtime WITA"
+    },
+    "forecast_3d": [
+      {
+        "day": "Hari Ini",
+        "condition": "Hujan Ringan",
+        "temp_min": 24,
+        "temp_max": 30,
+        "rain_prob": "75%",
+        "icon": "🌧️"
+      },
+      {
+        "day": "Besok",
+        "condition": "Hujan Petir",
+        "temp_min": 23,
+        "temp_max": 29,
+        "rain_prob": "85%",
+        "icon": "⛈️"
+      },
+      {
+        "day": "Lusa",
+        "condition": "Hujan Lokal",
+        "temp_min": 24,
+        "temp_max": 30,
+        "rain_prob": "60%",
+        "icon": "🌦️"
+      }
+    ],
+    "sector_impact": {
+      "impact_status": "PERINGATAN LOGISTIK",
+      "summary": "Curah hujan tinggi di Kalimantan Timur berpotensi memperlambat proses pengupasan tanah (overburden) tambang batubara dan memperlambat pengapalan tongkang di Sungai Mahakam.",
+      "affected_stocks": [
+        {
+          "sector": "Energi & Batubara (ADRO, PTBA, ITMG)",
+          "signal": "WASPADA",
+          "note": "Potensi penundaan jadwal muat tongkang (barging delay)."
+        },
+        {
+          "sector": "Konstruksi IKN (PTPP, WIKA)",
+          "signal": "TERBATAS",
+          "note": "Pekerjaan pengecoran outdoor terhambat hujan."
+        }
+      ]
+    }
+  },
+  "medan": {
+    "station": "Medan (Hub Perkebunan Sawit & Agribisnis)",
+    "current": {
+      "temp_c": 30.2,
+      "humidity_pct": 78,
+      "condition": "Berawan",
+      "weather_code": "03",
+      "icon": "⛅",
+      "wind_speed_kmh": 10.0,
+      "wind_dir": "Utara",
+      "updated_at": "Hari ini, Realtime WIB"
+    },
+    "forecast_3d": [
+      {
+        "day": "Hari Ini",
+        "condition": "Berawan",
+        "temp_min": 24,
+        "temp_max": 32,
+        "rain_prob": "30%",
+        "icon": "⛅"
+      },
+      {
+        "day": "Besok",
+        "condition": "Cerah Berawan",
+        "temp_min": 24,
+        "temp_max": 33,
+        "rain_prob": "20%",
+        "icon": "🌤️"
+      },
+      {
+        "day": "Lusa",
+        "condition": "Hujan Sedang",
+        "temp_min": 23,
+        "temp_max": 31,
+        "rain_prob": "70%",
+        "icon": "🌧️"
+      }
+    ],
+    "sector_impact": {
+      "impact_status": "OPTIMAL PANEN",
+      "summary": "Pola cuaca kering berselang hujan moderat sangat ideal untuk proses panen tandan buah segar (TBS) kelapa sawit dan pengangkutan truk perkebunan.",
+      "affected_stocks": [
+        {
+          "sector": "Perkebunan CPO (AALI, LSIP, TAPG)",
+          "signal": "POSITIF",
+          "note": "Rendemen ekstraksi minyak stabil dan panen lancar."
+        }
+      ]
+    }
+  }
+}

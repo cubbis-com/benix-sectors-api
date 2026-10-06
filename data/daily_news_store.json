@@ -1,0 +1,843 @@
+{
+  "date": "2026-10-06",
+  "updated_at": "2026-10-06 12:12:13",
+  "total_headlines": 64,
+  "portals_tracked": 80,
+  "countries": [
+    "ID",
+    "SG",
+    "MY",
+    "JP"
+  ],
+  "headlines": [
+    {
+      "id": "id-cnbc-bbca-q3",
+      "title": "BCA Cetak Laba Solid di Kuartal III, Penyaluran Kredit UMKM dan Merchant Tumbuh Double Digit",
+      "summary": "PT Bank Central Asia Tbk (BBCA) melaporkan kinerja keuangan kokoh ditopang efisiensi digitalisasi dan rasio CASA prima, sementara risiko kredit bermasalah tetap terkendali.",
+      "url": "https://www.cnbcindonesia.com/market/2026/bbca-laba-q3",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "BBCA",
+        "IHSG"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-bisnis-bbri-umi",
+      "title": "Holding Ultra Mikro BBRI Perkuat Ekosistem UMKM, Nilai Transaksi AgenBRILink Tembus Target",
+      "summary": "Direksi PT Bank Rakyat Indonesia (Persero) Tbk menegaskan komitmen pendampingan pengusaha mikro dan ultramikro melalui sinergi Pegadaian dan PNM.",
+      "url": "https://market.bisnis.com/read/bbri-holding-ultra-mikro",
+      "source": "Bisnis.com",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "BBRI",
+        "IHSG"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-kontan-tlkm-data",
+      "title": "Telkom Indonesia (TLKM) Genjot Infrastruktur Hyperscale Data Center dan Fiberisasi Seluler",
+      "summary": "TLKM mengalokasikan Capex strategis guna memperluas konektivitas digital dan cloud server bagi korporasi dan tenant ritel nasional.",
+      "url": "https://investasi.kontan.co.id/news/tlkm-data-center",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "TLKM"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-kompas-icbp-dayabeli",
+      "title": "Indofood CBP (ICBP) Perkuat Dominasi Pasar Mi Instan dan Ekspor Produk Olahan Makanan",
+      "summary": "Daya beli konsumen domestik tetap resilient di segmen barang konsumsi pokok. Margin operasional ICBP terjaga di tengah fluktuasi gandum global.",
+      "url": "https://money.kompas.com/read/icbp-kinerja-konsumen",
+      "source": "Kompas Money",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "ICBP",
+        "MYOR"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-detik-cpin-pakan",
+      "title": "Harga Jagung dan Pakan Ternak Stabil, Saham Unggas CPIN dan JPFA Menguat di Sesi Pembukaan",
+      "summary": "Pasokan bahan baku agribisnis relatif terjaga, memberikan kepastian biaya operasional bagi kemitraan peternak ayam rakyat.",
+      "url": "https://finance.detik.com/bursa-dan-valas/cpin-jpfa-unggas",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "CPIN",
+        "JPFA"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-antara-ihsg-bi",
+      "title": "IHSG Menguat Tipis di Awal Pekan Ditopang Arus Dana Asing ke Sektor Finansial dan Ritel",
+      "summary": "Bank Indonesia mempertahankan suku bunga acuan (BI Rate) stabil guna menjaga stabilitas nilai tukar Rupiah dan momentum pertumbuhan ekonomi.",
+      "url": "https://www.antaranews.com/berita/ihsg-menguat-awal-pekan",
+      "source": "Antara News Ekonomi",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "IHSG",
+        "BBCA",
+        "BMRI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-tempo-hotel-wisata",
+      "title": "Tingkat Okupansi Hotel MICE dan Wisatawan Nusantara Melonjak Menjelang Musim Liburan",
+      "summary": "Emiten perhotelan seperti SHID dan EAST mencatatkan kenaikan pemesanan kamar dan paket konvensi di Jakarta dan Yogyakarta.",
+      "url": "https://bisnis.tempo.co/read/okupansi-hotel-mice",
+      "source": "Tempo Bisnis",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "SHID",
+        "EAST",
+        "PANR"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-investor-semen-properti",
+      "title": "Semen Indonesia (SMGR) Pasok Proyek Infrastruktur dan Perumahan Residensial Menengah",
+      "summary": "Permintaan semen kantong menunjukkan pemulihan di tier-2 perkotaan didorong percepatan renovasi hunian dan insentif PPN DTP properti.",
+      "url": "https://investor.id/market/smgr-proyek-properti",
+      "source": "Investor Daily",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "SMGR",
+        "CTRA",
+        "BSDE"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-katadata-bmri-kopra",
+      "title": "Bank Mandiri (BMRI) Catatkan Rekor Volume Transaksi Digital Melalui Ekosistem Livin & Kopra",
+      "summary": "Transformasi digital perbankan korporasi mempercepat siklus pembayaran rantai pasok ribuan pelaku usaha menengah di Indonesia.",
+      "url": "https://katadata.co.id/finansial/bmri-livin-kopra",
+      "source": "Katadata",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "BMRI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "id-warta-asii-dividen",
+      "title": "Astra International (ASII) Pertahankan Komitmen Rasio Dividen Tinggi di Tengah Tantangan Otomotif",
+      "summary": "Dengan kas setara kas kuat dan diversifikasi bisnis di alat berat dan jasa keuangan, ASII dinilai analis sebagai emiten dividen defensif.",
+      "url": "https://wartaekonomi.co.id/read/asii-dividen-kas",
+      "source": "Warta Ekonomi",
+      "country": "ID",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "ASII"
+      ],
+      "sentiment": "NEUTRAL"
+    },
+    {
+      "id": "sg-bt-dbs-profit",
+      "title": "DBS Group Holdings (D05) Posts Resilient Wealth Management Inflows and Net Interest Income",
+      "summary": "Singapore's largest lender reports robust commercial loan quality and strong fee income from regional family offices and treasury management.",
+      "url": "https://www.businesstimes.com.sg/companies-markets/dbs-q3-results",
+      "source": "The Business Times",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "D05",
+        "STI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "sg-cna-singtel-optus",
+      "title": "Singtel (Z74) Accelerates Capital Recycling Program with Regional Data Centre Co-Investments",
+      "summary": "Singtel continues portfolio optimization, reducing net gearing while scaling enterprise 5G services across Southeast Asia.",
+      "url": "https://www.channelnewsasia.com/business/singtel-data-centre-expansion",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "Z74",
+        "STI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "sg-st-ocbc-uob",
+      "title": "OCBC (O39) and UOB (U11) Maintain Healthy Capital Buffers Amid Asean Cross-Border Trade Growth",
+      "summary": "Singapore banks benefit from robust supply chain relocation to ASEAN corridors including Indonesia, Malaysia, and Vietnam.",
+      "url": "https://www.straitstimes.com/business/banking/singapore-banks-asean-trade",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "O39",
+        "U11",
+        "D05"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "sg-sbr-sia-changi",
+      "title": "Singapore Airlines (C6L) Passenger Traffic Rebounds to 98% of Pre-Pandemic Capacity",
+      "summary": "SIA Group passenger yields remain elevated alongside premium travel demand across Australia, Japan, and Southeast Asian routes.",
+      "url": "https://sbr.com.sg/aviation/singapore-airlines-passenger-recovery",
+      "source": "Singapore Business Review",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "C6L"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "sg-dealstreet-genting",
+      "title": "Genting Singapore (G13) Invests SGD 6.8B in Resorts World Sentosa RWS 2.0 Waterfront Expansion",
+      "summary": "New luxury hotel capacity and expanded entertainment facilities aim to capture rising high-net-worth tourism across Asia.",
+      "url": "https://www.dealstreetasia.com/stories/genting-singapore-rws-waterfront",
+      "source": "DealStreetAsia SG",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "G13"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "sg-edgeprop-capitaland",
+      "title": "CapitaLand Integrated Commercial Trust (A17U) Delivers Steady Distribution Yield from Prime Retail Malls",
+      "summary": "Suburban and downtown retail footfalls remain steady in Singapore, supporting rent reversions and tenant sales growth.",
+      "url": "https://www.edgeprop.sg/property-news/cict-prime-retail-yield",
+      "source": "EdgeProp SG",
+      "country": "SG",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "A17U"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "my-thestar-klci-tech",
+      "title": "Bursa Malaysia FBM KLCI Gains Momentum as Semiconductor and Data Centre Inflows Accelerate",
+      "summary": "Malaysia's strategic positioning in artificial intelligence data centres in Johor and Penang fuels foreign institutional buying.",
+      "url": "https://www.thestar.com.my/business/business-news/bursa-malaysia-fbm-klci-data-centres",
+      "source": "The Star Business",
+      "country": "MY",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "KLCI",
+        "TLKM"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "my-theedge-ringgit",
+      "title": "Ringgit Strengthens Against US Dollar, Bolstering Export-Oriented Manufacturing and Palm Oil Margins",
+      "summary": "Bank Negara Malaysia maintains overnight policy rate at 3.00%, signaling sustained domestic macroeconomic stability.",
+      "url": "https://theedgemalaysia.com/node/ringgit-strengthens-bnm",
+      "source": "The Edge Malaysia",
+      "country": "MY",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "KLCI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "my-fmt-asean-trade",
+      "title": "Asean Trade Integration Deepens: Cross-Border QR Payment Links Indonesia, Malaysia, and Singapore",
+      "summary": "Micro and retail merchants experience zero-friction settlement, promoting tourism spending across bilateral borders.",
+      "url": "https://www.freemalaysiatoday.com/category/business/asean-qr-payments",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "BBCA",
+        "BBRI",
+        "D05"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "jp-nikkei-boj-rate",
+      "title": "Bank of Japan Signals Gradual Rate Normalization as Corporate Wage and CapEx Cycles Expand",
+      "summary": "Governor Kazuo Ueda notes domestic inflation is increasingly driven by service prices and wage hikes, with Nikkei 225 consolidating near historical highs.",
+      "url": "https://asia.nikkei.com/Economy/Bank-of-Japan-Kazuo-Ueda-interest-rates",
+      "source": "Nikkei Asia Markets",
+      "country": "JP",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "NIKKEI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "jp-nhk-supply-chain",
+      "title": "Japanese Conglomerates Expand Strategic Clean Energy and Nickel Investments in Southeast Asia",
+      "summary": "Trading houses Mitsui, Mitsubishi, and Sumitomo deepen supply chain partnerships with Indonesian and Malaysian industrial hubs.",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/news/business/japan-asean-investments",
+      "source": "NHK World Business",
+      "country": "JP",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "NIKKEI",
+        "ASII"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "jp-japantimes-tourism",
+      "title": "Japan Inbound Tourism Spending Hits Record Level, Propelled by Southeast Asian Visitors",
+      "summary": "Strong retail demand in Tokyo and Osaka benefits consumer brand retailers, airlines, and hospitality operators across Asia-Pacific.",
+      "url": "https://www.japantimes.co.jp/business/japan-inbound-tourism-record",
+      "source": "The Japan Times Business",
+      "country": "JP",
+      "published_at": "2026-10-06 08:30:00",
+      "matched_tickers": [
+        "C6L",
+        "NIKKEI"
+      ],
+      "sentiment": "BULLISH"
+    },
+    {
+      "id": "8744fdd50854c87b",
+      "title": "Akhir Sesi I, IHSG Menguat 1,26% ke Level 6.196",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006120351-17-773712/akhir-sesi-i-ihsg-menguat-126-ke-level-6196",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "IHSG"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "31dcd341caef96a3",
+      "title": "Video: Harga Minyak Tertekan - Harga Batu Bara Tembus USD 150 per ton",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006084242-19-773625/video-harga-minyak-tertekan--harga-batu-bara-tembus-usd-150-per-ton",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "1873041a74a9cfd0",
+      "title": "POOL Jual 30% Saham Pool Advista Finance ke Perusahaan Asal Singapura",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006111002-17-773684/pool-jual-30-saham-pool-advista-finance-ke-perusahaan-asal-singapura",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "57fbcfc78da9981f",
+      "title": "Video: Yaman Serang Houthi, IHSG Menguat Tapi Rupiah Anjlok Lagi",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006084433-19-773627/video-yaman-serang-houthi-ihsg-menguat-tapi-rupiah-anjlok-lagi",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "IHSG"
+      ],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "2d0d12bf68e013d1",
+      "title": "Astra International (ASII) Bagi Dividen Rp3,89 T, Catat Tanggalnya",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006101232-17-773655/astra-international--asii--bagi-dividen-rp389-t-catat-tanggalnya",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "ASII"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "8d8bde766480dba7",
+      "title": "IHSG Melesat 1%, Ini Penyebabnya",
+      "summary": "Laporan headline terkini dari CNBC Indonesia.",
+      "url": "https://www.cnbcindonesia.com/market/20261006104522-17-773667/ihsg-melesat-1-ini-penyebabnya",
+      "source": "CNBC Indonesia",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "IHSG"
+      ],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "c41c8bf4246cdf97",
+      "title": "Rupiah Menguat Tipis ke Rp 17.911 Per Dolar AS di Tengah Hari Ini (6/10), Asia Mixed",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/rupiah-menguat-tipis-ke-rp-17911-per-dolar-as-di-tengah-hari-ini-610-asia-mixed",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "IHSG"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "bf59bb9bd7e8b2da",
+      "title": "AUTO Tebar Dividen Interim Rp349 Miliar, Cek Profil Emiten hingga Kinerja Terkini",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/auto-tebar-dividen-interim-rp349-miliar-cek-profil-emiten-hingga-kinerja-terkini",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "bb6c17572924c546",
+      "title": "Pool Advista (POOL) Jual 30% Saham PAF ke Cicil Technologies",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/pool-advista-pool-jual-30-saham-paf-ke-cicil-technologies",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "1e3aa314915fd6a3",
+      "title": "Megalestari Epack (EPAC) Incar Pertumbuhan Kinerja: Siapkan Buyback dan Rights Issue",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/megalestari-epack-epac-incar-pertumbuhan-kinerja-siapkan-buyback-dan-rights-issue",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "38cb45c190a05701",
+      "title": "IHSG Menguat ke 6.138 Awal Perdagangan Selasa (6/10), GOTO Melonjak 10,34%",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/ihsg-menguat-ke-6138-awal-perdagangan-selasa-610-goto-melonjak-1034",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "IHSG"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "26b7bb7ae6184e8d",
+      "title": "Yield SUN 10 Tahun Diproyeksi 7,10%-7,25%, Cermati Rekomendasi dari MNC Sekuritas",
+      "summary": "Laporan headline terkini dari Kontan.",
+      "url": "https://investasi.kontan.co.id/news/yield-sun-10-tahun-diproyeksi-710-725-cermati-rekomendasi-dari-mnc-sekuritas",
+      "source": "Kontan",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "bbd82f1fdf3694a1",
+      "title": "Rp 49,28 T Keuangan Negara Bermasalah, BPK Ungkap Rinciannya",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694531/rp-49-28-t-keuangan-negara-bermasalah-bpk-ungkap-rinciannya",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "05fa87b660701d53",
+      "title": "Hashim Bantah Indonesia Gelap, Pamer Swasembada Beras-Kesejahteraan Naik",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694518/hashim-bantah-indonesia-gelap-pamer-swasembada-beras-kesejahteraan-naik",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "43b6412577f73c4b",
+      "title": "Mendag Ungkap Penyebab Harga Kedelai Mahal",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694507/mendag-ungkap-penyebab-harga-kedelai-mahal",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "c8ff95d630f44050",
+      "title": "Perjanjian Dagang IEU-CEPA Ditargetkan Berlaku Januari 2027",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694491/perjanjian-dagang-ieu-cepa-ditargetkan-berlaku-januari-2027",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "e892d9c0ed3db7e7",
+      "title": "Rosan Buka Suara soal Nasib Kementerian Investasi Usai Bahlil Jadi Menko Baru",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694456/rosan-buka-suara-soal-nasib-kementerian-investasi-usai-bahlil-jadi-menko-baru",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "20c017c91127c410",
+      "title": "RI Resmi Punya UU Ketenagakerjaan Baru!",
+      "summary": "Laporan headline terkini dari Detik Finance.",
+      "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8694430/ri-resmi-punya-uu-ketenagakerjaan-baru",
+      "source": "Detik Finance",
+      "country": "ID",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "0dbcf0b3d508832c",
+      "title": "BOJ may signal underlying inflation has hit 2% goal, sources say",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/boj-may-signal-underlying-inflation-has-hit-2-goal-sources-say-6435156",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [
+        "NIKKEI"
+      ],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "aec5a1e456edfe10",
+      "title": "Mynt opens $844 million Philippine IPO, offers GCash users real-time share allocation",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/mynt-opens-844-million-philippine-ipo-offers-gcash-users-real-time-share-allocation-6434931",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "86292a377b83d1b0",
+      "title": "Google, Constellation near deal for nuclear power, Bloomberg News reports",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/google-constellation-near-deal-nuclear-power-bloomberg-news-reports-6434911",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "26b42ac61e9b4e4d",
+      "title": "Asian shares track Wall Street higher, Treasury yields near multi-decade highs",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/asian-shares-track-wall-street-higher-treasury-yields-near-multi-decade-highs-6434821",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "bdaefd02cdd82e90",
+      "title": "Philippine annual inflation at 7.2% in September",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/philippine-annual-inflation-72-in-september-6434791",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "18d7389d5fc6f229",
+      "title": "Exclusive-Accenture contractor removed from FBI following damaging data breach, sources say",
+      "summary": "Laporan headline terkini dari CNA Business.",
+      "url": "https://www.channelnewsasia.com/business/exclusive-accenture-contractor-removed-fbi-following-damaging-data-breach-sources-say-6434766",
+      "source": "CNA Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "0a8fc7582532035a",
+      "title": "Moonshot said to eye Hong Kong IPO in early 2027 after value hits US$50 billion",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/moonshot-said-to-eye-hong-kong-ipo-in-early-2027-after-value-hits-us50-billion",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "86ce694c938a2edb",
+      "title": "Oprah-backed True Food Kitchen files for bankruptcy after expansion",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/oprah-backed-true-food-kitchen-files-bankruptcy-after-expansion",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "de2f6727c05067b7",
+      "title": "Asian shares track Wall Street higher, Treasury yields near multi-decade highs",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/asian-shares-track-wall-street-higher-treasury-yields-near-multi-decade-highs",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "130838321b25370d",
+      "title": "Singapore’s DayOne files for US IPO joining data centre rush",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/singapores-dayone-files-for-us-ipo-joining-data-centre-rush",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "b4de780456e54c83",
+      "title": "S’pore beauty salons bank on value-adds, convenience as RTS spells more competition from JB",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/spore-beauty-salons-bank-on-value-adds-convenience-as-rts-spells-more-competition-from-jb",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "49274720520c0a8a",
+      "title": "Musk is a trillionaire again as SpaceX claws back post-IPO slump",
+      "summary": "Laporan headline terkini dari The Straits Times Business.",
+      "url": "https://www.straitstimes.com/business/musk-is-a-trillionaire-again-as-spacex-claws-back-post-ipo-slump",
+      "source": "The Straits Times Business",
+      "country": "SG",
+      "published_at": "2026-10-06 12:12:14",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:14"
+    },
+    {
+      "id": "3b06f8f452c4c397",
+      "title": "Anthropic open to Australian laws requiring AI hack reporting",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/anthropic-open-to-australian-laws-requiring-ai-hack-reporting",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "f2b7273819fa206d",
+      "title": "L’Oreal explores options for chemical-related liabilities",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/l-oreal-explores-unloading-chemical-related-liabilities-wsj-reports",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "ff1a672f3ece7b9d",
+      "title": "South Korea’s Lee says AI appears to have been used in bank hacks",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/south-korea-s-lee-says-ai-appears-to-have-been-used-in-bank-hacks",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "e8bf1746327e5b2a",
+      "title": "Philippine inflation tops estimates on pricier food, fuel",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/philippine-inflation-tops-estimates-on-pricier-food-fuel",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "e0f934fef0e6aa3d",
+      "title": "Asian shares track Wall Street higher, Treasury yields stay high",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/asian-shares-track-wall-street-higher-treasury-yields-stay-high",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "5f914149401afd72",
+      "title": "Bursa opens higher on positive Wall Street momentum",
+      "summary": "Laporan headline terkini dari Free Malaysia Today (FMT).",
+      "url": "https://www.freemalaysiatoday.com/category/business/2026/10/06/bursa-opens-higher-on-positive-wall-street-momentum",
+      "source": "Free Malaysia Today (FMT)",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "a26791852dc18b4b",
+      "title": "US approves US$1b arms sale to UAE",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/06/us-approves-us1b-arms-sale-to-uae/237871",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "1d177cb8c50d7e0f",
+      "title": "Euro slides as concerns about French debt mount",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/06/euro-slides-as-concerns-about-french-debt-mount/237872",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "BEARISH",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "7e6666301a4b716f",
+      "title": "Ringgit opens slightly higher against US dollar",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/06/ringgit-opens-slightly-higher-against-us-dollar/237846",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [
+        "KLCI"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "00055dcad85ff966",
+      "title": "Ringgit rises against Asean currencies but slips against US dollar",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/05/ringgit-rises-against-asean-currencies-but-slips-against-us-dollar/237824",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [
+        "KLCI"
+      ],
+      "sentiment": "BULLISH",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "cc3b887cce1cf0d5",
+      "title": "Switzerland moves towards referendum on Malaysia trade deal amid palm oil, labour concerns",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/05/switzerland-moves-towards-referendum-on-malaysia-trade-deal-amid-palm-oil-labour-concerns/237818",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    },
+    {
+      "id": "5a5ba372dbbbd938",
+      "title": "Bursa Malaysia edges higher as risk appetite improves",
+      "summary": "Laporan headline terkini dari Malay Mail Money.",
+      "url": "https://www.malaymail.com/news/money/2026/10/05/bursa-malaysia-edges-higher-as-risk-appetite-improves/237816",
+      "source": "Malay Mail Money",
+      "country": "MY",
+      "published_at": "2026-10-06 12:12:15",
+      "matched_tickers": [
+        "KLCI"
+      ],
+      "sentiment": "NEUTRAL",
+      "scraped_at": "2026-10-06 12:12:15"
+    }
+  ]
+}
