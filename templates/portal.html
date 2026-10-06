@@ -1744,6 +1744,48 @@
             border: 1px solid rgba(239, 68, 68, 0.35);
         }
 
+        /* GARDA SECTION BADGES (EXECUTIVE TERMINAL LOOK) */
+        .garda-section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 14px 0 6px 0;
+            border: 1px solid var(--border);
+            background: var(--bg-surface);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .garda-section-badge.blue {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
+        }
+        .garda-section-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: #10b981;
+        }
+        .garda-section-badge.orange {
+            background: rgba(249, 115, 22, 0.12);
+            border-color: rgba(249, 115, 22, 0.35);
+            color: #f97316;
+        }
+        .garda-section-badge.purple {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.35);
+            color: #a855f7;
+        }
+        .garda-section-badge.rose {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.35);
+            color: #ef4444;
+        }
+
         /* QUICK SUGGESTIONS */
         .quick-prompts {
             padding: 8px 14px;
@@ -3804,36 +3846,130 @@
             border-color: var(--accent-orange);
         }
 
-        /* ================= NEWS FILTER STRIP ================= */
-        .news-filter-strip {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 14px;
+        /* ================= 2-COLUMN NEWS PORTAL LAYOUT (50% FILTER KIRI, 50% LIST KANAN) ================= */
+        .news-portal-split {
             display: flex;
-            flex-direction: column;
-            gap: 9px;
-            margin-top: 10px;
+            gap: 22px;
+            align-items: flex-start;
+            width: 100%;
+            margin-top: 14px;
+            box-sizing: border-box;
+        }
+        .news-filter-col {
+            flex: 0 0 calc(50% - 11px);
+            width: calc(50% - 11px);
+            max-width: calc(50% - 11px);
+            min-width: 0;
+            position: sticky;
+            top: 75px;
+            align-self: flex-start;
+            box-sizing: border-box;
+        }
+        .news-feed-col {
+            flex: 0 0 calc(50% - 11px);
+            width: calc(50% - 11px);
+            max-width: calc(50% - 11px);
             min-width: 0;
             box-sizing: border-box;
         }
-        .filter-search-row {
+        @media (max-width: 980px) {
+            .news-portal-split {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .news-filter-col, .news-feed-col {
+                flex: 1 1 100%;
+                width: 100%;
+                max-width: 100%;
+                position: static;
+            }
+        }
+
+        /* Filter Panel inside Left Column */
+        .news-filter-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-sizing: border-box;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .filter-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .filter-panel-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 12px;
-            width: 100%;
-            min-width: 0;
+            gap: 7px;
+            font-family: var(--font-heading);
+            letter-spacing: 0.2px;
+        }
+        .filter-reset-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 10.5px;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .filter-reset-btn:hover {
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.08);
+        }
+        .filter-section-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .filter-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter-group-title {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .filter-pills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .news-search-box {
-            flex: 1;
-            min-width: 0;
             display: flex;
             align-items: center;
             gap: 8px;
             background: var(--bg-surface);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 6px 12px;
+            padding: 8px 12px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+        .news-search-box:focus-within {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15);
         }
         .news-search-box input {
             background: transparent;
@@ -3843,60 +3979,213 @@
             font-size: 12px;
             width: 100%;
         }
-        .filter-strip-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            min-width: 0;
-        }
-        .filter-strip-label {
-            font-family: var(--font-mono);
-            font-size: 10.5px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-            width: 62px;
-            white-space: nowrap;
-        }
-        .filter-pills-scroll {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex: 1;
-            min-width: 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding-bottom: 2px;
-        }
-        .filter-pills-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        .filter-ticker-pill, .cat-pill {
+        .filter-ticker-pill, .cat-pill, .country-pill, .lang-pill {
             background: var(--bg-surface);
             border: 1px solid var(--border);
             color: var(--text-secondary);
             font-size: 11px;
             font-family: var(--font-mono);
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 4px 9px;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.15s ease;
             white-space: nowrap;
-            flex-shrink: 0;
             display: inline-flex;
             align-items: center;
             gap: 4px;
         }
         .filter-ticker-pill:hover, .filter-ticker-pill.active,
-        .cat-pill:hover, .cat-pill.active {
+        .cat-pill:hover, .cat-pill.active,
+        .country-pill:hover, .country-pill.active,
+        .lang-pill:hover, .lang-pill.active {
             background: var(--accent-orange);
             color: #fff;
             border-color: var(--accent-orange);
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+        }
+        .filter-info-card {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px dashed rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
+            padding: 9px 11px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .filter-info-title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 10px;
+            color: #10b981;
+            margin-bottom: 3px;
+        }
+
+        /* Responsive article card inside 50% feed col */
+        @media (min-width: 981px) {
+            .news-feed-col .article-card {
+                grid-template-columns: 155px 1fr;
+                gap: 14px;
+                padding: 13px 4px;
+            }
+            .news-feed-col .article-image {
+                height: 105px;
+            }
+        }
+
+        /* ================= 2030 ESG & SDG HORIZON MODULE (BENCHMARK MERGE) ================= */
+        .sdg-horizon-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 14px;
+        }
+        .sdg-countdown-card {
+            background: linear-gradient(135deg, rgba(255, 178, 36, 0.06) 0%, rgba(10, 12, 14, 0.95) 100%);
+            border: 1px solid rgba(255, 178, 36, 0.3);
+            border-radius: 10px;
+            padding: 20px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sdg-countdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .sdg-clock-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 16px 0 12px 0;
+        }
+        .sdg-clock-tile {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+        .sdg-clock-num {
+            font-family: var(--font-mono);
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--accent-orange);
+            line-height: 1;
+        }
+        .sdg-clock-unit {
+            font-family: var(--font-mono);
+            font-size: 9.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+        }
+        .sdg-progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            margin: 14px 0 6px 0;
+        }
+        .sdg-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #06b6d4 50%, #FFB224 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        .sdg-milestones-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9.5px;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+        }
+        .sdg-windows-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 14px;
+        }
+        @media (max-width: 768px) {
+            .sdg-windows-grid { grid-template-columns: 1fr; }
+            .sdg-clock-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .sdg-window-tile {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 10.5px;
+            position: relative;
+        }
+        .sdg-window-tile.active {
+            border-color: var(--accent-orange);
+            background: rgba(255, 178, 36, 0.08);
+        }
+        .sdg-window-tile.active::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: var(--accent-orange);
+        }
+        .sdg-signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .sdg-signal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 8px;
+            padding: 14px 16px;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sdg-signal-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+        }
+        .sdg-gauges-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--bg-surface);
+            border-radius: 6px;
+            padding: 8px 6px;
+            margin: 4px 0;
+        }
+        .sdg-gauge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .sdg-gauge-val {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .sdg-gauge-lbl {
+            font-size: 9px;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-transform: uppercase;
         }
 
         /* ================= MODAL DIALOGS CONVERTED TO RIGHT SLIDER DRAWERS (MAX-WIDTH 90%) ================= */
@@ -5658,7 +5947,7 @@
                     </div>
                 </div>
 
-                <!-- FEED TABS SWITCHER: EDITORIAL vs REGIONAL WIRE -->
+                <!-- FEED TABS SWITCHER: EDITORIAL vs REGIONAL WIRE vs 2030 SDG SIGNALS -->
                 <div class="feed-tabs-header">
                     <div class="feed-tabs-group">
                         <button class="feed-tab-btn active" id="btn-tab-editorial" onclick="switchMainTab('editorial')">
@@ -5671,114 +5960,498 @@
                             <span>Regional Wire (80 Portal)</span>
                             <span class="feed-tab-badge" id="wire-count-badge">64+ Live</span>
                         </button>
+                        <button class="feed-tab-btn" id="btn-tab-sdg2030" onclick="switchMainTab('sdg2030')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                            <span>2030 ESG & SDG Signals</span>
+                            <span class="feed-tab-badge" style="background:rgba(255,178,36,0.2);color:#ffb224;border-color:rgba(255,178,36,0.4);">Agenda 2030</span>
+                        </button>
                     </div>
                     <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-mono);white-space:nowrap;flex-shrink:0;" id="feed-header-info">
                         20 Portal / Negara
                     </div>
                 </div>
 
-                <!-- ================= PORTAL NEWS FILTER STRIP ================= -->
-                <div class="news-filter-strip" id="news-filter-strip">
-                    <!-- Row 1: Search -->
-                    <div class="filter-search-row">
-                        <div class="news-search-box">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" id="news-search-input" placeholder="Cari emiten (BBCA, TLKM, ASII), judul, topik atau kata kunci berita..." oninput="handleNewsSearchInput()">
+                <!-- ================= 2-COLUMN NEWS PORTAL LAYOUT (50% FILTER KIRI, 50% LIST KANAN) ================= -->
+                <div class="news-portal-split">
+                    <!-- ================= KOLOM KIRI (50%): FILTER PANEL ================= -->
+                    <div class="news-filter-col">
+                        <div class="news-filter-panel" id="news-filter-strip">
+                            <!-- Filter Header & Reset -->
+                            <div class="filter-panel-header">
+                                <div class="filter-panel-title">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                                    <span>Filter Berita & Riset</span>
+                                </div>
+                                <button class="filter-reset-btn" onclick="resetAllNewsFilters()" title="Reset semua filter">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                                    Reset
+                                </button>
+                            </div>
+
+                            <!-- Row 1: Search Box -->
+                            <div class="filter-section-group">
+                                <div class="filter-group-header">
+                                    <span class="filter-group-title">Pencarian Kata Kunci</span>
+                                </div>
+                                <div class="news-search-box">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                    <input type="text" id="news-search-input" placeholder="Cari emiten, judul, topik, sektor..." oninput="handleNewsSearchInput()">
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Country Origin Ribbon -->
+                            <div class="filter-section-group">
+                                <div class="filter-group-header">
+                                    <span class="filter-group-title">Negara Asal (20 Portal / Negara)</span>
+                                </div>
+                                <div class="filter-pills-wrap">
+                                    <button class="country-pill active" onclick="filterByCountry('ALL', this)">🌍 Semua Negara</button>
+                                    <button class="country-pill" onclick="filterByCountry('ID', this)">🇮🇩 Indonesia</button>
+                                    <button class="country-pill" onclick="filterByCountry('SG', this)">🇸🇬 Singapura</button>
+                                    <button class="country-pill" onclick="filterByCountry('MY', this)">🇲🇾 Malaysia</button>
+                                    <button class="country-pill" onclick="filterByCountry('JP', this)">🇯🇵 Jepang</button>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Language Ribbon -->
+                            <div class="filter-section-group">
+                                <div class="filter-group-header">
+                                    <span class="filter-group-title">Bahasa Berita</span>
+                                </div>
+                                <div class="filter-pills-wrap">
+                                    <button class="lang-pill active" onclick="filterByLanguage('ALL', this)">🌐 Semua Bahasa</button>
+                                    <button class="lang-pill" onclick="filterByLanguage('id', this)">🇮🇩 Indonesia</button>
+                                    <button class="lang-pill" onclick="filterByLanguage('en', this)">🇬🇧 English</button>
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Emiten Tickers Ribbon -->
+                            <div class="filter-section-group">
+                                <div class="filter-group-header">
+                                    <span class="filter-group-title">Emiten Terkait (IDX & Regional)</span>
+                                </div>
+                                <div class="filter-pills-wrap">
+                                    <button class="filter-ticker-pill active" onclick="filterNewsByTicker('ALL', this)">Semua</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('BBCA', this)">BBCA</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('BBRI', this)">BBRI</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('BMRI', this)">BMRI</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('TLKM', this)">TLKM</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('ASII', this)">ASII</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('ICBP', this)">ICBP</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('BREN', this)">BREN</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('ADRO', this)">ADRO</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('GOTO', this)">GOTO</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('KLBF', this)">KLBF</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('PGEO', this)">PGEO</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('AMMN', this)">AMMN</button>
+                                    <button class="filter-ticker-pill" onclick="filterNewsByTicker('PTBA', this)">PTBA</button>
+                                </div>
+                            </div>
+
+                            <!-- Row 5: Sectors Ribbon -->
+                            <div class="filter-section-group">
+                                <div class="filter-group-header">
+                                    <span class="filter-group-title">Sektor Industri</span>
+                                </div>
+                                <div class="filter-pills-wrap">
+                                    <button class="cat-pill active" onclick="filterNewsBySector('ALL', this)">Semua Sektor</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Financials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 10 12 3 21 10"/><line x1="6" y1="10" x2="6" y2="21"/><line x1="10" y1="10" x2="10" y2="21"/><line x1="14" y1="10" x2="14" y2="21"/><line x1="18" y1="10" x2="18" y2="21"/></svg>Perbankan</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Consumer Non-Cyclicals', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Konsumsi / FMCG</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Energy', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energi & EBT</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Telecommunication', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Telko & Digital</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Industrials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4L2 8z"/></svg>Industri Manufaktur</button>
+                                    <button class="cat-pill" onclick="filterNewsBySector('Basic Materials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>Material & Mining</button>
+                                </div>
+                            </div>
+
+                            <!-- Engine Shield Info Card -->
+                            <div class="filter-info-card">
+                                <div class="filter-info-title">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>AI FACT-CHECKING & 0 KREDIT SHIELD</span>
+                                </div>
+                                Berita disaring secara otomatis dari 80 portal terverifikasi di Indonesia, Singapura, Malaysia, & Jepang dengan validasi emiten Sectors API dan cache SQLite lokal.
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Row 2: Country of Origin Ribbon (Negara Asal Berita) -->
-                    <div class="filter-strip-row">
-                        <span class="filter-strip-label">NEGARA:</span>
-                        <div class="filter-pills-scroll">
-                            <button class="country-pill active" onclick="filterByCountry('ALL', this)">🌍 Semua Negara</button>
-                            <button class="country-pill" onclick="filterByCountry('ID', this)">🇮🇩 Indonesia</button>
-                            <button class="country-pill" onclick="filterByCountry('SG', this)">🇸🇬 Singapura</button>
-                            <button class="country-pill" onclick="filterByCountry('MY', this)">🇲🇾 Malaysia</button>
-                            <button class="country-pill" onclick="filterByCountry('JP', this)">🇯🇵 Jepang</button>
+                    <!-- ================= KOLOM KANAN (50%): FEED & ARTIKEL ================= -->
+                    <div class="news-feed-col">
+                        <!-- TAB 1: EDITORIAL ARTICLES VIEW -->
+                        <div id="editorial-view">
+                            <!-- HERO BREAKING EDITORIAL (Featured Lead Article) -->
+                            <div id="hero-article-container" style="margin-bottom:18px;">
+                                <!-- Dynamically loaded with BREAKING EDITORIAL -->
+                            </div>
+
+                            <div class="section-header" style="margin-top:14px;">
+                                <h2 style="font-size:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Berita & Riset AI</h2>
+                                <span style="font-size:12px;color:var(--text-muted);" id="article-count-label">Memuat artikel...</span>
+                            </div>
+                            <div class="news-grid" id="articles-grid" style="margin-top:14px;">
+                                <!-- Dynamically loaded editorial articles -->
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Row 3: Language Choice Ribbon (Pilihan Bahasa) -->
-                    <div class="filter-strip-row">
-                        <span class="filter-strip-label">BAHASA:</span>
-                        <div class="filter-pills-scroll">
-                            <button class="lang-pill active" onclick="filterByLanguage('ALL', this)">🌐 Semua Bahasa</button>
-                            <button class="lang-pill" onclick="filterByLanguage('id', this)">🇮🇩 Bahasa Indonesia</button>
-                            <button class="lang-pill" onclick="filterByLanguage('en', this)">🇬🇧 English</button>
+                        <!-- TAB 2: REGIONAL NEWS WIRE VIEW (ID, SG, MY, JP) -->
+                        <div id="wire-view" style="display:none;">
+                            <div class="wire-controls-bar">
+                                <div class="wire-country-filters">
+                                    <button class="country-pill active" onclick="filterWireCountry('ALL', this)">🌍 Semua (80)</button>
+                                    <button class="country-pill" onclick="filterWireCountry('ID', this)">🇮🇩 Indonesia</button>
+                                    <button class="country-pill" onclick="filterWireCountry('SG', this)">🇸🇬 Singapura</button>
+                                    <button class="country-pill" onclick="filterWireCountry('MY', this)">🇲🇾 Malaysia</button>
+                                    <button class="country-pill" onclick="filterWireCountry('JP', this)">🇯🇵 Jepang</button>
+                                </div>
+                                <div class="wire-status-info">
+                                    <span class="wire-shield-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 Kredit API</span>
+                                    <button class="wire-sync-btn" onclick="syncDailyWire()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;display:inline-block;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>Sync</button>
+                                </div>
+                            </div>
+
+                            <div class="wire-grid" id="wire-grid">
+                                <!-- Dynamically loaded regional news cards -->
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Row 4: Emiten Tickers Ribbon -->
-                    <div class="filter-strip-row">
-                        <span class="filter-strip-label">EMITEN:</span>
-                        <div class="filter-pills-scroll">
-                            <button class="filter-ticker-pill active" onclick="filterNewsByTicker('ALL', this)">Semua</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('BBCA', this)">BBCA</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('BBRI', this)">BBRI</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('BMRI', this)">BMRI</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('TLKM', this)">TLKM</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('ASII', this)">ASII</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('ICBP', this)">ICBP</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('BREN', this)">BREN</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('ADRO', this)">ADRO</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('GOTO', this)">GOTO</button>
-                            <button class="filter-ticker-pill" onclick="filterNewsByTicker('KLBF', this)">KLBF</button>
+                        <!-- TAB 3: 2030 ESG & SDG HORIZON VIEW (BENCHMARK MERGED) -->
+                        <div id="sdg2030-view" style="display:none;">
+                            <div class="sdg-horizon-container">
+                                <!-- 1. COUNTDOWN CARD: THE 2030 EXECUTION HORIZON -->
+                                <div class="sdg-countdown-card">
+                                    <div class="sdg-countdown-header">
+                                        <div>
+                                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                                                <span style="font-size:10px;font-family:var(--font-mono);font-weight:700;color:var(--accent-orange);letter-spacing:1px;text-transform:uppercase;">UN AGENDA 2030 • IDX EXECUTION HORIZON</span>
+                                                <span class="wire-shield-pill" style="border-color:rgba(255,178,36,0.3);background:rgba(255,178,36,0.1);color:#ffb224;">Target 31 Des 2030</span>
+                                            </div>
+                                            <h3 style="font-size:18px;font-weight:700;margin:0 0 4px 0;letter-spacing:-0.3px;">Waktu Menuju Tenggat SDG & Net-Zero 2030</h3>
+                                            <p style="font-size:12px;color:var(--text-muted);margin:0;">Pemantauan komitmen capex transisi hijau emiten IHSG, POJK 51, dan Taksonomi Hijau Indonesia 2.0.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- 4-TILE LIVE COUNTDOWN CLOCK -->
+                                    <div class="sdg-clock-grid">
+                                        <div class="sdg-clock-tile">
+                                            <div class="sdg-clock-num" id="sdg-clock-days">1,546</div>
+                                            <div class="sdg-clock-unit">Hari</div>
+                                        </div>
+                                        <div class="sdg-clock-tile">
+                                            <div class="sdg-clock-num" id="sdg-clock-hours">09</div>
+                                            <div class="sdg-clock-unit">Jam</div>
+                                        </div>
+                                        <div class="sdg-clock-tile">
+                                            <div class="sdg-clock-num" id="sdg-clock-mins">03</div>
+                                            <div class="sdg-clock-unit">Menit</div>
+                                        </div>
+                                        <div class="sdg-clock-tile">
+                                            <div class="sdg-clock-num" id="sdg-clock-secs">33</div>
+                                            <div class="sdg-clock-unit">Detik</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PROGRESS TRACK -->
+                                    <div class="sdg-progress-track">
+                                        <div class="sdg-track-fill" style="width: 68.4%;"></div>
+                                    </div>
+                                    <div class="sdg-track-milestones">
+                                        <span>2015 Adopsi SDG</span>
+                                        <span style="color:var(--accent-orange);font-weight:700;">● Sekarang (2026: 68.4% Berjalan)</span>
+                                        <span>2027 Mid-Review</span>
+                                        <span style="font-weight:700;color:var(--text-main);">2030 Deadline</span>
+                                    </div>
+
+                                    <!-- 5 OPERATING WINDOWS -->
+                                    <div class="sdg-windows-grid">
+                                        <div class="sdg-window-item">
+                                            <div class="sdg-window-title">Window 1: Capex Transisi</div>
+                                            <div class="sdg-window-desc">Ekspansi EBT, PLTS atap, efisiensi energi emiten manufaktur & tambang.</div>
+                                            <div class="sdg-window-badge active">● Active High</div>
+                                        </div>
+                                        <div class="sdg-window-item">
+                                            <div class="sdg-window-title">Window 2: POJK 51 Disclosure</div>
+                                            <div class="sdg-window-desc">Kewajiban pelaporan Laporan Keberlanjutan tahunan untuk 900+ emiten.</div>
+                                            <div class="sdg-window-badge active">● Mandatory 100%</div>
+                                        </div>
+                                        <div class="sdg-window-item">
+                                            <div class="sdg-window-title">Window 3: Bauran EBT 23%</div>
+                                            <div class="sdg-window-desc">Target proporsi energi bersih nasional dalam bauran energi primer.</div>
+                                            <div class="sdg-window-badge pending">● Progress 15.2%</div>
+                                        </div>
+                                        <div class="sdg-window-item">
+                                            <div class="sdg-window-title">Window 4: IDXCarbon Trade</div>
+                                            <div class="sdg-window-desc">Bursa karbon terintegrasi sertifikat pengurangan emisi (SPE-GRK).</div>
+                                            <div class="sdg-window-badge active">● Terintegrasi</div>
+                                        </div>
+                                        <div class="sdg-window-item">
+                                            <div class="sdg-window-title">Window 5: Taksonomi 2.0</div>
+                                            <div class="sdg-window-desc">Standar pembiayaan perbankan hijau (Financed Emissions Criteria).</div>
+                                            <div class="sdg-window-badge active">● Standar OJK</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2. CONFLUENCE SIGNALS STREAM (BENCHMARK MERGE) -->
+                                <div style="display:flex;flex-direction:column;gap:12px;">
+                                    <div class="section-header" style="margin:4px 0 0 0;">
+                                        <div>
+                                            <h2 style="font-size:15px;display:flex;align-items:center;gap:6px;">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+                                                Sinyal Konfluensi Emiten × Agenda 2030
+                                            </h2>
+                                            <p style="font-size:11.5px;color:var(--text-muted);margin:2px 0 0 0;">Pilar Confluence: Menggabungkan Bukti SDG + Siklus Capex + Data Transaksi & Valuasi Sectors API.</p>
+                                        </div>
+                                        <span class="wire-shield-pill">7 Emiten Tier-1</span>
+                                    </div>
+
+                                    <div class="sdg-signals-grid">
+                                        <!-- SIGNAL 1: PGEO -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('PGEO')">PGEO</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Pertamina Geothermal</span>
+                                                </div>
+                                                <span class="sdg-score-pill">94.2% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 7 Energi Terjangkau & Bersih</span>
+                                                <span class="sdg-target-badge">SDG 13 Aksi Iklim</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Ekspansi capex panas bumi hingga kapasitas terpasang 1.5 GW di 2030. Arus kas operasional stabil didukung kontrak jangka panjang PLN dan penjualan kredit karbon SPE-GRK di IDXCarbon.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">96%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">94%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">91%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNAL 2: BBRI -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('BBRI')">BBRI</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Bank Rakyat Indonesia</span>
+                                                </div>
+                                                <span class="sdg-score-pill">92.8% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 8 Pekerjaan Layak & UMKM</span>
+                                                <span class="sdg-target-badge">SDG 1 Tanpa Kemiskinan</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Penyaluran portofolio pembiayaan berkelanjutan (Sustainable Financing) mencapai 66.8% total kredit (Rp 777 T), mendominasi inklusi keuangan mikro dan pilar sosial POJK 51.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">95%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">91%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">92%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNAL 3: ASII -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('ASII')">ASII</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Astra International</span>
+                                                </div>
+                                                <span class="sdg-score-pill">89.5% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 9 Industri & Inovasi</span>
+                                                <span class="sdg-target-badge">SDG 12 Konsumsi Berkelanjutan</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Ekspansi ekosistem EV roda dua & empat, investasi di infrastruktur pengisian daya, dan penetrasi alat berat elektrik Komatsu via UNTR untuk dekarbonisasi rantai pasok industri.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">88%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">89%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">91%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNAL 4: PTBA -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('PTBA')">PTBA</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Bukit Asam</span>
+                                                </div>
+                                                <span class="sdg-score-pill">86.4% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 7 Transisi Energi</span>
+                                                <span class="sdg-target-badge">SDG 15 Keberlanjutan Darat</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Pilot project transisi energi: pembangunan PLTS pasca-tambang Ombilin (200 MW) dan PLTS jalan tol Bali-Mandara, didukung dividen yield tinggi dan neraca kas solid.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">84%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">88%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">87%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNAL 5: AMMN -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('AMMN')">AMMN</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Amman Mineral</span>
+                                                </div>
+                                                <span class="sdg-score-pill">88.7% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 9 Hilirisasi Industri</span>
+                                                <span class="sdg-target-badge">SDG 12 Rantai Pasok Hijau</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Smelter tembaga Batu Hijau Sumbawa Barat beroperasi komersial untuk mensuplai katoda tembaga baterai kendaraan listrik global dengan efisiensi energi terbarukan.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">91%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">86%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">89%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNAL 6: BIRD -->
+                                        <div class="sdg-signal-card">
+                                            <div class="sdg-signal-top">
+                                                <div style="display:flex;align-items:center;gap:7px;">
+                                                    <span class="sdg-ticker-tag" onclick="openCompanySentimentModal('BIRD')">BIRD</span>
+                                                    <span style="font-size:12px;font-weight:600;color:var(--text-main);">Blue Bird</span>
+                                                </div>
+                                                <span class="sdg-score-pill">85.3% Konfluensi</span>
+                                            </div>
+                                            <div class="sdg-tag-row">
+                                                <span class="sdg-target-badge">SDG 11 Kota Berkelanjutan</span>
+                                                <span class="sdg-target-badge">SDG 13 Net Zero Mobility</span>
+                                            </div>
+                                            <p class="sdg-desc-text">
+                                                Inisiatif 50/30 Bluebird: Target pengurangan 50% emisi karbon pada 2030 dengan adopsi armada taksi listrik (EV) serta instalasi solar rooftop di seluruh pool utama.
+                                            </p>
+                                            <div class="sdg-gauges-row">
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:#10b981;">87%</div>
+                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">83%</div>
+                                                    <div class="sdg-gauge-label">Timing</div>
+                                                </div>
+                                                <div class="sdg-gauge-item">
+                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">86%</div>
+                                                    <div class="sdg-gauge-label">Market</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3. SECTOR × SDG ACTIVITY MATRIX -->
+                                <div class="sdg-matrix-card">
+                                    <div class="sdg-matrix-header">
+                                        <h3 style="font-size:14px;font-weight:700;margin:0 0 3px 0;display:flex;align-items:center;gap:6px;">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                            Matriks Aktivitas 11 Sektor IDX × 17 SDG
+                                        </h3>
+                                        <p style="font-size:11px;color:var(--text-muted);margin:0;">Pemetaan densitas pengungkapan inisiatif keberlanjutan dan bukti kepatuhan Tier 1 emiten bursa efek.</p>
+                                    </div>
+                                    <div class="sdg-matrix-grid">
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Perbankan & Financials</div>
+                                            <div class="sdg-matrix-cell">SDG 1, 8, 10</div>
+                                            <div class="sdg-matrix-cell" style="color:#10b981;font-weight:700;">● Tinggi (342 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Kredit Hijau Rp 1,420 T</div>
+                                        </div>
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Energi & EBT</div>
+                                            <div class="sdg-matrix-cell">SDG 7, 12, 13</div>
+                                            <div class="sdg-matrix-cell" style="color:#10b981;font-weight:700;">● Tinggi (218 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Ekspansi Geothermal & PLTS</div>
+                                        </div>
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Industri & Otomotif</div>
+                                            <div class="sdg-matrix-cell">SDG 9, 11, 12</div>
+                                            <div class="sdg-matrix-cell" style="color:var(--accent-orange);font-weight:700;">● Menengah (174 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Rantai Pasok EV & Baterai</div>
+                                        </div>
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Material Dasar & Tambang</div>
+                                            <div class="sdg-matrix-cell">SDG 6, 12, 15</div>
+                                            <div class="sdg-matrix-cell" style="color:var(--accent-orange);font-weight:700;">● Menengah (156 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Smelter Bersih & Reklamasi</div>
+                                        </div>
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Barang Konsumen Primer</div>
+                                            <div class="sdg-matrix-cell">SDG 2, 3, 12</div>
+                                            <div class="sdg-matrix-cell" style="color:var(--accent-cyan);font-weight:700;">● Stabil (128 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Ketahanan Pangan & Kemasan</div>
+                                        </div>
+                                        <div class="sdg-matrix-row">
+                                            <div class="sdg-matrix-cell sector-name">Infrastruktur & Telko</div>
+                                            <div class="sdg-matrix-cell">SDG 9, 11</div>
+                                            <div class="sdg-matrix-cell" style="color:var(--accent-cyan);font-weight:700;">● Stabil (95 Bukti)</div>
+                                            <div class="sdg-matrix-cell">Digital Connectivity & Tower</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Row 5: Sectors Ribbon -->
-                    <div class="filter-strip-row">
-                        <span class="filter-strip-label">SEKTOR:</span>
-                        <div class="filter-pills-scroll">
-                            <button class="cat-pill active" onclick="filterNewsBySector('ALL', this)">Semua Sektor</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Financials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 10 12 3 21 10"/><line x1="6" y1="10" x2="6" y2="21"/><line x1="10" y1="10" x2="10" y2="21"/><line x1="14" y1="10" x2="14" y2="21"/><line x1="18" y1="10" x2="18" y2="21"/></svg>Perbankan</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Consumer Non-Cyclicals', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Konsumsi / FMCG</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Energy', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energi & Batubara</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Telecommunication', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Telko & Digital</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Industrials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4L2 8z"/></svg>Industri & Konglomerasi</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Basic Materials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>Bahan Bangunan</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB 1: EDITORIAL ARTICLES VIEW -->
-                <div id="editorial-view">
-                    <!-- HERO BREAKING EDITORIAL (Featured Lead Article) -->
-                    <div id="hero-article-container" style="margin-bottom:18px;">
-                        <!-- Dynamically loaded with BREAKING EDITORIAL -->
-                    </div>
-
-                    <div class="section-header" style="margin-top:14px;">
-                        <h2 style="font-size:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Berita & Riset AI</h2>
-                        <span style="font-size:12px;color:var(--text-muted);" id="article-count-label">Memuat artikel...</span>
-                    </div>
-                    <div class="news-grid" id="articles-grid" style="margin-top:14px;">
-                        <!-- Dynamically loaded editorial articles -->
-                    </div>
-                </div>
-
-                <!-- TAB 2: REGIONAL NEWS WIRE VIEW (ID, SG, MY, JP) -->
-                <div id="wire-view" style="display:none;">
-                    <div class="wire-controls-bar">
-                        <div class="wire-country-filters">
-                            <button class="country-pill active" onclick="filterWireCountry('ALL', this)">🌍 Semua (80)</button>
-                            <button class="country-pill" onclick="filterWireCountry('ID', this)">🇮🇩 Indonesia</button>
-                            <button class="country-pill" onclick="filterWireCountry('SG', this)">🇸🇬 Singapura</button>
-                            <button class="country-pill" onclick="filterWireCountry('MY', this)">🇲🇾 Malaysia</button>
-                            <button class="country-pill" onclick="filterWireCountry('JP', this)">🇯🇵 Jepang</button>
-                        </div>
-                        <div class="wire-status-info">
-                            <span class="wire-shield-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 Kredit API</span>
-                            <button class="wire-sync-btn" onclick="syncDailyWire()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;display:inline-block;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>Sync</button>
-                        </div>
-                    </div>
-
-                    <div class="wire-grid" id="wire-grid">
-                        <!-- Dynamically loaded regional news cards -->
                     </div>
                 </div>
 
@@ -7180,6 +7853,7 @@
             initMarketWebSocket();
             initMarketChart('BBCA', '1W');
             checkUserPersonaOnLoad();
+            initSDGCountdownTimer();
             await loadWeatherWidget('jakarta');
             await loadForexWidget();
             await loadArticles();
@@ -7642,23 +8316,97 @@
         function switchMainTab(tab) {
             const btnEditorial = document.getElementById('btn-tab-editorial');
             const btnWire = document.getElementById('btn-tab-wire');
+            const btnSdg = document.getElementById('btn-tab-sdg2030');
             const viewEditorial = document.getElementById('editorial-view');
             const viewWire = document.getElementById('wire-view');
+            const viewSdg = document.getElementById('sdg2030-view');
 
             if (tab === 'wire') {
-                btnEditorial.classList.remove('active');
-                btnWire.classList.add('active');
-                viewEditorial.style.display = 'none';
-                viewWire.style.display = 'block';
+                if (btnEditorial) btnEditorial.classList.remove('active');
+                if (btnSdg) btnSdg.classList.remove('active');
+                if (btnWire) btnWire.classList.add('active');
+                if (viewEditorial) viewEditorial.style.display = 'none';
+                if (viewSdg) viewSdg.style.display = 'none';
+                if (viewWire) viewWire.style.display = 'block';
                 if (allWireHeadlines.length === 0) {
                     loadRegionalWire(currentWireCountry);
                 }
+            } else if (tab === 'sdg2030') {
+                if (btnEditorial) btnEditorial.classList.remove('active');
+                if (btnWire) btnWire.classList.remove('active');
+                if (btnSdg) btnSdg.classList.add('active');
+                if (viewEditorial) viewEditorial.style.display = 'none';
+                if (viewWire) viewWire.style.display = 'none';
+                if (viewSdg) viewSdg.style.display = 'block';
+                initSDGCountdownTimer();
             } else {
-                btnWire.classList.remove('active');
-                btnEditorial.classList.add('active');
-                viewWire.style.display = 'none';
-                viewEditorial.style.display = 'block';
+                if (btnWire) btnWire.classList.remove('active');
+                if (btnSdg) btnSdg.classList.remove('active');
+                if (btnEditorial) btnEditorial.classList.add('active');
+                if (viewWire) viewWire.style.display = 'none';
+                if (viewSdg) viewSdg.style.display = 'none';
+                if (viewEditorial) viewEditorial.style.display = 'block';
             }
+        }
+
+        function resetAllNewsFilters() {
+            currentNewsSearch = '';
+            currentNewsCountry = 'ALL';
+            currentNewsLang = 'ALL';
+            currentNewsTicker = 'ALL';
+            currentNewsSector = 'ALL';
+
+            const searchInput = document.getElementById('news-search-input');
+            if (searchInput) searchInput.value = '';
+
+            document.querySelectorAll('#news-filter-strip .country-pill').forEach((el, idx) => {
+                if (idx === 0) el.classList.add('active'); else el.classList.remove('active');
+            });
+            document.querySelectorAll('#news-filter-strip .lang-pill').forEach((el, idx) => {
+                if (idx === 0) el.classList.add('active'); else el.classList.remove('active');
+            });
+            document.querySelectorAll('#news-filter-strip .filter-ticker-pill').forEach((el, idx) => {
+                if (idx === 0) el.classList.add('active'); else el.classList.remove('active');
+            });
+            document.querySelectorAll('#news-filter-strip .cat-pill').forEach((el, idx) => {
+                if (idx === 0) el.classList.add('active'); else el.classList.remove('active');
+            });
+
+            applyAllNewsFilters();
+        }
+
+        let sdgCountdownInterval = null;
+        function initSDGCountdownTimer() {
+            if (sdgCountdownInterval) return;
+            const targetDate = new Date('2030-12-31T23:59:59Z').getTime();
+
+            function updateSDGClock() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    if (sdgCountdownInterval) clearInterval(sdgCountdownInterval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const elDays = document.getElementById('sdg-clock-days');
+                const elHours = document.getElementById('sdg-clock-hours');
+                const elMins = document.getElementById('sdg-clock-mins');
+                const elSecs = document.getElementById('sdg-clock-secs');
+
+                if (elDays) elDays.innerText = days.toLocaleString('id-ID');
+                if (elHours) elHours.innerText = String(hours).padStart(2, '0');
+                if (elMins) elMins.innerText = String(minutes).padStart(2, '0');
+                if (elSecs) elSecs.innerText = String(seconds).padStart(2, '0');
+            }
+
+            updateSDGClock();
+            sdgCountdownInterval = setInterval(updateSDGClock, 1000);
         }
 
         function filterWireCountry(country, elem) {
@@ -9413,31 +10161,43 @@
             if (!text) return '';
             let raw = String(text).replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
 
+            // 0. Remove redundant self-intro, greeting, and "Garda" prefixes
+            raw = raw.replace(/^\s*(?:Garda AI Concierge|Garda AI|Garda Concierge|Garda)\s*[:.]?\s*/i, '');
+            raw = raw.replace(/^\s*(\*{1,3}|_{1,3})Garda(\*{1,3}|_{1,3})\s*[:.]?\s*/i, '');
+            raw = raw.replace(/^\s*Garda\s*[:.]?\s*/i, '');
+            raw = raw.replace(/^\s*(?:Halo|Selamat\s+(?:pagi|siang|sore|malam))[!,.]?\s*/i, '');
+            raw = raw.trim();
+
             const chartPlaceholders = [];
 
-            // 0. Extract Fenced ECharts Code Blocks: ```echarts, ```chart, ```json, ```javascript, ```js
+            // Helper to wrap chart card
+            function makeChartCard(opt, title) {
+                const chartId = 'garda-chart-' + Math.random().toString(36).substring(2, 9);
+                window.__gardaChartQueue.push({ id: chartId, config: opt });
+                const chartTitle = (opt.title && opt.title.text) ? opt.title.text : (title || 'Grafik Visual Analisis Garda AI');
+                const idx = chartPlaceholders.length;
+                chartPlaceholders.push(`
+                    <div class="garda-chat-chart-card">
+                        <div class="garda-chat-chart-header">
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>${chartTitle}</span>
+                            <span style="font-size:9.5px;color:var(--accent-cyan);font-weight:600;">ECharts Interaktif</span>
+                        </div>
+                        <div id="${chartId}" class="garda-chart-container"></div>
+                    </div>
+                `);
+                return `\n@@GARDACHART${idx}@@\n`;
+            }
+
+            // 1. Extract Fenced ECharts Code Blocks
             raw = raw.replace(/```(?:echarts|chart|json|javascript|js)?\s*\n([\s\S]*?)\n```/gi, function(match, inner) {
                 const opt = parseEchartsOption(inner);
                 if (opt && (opt.series || (opt.xAxis && opt.yAxis))) {
-                    const chartId = 'garda-chart-' + Math.random().toString(36).substring(2, 9);
-                    window.__gardaChartQueue.push({ id: chartId, config: opt });
-                    const idx = chartPlaceholders.length;
-                    const chartTitle = (opt.title && opt.title.text) ? opt.title.text : 'Grafik Visual Analisis Garda AI';
-                    chartPlaceholders.push(`
-                        <div class="garda-chat-chart-card">
-                            <div class="garda-chat-chart-header">
-                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>${chartTitle}</span>
-                                <span style="font-size:9.5px;color:var(--accent-cyan);font-weight:600;">ECharts Interaktif</span>
-                            </div>
-                            <div id="${chartId}" class="garda-chart-container"></div>
-                        </div>
-                    `);
-                    return `\n@@GARDACHART${idx}@@\n`;
+                    return makeChartCard(opt);
                 }
                 return match;
             });
 
-            // 0.1 Extract Unfenced ECharts JSON Blocks (Balanced Braces Scanner)
+            // 2. Extract Unfenced ECharts JSON Blocks (Balanced Braces Scanner)
             let scanIdx = 0;
             while (scanIdx < raw.length) {
                 let startIdx = -1;
@@ -9479,20 +10239,7 @@
                     let toParse = prependBrace ? '{' + candidate : candidate;
                     const opt = parseEchartsOption(toParse);
                     if (opt && (opt.series || (opt.xAxis && opt.yAxis))) {
-                        const chartId = 'garda-chart-' + Math.random().toString(36).substring(2, 9);
-                        window.__gardaChartQueue.push({ id: chartId, config: opt });
-                        const idx = chartPlaceholders.length;
-                        const chartTitle = (opt.title && opt.title.text) ? opt.title.text : 'Grafik Visual Analisis Garda AI';
-                        chartPlaceholders.push(`
-                            <div class="garda-chat-chart-card">
-                                <div class="garda-chat-chart-header">
-                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>${chartTitle}</span>
-                                    <span style="font-size:9.5px;color:var(--accent-cyan);font-weight:600;">ECharts Interaktif</span>
-                                </div>
-                                <div id="${chartId}" class="garda-chart-container"></div>
-                            </div>
-                        `);
-                        const placeholder = `\n@@GARDACHART${idx}@@\n`;
+                        const placeholder = makeChartCard(opt);
                         raw = raw.substring(0, startIdx) + placeholder + raw.substring(endIdx + 1);
                         scanIdx = startIdx + placeholder.length;
                         continue;
@@ -9501,7 +10248,48 @@
                 scanIdx = startIdx + 1;
             }
 
-            // 0.2 Extract Markdown Tables (Line-by-line Scanner with Alignments & Badges)
+            // 3. Fallback Chart Synthesis if No Chart was Extracted but Analysis has Visual Section or Tokens
+            if (chartPlaceholders.length === 0 && (raw.includes('VISUALISASI') || /%%GARDA(?:_|<em>)?CHART/i.test(raw) || /@@GARDACHART/i.test(raw))) {
+                const tickerMatch = raw.match(/\b(BBCA|BBRI|BMRI|BBNI|TLKM|ASII|ICBP|ADRO|AMMN|BREN|GOTO|D05|Z74)\b/i);
+                const ticker = tickerMatch ? tickerMatch[1].toUpperCase() : 'BBCA';
+
+                let slVal = 9000, entryVal = 10000, tpVal = 13750;
+                const prices = Array.from(raw.matchAll(/(?:Rp\s*)?([\d]{1,2}[.,][\d]{3})/g)).map(m => parseInt(m[1].replace(/[.,]/g, '')));
+                if (prices.length >= 3) {
+                    const sorted = [...prices].sort((a,b) => a - b);
+                    slVal = sorted[0];
+                    entryVal = sorted[Math.floor(sorted.length / 2)];
+                    tpVal = sorted[sorted.length - 1];
+                }
+
+                const fallbackOpt = {
+                    title: { text: `Setup Target Price & Valuasi ${ticker} (Rp)`, textStyle: { fontSize: 12, color: "#f8fafc" } },
+                    tooltip: { trigger: "axis" },
+                    legend: { data: ["Level Harga (Rp)"], textStyle: { color: "#94a3b8" } },
+                    xAxis: { type: "category", data: ["Stop Loss (SL)", "Area Beli (Entry)", "Target Price (TP)"] },
+                    yAxis: { type: "value" },
+                    series: [
+                        {
+                            name: "Level Harga (Rp)",
+                            type: "bar",
+                            data: [
+                                { value: slVal, itemStyle: { color: "#ef4444", borderRadius: [4, 4, 0, 0] } },
+                                { value: entryVal, itemStyle: { color: "#38bdf8", borderRadius: [4, 4, 0, 0] } },
+                                { value: tpVal, itemStyle: { color: "#10b981", borderRadius: [4, 4, 0, 0] } }
+                            ]
+                        }
+                    ]
+                };
+                const placeholder = makeChartCard(fallbackOpt, `Setup Target Price & Valuasi ${ticker} (Rp)`);
+
+                if (/%%GARDA(?:_|<em>)?CHART\d*%%/i.test(raw)) {
+                    raw = raw.replace(/%%GARDA(?:_|<em>)?CHART\d*%%/gi, placeholder);
+                } else if (raw.includes('VISUALISASI')) {
+                    raw = raw.replace(/(VISUALISASI[^\n]*\n(?:[^\n]*\n)?)/i, `$1${placeholder}\n`);
+                }
+            }
+
+            // 4. Extract Tables (Standard Delimiter OR Headless Rows with Pipes)
             const tablePlaceholders = [];
             function isTableDelimiter(line) {
                 const trimmed = line.trim();
@@ -9522,12 +10310,54 @@
                 return trimmed.split('|').map(c => c.trim());
             }
 
+            function buildTableHtml(headers, aligns, bodyRows) {
+                let tblHtml = '<div class="garda-table-wrap"><table class="garda-rec-table"><thead><tr>';
+                headers.forEach((h, hIdx) => {
+                    const al = (aligns && aligns[hIdx]) ? aligns[hIdx] : 'left';
+                    tblHtml += `<th style="text-align:${al};">${h}</th>`;
+                });
+                tblHtml += '</tr></thead><tbody>';
+
+                bodyRows.forEach(cells => {
+                    tblHtml += '<tr>';
+                    cells.forEach((cell, cIdx) => {
+                        const al = (aligns && aligns[cIdx]) ? aligns[cIdx] : 'left';
+                        let formatted = cell;
+                        const upper = formatted.toUpperCase();
+
+                        if (upper.includes('STRONG BUY')) {
+                            formatted = `<span class="rec-badge buy" style="background:rgba(16,185,129,0.22);border-color:#10b981;font-weight:800;">STRONG BUY</span>`;
+                        } else if (upper.includes('BUY ON WEAKNESS') || upper === 'BUY' || upper.includes('AKUMULASI') || upper.includes('ACCUMULATE')) {
+                            formatted = `<span class="rec-badge buy">${cell}</span>`;
+                        } else if (upper.includes('HOLD') || upper.includes('WAIT') || upper.includes('NETRAL') || upper.includes('NEUTRAL')) {
+                            formatted = `<span class="rec-badge hold">${cell}</span>`;
+                        } else if (upper.includes('TAKE PROFIT') || upper.includes('DISTRIBUSI') || upper === 'SELL' || upper.includes('STRONG SELL')) {
+                            formatted = `<span class="rec-badge sell">${cell}</span>`;
+                        }
+
+                        let cellClass = '';
+                        if (cell.length > 35) {
+                            cellClass = 'class="cell-desc"';
+                        } else if (/^(Rp|[\d.,+%]+$|\d+\s*:\s*[\d.+]+)/.test(cell) || cell.length < 15) {
+                            cellClass = 'class="cell-nowrap"';
+                        }
+
+                        tblHtml += `<td ${cellClass} style="text-align:${al};">${formatted}</td>`;
+                    });
+                    tblHtml += '</tr>';
+                });
+                tblHtml += '</tbody></table></div>';
+                return tblHtml;
+            }
+
             const rawLines = raw.split('\n');
             const filteredLines = [];
             let lineIdx = 0;
 
             while (lineIdx < rawLines.length) {
                 const cur = rawLines[lineIdx];
+
+                // Scenario A: Standard Markdown Table with delimiter header
                 if (lineIdx + 1 < rawLines.length && isTableDelimiter(rawLines[lineIdx + 1]) && cur.includes('|')) {
                     const headers = splitTableRow(cur);
                     const delims = splitTableRow(rawLines[lineIdx + 1]);
@@ -9546,47 +10376,43 @@
                         nextJ++;
                     }
 
-                    let tblHtml = '<div class="garda-table-wrap"><table class="garda-rec-table"><thead><tr>';
-                    headers.forEach((h, hIdx) => {
-                        const al = aligns[hIdx] || 'left';
-                        tblHtml += `<th style="text-align:${al};">${h}</th>`;
-                    });
-                    tblHtml += '</tr></thead><tbody>';
-
-                    bodyRows.forEach(cells => {
-                        tblHtml += '<tr>';
-                        cells.forEach((cell, cIdx) => {
-                            const al = aligns[cIdx] || 'left';
-                            let formatted = cell;
-                            const upper = formatted.toUpperCase();
-
-                            if (upper.includes('STRONG BUY')) {
-                                formatted = `<span class="rec-badge buy" style="background:rgba(16,185,129,0.22);border-color:#10b981;font-weight:800;">STRONG BUY</span>`;
-                            } else if (upper.includes('BUY ON WEAKNESS') || upper === 'BUY' || upper.includes('AKUMULASI') || upper.includes('ACCUMULATE')) {
-                                formatted = `<span class="rec-badge buy">${cell}</span>`;
-                            } else if (upper.includes('HOLD') || upper.includes('WAIT') || upper.includes('NETRAL') || upper.includes('NEUTRAL')) {
-                                formatted = `<span class="rec-badge hold">${cell}</span>`;
-                            } else if (upper.includes('TAKE PROFIT') || upper.includes('DISTRIBUSI') || upper === 'SELL' || upper.includes('STRONG SELL')) {
-                                formatted = `<span class="rec-badge sell">${cell}</span>`;
-                            }
-
-                            let cellClass = '';
-                            if (cell.length > 35) {
-                                cellClass = 'class="cell-desc"';
-                            } else if (/^(Rp|[\d.,+%]+$|\d+\s*:\s*[\d.+]+)/.test(cell) || cell.length < 15) {
-                                cellClass = 'class="cell-nowrap"';
-                            }
-
-                            tblHtml += `<td ${cellClass} style="text-align:${al};">${formatted}</td>`;
-                        });
-                        tblHtml += '</tr>';
-                    });
-                    tblHtml += '</tbody></table></div>';
-
+                    const tblHtml = buildTableHtml(headers, aligns, bodyRows);
                     const ph = `@@GARDATABLE${tablePlaceholders.length}@@`;
                     tablePlaceholders.push(tblHtml);
                     filteredLines.push(ph);
                     lineIdx = nextJ;
+                }
+                // Scenario B: Headless row with 3+ pipe columns (e.g. ACCUMULATE | Rp 9,800 ... | ... |)
+                else if (cur.includes('|') && cur.split('|').length >= 4 && !isTableDelimiter(cur)) {
+                    const bodyRows = [];
+                    let nextJ = lineIdx;
+                    while (nextJ < rawLines.length && rawLines[nextJ].trim().includes('|') && !isTableDelimiter(rawLines[nextJ])) {
+                        const rowStr = rawLines[nextJ].trim();
+                        if (rowStr) bodyRows.push(splitTableRow(rowStr));
+                        nextJ++;
+                    }
+
+                    if (bodyRows.length > 0) {
+                        const colCount = bodyRows[0].length;
+                        let defaultHeaders = [];
+                        if (colCount === 6) {
+                            defaultHeaders = ['Sinyal Rekomendasi', 'Area Beli (Entry)', 'Target Price (TP)', 'Stop Loss (SL)', 'Risk / Reward', 'Katalis Utama & Rationale'];
+                        } else if (colCount === 7) {
+                            defaultHeaders = ['Emiten', 'Sinyal Rekomendasi', 'Area Beli (Entry)', 'Target Price (TP)', 'Stop Loss (SL)', 'Risk / Reward', 'Katalis Utama & Rationale'];
+                        } else {
+                            defaultHeaders = bodyRows[0].map((_, i) => `Metrik ${i + 1}`);
+                        }
+
+                        const aligns = defaultHeaders.map((_, i) => (i === 0 || i === 4) ? 'center' : (i >= 1 && i <= 3 ? 'right' : 'left'));
+                        const tblHtml = buildTableHtml(defaultHeaders, aligns, bodyRows);
+                        const ph = `@@GARDATABLE${tablePlaceholders.length}@@`;
+                        tablePlaceholders.push(tblHtml);
+                        filteredLines.push(ph);
+                        lineIdx = nextJ;
+                    } else {
+                        filteredLines.push(cur);
+                        lineIdx++;
+                    }
                 } else {
                     filteredLines.push(cur);
                     lineIdx++;
@@ -9594,64 +10420,83 @@
             }
             raw = filteredLines.join('\n');
 
-            // 1. Codeblocks ```language ... ```
+            // 5. Codeblocks
             raw = raw.replace(/```[a-z]*\n([\s\S]*?)\n```/g, '<pre style="background:var(--bg-surface);padding:8px 12px;border-radius:6px;font-family:var(--font-mono);font-size:11.5px;max-width:100%;overflow-x:auto;box-sizing:border-box;border:1px solid var(--border);margin:8px 0;white-space:pre-wrap;word-break:break-word;"><code>$1</code></pre>');
-            // Inline code `code`
             raw = raw.replace(/`([^`\n]+)`/g, '<code style="background:var(--bg-surface);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:11px;color:var(--accent-cyan);border:1px solid var(--border);">$1</code>');
 
-            // 2. Escape HTML entities while preserving pre/code tags
+            // 6. Escape HTML entities while preserving pre/code and @@GARDA tags
             let str = raw
                 .replace(/&(?!(amp|lt|gt|quot|#39);)/g, '&amp;')
                 .replace(/<(?!(pre|\/pre|code|\/code))/g, '&lt;')
                 .replace(/>(?!(pre|\/pre|code|\/code))/g, '&gt;');
 
-            // 3. Horizontal rules (--- or *** or ___)
+            // 7. Transform Section Headers into Styled Executive Badges (Handles with or without ###)
+            str = str.replace(/^(?:###\s*)?(RINGKASAN EKSEKUTIF PASAR[^\n]*)/gm, function(match, title) {
+                return `<div class="garda-section-badge blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>${title.trim()}</span></div>`;
+            });
+
+            str = str.replace(/^(?:###\s*)?(VISUALISASI PROYEKSI[^\n]*)/gm, function(match, title) {
+                return `<div class="garda-section-badge emerald"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg><span>${title.trim()}</span></div>`;
+            });
+
+            str = str.replace(/^(?:###\s*)?(TABEL REKOMENDASI[^\n]*)/gm, function(match, title) {
+                return `<div class="garda-section-badge orange"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>${title.trim()}</span></div>`;
+            });
+
+            str = str.replace(/^(?:###\s*)?(KATALIS PEMBERITAAN[^\n]*)/gm, function(match, title) {
+                return `<div class="garda-section-badge purple"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>${title.trim()}</span></div>`;
+            });
+
+            str = str.replace(/^(?:###\s*)?(IMPLIKASI RISIKO[^\n]*)/gm, function(match, title) {
+                return `<div class="garda-section-badge rose"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>${title.trim()}</span></div>`;
+            });
+
+            // Sub-section highlights (e.g. Sentimen Digitalisasi & UMKM:, Insight Bisnis untuk UMKM:)
+            str = str.replace(/^((?:Sentimen|Insight Bisnis|Sektor Keuangan|Sektor UMKM)[^:\n]*:)/gm, '<div style="font-weight:700;color:var(--accent-cyan);margin:8px 0 3px;font-size:12px;">$1</div>');
+
+            // 8. Horizontal rules
             str = str.replace(/^(\s*[-*_]\s*){3,}$/gm, '<hr style="border:none;border-top:1px solid var(--border);margin:10px 0;">');
 
-            // 4. Markdown headers (# Title, ## Subtitle, ### Section, #### Minor)
+            // 9. Generic Markdown headers (# Title, ## Subtitle, etc.)
             str = str.replace(/^####\s+(.*$)/gm, '<h5 style="margin:10px 0 4px;font-size:12.5px;color:var(--accent-orange);font-weight:700;">$1</h5>');
             str = str.replace(/^###\s+(.*$)/gm, '<h4 style="margin:12px 0 4px;font-size:13.5px;color:var(--accent-orange);font-weight:700;">$1</h4>');
             str = str.replace(/^##\s+(.*$)/gm, '<h3 style="margin:14px 0 6px;font-size:14px;color:var(--text-main);font-weight:700;">$1</h3>');
             str = str.replace(/^#\s+(.*$)/gm, '<h2 style="margin:14px 0 6px;font-size:15px;color:var(--text-main);font-weight:800;">$1</h2>');
 
-            // 5. Blockquotes (> text)
+            // 10. Blockquotes
             str = str.replace(/^>\s*(.*$)/gm, '<div style="border-left:3px solid var(--accent-orange);padding:4px 10px;margin:6px 0;background:rgba(249,115,22,0.06);border-radius:0 4px 4px 0;color:var(--text-secondary);font-size:12px;">$1</div>');
 
-            // 6. Markdown links [text](url)
+            // 11. Links
             str = str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:var(--accent-orange);text-decoration:underline;word-break:break-all;overflow-wrap:anywhere;">$1</a>');
 
-            // 7. Bold and Italics
+            // 12. Bold & Italics
             str = str.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
             str = str.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             str = str.replace(/__(.*?)__/g, '<strong>$1</strong>');
             str = str.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
             str = str.replace(/_([^_\n]+)_/g, '<em>$1</em>');
 
-            // 8. Numbered lists (1. Item)
-            str = str.replace(/^(\d+)\.\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-cyan);font-family:var(--font-mono);font-size:11px;font-weight:700;min-width:16px;">$1.</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$2</span></div>');
+            // 13. Numbered lists
+            str = str.replace(/^(\d+)\.\s*(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-cyan);font-family:var(--font-mono);font-size:11px;font-weight:700;min-width:16px;">$1.</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$2</span></div>');
 
-            // 9. Bullet lists (* Item, - Item, • Item)
-            str = str.replace(/^[\*\-•]\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-orange);font-size:9px;line-height:1.7;">●</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$1</span></div>');
+            // 14. Bullet lists
+            str = str.replace(/^[\*\-•●]\s*(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-orange);font-size:9px;line-height:1.7;">●</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$1</span></div>');
 
-            // 10. Clean stray asterisks, stray hashes, or accidental markup artifacts
+            // 15. Clean stray markup
             str = str.replace(/(^|\s)\*{1,3}(\s|$)/g, '$1$2');
             str = str.replace(/(^|\s)#{1,6}(\s|$)/g, '$1$2');
             str = str.replace(/\*{2,}/g, '');
             str = str.replace(/_{2,}/g, '');
             str = str.replace(/~{2,}/g, '');
 
-            // 11. Format positive / negative data indicators
-            str = str.replace(/(^|\s)(\+[\d.,]+%?)/g, `$1<span style="color:var(--green-gain);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_UP}$2</span>`);
-            str = str.replace(/(^|\s)(-[\d.,]+%?)/g, `$1<span style="color:var(--red-loss);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_DOWN}$2</span>`);
-
-            // 12. Linebreaks & Paragraphs
+            // 16. Linebreaks & Paragraphs
             const lines = str.split('\n');
             let out = [];
             for (let line of lines) {
                 line = line.trim();
                 if (!line) {
                     out.push('<div style="height:5px;"></div>');
-                } else if (line.startsWith('<div') || line.startsWith('<h') || line.startsWith('<hr') || line.startsWith('<pre') || line.startsWith('@@GARDA')) {
+                } else if (line.startsWith('<div') || line.startsWith('<h') || line.startsWith('<hr') || line.startsWith('<pre') || line.startsWith('@@GARDA') || /^(?:%%|@@)GARDA/.test(line)) {
                     out.push(line);
                 } else {
                     out.push(`<div style="margin:2px 0;line-height:1.55;word-break:break-word;overflow-wrap:anywhere;">${line}</div>`);
@@ -9659,12 +10504,20 @@
             }
 
             let finalHtml = out.join('');
+
+            // 17. Universal Placeholder Injections
             chartPlaceholders.forEach((h, i) => {
-                finalHtml = finalHtml.replace(`@@GARDACHART${i}@@`, h);
+                const pat = new RegExp('(?:@@|%%)GARDA(?:_|<em>)?CHART(?:_|</em>)?' + i + '(?:@@|%%)', 'gi');
+                finalHtml = finalHtml.replace(pat, h);
             });
             tablePlaceholders.forEach((h, i) => {
-                finalHtml = finalHtml.replace(`@@GARDATABLE${i}@@`, h);
+                const pat = new RegExp('(?:@@|%%)GARDA(?:_|<em>)?TABLE(?:_|</em>)?' + i + '(?:@@|%%)', 'gi');
+                finalHtml = finalHtml.replace(pat, h);
             });
+
+            // Cleanup ANY remaining raw placeholder tokens
+            finalHtml = finalHtml.replace(new RegExp('(?:@@|%%)GARDA(?:_|<em>|<\\/em>)?(?:CHART|TABLE)(?:_|<em>|<\\/em>)?\\d*(?:@@|%%)', 'gi'), '');
+
             return finalHtml;
         }
 
@@ -9718,7 +10571,7 @@
                 aiMsg.className = 'msg-bubble ai';
                 
                 let formattedInsight = formatMarkdownResponse(data.summary_insight);
-                let responseHtml = `<strong>Garda AI Concierge:</strong><br>${formattedInsight}`;
+                let responseHtml = formattedInsight;
 
                 // If Custom Dashboard was rendered on the left, append notification chip
                 if (isDashboardQuery) {

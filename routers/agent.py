@@ -390,7 +390,14 @@ def sanitize_garda_markdown(text: str) -> str:
     """
     if not text:
         return ""
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = text.replace("\r\n", "\n").replace("\r", "\n").strip()
+
+    # 0. Strip leading self-naming, greetings, or prefixes
+    text = re.sub(r"^\s*(?:Garda AI Concierge|Garda AI|Garda Concierge|Garda)\s*[:.]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*(\*{1,3}|_{1,3})Garda(\*{1,3}|_{1,3})\s*[:.]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*Garda\s*[:.]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*(?:Halo|Selamat\s+(?:pagi|siang|sore|malam))[!,.]?\s*", "", text, flags=re.IGNORECASE)
+    text = text.strip()
 
     # 1. Convert ```json or ```js or ``` containing series to ```echarts
     def replace_fenced(match):
@@ -676,10 +683,11 @@ DOSSIER DATA PASAR & BERITA TERVERIFIKASI (SECTORS FINANCIAL API & REGIONAL NEWS
 ---------------------------------------------------------------------------------
 
 ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, GRAFIK ECHARTS & TABEL REKOMENDASI):
-1. DILARANG BASA-BASI (STRICT ZERO-CHITCHAT):
-   - JANGAN menyapa ("Halo", "Selamat pagi/siang", "Tentu saja", "Berikut analisisnya", dsb.).
+1. DILARANG MENYEBUT NAMA DIRI DI AWAL & DILARANG BASA-BASI (STRICT ZERO-CHITCHAT):
+   - JANGAN PERNAH menyapa atau mencetak nama "Garda", "Garda.", "**Garda**", "Halo", "Selamat pagi", dsb.
+   - Jawaban WAJIB LANGSUNG DIAWALI dengan heading: "### RINGKASAN EKSEKUTIF PASAR".
    - JANGAN ada basa-basi penutup panjang.
-   - Langsung ke inti analisis: Ringkasan eksekutif, grafik visual, dan tabel rekomendasi.
+   - Langsung ke inti analisis: Ringkasan eksekutif, grafik visual ECharts, dan tabel rekomendasi.
 
 2. WAJIB GRAFIK ECHARTS (FORMAT CODEBLOCK RESMI):
    - SELALU sertakan visualisasi grafik ECharts di dalam blok kode ```echarts dan ```.
