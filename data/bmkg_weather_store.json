@@ -11,7 +11,7 @@
       "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg",
       "wind_speed_kmh": 32.4,
       "wind_dir": "N",
-      "updated_at": "2026-10-06 20:00:00"
+      "updated_at": "2026-10-06 21:00:00"
     },
     "forecast_3d": [
       {
@@ -26,11 +26,11 @@
       {
         "day": "Besok",
         "date": "2026-10-07",
-        "condition": "Cerah",
+        "condition": "Berawan",
         "temp_min": 26,
-        "temp_max": 30,
+        "temp_max": 31,
         "rain_prob": "0%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg"
       },
       {
         "day": "Lusa",

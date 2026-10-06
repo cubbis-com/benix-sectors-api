@@ -26,16 +26,284 @@
   "stocks": {
     "BBCA": {
       "symbol": "BBCA",
-      "company_name": "PT Bank Central Asia Tbk",
-      "sector": "Financials (Perbankan)",
-      "last_price": 10125,
-      "change_pct": "+1.76%",
-      "market_cap_trillion": 1248.5,
-      "pe_ratio": 21.5,
-      "dividend_yield": "2.8%",
-      "net_foreign_flow_1d": "+245 Miliar IDR",
-      "smart_money_status": "Akumulasi Asing & Institusi",
-      "umkm_insight": "BCA mencatatkan pertumbuhan penyaluran kredit konsumsi dan merchant EDC UMKM yang solid. Likuiditas perbankan sangat sehat."
+      "company_report": {
+        "symbol": "BBCA.JK",
+        "company_name": "PT Bank Central Asia Tbk.",
+        "overview": {
+          "listing_board": "Main",
+          "industry": "Banks",
+          "sub_industry": "Banks",
+          "sector": "Financials",
+          "sub_sector": "Banks",
+          "market_cap": 753611199412500,
+          "market_cap_rank": 1,
+          "address": "Menara BCA, Grand Indonesia\r\nJalan MH Thamrin No. 1\r\nJakarta 10310",
+          "employee_num": 27937.0,
+          "employee_num_rank": 15,
+          "listing_date": "2000-05-31",
+          "website": "www.bca.co.id",
+          "phone": "021-23588000",
+          "email": "investor_relations@bca.co.id",
+          "last_close_price": 6175,
+          "latest_close_date": "2026-10-05",
+          "daily_close_change": 0.0122950819672131,
+          "all_time_price": {
+            "ytd_low": {
+              "2026-06-09": 4820
+            },
+            "52_w_low": {
+              "2026-06-09": 4820
+            },
+            "90_d_low": {
+              "2026-10-02": 5975
+            },
+            "ytd_high": {
+              "2026-01-06": 8175
+            },
+            "52_w_high": {
+              "2025-10-30": 8750
+            },
+            "90_d_high": {
+              "2026-09-04": 6850
+            },
+            "all_time_low": {
+              "2004-06-08": 175
+            },
+            "all_time_high": {
+              "2024-09-23": 10950
+            }
+          },
+          "esg_score": 21.71,
+          "tags": [
+            "90-d-low",
+            "dividend-yield-ttm-above-5-percent",
+            "esg-under-25",
+            "top-20-institution-selling",
+            "top-90d-transaction-value"
+          ],
+          "indices": [
+            "IDXHIDIV20",
+            "LQ45",
+            "KOMPAS100",
+            "IDXQ30",
+            "IDXESGL",
+            "IDX30",
+            "ECONOMIC30",
+            "IDXG30",
+            "FTSE",
+            "SRIKEHATI"
+          ],
+          "affiliates": [
+            "Djarum",
+            "Hartono"
+          ]
+        },
+        "valuation": {
+          "last_close_price": 6175,
+          "latest_close_date": "2026-10-05",
+          "daily_close_change": 0.0122950819672131,
+          "forward_pe": 12.7984576757419,
+          "intrinsic_value": 13694,
+          "historical_valuation": [
+            {
+              "pb": 4.71766971488811,
+              "pe": 25.6154045827394,
+              "ps": 11.9285086042203,
+              "pcf": 30.8908493442671,
+              "peg": 0.8642744448236932,
+              "year": 2022,
+              "pb_peer_avg": 0.975919472508022,
+              "pe_peer_avg": 15.1292552726864,
+              "ps_peer_avg": 4.41860675563346,
+              "enterprise_to_ebitda": null,
+              "enterprise_to_revenue": null
+            },
+            {
+              "pb": 4.72995882171211,
+              "pe": 23.5858451556753,
+              "ps": 11.4782182062595,
+              "pcf": 19.7400808741289,
+              "peg": 1.21566215982569,
+              "year": 2023,
+              "pb_peer_avg": 0.854769761923978,
+              "pe_peer_avg": 16.8856446249576,
+              "ps_peer_avg": 4.03165315770388,
+              "enterprise_to_ebitda": null,
+              "enterprise_to_revenue": null
+            },
+            {
+              "pb": 4.3426516277396,
+              "pe": 21.5324363605918,
+              "ps": 10.9020123508745,
+              "pcf": 21.9389487856415,
+              "peg": 1.6899917254340542,
+              "year": 2024,
+              "pb_peer_avg": 0.809474232052149,
+              "pe_peer_avg": 16.1927341107751,
+              "ps_peer_avg": 3.43164746605984,
+              "enterprise_to_ebitda": null,
+              "enterprise_to_revenue": null
+            },
+            {
+              "pb": 3.49852718364679,
+              "pe": 17.1278768924663,
+              "ps": 8.7985349011671,
+              "pcf": 12.7145789791764,
+              "peg": 3.477362978641593,
+              "year": 2025,
+              "pb_peer_avg": 0.852068326449239,
+              "pe_peer_avg": 14.6874841154653,
+              "ps_peer_avg": 3.86931355910018,
+              "enterprise_to_ebitda": null,
+              "enterprise_to_revenue": null
+            },
+            {
+              "pb": 2.78663676297525,
+              "pe": 12.9673236630214,
+              "ps": 6.59547578975185,
+              "pcf": -94.8096179487543,
+              "peg": 10.946087376054578,
+              "year": 2026,
+              "pb_peer_avg": 0.804227347270474,
+              "pe_peer_avg": 8.69945343675539,
+              "ps_peer_avg": 2.43714168260889,
+              "enterprise_to_ebitda": null,
+              "enterprise_to_revenue": null
+            }
+          ]
+        },
+        "dividend": {
+          "historical_dividends": {
+            "2020": {
+              "breakdown": [
+                {
+                  "date": "2020-12-08",
+                  "total": 98,
+                  "yield": 0.0032565901055932
+                },
+                {
+                  "date": "2020-04-21",
+                  "total": 455,
+                  "yield": 0.015119899995625
+                }
+              ],
+              "total_yield": 0.0183764901012182,
+              "total_dividend": 553
+            },
+            "2021": {
+              "breakdown": [
+                {
+                  "date": "2021-11-17",
+                  "total": 25,
+                  "yield": 0.0037154599558562
+                },
+                {
+                  "date": "2021-04-08",
+                  "total": 432,
+                  "yield": 0.0128405997529626
+                }
+              ],
+              "total_yield": 0.0165560597088188,
+              "total_dividend": 457
+            },
+            "2022": {
+              "breakdown": [
+                {
+                  "date": "2022-12-02",
+                  "total": 35,
+                  "yield": 0.00437327986583114
+                },
+                {
+                  "date": "2022-03-28",
+                  "total": 120,
+                  "yield": 0.0149940997362137
+                }
+              ],
+              "total_yield": 0.0193673796020448,
+              "total_dividend": 155
+            },
+            "2023": {
+              "breakdown": [
+                {
+                  "date": "2023-12-04",
+                  "total": 42.5,
+                  "yield": 0.00476726982742548
+                },
+                {
+                  "date": "2023-03-29",
+                  "total": 170,
+                  "yield": 0.0190690997987986
+                }
+              ],
+              "total_yield": 0.023836369626224,
+              "total_dividend": 212.5
+            },
+            "2024": {
+              "breakdown": [
+                {
+                  "date": "2024-11-21",
+                  "total": 50,
+                  "yield": 0.00500951008871198
+                },
+                {
+                  "date": "2024-03-25",
+                  "total": 227.5,
+                  "yield": 0.0227933004498482
+                }
+              ],
+              "total_yield": 0.0278028105385602,
+              "total_dividend": 277.5
+            },
+            "2025": {
+              "breakdown": [
+                {
+                  "date": "2025-12-03",
+                  "total": 55,
+                  "yield": 0.00641716504469514
+                },
+                {
+                  "date": "2025-03-21",
+                  "total": 250,
+                  "yield": 0.0291689317673445
+                }
+              ],
+              "total_yield": 0.0355860968120396,
+              "total_dividend": 305
+            },
+            "2026": {
+              "breakdown": [
+                {
+                  "date": "2026-08-31",
+                  "total": 25,
+                  "yield": 0.00404858299595142
+                },
+                {
+                  "date": "2026-06-17",
+                  "total": 20,
+                  "yield": 0.00323886639676113
+                },
+                {
+                  "date": "2026-03-30",
+                  "total": 281,
+                  "yield": 0.0455060728744939
+                }
+              ],
+              "total_yield": 0.0527935222672065,
+              "total_dividend": 326
+            }
+          },
+          "upcoming_dividends": null,
+          "yield_ttm": 0.0617004048582996,
+          "dividend_yield_avg": {
+            "period": 5,
+            "avg_yield": 0.0283050412777811
+          },
+          "dividend_ttm": 381.0,
+          "payout_ratio": 0.801491566752531,
+          "cash_payout_ratio": 1.12888987895419,
+          "last_ex_dividend_date": "2026-08-31"
+        }
+      }
     },
     "BBRI": {
       "symbol": "BBRI",
@@ -3359,6 +3627,1323 @@
       "net_foreign_flow_1d": "+320 Juta IDR",
       "smart_money_status": "High Dividend Yield Hotel Play",
       "umkm_insight": "Hotel butik ramah keluarga di destinasi wisata utama dengan yield dividen tinggi, menjadi acuan daya beli turis domestik segmen menengah."
+    },
+    "ADRO": {
+      "symbol": "ADRO",
+      "company_report": {
+        "symbol": "ADRO.JK",
+        "company_name": "Alamtri Resources Indonesia Tbk",
+        "overview": {
+          "listing_board": "Main",
+          "industry": "Coal",
+          "sub_industry": "Coal Production",
+          "sector": "Energy",
+          "sub_sector": "Oil, Gas & Coal",
+          "market_cap": 74593279978000,
+          "market_cap_rank": 28,
+          "address": "Menara Karya 23rd Floor Jl. H.R. Rasuna Said, Block X-5, Kav. 1-2 Jakarta 12950",
+          "employee_num": 13015.0,
+          "employee_num_rank": 48,
+          "listing_date": "2008-07-16",
+          "website": "www.alamtri.com",
+          "phone": "021-25533000",
+          "email": "corsec@alamtri.com; maharani.opssedha@alamtri.com",
+          "last_close_price": 2590,
+          "latest_close_date": "2026-10-05",
+          "daily_close_change": 0.036,
+          "all_time_price": {
+            "ytd_low": {
+              "2026-01-02": 1810
+            },
+            "52_w_low": {
+              "2025-10-08": 1625
+            },
+            "90_d_low": {
+              "2026-07-08": 2280
+            },
+            "ytd_high": {
+              "2026-09-01": 2860
+            },
+            "52_w_high": {
+              "2026-09-01": 2860
+            },
+            "90_d_high": {
+              "2026-09-01": 2860
+            },
+            "all_time_low": {
+              "2016-01-20": 437
+            },
+            "all_time_high": {
+              "2024-11-05": 4300
+            }
+          },
+          "esg_score": 45.93,
+          "tags": [
+            "dividend-yield-ttm-above-5-percent",
+            "top-20-institution-buying",
+            "top-30-yoy-earning-growth",
+            "top-30-yoy-ttm-revenue-growth"
+          ],
+          "indices": [
+            "IDXHIDIV20",
+            "LQ45",
+            "KOMPAS100",
+            "IDX30",
+            "IDXG30",
+            "IDXVESTA28",
+            "JII70",
+            "FTSE",
+            "IDXV30"
+          ],
+          "affiliates": [
+            "Boy Thohir",
+            "Saratoga"
+          ]
+        },
+        "valuation": {
+          "last_close_price": 2590,
+          "latest_close_date": "2026-10-05",
+          "daily_close_change": 0.036,
+          "forward_pe": 5.01588053581767,
+          "intrinsic_value": 10567,
+          "historical_valuation": [
+            {
+              "pb": 1.20999167317739,
+              "pe": 3.16797881657001,
+              "ps": 0.974776066695107,
+              "pcf": 2.04386787928909,
+              "peg": 0.01653013361562829,
+              "year": 2022,
+              "pb_peer_avg": 1.09454278132114,
+              "pe_peer_avg": 4.98678709537827,
+              "ps_peer_avg": 1.24284807415991,
+              "enterprise_to_ebitda": 1.0755577789292976,
+              "enterprise_to_revenue": 0.667710344555281
+            },
+            {
+              "pb": 0.665537094738582,
+              "pe": 3.003951994895,
+              "ps": 2.30906164742189,
+              "pcf": 4.27739208979202,
+              "peg": -0.08630472955093818,
+              "year": 2023,
+              "pb_peer_avg": 1.04958873891478,
+              "pe_peer_avg": 8.82392244211565,
+              "ps_peer_avg": 1.07231241464621,
+              "enterprise_to_ebitda": 0.6779471224136538,
+              "enterprise_to_revenue": 0.810839758624786
+            },
+            {
+              "pb": 0.861333771664529,
+              "pe": 3.35219956879866,
+              "ps": 2.22547912820848,
+              "pcf": 2.29451586518861,
+              "peg": -0.2789630098907455,
+              "year": 2024,
+              "pb_peer_avg": 0.932470584173396,
+              "pe_peer_avg": 8.67162536782097,
+              "ps_peer_avg": 0.990877077958308,
+              "enterprise_to_ebitda": 3.868478044931841,
+              "enterprise_to_revenue": 1.82807817020081
+            },
+            {
+              "pb": 0.635179898297687,
+              "pe": 7.09951519927987,
+              "ps": 1.69648404380741,
+              "pcf": 5.34973340227461,
+              "peg": -0.10692809704441178,
+              "year": 2025,
+              "pb_peer_avg": 1.61127517039477,
+              "pe_peer_avg": 14.797623491379,
+              "ps_peer_avg": 1.35228832204911,
+              "enterprise_to_ebitda": 3.428439437709051,
+              "enterprise_to_revenue": 1.57753252560218
+            },
+            {
+              "pb": 0.904199035683626,
+              "pe": 7.47786223678072,
+              "ps": 2.16729475321364,
+              "pcf": 21.8223113764159,
+              "peg": 2.6671508475360026,
+              "year": 2026,
+              "pb_peer_avg": 1.22962135771824,
+              "pe_peer_avg": 11.056358900823,
+              "ps_peer_avg": 1.46426943284923,
+              "enterprise_to_ebitda": 5.000078977740623,
+              "enterprise_to_revenue": 0.072295619582322
+            }
+          ]
+        },
+        "dividend": {
+          "historical_dividends": {
+            "2020": {
+              "breakdown": [
+                {
+                  "date": "2020-06-04",
+                  "total": 44.13,
+                  "yield": 0.0379342995584011
+                },
+                {
+                  "date": "2020-01-03",
+                  "total": 65.48,
+                  "yield": 0.0562869012355804
+                }
+              ],
+              "total_yield": 0.0942212007939816,
+              "total_dividend": 109.61
+            },
+            "2021": {
+              "breakdown": [
+                {
+                  "date": "2021-12-30",
+                  "total": 160.16,
+                  "yield": 0.112777002155781
+                },
+                {
+                  "date": "2021-05-05",
+                  "total": 66.28,
+                  "yield": 0.0466714017093182
+                }
+              ],
+              "total_yield": 0.159448403865099,
+              "total_dividend": 226.44
+            },
+            "2022": {
+              "breakdown": [
+                {
+                  "date": "2022-05-17",
+                  "total": 141.39,
+                  "yield": 0.04376570135355
+                }
+              ],
+              "total_yield": 0.04376570135355,
+              "total_dividend": 141.39
+            },
+            "2023": {
+              "breakdown": [
+                {
+                  "date": "2023-12-29",
+                  "total": 199.98,
+                  "yield": 0.0746031031012535
+                },
+                {
+                  "date": "2023-05-23",
+                  "total": 240.78,
+                  "yield": 0.0898236036300659
+                },
+                {
+                  "date": "2023-01-02",
+                  "total": 251.28,
+                  "yield": 0.093740701675415
+                }
+              ],
+              "total_yield": 0.258167408406734,
+              "total_dividend": 692.04
+            },
+            "2024": {
+              "breakdown": [
+                {
+                  "date": "2024-12-30",
+                  "total": 106.84,
+                  "yield": 0.0355478003621101
+                },
+                {
+                  "date": "2024-11-28",
+                  "total": 1358.18,
+                  "yield": 0.451893985271454
+                },
+                {
+                  "date": "2024-05-28",
+                  "total": 209.31,
+                  "yield": 0.0696417018771172
+                }
+              ],
+              "total_yield": 0.557083487510681,
+              "total_dividend": 1674.33
+            },
+            "2025": {
+              "breakdown": [
+                {
+                  "date": "2025-12-30",
+                  "total": 145.15,
+                  "yield": 0.0754979476332664
+                },
+                {
+                  "date": "2025-06-13",
+                  "total": 166.69,
+                  "yield": 0.0867076814174652
+                }
+              ],
+              "total_yield": 0.162205629050732,
+              "total_dividend": 311.84
+            }
+          },
+          "upcoming_dividends": null,
+          "yield_ttm": 0.0560386098029531,
+          "dividend_yield_avg": {
+            "period": 5,
+            "avg_yield": 0.254978366196156
+          },
+          "dividend_ttm": 145.15,
+          "payout_ratio": 0.424955950698624,
+          "cash_payout_ratio": -0.897356857314066,
+          "last_ex_dividend_date": "2025-12-30"
+        },
+        "peers": [
+          {
+            "peers_data": {
+              "companies": [
+                {
+                  "year": 2025,
+                  "group": [
+                    "self"
+                  ],
+                  "pb_mrq": 0.872778991972612,
+                  "pe_ttm": 7.21801374206633,
+                  "symbol": "ADRO.JK",
+                  "market_cap": 72001235500000,
+                  "net_income": 7492812723240,
+                  "company_name": "Alamtri Resources Indonesia Tbk",
+                  "employee_num": 13015,
+                  "total_assets": 114092330664780,
+                  "total_equity": 83748459226380,
+                  "pretax_income": 10250429028060,
+                  "total_revenue": 31356226430880,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 12.5,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 14,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 3,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 9,
+                      "maxpoint": 9
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.496Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.466994485332979,
+                  "operating_expense": 1793294952540,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 30343871438400,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 8.81729088892969,
+                  "pe_ttm": 27.6552596223261,
+                  "symbol": "BYAN.JK",
+                  "market_cap": 391666686250000,
+                  "net_income": 12852187283440,
+                  "company_name": "Bayan Resources Tbk",
+                  "employee_num": 3384,
+                  "total_assets": 56486296335228,
+                  "total_equity": 45097802085795,
+                  "pretax_income": 16937619897693,
+                  "total_revenue": 57365496738143,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 6,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 19.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 2,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.979Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": -0.35792349726776,
+                  "operating_expense": 1739370128629,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 11388494249434,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 6.84714678699326,
+                  "pe_ttm": 56.4024182993739,
+                  "symbol": "DSSA.JK",
+                  "market_cap": 219607411200000,
+                  "net_income": 3858409145254,
+                  "company_name": "Dian Swastatika Sentosa Tbk",
+                  "employee_num": 1424,
+                  "total_assets": 73890636185794,
+                  "total_equity": 37844443720063,
+                  "pretax_income": 7767131955390,
+                  "total_revenue": 46715084876817,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 6,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 16.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 2,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 15.5
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.537Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": -0.729857819905213,
+                  "operating_expense": 9019312687425,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 36046192465731,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 15.2874954822644,
+                  "pe_ttm": 37.0020668326464,
+                  "symbol": "CUAN.JK",
+                  "market_cap": 94993970500000,
+                  "net_income": 2252175212820,
+                  "company_name": "PT Petrindo Jaya Kreasi Tbk",
+                  "employee_num": 3565,
+                  "total_assets": 45039654870600,
+                  "total_equity": 10483885908600,
+                  "pretax_income": 2498251384200,
+                  "total_revenue": 20345142032280,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 6,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 10,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 0,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.536Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": -0.475155279503106,
+                  "operating_expense": 1746700647900,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 34555768962000,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 1.40039917913537,
+                  "pe_ttm": 6.47759005956715,
+                  "symbol": "AADI.JK",
+                  "market_cap": 89938599828000,
+                  "net_income": 12722722162800,
+                  "company_name": "PT Adaro Andalan Indonesia Tbk",
+                  "employee_num": 2838,
+                  "total_assets": 95502860022960,
+                  "total_equity": 61081853036880,
+                  "pretax_income": 17662756115160,
+                  "total_revenue": 82180420288980,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 9,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 18.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 1,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 11,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.958Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.560810810810811,
+                  "operating_expense": 4135344955560,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 34421006986080,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 2.18065656900739,
+                  "pe_ttm": 31.7751331123138,
+                  "symbol": "BUMI.JK",
+                  "market_cap": 64983693611900,
+                  "net_income": 1355850850647,
+                  "company_name": "Bumi Resources Tbk",
+                  "employee_num": 70,
+                  "total_assets": 70604594591720,
+                  "total_equity": 48333602232812,
+                  "pretax_income": 2976797604229,
+                  "total_revenue": 23845559235376,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 6,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 10.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 4.5,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 15.5
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.532Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.0869565217391304,
+                  "operating_expense": 1803793231804,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 22270992358908,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 2.0492315813097,
+                  "pe_ttm": 11.4726441371224,
+                  "symbol": "ADMR.JK",
+                  "market_cap": 59892615647500,
+                  "net_income": 4539128789520,
+                  "company_name": "PT Alamtri Minerals Indonesia Tbk",
+                  "employee_num": 510,
+                  "total_assets": 48389725122960,
+                  "total_equity": 28743380505060,
+                  "pretax_income": 5726145478560,
+                  "total_revenue": 16283705284080,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 7.5,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 15.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 2,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.496Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.375586854460094,
+                  "operating_expense": 729826811220,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 19646344617900,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 3.72626828676114,
+                  "pe_ttm": 13.16925878336,
+                  "symbol": "GEMS.JK",
+                  "market_cap": 49558824025000,
+                  "net_income": 4321931513762,
+                  "company_name": "Golden Energy Mines Tbk",
+                  "employee_num": 528,
+                  "total_assets": 20026914195226,
+                  "total_equity": 11859233463176,
+                  "pretax_income": 5927649879545,
+                  "total_revenue": 40402709974502,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 9,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 6.5,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 2,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 1.5,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.931Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": -0.0533707865168539,
+                  "operating_expense": 6740537716634,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 8167680732051,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 1.45229964869565,
+                  "pe_ttm": 7.71795816118271,
+                  "symbol": "PTBA.JK",
+                  "market_cap": 36635696415000,
+                  "net_income": 2929957000000,
+                  "company_name": "Bukit Asam Tbk",
+                  "employee_num": 178,
+                  "total_assets": 43917063000000,
+                  "total_equity": 22616801000000,
+                  "pretax_income": 3773209000000,
+                  "total_revenue": 42651724000000,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 10.5,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 9,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 0,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 6.5,
+                      "maxpoint": 11
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.638Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.36480686695279,
+                  "operating_expense": 3152672000000,
+                  "revenue_breakdown": null,
+                  "total_liabilities": 21300262000000,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": null
+                },
+                {
+                  "year": 2025,
+                  "group": [
+                    "sub_sector",
+                    "sector",
+                    "industry",
+                    "sub_industry"
+                  ],
+                  "pb_mrq": 0.837076540823542,
+                  "pe_ttm": 8.09527275146136,
+                  "symbol": "ITMG.JK",
+                  "market_cap": 28474110000000,
+                  "net_income": 3204927900000,
+                  "company_name": "Indo Tambangraya Megah Tbk",
+                  "employee_num": 1518,
+                  "total_assets": 40385767455000,
+                  "total_equity": 32031335835000,
+                  "pretax_income": 4820886990000,
+                  "total_revenue": 31574380995000,
+                  "point_summaries": [
+                    {
+                      "name": "value",
+                      "point": 14.5,
+                      "maxpoint": 18
+                    },
+                    {
+                      "name": "competitive",
+                      "point": 7,
+                      "maxpoint": 25.5
+                    },
+                    {
+                      "name": "future",
+                      "point": 0,
+                      "maxpoint": 6
+                    },
+                    {
+                      "name": "financials",
+                      "point": 2,
+                      "maxpoint": 7.5
+                    },
+                    {
+                      "name": "dividend",
+                      "point": 3.5,
+                      "maxpoint": 9
+                    },
+                    {
+                      "updatedAt": "2026-10-03T23:01:11.736Z"
+                    }
+                  ],
+                  "yearly_mcap_chg": 0.118756936736959,
+                  "operating_expense": 3770347410000,
+                  "revenue_breakdown": [
+                    {
+                      "class": "Product/Service Sales",
+                      "amount": 31319165070000,
+                      "category": "Coal"
+                    },
+                    {
+                      "class": "Product/Service Sales",
+                      "amount": 77949540000,
+                      "category": "Services"
+                    },
+                    {
+                      "class": "Other income",
+                      "amount": 177266385000,
+                      "category": "Gain on coal swap"
+                    }
+                  ],
+                  "total_liabilities": 8354431620000,
+                  "int_income_breakdown": null,
+                  "operating_expense_breakdown": [
+                    {
+                      "class": "Salaries & Benefits",
+                      "amount": 2869513245000,
+                      "category": "Selling expenses"
+                    },
+                    {
+                      "class": "General & Admin",
+                      "amount": 753730425000,
+                      "category": "General and administrative"
+                    },
+                    {
+                      "class": "General & Admin",
+                      "amount": 147103740000,
+                      "category": "Others (expense)"
+                    }
+                  ]
+                }
+              ],
+              "group_name": {
+                "sector": "Energy",
+                "industry": "Coal",
+                "sub_sector": "Oil, Gas & Coal",
+                "sub_industry": "Coal Production"
+              }
+            }
+          }
+        ]
+      },
+      "foreign_flow": {
+        "symbol": "ADRO.JK",
+        "start": "2026-07-08",
+        "end": "2026-10-06",
+        "data": [
+          {
+            "date": "2026-07-08",
+            "net_foreign_inflow": -7299651000,
+            "foreign_buy_idr": 16776897000,
+            "foreign_sell_idr": 24076548000,
+            "foreign_share": 0.4629
+          },
+          {
+            "date": "2026-07-09",
+            "net_foreign_inflow": -18298602000,
+            "foreign_buy_idr": 16185188000,
+            "foreign_sell_idr": 34483790000,
+            "foreign_share": 0.5296
+          },
+          {
+            "date": "2026-07-10",
+            "net_foreign_inflow": 40663804000,
+            "foreign_buy_idr": 52055176000,
+            "foreign_sell_idr": 11391372000,
+            "foreign_share": 0.4477
+          },
+          {
+            "date": "2026-07-13",
+            "net_foreign_inflow": -12026337000,
+            "foreign_buy_idr": 42055617000,
+            "foreign_sell_idr": 54081954000,
+            "foreign_share": 0.4053
+          },
+          {
+            "date": "2026-07-14",
+            "net_foreign_inflow": 10405877000,
+            "foreign_buy_idr": 41310928000,
+            "foreign_sell_idr": 30905051000,
+            "foreign_share": 0.3319
+          },
+          {
+            "date": "2026-07-15",
+            "net_foreign_inflow": -1254343000,
+            "foreign_buy_idr": 22795997000,
+            "foreign_sell_idr": 24050340000,
+            "foreign_share": 0.3484
+          },
+          {
+            "date": "2026-07-16",
+            "net_foreign_inflow": 32489551000,
+            "foreign_buy_idr": 52085256000,
+            "foreign_sell_idr": 19595705000,
+            "foreign_share": 0.4316
+          },
+          {
+            "date": "2026-07-17",
+            "net_foreign_inflow": -8322157000,
+            "foreign_buy_idr": 17564272000,
+            "foreign_sell_idr": 25886429000,
+            "foreign_share": 0.4483
+          },
+          {
+            "date": "2026-07-20",
+            "net_foreign_inflow": 35615671000,
+            "foreign_buy_idr": 58526839000,
+            "foreign_sell_idr": 22911168000,
+            "foreign_share": 0.4583
+          },
+          {
+            "date": "2026-07-21",
+            "net_foreign_inflow": -8386150000,
+            "foreign_buy_idr": 26988444000,
+            "foreign_sell_idr": 35374594000,
+            "foreign_share": 0.4964
+          },
+          {
+            "date": "2026-07-22",
+            "net_foreign_inflow": 22179377000,
+            "foreign_buy_idr": 46397393000,
+            "foreign_sell_idr": 24218016000,
+            "foreign_share": 0.4953
+          },
+          {
+            "date": "2026-07-23",
+            "net_foreign_inflow": 1306449000,
+            "foreign_buy_idr": 57388062000,
+            "foreign_sell_idr": 56081613000,
+            "foreign_share": 0.446
+          },
+          {
+            "date": "2026-07-24",
+            "net_foreign_inflow": 16247467000,
+            "foreign_buy_idr": 44426526000,
+            "foreign_sell_idr": 28179059000,
+            "foreign_share": 0.4625
+          },
+          {
+            "date": "2026-07-27",
+            "net_foreign_inflow": -10997040000,
+            "foreign_buy_idr": 26391690000,
+            "foreign_sell_idr": 37388730000,
+            "foreign_share": 0.4435
+          },
+          {
+            "date": "2026-07-28",
+            "net_foreign_inflow": -11604647000,
+            "foreign_buy_idr": 20405976000,
+            "foreign_sell_idr": 32010623000,
+            "foreign_share": 0.4504
+          },
+          {
+            "date": "2026-07-29",
+            "net_foreign_inflow": 7695349000,
+            "foreign_buy_idr": 38419323000,
+            "foreign_sell_idr": 30723974000,
+            "foreign_share": 0.4252
+          },
+          {
+            "date": "2026-07-30",
+            "net_foreign_inflow": -27161371000,
+            "foreign_buy_idr": 31627476000,
+            "foreign_sell_idr": 58788847000,
+            "foreign_share": 0.5226
+          },
+          {
+            "date": "2026-07-31",
+            "net_foreign_inflow": -17356719000,
+            "foreign_buy_idr": 44941866000,
+            "foreign_sell_idr": 62298585000,
+            "foreign_share": 0.4786
+          },
+          {
+            "date": "2026-08-03",
+            "net_foreign_inflow": -15957912000,
+            "foreign_buy_idr": 8478137000,
+            "foreign_sell_idr": 24436049000,
+            "foreign_share": 0.3736
+          },
+          {
+            "date": "2026-08-04",
+            "net_foreign_inflow": -5443246000,
+            "foreign_buy_idr": 35472069000,
+            "foreign_sell_idr": 40915315000,
+            "foreign_share": 0.4468
+          },
+          {
+            "date": "2026-08-05",
+            "net_foreign_inflow": -5170608000,
+            "foreign_buy_idr": 25209345000,
+            "foreign_sell_idr": 30379953000,
+            "foreign_share": 0.4138
+          },
+          {
+            "date": "2026-08-06",
+            "net_foreign_inflow": -13676217000,
+            "foreign_buy_idr": 13305230000,
+            "foreign_sell_idr": 26981447000,
+            "foreign_share": 0.4405
+          },
+          {
+            "date": "2026-08-07",
+            "net_foreign_inflow": 4191688000,
+            "foreign_buy_idr": 16365786000,
+            "foreign_sell_idr": 12174098000,
+            "foreign_share": 0.3913
+          },
+          {
+            "date": "2026-08-10",
+            "net_foreign_inflow": 7746486000,
+            "foreign_buy_idr": 22688116000,
+            "foreign_sell_idr": 14941630000,
+            "foreign_share": 0.4067
+          },
+          {
+            "date": "2026-08-11",
+            "net_foreign_inflow": 7314540000,
+            "foreign_buy_idr": 30702503000,
+            "foreign_sell_idr": 23387963000,
+            "foreign_share": 0.4697
+          },
+          {
+            "date": "2026-08-12",
+            "net_foreign_inflow": -14167114000,
+            "foreign_buy_idr": 12475110000,
+            "foreign_sell_idr": 26642224000,
+            "foreign_share": 0.4431
+          },
+          {
+            "date": "2026-08-13",
+            "net_foreign_inflow": -17480751000,
+            "foreign_buy_idr": 10230580000,
+            "foreign_sell_idr": 27711331000,
+            "foreign_share": 0.3603
+          },
+          {
+            "date": "2026-08-14",
+            "net_foreign_inflow": 3001625000,
+            "foreign_buy_idr": 25249868000,
+            "foreign_sell_idr": 22248243000,
+            "foreign_share": 0.5256
+          },
+          {
+            "date": "2026-08-18",
+            "net_foreign_inflow": 12641748000,
+            "foreign_buy_idr": 47246997000,
+            "foreign_sell_idr": 34605249000,
+            "foreign_share": 0.4289
+          },
+          {
+            "date": "2026-08-19",
+            "net_foreign_inflow": 5585452000,
+            "foreign_buy_idr": 42224257000,
+            "foreign_sell_idr": 36638805000,
+            "foreign_share": 0.5309
+          },
+          {
+            "date": "2026-08-20",
+            "net_foreign_inflow": -16253579000,
+            "foreign_buy_idr": 10871260000,
+            "foreign_sell_idr": 27124839000,
+            "foreign_share": 0.3793
+          },
+          {
+            "date": "2026-08-21",
+            "net_foreign_inflow": 0,
+            "foreign_buy_idr": 0,
+            "foreign_sell_idr": 0,
+            "foreign_share": 0.0
+          },
+          {
+            "date": "2026-08-24",
+            "net_foreign_inflow": 31805772000,
+            "foreign_buy_idr": 74653029000,
+            "foreign_sell_idr": 42847257000,
+            "foreign_share": 0.4302
+          },
+          {
+            "date": "2026-08-26",
+            "net_foreign_inflow": 17899213000,
+            "foreign_buy_idr": 75668816000,
+            "foreign_sell_idr": 57769603000,
+            "foreign_share": 0.5074
+          },
+          {
+            "date": "2026-08-27",
+            "net_foreign_inflow": 6151851000,
+            "foreign_buy_idr": 62641149000,
+            "foreign_sell_idr": 56489298000,
+            "foreign_share": 0.3404
+          },
+          {
+            "date": "2026-08-28",
+            "net_foreign_inflow": -17015981000,
+            "foreign_buy_idr": 24318819000,
+            "foreign_sell_idr": 41334800000,
+            "foreign_share": 0.3725
+          },
+          {
+            "date": "2026-08-31",
+            "net_foreign_inflow": 95828230000,
+            "foreign_buy_idr": 159388500000,
+            "foreign_sell_idr": 63560270000,
+            "foreign_share": 0.3912
+          },
+          {
+            "date": "2026-09-01",
+            "net_foreign_inflow": 367389000,
+            "foreign_buy_idr": 64564443000,
+            "foreign_sell_idr": 64197054000,
+            "foreign_share": 0.381
+          },
+          {
+            "date": "2026-09-02",
+            "net_foreign_inflow": 0,
+            "foreign_buy_idr": 0,
+            "foreign_sell_idr": 0,
+            "foreign_share": 0.0
+          },
+          {
+            "date": "2026-09-03",
+            "net_foreign_inflow": 95046239000,
+            "foreign_buy_idr": 135912736000,
+            "foreign_sell_idr": 40866497000,
+            "foreign_share": 0.4226
+          },
+          {
+            "date": "2026-09-04",
+            "net_foreign_inflow": -12912101000,
+            "foreign_buy_idr": 26200573000,
+            "foreign_sell_idr": 39112674000,
+            "foreign_share": 0.2964
+          },
+          {
+            "date": "2026-09-07",
+            "net_foreign_inflow": -20878899000,
+            "foreign_buy_idr": 21139330000,
+            "foreign_sell_idr": 42018229000,
+            "foreign_share": 0.3636
+          },
+          {
+            "date": "2026-09-08",
+            "net_foreign_inflow": -21894430000,
+            "foreign_buy_idr": 19864929000,
+            "foreign_sell_idr": 41759359000,
+            "foreign_share": 0.3377
+          },
+          {
+            "date": "2026-09-09",
+            "net_foreign_inflow": -40804235000,
+            "foreign_buy_idr": 98648140000,
+            "foreign_sell_idr": 139452375000,
+            "foreign_share": 0.6422
+          },
+          {
+            "date": "2026-09-10",
+            "net_foreign_inflow": 0,
+            "foreign_buy_idr": 0,
+            "foreign_sell_idr": 0,
+            "foreign_share": 0.0
+          },
+          {
+            "date": "2026-09-11",
+            "net_foreign_inflow": -36181379000,
+            "foreign_buy_idr": 7775896000,
+            "foreign_sell_idr": 43957275000,
+            "foreign_share": 0.3419
+          },
+          {
+            "date": "2026-09-14",
+            "net_foreign_inflow": -36553500000,
+            "foreign_buy_idr": 18843985000,
+            "foreign_sell_idr": 55397485000,
+            "foreign_share": 0.3514
+          },
+          {
+            "date": "2026-09-15",
+            "net_foreign_inflow": -14943716000,
+            "foreign_buy_idr": 19768622000,
+            "foreign_sell_idr": 34712338000,
+            "foreign_share": 0.391
+          },
+          {
+            "date": "2026-09-16",
+            "net_foreign_inflow": -40521743000,
+            "foreign_buy_idr": 20087235000,
+            "foreign_sell_idr": 60608978000,
+            "foreign_share": 0.2877
+          },
+          {
+            "date": "2026-09-17",
+            "net_foreign_inflow": -4442366000,
+            "foreign_buy_idr": 37923119000,
+            "foreign_sell_idr": 42365485000,
+            "foreign_share": 0.3479
+          },
+          {
+            "date": "2026-09-18",
+            "net_foreign_inflow": -73268280000,
+            "foreign_buy_idr": 64472751000,
+            "foreign_sell_idr": 137741031000,
+            "foreign_share": 0.5107
+          },
+          {
+            "date": "2026-09-21",
+            "net_foreign_inflow": -22316910000,
+            "foreign_buy_idr": 25289531000,
+            "foreign_sell_idr": 47606441000,
+            "foreign_share": 0.4868
+          },
+          {
+            "date": "2026-09-22",
+            "net_foreign_inflow": -9850383000,
+            "foreign_buy_idr": 24308127000,
+            "foreign_sell_idr": 34158510000,
+            "foreign_share": 0.3463
+          },
+          {
+            "date": "2026-09-23",
+            "net_foreign_inflow": -45774155000,
+            "foreign_buy_idr": 27655377000,
+            "foreign_sell_idr": 73429532000,
+            "foreign_share": 0.3554
+          },
+          {
+            "date": "2026-09-24",
+            "net_foreign_inflow": -7938562000,
+            "foreign_buy_idr": 8348623000,
+            "foreign_sell_idr": 16287185000,
+            "foreign_share": 0.2432
+          },
+          {
+            "date": "2026-09-25",
+            "net_foreign_inflow": 7545958000,
+            "foreign_buy_idr": 29987967000,
+            "foreign_sell_idr": 22442009000,
+            "foreign_share": 0.4814
+          },
+          {
+            "date": "2026-09-28",
+            "net_foreign_inflow": 3963337000,
+            "foreign_buy_idr": 36690468000,
+            "foreign_sell_idr": 32727131000,
+            "foreign_share": 0.5144
+          },
+          {
+            "date": "2026-09-29",
+            "net_foreign_inflow": -36731727000,
+            "foreign_buy_idr": 46500073000,
+            "foreign_sell_idr": 83231800000,
+            "foreign_share": 0.283
+          },
+          {
+            "date": "2026-09-30",
+            "net_foreign_inflow": -13239062000,
+            "foreign_buy_idr": 21536092000,
+            "foreign_sell_idr": 34775154000,
+            "foreign_share": 0.3503
+          },
+          {
+            "date": "2026-10-01",
+            "net_foreign_inflow": -9618817000,
+            "foreign_buy_idr": 36800627000,
+            "foreign_sell_idr": 46419444000,
+            "foreign_share": 0.4291
+          },
+          {
+            "date": "2026-10-02",
+            "net_foreign_inflow": -2194923000,
+            "foreign_buy_idr": 25490877000,
+            "foreign_sell_idr": 27685800000,
+            "foreign_share": 0.3594
+          },
+          {
+            "date": "2026-10-05",
+            "net_foreign_inflow": -1102874000,
+            "foreign_buy_idr": 38849605000,
+            "foreign_sell_idr": 39952479000,
+            "foreign_share": 0.4545
+          },
+          {
+            "date": "2026-10-06",
+            "net_foreign_inflow": -9931634000,
+            "foreign_buy_idr": 27378526000,
+            "foreign_sell_idr": 37310160000,
+            "foreign_share": 0.3909
+          }
+        ]
+      },
+      "broker_summary": {
+        "raw_text": ""
+      }
     }
   },
   "umkm_topics": {

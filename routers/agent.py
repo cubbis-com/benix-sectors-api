@@ -352,7 +352,8 @@ def format_verified_dossier(
             pe_str = f"{pe:.2f}x" if isinstance(pe, (int, float)) else str(pe)
             dy = div.get("yield_ttm")
             dy_str = f"{dy*100:.2f}%" if isinstance(dy, (int, float)) else str(st.get("dividend_yield", "N/A"))
-            lines.append(f"• {sym} ({ov.get('company_name', sym)}): Harga Rp {price:, if isinstance(price, (int, float)) else price} ({chg}) | P/E: {pe_str} | Div Yield: {dy_str}")
+            price_fmt = f"{price:,}" if isinstance(price, (int, float)) else str(price)
+            lines.append(f"• {sym} ({ov.get('company_name', sym)}): Harga Rp {price_fmt} ({chg}) | P/E: {pe_str} | Div Yield: {dy_str}")
 
     elif intent == "market_overview":
         ov = retrieved_data.get("market_overview", {})
@@ -379,7 +380,77 @@ def format_verified_dossier(
     else:
         lines.append("Tidak ada kejadian luar biasa atau aksi korporasi mendadak tercatat hari ini.")
 
-    return "\n".join(lines)
+def sanitize_garda_markdown(text: str) -> str:
+    """
+    Sanitizes LLM markdown output to ensure charts and tables render flawlessly:
+    1. Converts ```json or ```js or ``` code blocks containing series into ```echarts.
+    2. Detects unfenced raw JSON blocks (e.g. starting with "title": { ... } or { "title": ... })
+       and converts them into proper ```echarts code blocks.
+    3. Normalizes line endings.
+    """
+    if not text:
+        return ""
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+    # 1. Convert ```json or ```js or ``` containing series to ```echarts
+    def replace_fenced(match):
+        code = match.group(1).strip()
+        if '"series"' in code or "'series'" in code:
+            return f"```echarts\n{code}\n```"
+        return match.group(0)
+
+    text = re.sub(r"```(?:json|javascript|js)?\s*\n([\s\S]*?)\n```", replace_fenced, text, flags=re.IGNORECASE)
+
+    # 2. Check for unfenced JSON block containing "series"
+    if "```echarts" not in text and ('"series"' in text or "'series'" in text):
+        for key in ['"title"', '"series"', '"xAxis"', '{']:
+            start_pos = text.find(key)
+            if start_pos != -1:
+                if key != '{':
+                    line_start = text.rfind('\n', 0, start_pos)
+                    start_idx = 0 if line_start == -1 else line_start + 1
+                    prepend_brace = True
+                else:
+                    start_idx = start_pos
+                    prepend_brace = False
+
+                depth = 1 if prepend_brace else 0
+                in_str = False
+                escape = False
+                end_idx = -1
+                for idx in range(start_pos, len(text)):
+                    c = text[idx]
+                    if escape:
+                        escape = False
+                        continue
+                    if c == "\\":
+                        escape = True
+                        continue
+                    if c == '"':
+                        in_str = not in_str
+                        continue
+                    if not in_str:
+                        if c == '{':
+                            depth += 1
+                        elif c == '}':
+                            depth -= 1
+                            if depth == 0:
+                                end_idx = idx
+                                break
+
+                if end_idx != -1:
+                    raw_candidate = text[start_idx:end_idx+1].strip()
+                    cand_to_test = "{" + raw_candidate if prepend_brace and not raw_candidate.startswith("{") else raw_candidate
+                    try:
+                        parsed = json.loads(cand_to_test)
+                        if "series" in parsed or ("xAxis" in parsed and "yAxis" in parsed):
+                            echarts_block = f"\n```echarts\n{json.dumps(parsed, indent=2)}\n```\n"
+                            text = text[:start_idx] + echarts_block + text[end_idx+1:]
+                            break
+                    except Exception:
+                        pass
+
+    return text
 
 
 @router.post("/query", response_model=AgentQueryResponse, summary="Process Financial Query with Garda Concierge")
@@ -604,25 +675,49 @@ DOSSIER DATA PASAR & BERITA TERVERIFIKASI (SECTORS FINANCIAL API & REGIONAL NEWS
 {dossier_text}
 ---------------------------------------------------------------------------------
 
-ATURAN MUTLAK ANALISIS (ZERO HALLUCINATION & EVIDENCE-BASED ANALYSIS):
-1. FAKTA BERBASIS DATA NYATA:
-   - Setiap angka (Harga penutupan Rp, persentase perubahan %, Market Cap, P/E Forward/TTM, Dividen Yield %, Net Foreign Inflow/Outflow, Broker AK/ZP/RX/dll) WAJIB 100% PERSIS sama dengan DOSSIER di atas.
-   - DILARANG KERAS mengarang angka sendiri atau melakukan aproksimasi tanpa data.
-2. DILARANG MEMBUAT KESIMPULAN SENDIRI:
-   - Anda TIDAK BOLEH membuat opini spekulatif, klaim tren sembarangan, atau kesimpulan tanpa didukung bukti angka dan isi berita di dossier.
-   - Setiap analisis pergerakan pasar WAJIB menjelaskan hubungan kausalitas (sebab-akibat) nyata antara angka transaksi riil dan berita/katalis resmi.
-3. DILARANG MENYATAKAN DATA TIDAK TERDETEKSI:
-   - Seluruh data pasar di atas SUDAH LENGKAP dan TERVERIFIKASI resmi dari Sectors API. Gunakan data tersebut secara utuh.
-4. IDENTITAS RESMI:
-   - Awali dengan menyapa pengguna secara hangat dan perkenalkan diri Anda sebagai "Garda" (Market Intelligence Copilot).
-5. STRUKTUR LAPORAN INSTITUSIONAL:
-   [GREETING & BRIEF STATUS]
-   [RINGKASAN METRIK FUNDAMENTAL & HARGA] (Sajikan tabel atau poin jelas metrik harga, valuasi P/E, yield dividen)
-   [INTELIJEN ARUS MODAL & BANDARMOLOGI] (Jelaskan net flow asing & akumulasi broker smart money)
-   [KORELASI BERITA & KATALIS PASAR] (Korelasikan data transaksi dengan berita portal terverifikasi)
-   [IMPLIKASI BISNIS & UMKM] (Makna praktis bagi industri pengguna: {payload.user_industry})
-   [PROAKTIF OPSI RISET LANJUTAN] (Opsi eksplorasi berikutnya tanpa rekomendasi beli/jual)
-   [CLOSING & KOMPLIANS] (Penutup ramah dan disclaimer kepatuhan)"""
+ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, GRAFIK ECHARTS & TABEL REKOMENDASI):
+1. DILARANG BASA-BASI (STRICT ZERO-CHITCHAT):
+   - JANGAN menyapa ("Halo", "Selamat pagi/siang", "Tentu saja", "Berikut analisisnya", dsb.).
+   - JANGAN ada basa-basi penutup panjang.
+   - Langsung ke inti analisis: Ringkasan eksekutif, grafik visual, dan tabel rekomendasi.
+
+2. WAJIB GRAFIK ECHARTS (FORMAT CODEBLOCK RESMI):
+   - SELALU sertakan visualisasi grafik ECharts di dalam blok kode ```echarts dan ```.
+   - PENTING: DILARANG mengeluarkan JSON telanjang/mentah tanpa blok ```echarts!
+   - JSON WAJIB diawali kurung kurawal pembuka {{ dan diakhiri kurung kurawal penutup }} yang valid.
+   - Contoh format:
+   ```echarts
+   {{
+     "title": {{ "text": "Proyeksi Valuasi P/E & Target Price", "textStyle": {{ "fontSize": 12, "color": "#f8fafc" }} }},
+     "tooltip": {{ "trigger": "axis" }},
+     "legend": {{ "data": ["P/E Emiten (x)", "Rata-rata Peer (x)"], "textStyle": {{ "color": "#94a3b8" }} }},
+     "xAxis": {{ "type": "category", "data": ["BBCA", "BBRI", "BMRI"] }},
+     "yAxis": {{ "type": "value" }},
+     "series": [
+       {{ "name": "P/E Emiten (x)", "type": "bar", "data": [11.2, 10.5, 9.8], "itemStyle": {{ "color": "#38bdf8" }} }},
+       {{ "name": "Rata-rata Peer (x)", "type": "bar", "data": [14.0, 14.0, 14.0], "itemStyle": {{ "color": "#10b981" }} }}
+     ]
+   }}
+   ```
+
+3. WAJIB TABEL REKOMENDASI MARKDOWN STANDAR:
+   - Wajib sertakan tabel rekomendasi dengan format tabel Markdown baku (menggunakan baris pemisah | :---: |):
+     | Emiten | Sinyal Rekomendasi | Area Beli (Entry) | Target Price (TP) | Stop Loss (SL) | Risk/Reward | Katalis Utama & Rationale |
+     | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+     | ADRO | ACCUMULATE | Rp 2,450 - Rp 2,550 | Rp 3,100 | Rp 2,200 | 1 : 2.5+ | Fundamental Strength: P/E (5.02x) vs Peer (11.06x), dividen yield 5.60%. |
+   - Gunakan sinyal: STRONG BUY, BUY ON WEAKNESS, ACCUMULATE, HOLD, atau TAKE PROFIT.
+   - JANGAN membuat garis putus-putus manual; SELALU gunakan format tabel pipa markdown standar di atas.
+
+4. FAKTA BERBASIS DATA NYATA (ZERO HALLUCINATION):
+   - Setiap angka harga, P/E, Dividen, Net Foreign Flow wajib bersumber dari DOSSIER di atas.
+   - Hubungkan kausalitas antara pergerakan angka transaksi dengan berita resmi dari portal terkait.
+
+5. STRUKTUR LAPORAN RINGKAS & PADAT:
+   ### RINGKASAN EKSEKUTIF PASAR
+   ### VISUALISASI PROYEKSI HARGA & TARGET
+   ### TABEL REKOMENDASI & SETUP LEVEL EKSEKUSI
+   ### KATALIS PEMBERITAAN & SENTIMEN REGIONAL
+   ### IMPLIKASI RISIKO & BISNIS"""
 
     llm_answer = await garda_llm_client.chat_completion(
         messages=[
@@ -634,7 +729,7 @@ ATURAN MUTLAK ANALISIS (ZERO HALLUCINATION & EVIDENCE-BASED ANALYSIS):
     )
 
     if llm_answer:
-        summary = llm_answer
+        summary = sanitize_garda_markdown(llm_answer)
     else:
         summary = garda_llm_client.generate_concierge_fallback(
             query=payload.query,

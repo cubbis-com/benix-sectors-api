@@ -120,3 +120,78 @@ async def get_total_production(
         ttl_seconds=settings.CACHE_TTL_DAILY,
         bypass_cache=bypass_cache
     )
+
+@router.get("/global-commodity", summary="Global Commodity Worldwide Statistics")
+async def get_global_commodity_data(
+    commodity: Optional[str] = Query(None, description="e.g. nickel, coal, bauxite, copper, tin"),
+    bypass_cache: bool = Query(False)
+):
+    params = {"commodity": commodity} if commodity else None
+    return await sectors_client.get(
+        "/mining/global-commodity/",
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_DAILY,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/sales-destination/{slug}", summary="Mining Company Sales by Destination")
+async def get_company_sales_destinations(
+    slug: str = Path(..., description="Mining emiten slug e.g. pt-vale-indonesia-tbk, pt-adaro-energy-indonesia-tbk"),
+    bypass_cache: bool = Query(False)
+):
+    return await sectors_client.get(
+        f"/mining/sales-destination/{slug}/",
+        ttl_seconds=settings.CACHE_TTL_REPORTS,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/exports", summary="Top Export Destinations for Commodities")
+async def get_commodity_exports(
+    commodity: Optional[str] = Query(None, description="e.g. coal, nickel"),
+    bypass_cache: bool = Query(False)
+):
+    params = {"commodity": commodity} if commodity else None
+    return await sectors_client.get(
+        "/mining/exports/",
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_DAILY,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/license-auctions", summary="Mining License Auctions & Rights (WIUPK)")
+async def get_mining_license_auctions(
+    commodity: Optional[str] = Query(None),
+    status: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    params = {"commodity": commodity, "status": status}
+    return await sectors_client.get(
+        "/mining/license-auctions/",
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_DAILY,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/license-auctions/{wiup_code}", summary="Mining License Auction Detail")
+async def get_mining_license_auction_detail(
+    wiup_code: str = Path(..., description="WIUP auction code"),
+    bypass_cache: bool = Query(False)
+):
+    return await sectors_client.get(
+        f"/mining/license-auctions/{wiup_code}/",
+        ttl_seconds=settings.CACHE_TTL_DAILY,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/resources-reserves", summary="Mining Resources & Reserves Index")
+async def get_resources_reserves(
+    commodity: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    params = {"commodity": commodity} if commodity else None
+    return await sectors_client.get(
+        "/mining/resources-reserves/",
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_HELPERS,
+        bypass_cache=bypass_cache
+    )

@@ -61,6 +61,15 @@ async def get_daily_transactions(
         bypass_cache=bypass_cache
     )
 
+@router.get("/transaction/daily/{symbol}", summary="Daily Market Transactions Alias", include_in_schema=False)
+async def get_daily_transactions_alias(
+    symbol: str = Path(..., description="IDX ticker e.g. BBCA"),
+    start: Optional[str] = Query(None),
+    end: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    return await get_daily_transactions(symbol=symbol, start=start, end=end, bypass_cache=bypass_cache)
+
 @router.get("/top-movers", summary="Top Gainers & Losers")
 async def get_top_movers(
     classifications: Optional[str] = Query(
@@ -114,6 +123,16 @@ async def get_most_traded(
         ttl_seconds=1800,
         bypass_cache=bypass_cache
     )
+
+@router.get("/ranking/most-traded", summary="Top Traded Company Rankings Alias", include_in_schema=False)
+async def get_ranking_most_traded(
+    start: Optional[str] = Query(None),
+    end: Optional[str] = Query(None),
+    n_stock: Optional[int] = Query(10, ge=1, le=50),
+    sub_sector: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    return await get_most_traded(start=start, end=end, n_stock=n_stock, sub_sector=sub_sector, bypass_cache=bypass_cache)
 
 @router.get("/indices", summary="Daily Full-Universe Index Close")
 async def get_all_indices_close(

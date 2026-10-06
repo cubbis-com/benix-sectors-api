@@ -139,3 +139,30 @@ async def get_subsector_report(
         ttl_seconds=settings.CACHE_TTL_REPORTS,
         bypass_cache=bypass_cache
     )
+
+@router.get("/sector/{sector}/report", summary="Sector Comprehensive Report")
+async def get_sector_report(
+    sector: str = Path(..., description="Sector or subsector slug e.g. financials, energy, banks"),
+    sections: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    endpoint = f"/subsector/report/{sector.lower()}/"
+    params = {"sections": sections} if sections else None
+    return await sectors_client.get(
+        endpoint,
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_REPORTS,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/ipo/listing-performance", summary="Universe IPO Listing Performance")
+async def get_universe_listing_performance(
+    symbol: Optional[str] = Query(None, description="Optional emiten symbol"),
+    bypass_cache: bool = Query(False)
+):
+    endpoint = f"/listing-performance/{symbol.upper()}/" if symbol else "/listing-performance/"
+    return await sectors_client.get(
+        endpoint,
+        ttl_seconds=settings.CACHE_TTL_REPORTS,
+        bypass_cache=bypass_cache
+    )

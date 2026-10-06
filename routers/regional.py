@@ -128,6 +128,37 @@ async def get_sgx_short_sell(
         bypass_cache=bypass_cache
     )
 
+@router.get("/sgx/filings", summary="SGX Insider Filings & Transactions")
+async def get_sgx_filings(
+    symbol: Optional[str] = Query(None, description="SGX ticker e.g. D05"),
+    start: Optional[str] = Query(None),
+    end: Optional[str] = Query(None),
+    bypass_cache: bool = Query(False)
+):
+    clean_sym = normalize_ticker(symbol) if symbol else None
+    params = {"symbol": clean_sym, "start": start, "end": end}
+    return await sectors_client.get(
+        "/sgx/filings/",
+        params=params,
+        ttl_seconds=settings.CACHE_TTL_DAILY,
+        bypass_cache=bypass_cache
+    )
+
+@router.get("/sgx/news", summary="SGX Financial News")
+async def get_sgx_news(
+    symbol: Optional[str] = Query(None),
+    page: Optional[int] = Query(1),
+    bypass_cache: bool = Query(False)
+):
+    clean_sym = normalize_ticker(symbol) if symbol else None
+    params = {"symbol": clean_sym, "page": page}
+    return await sectors_client.get(
+        "/sgx/news/",
+        params=params,
+        ttl_seconds=3600,
+        bypass_cache=bypass_cache
+    )
+
 # ==================== MALAYSIA (KLSE) ====================
 
 @router.get("/klse/sectors", summary="List All KLSE Sectors")

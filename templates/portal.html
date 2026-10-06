@@ -1562,25 +1562,37 @@
         }
 
         /* CHAT MESSAGE LIST (FLEX FILL & SMOOTH SCROLL) */
+        /* CHAT MESSAGE LIST (FLEX FILL & SMOOTH SCROLL) */
         .chat-messages {
             flex: 1 1 auto;
             min-height: 0;
+            min-width: 0;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
             padding: 16px;
             overflow-y: auto;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             gap: 14px;
             background: var(--chat-feed-bg);
         }
         .msg-bubble {
-            max-width: 92%;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
             font-size: 13px;
             line-height: 1.55;
             border-radius: 12px;
             padding: 12px 14px;
             word-break: break-word;
+            overflow-wrap: anywhere;
+            overflow-x: hidden;
         }
         .msg-bubble.user {
+            max-width: 88%;
             background: var(--chat-user-bubble);
             color: #ffffff;
             margin-left: auto;
@@ -1588,6 +1600,7 @@
             border: 1px solid var(--border);
         }
         .msg-bubble.ai {
+            max-width: 100%;
             background: var(--chat-ai-bubble);
             color: var(--text-main);
             margin-right: auto;
@@ -1603,6 +1616,132 @@
             display: block;
             border-top: 1px dashed var(--border);
             padding-top: 4px;
+        }
+
+        /* GARDA CHAT EMBEDDED CHARTS & RECOMMENDATION TABLES */
+        .garda-chat-chart-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .garda-chat-chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 6px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border);
+        }
+        .garda-chart-container {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            height: 230px;
+            min-height: 230px;
+            box-sizing: border-box;
+        }
+        .garda-table-wrap {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-surface);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        .garda-table-wrap::-webkit-scrollbar {
+            height: 6px;
+        }
+        .garda-table-wrap::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 3px;
+        }
+        .garda-table-wrap::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+        .garda-table-wrap::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-orange);
+        }
+        .garda-rec-table {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: collapse;
+            font-size: 11px;
+            text-align: left;
+            table-layout: auto;
+        }
+        .garda-rec-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            font-weight: 700;
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+            font-size: 10.5px;
+            letter-spacing: 0.3px;
+        }
+        .garda-rec-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            white-space: normal;
+            word-break: normal;
+            overflow-wrap: break-word;
+            line-height: 1.45;
+            vertical-align: top;
+        }
+        .garda-rec-table td.cell-nowrap {
+            white-space: nowrap;
+        }
+        .garda-rec-table td.cell-desc {
+            min-width: 180px;
+            max-width: 320px;
+            white-space: normal;
+        }
+        .garda-rec-table tr:last-child td {
+            border-bottom: none;
+        }
+        .garda-rec-table tr:hover td {
+            background: rgba(255, 255, 255, 0.035);
+        }
+        .rec-badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .rec-badge.buy {
+            background: rgba(16, 185, 129, 0.16);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        .rec-badge.hold {
+            background: rgba(245, 158, 11, 0.16);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .rec-badge.sell {
+            background: rgba(239, 68, 68, 0.16);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.35);
         }
 
         /* QUICK SUGGESTIONS */
@@ -2687,11 +2826,96 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
+        .footer-notif-control {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            user-select: none;
+            line-height: 1;
+            margin-right: 4px;
+        }
+        .footer-notif-control:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+        .footer-notif-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+        .footer-notif-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            background: var(--bg-surface);
+            border: 1.5px solid var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+        .footer-notif-input:checked + .footer-notif-box {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        }
+        .footer-notif-check {
+            stroke: #000;
+            display: none;
+        }
+        .footer-notif-input:checked + .footer-notif-box .footer-notif-check {
+            display: block;
+        }
+        .footer-notif-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            letter-spacing: 0.2px;
+        }
+        .footer-bell-icon {
+            color: var(--accent-orange);
+            vertical-align: -1px;
+        }
+        .footer-notif-state {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 1px 4px;
+            border-radius: 3px;
+            transition: all 0.15s ease;
+        }
+        .footer-notif-state.on {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.18);
+        }
+        .footer-notif-state.off {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.18);
+        }
+        .footer-sep-dim {
+            color: var(--border);
+            margin: 0 2px;
+        }
         @media (max-width: 1080px) {
             .footer-center { display: none; }
         }
-        @media (max-width: 680px) {
-            .footer-right { display: none; }
+        @media (max-width: 768px) {
+            .footer-status-text, .footer-sep-dim, .market-status-dot { display: none; }
+        }
+        @media (max-width: 480px) {
+            .footer-badge-shield { display: none; }
         }
         .market-status-dot {
             width: 7px;
@@ -6405,6 +6629,10 @@
 
                 <!-- QUICK PROMPTS CHIPS (BRIEF.MD REAL-WORLD SCENARIOS & NEWS AGGREGATION & CUSTOM DASHBOARDS) -->
                 <div class="quick-prompts">
+                    <div class="prompt-chip" style="border-color:var(--accent-orange);color:var(--accent-orange);font-weight:700;" onclick="sendPrompt('Rekomendasi saham perbankan Big 4 (BBCA, BBRI, BMRI, BBNI) lengkap dengan grafik target price dan tabel rekomendasi tanpa basa-basi')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>⚡ Rekomendasi Big Banks + Chart</div>
+                    <div class="prompt-chip" style="border-color:var(--accent-cyan);color:var(--accent-cyan);font-weight:700;" onclick="sendPrompt('Komparasi valuasi P/E saham energi dan tambang (ADRO, BREN, AMMN, PTBA) dengan grafik visual dan tabel rekomendasi entry')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>📊 Komparasi Valuasi & Entry + Grafik</div>
+                    <div class="prompt-chip" style="border-color:var(--green-gain);color:var(--green-gain);font-weight:700;" onclick="sendPrompt('Sinyal akumulasi smart money dan net foreign inflow saham bluechip IHSG hari ini dengan visualisasi grafik dan tabel setup trading')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>🎯 Akumulasi Smart Money + TP/SL</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Rekomendasi saham dividen yield tinggi untuk dana cadangan bisnis dengan grafik yield dan tabel rekomendasi lengkap')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>🛡️ Saham Dividen Kas + Tabel R/R</div>
                     <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom data dashboard saham BBCA')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Dashboard BBCA</div>
                     <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom dashboard DBS (D05) di bursa Singapura')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Dashboard DBS (SGX)</div>
                     <div class="prompt-chip" onclick="sendPrompt('Buatkan dashboard due diligence solvabilitas mitra TLKM')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Dashboard Mitra TLKM</div>
@@ -6594,8 +6822,21 @@
             <span>Powered by Sectors Financial API v2 & Gemma 4 Garda Engine</span>
         </div>
         <div class="footer-right">
+            <!-- CHECKLIST NOTIFIKASI TOAST MARKET -->
+            <label class="footer-notif-control" for="footer-notif-checkbox" title="Centang untuk menampilkan pop-up Toast Notifikasi Market, uncheck untuk mematikan">
+                <input type="checkbox" id="footer-notif-checkbox" class="footer-notif-input" checked onchange="toggleToastNotifications(this.checked)">
+                <span class="footer-notif-box">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="footer-notif-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="footer-notif-label">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="footer-bell-icon"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    <span>Toast Notif:</span>
+                    <strong id="footer-notif-status" class="footer-notif-state on">ON</strong>
+                </span>
+            </label>
+            <span class="footer-sep-dim">•</span>
             <span class="market-status-dot"></span>
-            <span>IHSG & SGX Realtime Feed • Hackathon Rule 12 Compliant</span>
+            <span class="footer-status-text">IHSG & SGX Realtime Feed • Rule 12 Compliant</span>
         </div>
     </footer>
 
@@ -6935,6 +7176,7 @@
             initTTS();
             initChatWidth();
             initFullScreen();
+            initFooterNotificationControl();
             initMarketWebSocket();
             initMarketChart('BBCA', '1W');
             checkUserPersonaOnLoad();
@@ -8410,6 +8652,14 @@
                 if (colIcon) colIcon.style.display = isCurrentlyWide ? 'block' : 'none';
                 btn.title = isCurrentlyWide ? 'Perkecil Panel Chat' : 'Lebarkan Panel Chat';
             }
+
+            setTimeout(() => {
+                if (window.__gardaRenderedCharts && Array.isArray(window.__gardaRenderedCharts)) {
+                    window.__gardaRenderedCharts.forEach(inst => {
+                        try { if (inst && typeof inst.resize === 'function') inst.resize(); } catch(e){}
+                    });
+                }
+            }, 350);
         }
 
         // ================= VOICE / TEXT-TO-SPEECH (TTS) ENGINE =================
@@ -8956,6 +9206,7 @@
         }
 
         function showPersonaToast(msg) {
+            if (!marketToastEnabled) return;
             let container = document.getElementById('ws-toast-container');
             if (!container) {
                 container = document.createElement('div');
@@ -9043,12 +9294,308 @@
             }
         }
 
+        window.__gardaChartQueue = window.__gardaChartQueue || [];
+        window.__gardaRenderedCharts = window.__gardaRenderedCharts || [];
+
+        function parseEchartsOption(str) {
+            if (!str) return null;
+            if (typeof str === 'object') return str;
+            let s = String(str).trim();
+            // Remove markdown code fences if wrapped inside
+            s = s.replace(/^```(?:echarts|chart|json|javascript|js)?\s*/i, '').replace(/```\s*$/, '').trim();
+            // Handle missing opening curly brace: "title": { ... }
+            if (!s.startsWith('{') && s.endsWith('}')) {
+                s = '{' + s;
+            }
+            if (!s.startsWith('{')) {
+                const first = s.indexOf('{');
+                if (first !== -1) s = s.substring(first);
+            }
+            if (!s.endsWith('}')) {
+                const last = s.lastIndexOf('}');
+                if (last !== -1) s = s.substring(0, last + 1);
+            }
+
+            try {
+                const opt = JSON.parse(s);
+                if (opt && (opt.series || (opt.xAxis && opt.yAxis))) return opt;
+            } catch(e1) {
+                // Strip trailing commas before } or ]
+                const cleaned = s.replace(/,\s*([\}\]])/g, '$1');
+                try {
+                    const opt = JSON.parse(cleaned);
+                    if (opt && (opt.series || (opt.xAxis && opt.yAxis))) return opt;
+                } catch(e2) {
+                    try {
+                        const fn = new Function('return (' + cleaned + ');');
+                        const opt = fn();
+                        if (opt && (opt.series || (opt.xAxis && opt.yAxis))) return opt;
+                    } catch(e3) {
+                        return null;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function renderQueuedGardaCharts() {
+            if (!window.__gardaChartQueue || window.__gardaChartQueue.length === 0) return;
+            if (typeof echarts === 'undefined') {
+                setTimeout(renderQueuedGardaCharts, 150);
+                return;
+            }
+            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+            const textColor = isDark ? '#94a3b8' : '#475569';
+            const gridBorderColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
+            const splitLineColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+            const tooltipBg = isDark ? 'rgba(15, 23, 42, 0.94)' : 'rgba(255, 255, 255, 0.96)';
+            const tooltipBorder = isDark ? '#334155' : '#cbd5e1';
+            const tooltipText = isDark ? '#f8fafc' : '#0f172a';
+
+            while (window.__gardaChartQueue.length > 0) {
+                const item = window.__gardaChartQueue.shift();
+                const el = document.getElementById(item.id);
+                if (!el) continue;
+                try {
+                    let opt = typeof item.config === 'object' ? item.config : parseEchartsOption(item.configStr);
+                    if (!opt) {
+                        el.innerHTML = '<div style="font-size:11px;color:var(--text-muted);padding:8px;">[Grafik Visualisasi Analisis Pasar]</div>';
+                        continue;
+                    }
+                    opt.backgroundColor = opt.backgroundColor || 'transparent';
+                    if (!opt.tooltip) opt.tooltip = { trigger: 'axis' };
+                    opt.tooltip.backgroundColor = opt.tooltip.backgroundColor || tooltipBg;
+                    opt.tooltip.borderColor = opt.tooltip.borderColor || tooltipBorder;
+                    opt.tooltip.textStyle = opt.tooltip.textStyle || { color: tooltipText, fontSize: 11 };
+
+                    if (!opt.grid && opt.xAxis && opt.yAxis) {
+                        opt.grid = { top: 35, right: 18, bottom: 26, left: 45, containLabel: true };
+                    } else if (opt.grid) {
+                        opt.grid.containLabel = true;
+                    }
+                    if (opt.xAxis) {
+                        if (Array.isArray(opt.xAxis)) {
+                            opt.xAxis.forEach(x => {
+                                x.axisLabel = x.axisLabel || { color: textColor, fontSize: 9.5 };
+                                x.axisLine = x.axisLine || { lineStyle: { color: gridBorderColor } };
+                            });
+                        } else {
+                            opt.xAxis.axisLabel = opt.xAxis.axisLabel || { color: textColor, fontSize: 9.5 };
+                            opt.xAxis.axisLine = opt.xAxis.axisLine || { lineStyle: { color: gridBorderColor } };
+                        }
+                    }
+                    if (opt.yAxis) {
+                        if (Array.isArray(opt.yAxis)) {
+                            opt.yAxis.forEach(y => {
+                                y.axisLabel = y.axisLabel || { color: textColor, fontSize: 9.5 };
+                                y.splitLine = y.splitLine || { lineStyle: { color: splitLineColor } };
+                            });
+                        } else {
+                            opt.yAxis.axisLabel = opt.yAxis.axisLabel || { color: textColor, fontSize: 9.5 };
+                            opt.yAxis.splitLine = opt.yAxis.splitLine || { lineStyle: { color: splitLineColor } };
+                        }
+                    }
+                    if (opt.title && opt.title.textStyle) {
+                        opt.title.textStyle.color = opt.title.textStyle.color || (isDark ? '#f8fafc' : '#0f172a');
+                    }
+
+                    const inst = echarts.init(el);
+                    inst.setOption(opt);
+                    window.__gardaRenderedCharts.push(inst);
+                } catch(e) {
+                    console.error('Error rendering Garda chart:', e);
+                    el.innerHTML = '<div style="font-size:11px;color:var(--text-muted);padding:8px;">[Grafik Analisis Pasar]</div>';
+                }
+            }
+        }
+
         function formatMarkdownResponse(text) {
             if (!text) return '';
-            let raw = String(text).trim();
+            let raw = String(text).replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+
+            const chartPlaceholders = [];
+
+            // 0. Extract Fenced ECharts Code Blocks: ```echarts, ```chart, ```json, ```javascript, ```js
+            raw = raw.replace(/```(?:echarts|chart|json|javascript|js)?\s*\n([\s\S]*?)\n```/gi, function(match, inner) {
+                const opt = parseEchartsOption(inner);
+                if (opt && (opt.series || (opt.xAxis && opt.yAxis))) {
+                    const chartId = 'garda-chart-' + Math.random().toString(36).substring(2, 9);
+                    window.__gardaChartQueue.push({ id: chartId, config: opt });
+                    const idx = chartPlaceholders.length;
+                    const chartTitle = (opt.title && opt.title.text) ? opt.title.text : 'Grafik Visual Analisis Garda AI';
+                    chartPlaceholders.push(`
+                        <div class="garda-chat-chart-card">
+                            <div class="garda-chat-chart-header">
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>${chartTitle}</span>
+                                <span style="font-size:9.5px;color:var(--accent-cyan);font-weight:600;">ECharts Interaktif</span>
+                            </div>
+                            <div id="${chartId}" class="garda-chart-container"></div>
+                        </div>
+                    `);
+                    return `\n@@GARDACHART${idx}@@\n`;
+                }
+                return match;
+            });
+
+            // 0.1 Extract Unfenced ECharts JSON Blocks (Balanced Braces Scanner)
+            let scanIdx = 0;
+            while (scanIdx < raw.length) {
+                let startIdx = -1;
+                let prependBrace = false;
+                const braceIdx = raw.indexOf('{', scanIdx);
+                const keyMatch = raw.slice(scanIdx).match(/(?:^|\n)[ \t]*"(title|series|xAxis|yAxis|legend)"\s*:\s*\{/);
+                const keyIdx = keyMatch ? scanIdx + keyMatch.index + (keyMatch[0].startsWith('\n') ? 1 : 0) : -1;
+
+                if (braceIdx !== -1 && (keyIdx === -1 || braceIdx < keyIdx)) {
+                    startIdx = braceIdx;
+                } else if (keyIdx !== -1) {
+                    startIdx = keyIdx;
+                    prependBrace = true;
+                } else {
+                    break;
+                }
+
+                let braceCount = prependBrace ? 1 : 0;
+                let inString = false;
+                let escapeNext = false;
+                let endIdx = -1;
+
+                for (let k = startIdx; k < raw.length; k++) {
+                    const ch = raw[k];
+                    if (escapeNext) { escapeNext = false; continue; }
+                    if (ch === '\\') { escapeNext = true; continue; }
+                    if (ch === '"') { inString = !inString; continue; }
+                    if (!inString) {
+                        if (ch === '{') braceCount++;
+                        else if (ch === '}') {
+                            braceCount--;
+                            if (braceCount === 0) { endIdx = k; break; }
+                        }
+                    }
+                }
+
+                if (endIdx !== -1) {
+                    let candidate = raw.substring(startIdx, endIdx + 1);
+                    let toParse = prependBrace ? '{' + candidate : candidate;
+                    const opt = parseEchartsOption(toParse);
+                    if (opt && (opt.series || (opt.xAxis && opt.yAxis))) {
+                        const chartId = 'garda-chart-' + Math.random().toString(36).substring(2, 9);
+                        window.__gardaChartQueue.push({ id: chartId, config: opt });
+                        const idx = chartPlaceholders.length;
+                        const chartTitle = (opt.title && opt.title.text) ? opt.title.text : 'Grafik Visual Analisis Garda AI';
+                        chartPlaceholders.push(`
+                            <div class="garda-chat-chart-card">
+                                <div class="garda-chat-chart-header">
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>${chartTitle}</span>
+                                    <span style="font-size:9.5px;color:var(--accent-cyan);font-weight:600;">ECharts Interaktif</span>
+                                </div>
+                                <div id="${chartId}" class="garda-chart-container"></div>
+                            </div>
+                        `);
+                        const placeholder = `\n@@GARDACHART${idx}@@\n`;
+                        raw = raw.substring(0, startIdx) + placeholder + raw.substring(endIdx + 1);
+                        scanIdx = startIdx + placeholder.length;
+                        continue;
+                    }
+                }
+                scanIdx = startIdx + 1;
+            }
+
+            // 0.2 Extract Markdown Tables (Line-by-line Scanner with Alignments & Badges)
+            const tablePlaceholders = [];
+            function isTableDelimiter(line) {
+                const trimmed = line.trim();
+                if (!trimmed.includes('|') || !trimmed.includes('-')) return false;
+                const parts = trimmed.split('|');
+                const middle = parts.filter((p, idx) => {
+                    if ((idx === 0 || idx === parts.length - 1) && p.trim() === '') return false;
+                    return true;
+                });
+                if (middle.length === 0) return false;
+                return middle.every(p => /^[\s:-]+$/.test(p) && p.includes('-'));
+            }
+
+            function splitTableRow(line) {
+                let trimmed = line.trim();
+                if (trimmed.startsWith('|')) trimmed = trimmed.substring(1);
+                if (trimmed.endsWith('|')) trimmed = trimmed.substring(0, trimmed.length - 1);
+                return trimmed.split('|').map(c => c.trim());
+            }
+
+            const rawLines = raw.split('\n');
+            const filteredLines = [];
+            let lineIdx = 0;
+
+            while (lineIdx < rawLines.length) {
+                const cur = rawLines[lineIdx];
+                if (lineIdx + 1 < rawLines.length && isTableDelimiter(rawLines[lineIdx + 1]) && cur.includes('|')) {
+                    const headers = splitTableRow(cur);
+                    const delims = splitTableRow(rawLines[lineIdx + 1]);
+                    const aligns = delims.map(d => {
+                        const s = d.trim();
+                        if (s.startsWith(':') && s.endsWith(':')) return 'center';
+                        if (s.endsWith(':')) return 'right';
+                        return 'left';
+                    });
+
+                    const bodyRows = [];
+                    let nextJ = lineIdx + 2;
+                    while (nextJ < rawLines.length && rawLines[nextJ].trim().includes('|') && !isTableDelimiter(rawLines[nextJ])) {
+                        const rowStr = rawLines[nextJ].trim();
+                        if (rowStr) bodyRows.push(splitTableRow(rowStr));
+                        nextJ++;
+                    }
+
+                    let tblHtml = '<div class="garda-table-wrap"><table class="garda-rec-table"><thead><tr>';
+                    headers.forEach((h, hIdx) => {
+                        const al = aligns[hIdx] || 'left';
+                        tblHtml += `<th style="text-align:${al};">${h}</th>`;
+                    });
+                    tblHtml += '</tr></thead><tbody>';
+
+                    bodyRows.forEach(cells => {
+                        tblHtml += '<tr>';
+                        cells.forEach((cell, cIdx) => {
+                            const al = aligns[cIdx] || 'left';
+                            let formatted = cell;
+                            const upper = formatted.toUpperCase();
+
+                            if (upper.includes('STRONG BUY')) {
+                                formatted = `<span class="rec-badge buy" style="background:rgba(16,185,129,0.22);border-color:#10b981;font-weight:800;">STRONG BUY</span>`;
+                            } else if (upper.includes('BUY ON WEAKNESS') || upper === 'BUY' || upper.includes('AKUMULASI') || upper.includes('ACCUMULATE')) {
+                                formatted = `<span class="rec-badge buy">${cell}</span>`;
+                            } else if (upper.includes('HOLD') || upper.includes('WAIT') || upper.includes('NETRAL') || upper.includes('NEUTRAL')) {
+                                formatted = `<span class="rec-badge hold">${cell}</span>`;
+                            } else if (upper.includes('TAKE PROFIT') || upper.includes('DISTRIBUSI') || upper === 'SELL' || upper.includes('STRONG SELL')) {
+                                formatted = `<span class="rec-badge sell">${cell}</span>`;
+                            }
+
+                            let cellClass = '';
+                            if (cell.length > 35) {
+                                cellClass = 'class="cell-desc"';
+                            } else if (/^(Rp|[\d.,+%]+$|\d+\s*:\s*[\d.+]+)/.test(cell) || cell.length < 15) {
+                                cellClass = 'class="cell-nowrap"';
+                            }
+
+                            tblHtml += `<td ${cellClass} style="text-align:${al};">${formatted}</td>`;
+                        });
+                        tblHtml += '</tr>';
+                    });
+                    tblHtml += '</tbody></table></div>';
+
+                    const ph = `@@GARDATABLE${tablePlaceholders.length}@@`;
+                    tablePlaceholders.push(tblHtml);
+                    filteredLines.push(ph);
+                    lineIdx = nextJ;
+                } else {
+                    filteredLines.push(cur);
+                    lineIdx++;
+                }
+            }
+            raw = filteredLines.join('\n');
 
             // 1. Codeblocks ```language ... ```
-            raw = raw.replace(/```[a-z]*\n([\s\S]*?)\n```/g, '<pre style="background:var(--bg-surface);padding:8px 12px;border-radius:6px;font-family:var(--font-mono);font-size:11.5px;overflow-x:auto;border:1px solid var(--border);margin:8px 0;"><code>$1</code></pre>');
+            raw = raw.replace(/```[a-z]*\n([\s\S]*?)\n```/g, '<pre style="background:var(--bg-surface);padding:8px 12px;border-radius:6px;font-family:var(--font-mono);font-size:11.5px;max-width:100%;overflow-x:auto;box-sizing:border-box;border:1px solid var(--border);margin:8px 0;white-space:pre-wrap;word-break:break-word;"><code>$1</code></pre>');
             // Inline code `code`
             raw = raw.replace(/`([^`\n]+)`/g, '<code style="background:var(--bg-surface);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:11px;color:var(--accent-cyan);border:1px solid var(--border);">$1</code>');
 
@@ -9071,7 +9618,7 @@
             str = str.replace(/^>\s*(.*$)/gm, '<div style="border-left:3px solid var(--accent-orange);padding:4px 10px;margin:6px 0;background:rgba(249,115,22,0.06);border-radius:0 4px 4px 0;color:var(--text-secondary);font-size:12px;">$1</div>');
 
             // 6. Markdown links [text](url)
-            str = str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:var(--accent-orange);text-decoration:underline;">$1</a>');
+            str = str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:var(--accent-orange);text-decoration:underline;word-break:break-all;overflow-wrap:anywhere;">$1</a>');
 
             // 7. Bold and Italics
             str = str.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
@@ -9081,19 +9628,19 @@
             str = str.replace(/_([^_\n]+)_/g, '<em>$1</em>');
 
             // 8. Numbered lists (1. Item)
-            str = str.replace(/^(\d+)\.\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-cyan);font-family:var(--font-mono);font-size:11px;font-weight:700;min-width:16px;">$1.</span><span>$2</span></div>');
+            str = str.replace(/^(\d+)\.\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-cyan);font-family:var(--font-mono);font-size:11px;font-weight:700;min-width:16px;">$1.</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$2</span></div>');
 
             // 9. Bullet lists (* Item, - Item, • Item)
-            str = str.replace(/^[\*\-•]\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-orange);font-size:9px;line-height:1.7;">●</span><span>$1</span></div>');
+            str = str.replace(/^[\*\-•]\s+(.*$)/gm, '<div style="display:flex;align-items:flex-start;gap:6px;margin:3px 0 3px 2px;"><span style="color:var(--accent-orange);font-size:9px;line-height:1.7;">●</span><span style="flex:1;min-width:0;word-break:break-word;overflow-wrap:anywhere;">$1</span></div>');
 
             // 10. Clean stray asterisks, stray hashes, or accidental markup artifacts
-            str = str.replace(/(^|\s)\*{1,3}(\s|$)/g, '$1$2'); // isolated * or ** or ***
-            str = str.replace(/(^|\s)#{1,6}(\s|$)/g, '$1$2'); // isolated #
-            str = str.replace(/\*{2,}/g, ''); // remaining unclosed **
-            str = str.replace(/_{2,}/g, ''); // remaining unclosed __
-            str = str.replace(/~{2,}/g, ''); // strikethrough artifacts
+            str = str.replace(/(^|\s)\*{1,3}(\s|$)/g, '$1$2');
+            str = str.replace(/(^|\s)#{1,6}(\s|$)/g, '$1$2');
+            str = str.replace(/\*{2,}/g, '');
+            str = str.replace(/_{2,}/g, '');
+            str = str.replace(/~{2,}/g, '');
 
-            // 11. Format positive / negative data indicators (+ is green chart arrow up, - is red chart arrow down)
+            // 11. Format positive / negative data indicators
             str = str.replace(/(^|\s)(\+[\d.,]+%?)/g, `$1<span style="color:var(--green-gain);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_UP}$2</span>`);
             str = str.replace(/(^|\s)(-[\d.,]+%?)/g, `$1<span style="color:var(--red-loss);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_DOWN}$2</span>`);
 
@@ -9104,13 +9651,21 @@
                 line = line.trim();
                 if (!line) {
                     out.push('<div style="height:5px;"></div>');
-                } else if (line.startsWith('<div') || line.startsWith('<h') || line.startsWith('<hr') || line.startsWith('<pre')) {
+                } else if (line.startsWith('<div') || line.startsWith('<h') || line.startsWith('<hr') || line.startsWith('<pre') || line.startsWith('@@GARDA')) {
                     out.push(line);
                 } else {
-                    out.push(`<div style="margin:2px 0;line-height:1.55;">${line}</div>`);
+                    out.push(`<div style="margin:2px 0;line-height:1.55;word-break:break-word;overflow-wrap:anywhere;">${line}</div>`);
                 }
             }
-            return out.join('');
+
+            let finalHtml = out.join('');
+            chartPlaceholders.forEach((h, i) => {
+                finalHtml = finalHtml.replace(`@@GARDACHART${i}@@`, h);
+            });
+            tablePlaceholders.forEach((h, i) => {
+                finalHtml = finalHtml.replace(`@@GARDATABLE${i}@@`, h);
+            });
+            return finalHtml;
         }
 
         async function sendChatMessage() {
@@ -9197,6 +9752,7 @@
 
                 aiMsg.innerHTML = responseHtml;
                 chatFeed.appendChild(aiMsg);
+                renderQueuedGardaCharts();
 
                 // Speak via TTS if voice enabled
                 if (isGardaVoiceEnabled && data.summary_insight) {
@@ -10032,9 +10588,91 @@
         let marketWebSocket = null;
         let wsReconnectAttempts = 0;
         let marketAudioEnabled = localStorage.getItem('bx-market-audio') !== 'false';
+        let marketToastEnabled = localStorage.getItem('bx-market-toast') !== 'false';
         let alertHistoryItems = [];
         let unreadAlertCount = 0;
         let currentRadarFilter = 'ALL';
+
+        function initFooterNotificationControl() {
+            const cb = document.getElementById('footer-notif-checkbox');
+            const stateEl = document.getElementById('footer-notif-status');
+            if (cb) {
+                cb.checked = marketToastEnabled;
+            }
+            if (stateEl) {
+                stateEl.textContent = marketToastEnabled ? 'ON' : 'OFF';
+                stateEl.className = `footer-notif-state ${marketToastEnabled ? 'on' : 'off'}`;
+            }
+        }
+
+        function toggleToastNotifications(checked) {
+            marketToastEnabled = !!checked;
+            localStorage.setItem('bx-market-toast', marketToastEnabled ? 'true' : 'false');
+
+            const cb = document.getElementById('footer-notif-checkbox');
+            if (cb && cb.checked !== marketToastEnabled) {
+                cb.checked = marketToastEnabled;
+            }
+
+            const stateEl = document.getElementById('footer-notif-status');
+            if (stateEl) {
+                stateEl.textContent = marketToastEnabled ? 'ON' : 'OFF';
+                stateEl.className = `footer-notif-state ${marketToastEnabled ? 'on' : 'off'}`;
+            }
+
+            if (!marketToastEnabled) {
+                // Dimatikan: Tutup semua toast yang sedang tampil di pojok kanan bawah
+                const container = document.getElementById('ws-toast-container');
+                if (container) {
+                    const cards = container.querySelectorAll('.ws-toast-card');
+                    cards.forEach(c => {
+                        c.style.transition = 'all 0.25s ease';
+                        c.style.opacity = '0';
+                        c.style.transform = 'translateX(100%)';
+                        setTimeout(() => c.remove(), 250);
+                    });
+                }
+                console.log("[BE.N.IX Toast] Toast popups MUTED by footer checklist.");
+            } else {
+                console.log("[BE.N.IX Toast] Toast popups UNMUTED by footer checklist.");
+                showMasterToastNotice('🔔 Toast Notifikasi AKTIF: Pop-up alert pasar akan muncul setiap kali terjadi pergerakan atau anomali.');
+            }
+        }
+
+        function showMasterToastNotice(msg) {
+            if (!marketToastEnabled) return;
+            let container = document.getElementById('ws-toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'ws-toast-container';
+                container.className = 'ws-toast-container';
+                document.body.appendChild(container);
+            }
+            const toast = document.createElement('div');
+            toast.className = 'ws-toast-card buy';
+            toast.innerHTML = `
+                <div class="toast-top-row">
+                    <div class="toast-badge-title">
+                        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>SISTEM NOTIFIKASI</span>
+                        <span class="tag-pill cyan" style="font-size:9px;">TOAST ON</span>
+                    </div>
+                    <span class="toast-time">BARU SAJA</span>
+                </div>
+                <div class="toast-msg" style="color:var(--text-main);font-weight:600;font-size:12px;margin:6px 0;">${msg}</div>
+                <div class="toast-footer-actions">
+                    <button type="button" class="toast-btn primary" onclick="this.closest('.ws-toast-card').remove()">Tutup</button>
+                </div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.style.transition = 'all 0.35s ease';
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(100%)';
+                    setTimeout(() => toast.remove(), 350);
+                }
+            }, 4500);
+        }
 
         function initMarketWebSocket() {
             const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -10210,6 +10848,10 @@
         // 11. FLOATING WEBSOCKET TOAST ALERT BANNER
         // =========================================================================
         function showMarketAlertToast(alert) {
+            if (!marketToastEnabled) {
+                console.log("[BE.N.IX Toast] Toast market alert diabaikan (uncheck di footer checklist).");
+                return;
+            }
             const container = document.getElementById('ws-toast-container');
             if (!container) return;
 
@@ -12344,6 +12986,11 @@
             window.addEventListener('resize', () => {
                 if (currentActiveDashboard === 'chart-studio') {
                     resizeAll18Charts();
+                }
+                if (window.__gardaRenderedCharts) {
+                    window.__gardaRenderedCharts.forEach(c => {
+                        try { c.resize(); } catch(e){}
+                    });
                 }
             });
         })();
