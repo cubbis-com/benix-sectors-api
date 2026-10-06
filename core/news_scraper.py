@@ -572,23 +572,34 @@ class NewsAggregator:
             # Cached check for Sectors news
             sectors_news = await sectors_client.get("/news/", params=None, ttl_seconds=86400)
             items = sectors_news.get("data")
-            if items and isinstance(items, list):
-                for item in items[:10]:
+            raw_list = []
+            if isinstance(items, dict):
+                raw_list = items.get("results", [])
+            elif isinstance(items, list):
+                raw_list = items
+
+            if raw_list:
+                for item in raw_list[:15]:
                     title = item.get("title", "")
                     if not title:
                         continue
                     uid = hashlib.md5(f"sectors_{title}".encode()).hexdigest()[:16]
-                    full_text = f"{title} {item.get('summary', '')}"
+                    summary_text = item.get("body") or item.get("summary") or item.get("content", "")
+                    url = item.get("source") or item.get("url") or "https://sectors.app"
+                    symbols = [normalize_ticker(s) for s in item.get("symbols", [])] if item.get("symbols") else []
+                    matched = symbols or self.extract_matched_tickers(f"{title} {summary_text}")
+                    tags = item.get("tags", [])
+                    sentiment = "BULLISH" if any("bullish" in str(t).lower() for t in tags) else "BEARISH" if any("bearish" in str(t).lower() for t in tags) else self.detect_sentiment(f"{title} {summary_text}")
                     all_articles.append({
                         "id": uid,
                         "title": title,
-                        "summary": item.get("summary") or item.get("content", "")[:280],
-                        "url": item.get("url") or "https://sectors.app",
+                        "summary": summary_text[:300],
+                        "url": url,
                         "source": "Sectors Financial News (IDX)",
                         "country": "ID",
-                        "published_at": item.get("published_at") or scraped_ts,
-                        "matched_tickers": self.extract_matched_tickers(full_text),
-                        "sentiment": self.detect_sentiment(full_text),
+                        "published_at": item.get("timestamp") or item.get("published_at") or scraped_ts,
+                        "matched_tickers": matched,
+                        "sentiment": sentiment,
                         "scraped_at": scraped_ts
                     })
         except Exception as e:
@@ -724,6 +735,64 @@ class NewsAggregator:
 
     async def get_news_context_for_ticker(self, ticker: str, limit: int = 5) -> List[Dict[str, Any]]:
         """Get the most relevant news context for a specific stock ticker."""
-        return await self.get_headlines(ticker=ticker, limit=limit)
+        local_results = await self.get_headlines(ticker=ticker, limit=limit)
+        if local_results:
+            return local_results
+
+        # Fallback to Sectors API News by Symbol (cached with credit shield)
+        try:
+            clean_t = normalize_ticker(ticker)
+            res = await sectors_client.get("/news/", params={"symbols": clean_t}, ttl_seconds=3600)
+            data = res.get("data")
+            raw_items = []
+            if isinstance(data, dict):
+                raw_items = data.get("results", [])
+            elif isinstance(data, list):
+                raw_items = data
+
+            if raw_items:
+                fetched = []
+                async with aiosqlite.connect(self.db_path) as db:
+                    for item in raw_items[:limit]:
+                        title = item.get("title", "")
+                        if not title:
+                            continue
+                        uid = hashlib.md5(f"sec_{clean_t}_{title}".encode()).hexdigest()[:16]
+                        summary_txt = item.get("body") or item.get("summary") or item.get("content", "")
+                        source_url = item.get("source") or item.get("url") or "https://sectors.app"
+                        ts = item.get("timestamp") or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        tags = item.get("tags") or []
+                        sentiment = "BULLISH" if any("bullish" in str(t).lower() for t in tags) else "BEARISH" if any("bearish" in str(t).lower() for t in tags) else self.detect_sentiment(f"{title} {summary_txt}")
+                        source_name = "Kontan / IDX" if "kontan" in source_url.lower() else "Sectors Market News"
+
+                        entry = {
+                            "id": uid,
+                            "title": title,
+                            "summary": summary_txt[:350],
+                            "url": source_url,
+                            "source": source_name,
+                            "country": "ID",
+                            "published_at": ts,
+                            "matched_tickers": [clean_t],
+                            "sentiment": sentiment
+                        }
+                        fetched.append(entry)
+
+                        await db.execute("""
+                            INSERT OR REPLACE INTO news_headlines (
+                                id, title, summary, url, source, country, published_at,
+                                matched_tickers_json, sector_tags_json, sentiment, scraped_at, is_curated
+                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (
+                            uid, title, summary_txt[:350], source_url, source_name, "ID", ts,
+                            json.dumps([clean_t]), json.dumps(tags), sentiment, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 1
+                        ))
+                    await db.commit()
+                if fetched:
+                    return fetched
+        except Exception as e:
+            logger.debug("Failed fetching ticker news from Sectors API: %s", e)
+
+        return []
 
 news_aggregator = NewsAggregator()

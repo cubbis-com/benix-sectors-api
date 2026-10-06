@@ -417,20 +417,20 @@ class LocalMarketDB:
             """)
             await db.commit()
 
-            # Seed SQLite if empty or update with new topics
+            # Seed SQLite if empty (use INSERT OR IGNORE so live Sectors API data is never wiped)
             now = time.time()
             for sym, data in DEFAULT_SEED_MARKET["stocks"].items():
                 await db.execute(
-                    "INSERT OR REPLACE INTO local_market_entities VALUES (?, ?, ?, ?)",
+                    "INSERT OR IGNORE INTO local_market_entities VALUES (?, ?, ?, ?)",
                     (f"stock:{sym}", "stock", json.dumps(data), now)
                 )
             await db.execute(
-                "INSERT OR REPLACE INTO local_market_entities VALUES (?, ?, ?, ?)",
+                "INSERT OR IGNORE INTO local_market_entities VALUES (?, ?, ?, ?)",
                 ("market:overview", "overview", json.dumps(DEFAULT_SEED_MARKET["market_overview"]), now)
             )
             for top_key, top_data in DEFAULT_SEED_MARKET.get("umkm_topics", {}).items():
                 await db.execute(
-                    "INSERT OR REPLACE INTO local_market_entities VALUES (?, ?, ?, ?)",
+                    "INSERT OR IGNORE INTO local_market_entities VALUES (?, ?, ?, ?)",
                     (f"topic:{top_key}", "topic", json.dumps(top_data), now)
                 )
             await db.commit()
@@ -466,19 +466,45 @@ class LocalMarketDB:
 
     async def get_stock_locally(self, symbol: str) -> Optional[Dict[str, Any]]:
         """
-        1. Check SQLite api_cache (from previous Sectors calls)
+        1. Check SQLite api_cache (from previous Sectors calls for company report & flow)
         2. Check SQLite local_market_entities
         3. Check local JSON file
         Returns immediately with 0 credit cost.
         """
         sym = symbol.strip().upper()
 
-        # Step 1: Check SQLite api_cache
-        cache_key = f"company/report/{sym}?sections=overview,valuation,dividend"
-        cached_api = await cache_manager.get(cache_key)
-        if cached_api:
-            logger.info("⚡ [LOCAL SQLITE HIT] Retrieved %s from api_cache", sym)
-            return {"source": "local_sqlite_cache", "data": cached_api, "credits": 0}
+        # Step 1: Check SQLite api_cache for any cached report of this symbol
+        try:
+            async with aiosqlite.connect(self.db_path) as db:
+                async with db.execute(
+                    "SELECT response_json FROM api_cache WHERE (cache_key LIKE ? OR endpoint LIKE ?) AND expires_at > ? ORDER BY updated_at DESC LIMIT 1",
+                    (f"%company/report/{sym}%", f"%company/report/{sym}%", time.time())
+                ) as cur:
+                    row = await cur.fetchone()
+                    if row:
+                        cached_rep = json.loads(row[0])
+                        # Check foreign flow in cache as well
+                        flow_data = None
+                        async with db.execute(
+                            "SELECT response_json FROM api_cache WHERE (cache_key LIKE ? OR endpoint LIKE ?) AND expires_at > ? ORDER BY updated_at DESC LIMIT 1",
+                            (f"%foreign-flow/{sym}%", f"%foreign-flow/{sym}%", time.time())
+                        ) as f_cur:
+                            f_row = await f_cur.fetchone()
+                            if f_row:
+                                flow_data = json.loads(f_row[0])
+
+                        logger.info("⚡ [LOCAL SQLITE HIT] Retrieved %s from api_cache", sym)
+                        return {
+                            "source": "local_sqlite_cache",
+                            "data": {
+                                "symbol": sym,
+                                "company_report": cached_rep,
+                                "foreign_flow": flow_data
+                            },
+                            "credits": 0
+                        }
+        except Exception as e:
+            logger.debug("api_cache lookup error: %s", e)
 
         # Step 2: Check SQLite local_market_entities
         try:

@@ -5944,6 +5944,392 @@
                     </div>
                 </section> <!-- END DASH-REGIONAL-MACRO -->
 
+                <!-- ================= DASHBOARD 6: STUDIO 18 VISUALISASI FINANSIAL PASAR MODAL ================= -->
+                <section id="dash-chart-studio" class="dash-view-pane" style="display:none;" aria-label="Studio 18 Visualisasi Finansial">
+                    <div class="chart-studio-panel">
+                        <!-- Top Header Bar -->
+                        <div class="studio-top-bar">
+                            <div>
+                                <h3 style="margin:0;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                    <span>Studio 18 Visualisasi Finansial BE.N.IX</span>
+                                    <span class="tag-pill cyan" style="font-size:10px;">18 MODEL VISUALISASI</span>
+                                </h3>
+                                <p style="margin:4px 0 0 0;font-size:12px;color:var(--text-secondary);">
+                                    Suite analitik komprehensif 18 model visualisasi data interaktif: Aliran Likuiditas Sektoral, Matriks Risiko, Struktur Pasar, Valuasi, dan Korelasi Multi-Dimensi Bursa Efek Indonesia (IDX & Regional).
+                                </p>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px;">
+                                <button type="button" class="btn-refresh" onclick="initAll18Charts(true)" title="Muat Ulang Seluruh Visualisasi">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                                    <span>Segarkan Data</span>
+                                </button>
+                                <button type="button" class="btn-primary" onclick="askGardaAboutChart('ALL', 'Rangkuman Analisis Komprehensif 18 Chart Studio BE.N.IX')">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    <span>Sintesis Garda AI</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Filter Strip -->
+                        <div class="studio-filter-strip">
+                            <span style="font-size:11px;color:var(--text-muted);font-weight:600;margin-right:4px;">FILTER KATEGORI:</span>
+                            <button type="button" class="studio-filter-pill active" data-cat="ALL" onclick="filterStudioCharts('ALL', this)">Semua 18 Chart</button>
+                            <button type="button" class="studio-filter-pill" data-cat="FLOW" onclick="filterStudioCharts('FLOW', this)">Aliran & Hirarki (4)</button>
+                            <button type="button" class="studio-filter-pill" data-cat="DIST" onclick="filterStudioCharts('DIST', this)">Distribusi & Struktur (4)</button>
+                            <button type="button" class="studio-filter-pill" data-cat="TREND" onclick="filterStudioCharts('TREND', this)">Tren & Historis (6)</button>
+                            <button type="button" class="studio-filter-pill" data-cat="MULTI" onclick="filterStudioCharts('MULTI', this)">Multi-Variabel & Risiko (4)</button>
+                        </div>
+
+                        <!-- Grid of 18 Chart Cards -->
+                        <div class="chart-studio-grid" id="chart-studio-grid">
+                            <!-- Card 01: 1. Chord Diagram — Aliran Modal Antar Sektor -->
+                            <div class="chart-studio-card" id="card-chord" data-cat="FLOW">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">FLOW</span>
+                                            <span>1. Chord Diagram — Aliran Modal Antar Sektor</span>
+                                        </h4>
+                                        <p>Sirkulasi likuiditas dan rotasi dana antar 6 klaster sektor unggulan bursa IDX.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-chord')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-chord', 'benix_chart-chord.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-chord', '1. Chord Diagram — Aliran Modal Antar Sektor')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-chord" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 02: 2. Heatmap Chart — Matriks Return Bulanan Sektoral -->
+                            <div class="chart-studio-card" id="card-heatmap" data-cat="MULTI">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">MULTI</span>
+                                            <span>2. Heatmap Chart — Matriks Return Bulanan Sektoral</span>
+                                        </h4>
+                                        <p>Tingkat pengembalian (return %) historis 8 sektor BEI sepanjang 12 bulan kalender.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-heatmap')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-heatmap', 'benix_chart-heatmap.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-heatmap', '2. Heatmap Chart — Matriks Return Bulanan Sektoral')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-heatmap" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 03: 3. Sankey Chart — Pemetaan Likuiditas Dana & Kepemilikan -->
+                            <div class="chart-studio-card" id="card-sankey" data-cat="FLOW">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">FLOW</span>
+                                            <span>3. Sankey Chart — Pemetaan Likuiditas Dana & Kepemilikan</span>
+                                        </h4>
+                                        <p>Aliran dana modal investor asing & domestik menuju klaster sektor dan saham blue chip.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-sankey')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-sankey', 'benix_chart-sankey.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-sankey', '3. Sankey Chart — Pemetaan Likuiditas Dana & Kepemilikan')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-sankey" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 04: 4. Sunburst Chart — Hirarki Sektor & Sub-Industri IDX -->
+                            <div class="chart-studio-card" id="card-sunburst" data-cat="FLOW">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">FLOW</span>
+                                            <span>4. Sunburst Chart — Hirarki Sektor & Sub-Industri IDX</span>
+                                        </h4>
+                                        <p>Struktur hierarki multi-tingkat: Sektor BEI ➔ Sub-sektor ➔ Emiten konstituen.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-sunburst')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-sunburst', 'benix_chart-sunburst.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-sunburst', '4. Sunburst Chart — Hirarki Sektor & Sub-Industri IDX')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-sunburst" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 05: 5. Treemap Chart — Peta Bobot Kapitalisasi Pasar (Market Cap) -->
+                            <div class="chart-studio-card" id="card-treemap" data-cat="FLOW">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">FLOW</span>
+                                            <span>5. Treemap Chart — Peta Bobot Kapitalisasi Pasar (Market Cap)</span>
+                                        </h4>
+                                        <p>Distribusi proporsi Market Cap saham IHSG berbobot besar dalam blok visual proporsional.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-treemap')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-treemap', 'benix_chart-treemap.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-treemap', '5. Treemap Chart — Peta Bobot Kapitalisasi Pasar (Market Cap)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-treemap" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 06: 6. Chart of Bars — Top 10 Net Foreign Inflow (Miliar Rp) -->
+                            <div class="chart-studio-card" id="card-bar" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>6. Chart of Bars — Top 10 Net Foreign Inflow (Miliar Rp)</span>
+                                        </h4>
+                                        <p>Peringkat akumulasi beli bersih investor asing harian pada saham unggulan indeks LQ45.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-bar')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-bar', 'benix_chart-bar.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-bar', '6. Chart of Bars — Top 10 Net Foreign Inflow (Miliar Rp)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-bar" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 07: 7. Column Chart — Performa Rata-rata Sektor Hari Ini (%) -->
+                            <div class="chart-studio-card" id="card-column" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>7. Column Chart — Performa Rata-rata Sektor Hari Ini (%)</span>
+                                        </h4>
+                                        <p>Kinerja persentase perubahan harian 10 sektor IDX JASICA (Financials, Energy, dll.).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-column')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-column', 'benix_chart-column.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-column', '7. Column Chart — Performa Rata-rata Sektor Hari Ini (%)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-column" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 08: 8. Chart of Pie — Proporsi Kapitalisasi Sektoral IHSG -->
+                            <div class="chart-studio-card" id="card-pie" data-cat="DIST">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">DIST</span>
+                                            <span>8. Chart of Pie — Proporsi Kapitalisasi Sektoral IHSG</span>
+                                        </h4>
+                                        <p>Pangsa pasar kapitalisasi bursa saham Indonesia berdasarkan klaster sektor industri.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-pie')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-pie', 'benix_chart-pie.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-pie', '8. Chart of Pie — Proporsi Kapitalisasi Sektoral IHSG')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-pie" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 09: 9. Chart of Donut — Komposisi Profil Investor Saham BEI -->
+                            <div class="chart-studio-card" id="card-donut" data-cat="DIST">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">DIST</span>
+                                            <span>9. Chart of Donut — Komposisi Profil Investor Saham BEI</span>
+                                        </h4>
+                                        <p>Porsi kepemilikan efek ekuitas: Asing Institusi, Domestik Institusi, Investor Ritel, dll.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-donut')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-donut', 'benix_chart-donut.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-donut', '9. Chart of Donut — Komposisi Profil Investor Saham BEI')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-donut" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 10: 10. Chart of Funnel — Pipeline IPO & Eksekusi Order Book -->
+                            <div class="chart-studio-card" id="card-funnel" data-cat="DIST">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">DIST</span>
+                                            <span>10. Chart of Funnel — Pipeline IPO & Eksekusi Order Book</span>
+                                        </h4>
+                                        <p>Tingkat konversi penyaluran order pasar: Registrasi OJK ➔ Book Building ➔ Listing BEI.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-funnel')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-funnel', 'benix_chart-funnel.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-funnel', '10. Chart of Funnel — Pipeline IPO & Eksekusi Order Book')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-funnel" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 11: 11. Chart of Lines — Komparasi Tren Multi-Indeks (30 Hari) -->
+                            <div class="chart-studio-card" id="card-lines" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>11. Chart of Lines — Komparasi Tren Multi-Indeks (30 Hari)</span>
+                                        </h4>
+                                        <p>Trajektori pergerakan relatif IHSG, LQ45, IDX30, dan IDXHIDIV20 (30 hari bursa).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-lines')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-lines', 'benix_chart-lines.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-lines', '11. Chart of Lines — Komparasi Tren Multi-Indeks (30 Hari)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-lines" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 12: 12. Chart of Combination — Indeks Harga vs Volume Transaksi -->
+                            <div class="chart-studio-card" id="card-combination" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>12. Chart of Combination — Indeks Harga vs Volume Transaksi</span>
+                                        </h4>
+                                        <p>Kombinasi pergerakan level harga IHSG (garis) bersanding dengan turnover harian (kolom).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-combination')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-combination', 'benix_chart-combination.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-combination', '12. Chart of Combination — Indeks Harga vs Volume Transaksi')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-combination" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 13: 13. Chart Stacked - Column — Komposisi Pendapatan Perbankan -->
+                            <div class="chart-studio-card" id="card-stacked-column" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>13. Chart Stacked - Column — Komposisi Pendapatan Perbankan</span>
+                                        </h4>
+                                        <p>Struktur komposisi laba Big 4 Banks: Bunga Bersih vs Fee-Based vs Treasury vs Digital.</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-stacked-column')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-stacked-column', 'benix_chart-stacked-column.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-stacked-column', '13. Chart Stacked - Column — Komposisi Pendapatan Perbankan')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-stacked-column" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 14: 14. Chart of Radar — Evaluasi 5 Pilar Fundamental Emiten -->
+                            <div class="chart-studio-card" id="card-radar" data-cat="MULTI">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">MULTI</span>
+                                            <span>14. Chart of Radar — Evaluasi 5 Pilar Fundamental Emiten</span>
+                                        </h4>
+                                        <p>Spider chart multi-faktor komparasi BBCA vs BBRI vs BMRI (CAR, ROE, NPL, BOPO, CASA).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-radar')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-radar', 'benix_chart-radar.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-radar', '14. Chart of Radar — Evaluasi 5 Pilar Fundamental Emiten')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-radar" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 15: 15. Chart of Area — Kumulatif Net Foreign Flow (YTD) -->
+                            <div class="chart-studio-card" id="card-area" data-cat="TREND">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">TREND</span>
+                                            <span>15. Chart of Area — Kumulatif Net Foreign Flow (YTD)</span>
+                                        </h4>
+                                        <p>Dinamika akumulasi likuiditas modal asing kumulatif sepanjang tahun berjalan (Billion IDR).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-area')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-area', 'benix_chart-area.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-area', '15. Chart of Area — Kumulatif Net Foreign Flow (YTD)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-area" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 16: 16. Chart of Pyramid — Piramida Valuasi Rasio P/E Emiten -->
+                            <div class="chart-studio-card" id="card-pyramid" data-cat="DIST">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">DIST</span>
+                                            <span>16. Chart of Pyramid — Piramida Valuasi Rasio P/E Emiten</span>
+                                        </h4>
+                                        <p>Stratifikasi jenjang valuasi emiten BEI: Deep Value (<6x) hingga Premium (>25x).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-pyramid')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-pyramid', 'benix_chart-pyramid.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-pyramid', '16. Chart of Pyramid — Piramida Valuasi Rasio P/E Emiten')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-pyramid" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 17: 17. Chart of Bubble — Valuasi P/E vs ROE vs Market Cap -->
+                            <div class="chart-studio-card" id="card-bubble" data-cat="MULTI">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">MULTI</span>
+                                            <span>17. Chart of Bubble — Valuasi P/E vs ROE vs Market Cap</span>
+                                        </h4>
+                                        <p>Analisis efisiensi modal: Rasio P/E (X) vs ROE % (Y) vs Ukuran Bubble (Market Cap).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-bubble')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-bubble', 'benix_chart-bubble.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-bubble', '17. Chart of Bubble — Valuasi P/E vs ROE vs Market Cap')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-bubble" class="chart-mount-box"></div>
+                            </div>
+
+                            <!-- Card 18: 18. Chart of Scatter — Risk-Return Plane (Beta vs Alpha CAPM) -->
+                            <div class="chart-studio-card" id="card-scatter" data-cat="MULTI">
+                                <div class="chart-card-header">
+                                    <div class="chart-card-title-group">
+                                        <h4>
+                                            <span class="tag-pill cyan" style="font-size:9.5px;padding:2px 6px;">MULTI</span>
+                                            <span>18. Chart of Scatter — Risk-Return Plane (Beta vs Alpha CAPM)</span>
+                                        </h4>
+                                        <p>Sebaran risiko sistematis Beta terhadap return saham dengan Garis Pasar Modal (SML).</p>
+                                    </div>
+                                    <div class="chart-card-actions">
+                                        <button type="button" class="chart-action-btn btn-focus-toggle" onclick="toggleChartCardFocus('card-scatter')" title="Perbesar Layar Penuh">⛶ Fokus</button>
+                                        <button type="button" class="chart-action-btn" onclick="downloadChartImage('chart-scatter', 'benix_chart-scatter.png')" title="Unduh Gambar PNG">📷 Unduh</button>
+                                        <button type="button" class="chart-action-btn" style="color:var(--accent-orange);" onclick="askGardaAboutChart('chart-scatter', '18. Chart of Scatter — Risk-Return Plane (Beta vs Alpha CAPM)')" title="Tanya Analisis Garda AI">⚡ Garda</button>
+                                    </div>
+                                </div>
+                                <div id="chart-scatter" class="chart-mount-box"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section> <!-- END DASH-CHART-STUDIO -->
+
+
             </main>
 
         </div>
@@ -9632,6 +10018,11 @@
                 }
             } else if (viewKey === 'live-radar') {
                 renderRadarFeed();
+            } else if (viewKey === 'chart-studio') {
+                setTimeout(() => {
+                    initAll18Charts();
+                    resizeAll18Charts();
+                }, 40);
             }
         }
 
@@ -10666,6 +11057,1297 @@
             link.click();
             document.body.removeChild(link);
         }
+    
+        // =========================================================================
+        // 13. STUDIO 18 VISUALISASI FINANSIAL PASAR MODAL (APACHE ECHARTS 5)
+        // =========================================================================
+        window.chartStudioInstances = window.chartStudioInstances || {};
+        window._charts18Initialized = false;
+
+        function getStudioThemeTokens() {
+            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+            return {
+                isDark: isDark,
+                textColor: isDark ? '#94a3b8' : '#475569',
+                titleColor: isDark ? '#f8fafc' : '#0f172a',
+                gridBorderColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
+                splitLineColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+                tooltipBg: isDark ? 'rgba(15, 23, 42, 0.94)' : 'rgba(255, 255, 255, 0.96)',
+                tooltipBorder: isDark ? '#334155' : '#cbd5e1',
+                tooltipText: isDark ? '#f8fafc' : '#0f172a'
+            };
+        }
+
+        function initAll18Charts(force) {
+            if (window._charts18Initialized && !force) {
+                resizeAll18Charts();
+                return;
+            }
+            if (typeof echarts === 'undefined') {
+                console.warn('[Studio 18] Apache ECharts belum siap, mencoba memuat ulang...');
+                setTimeout(() => initAll18Charts(force), 300);
+                return;
+            }
+
+            const t = getStudioThemeTokens();
+
+            // Helper to get or create instance
+            function getChartInst(mountId) {
+                const el = document.getElementById(mountId);
+                if (!el) return null;
+                if (window.chartStudioInstances[mountId]) {
+                    try { window.chartStudioInstances[mountId].dispose(); } catch(e){}
+                }
+                const inst = echarts.init(el);
+                window.chartStudioInstances[mountId] = inst;
+                return inst;
+            }
+
+            // 1. CHORD DIAGRAM (chart-chord)
+            const cChord = getChartInst('chart-chord');
+            if (cChord) {
+                const chordNodes = [
+                    { name: 'Financials\n(Perbankan)', symbolSize: 38, itemStyle: { color: '#38bdf8' } },
+                    { name: 'Energy\n(Batubara/Migas)', symbolSize: 32, itemStyle: { color: '#f59e0b' } },
+                    { name: 'Basic Materials\n(Nikel/Emas)', symbolSize: 30, itemStyle: { color: '#10b981' } },
+                    { name: 'Consumer\n(Konsumsi)', symbolSize: 26, itemStyle: { color: '#ec4899' } },
+                    { name: 'Infra & Telco\n(TLKM/ISAT)', symbolSize: 24, itemStyle: { color: '#8b5cf6' } },
+                    { name: 'Technology\n(Digital)', symbolSize: 20, itemStyle: { color: '#06b6d4' } }
+                ];
+                const chordLinks = [
+                    { source: 'Financials\n(Perbankan)', target: 'Energy\n(Batubara/Migas)', value: 2.8, lineStyle: { width: 4 } },
+                    { source: 'Financials\n(Perbankan)', target: 'Basic Materials\n(Nikel/Emas)', value: 2.1, lineStyle: { width: 3.5 } },
+                    { source: 'Energy\n(Batubara/Migas)', target: 'Financials\n(Perbankan)', value: 3.4, lineStyle: { width: 5 } },
+                    { source: 'Basic Materials\n(Nikel/Emas)', target: 'Consumer\n(Konsumsi)', value: 1.2, lineStyle: { width: 2 } },
+                    { source: 'Consumer\n(Konsumsi)', target: 'Financials\n(Perbankan)', value: 1.9, lineStyle: { width: 3 } },
+                    { source: 'Infra & Telco\n(TLKM/ISAT)', target: 'Technology\n(Digital)', value: 1.5, lineStyle: { width: 2.5 } },
+                    { source: 'Technology\n(Digital)', target: 'Financials\n(Perbankan)', value: 0.9, lineStyle: { width: 1.8 } },
+                    { source: 'Energy\n(Batubara/Migas)', target: 'Basic Materials\n(Nikel/Emas)', value: 1.7, lineStyle: { width: 2.8 } },
+                    { source: 'Infra & Telco\n(TLKM/ISAT)', target: 'Financials\n(Perbankan)', value: 1.3, lineStyle: { width: 2.2 } }
+                ];
+                cChord.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(params) {
+                            if (params.dataType === 'edge') {
+                                return `<strong>Rotasi Likuiditas Antar Sektor</strong><br/>${params.data.source.replace('\n', ' ')} ➔ ${params.data.target.replace('\n', ' ')}<br/>Nilai Aliran: <b>Rp ${params.data.value} Triliun</b>`;
+                            }
+                            return `<strong>${params.name.replace('\n', ' ')}</strong><br/>Klaster Sektoral Pasar Modal`;
+                        }
+                    },
+                    series: [{
+                        type: 'graph',
+                        layout: 'circular',
+                        circular: { rotateLabel: true },
+                        data: chordNodes,
+                        links: chordLinks,
+                        roam: false,
+                        label: { show: true, position: 'right', formatter: '{b}', fontSize: 9.5, color: t.textColor },
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 8],
+                        edgeLabel: {
+                            show: true,
+                            fontSize: 9,
+                            color: t.textColor,
+                            formatter: function(p) { return 'Rp ' + p.value + 'T'; }
+                        },
+                        lineStyle: { color: 'source', curveness: 0.3, opacity: 0.7 },
+                        emphasis: { focus: 'adjacency', lineStyle: { width: 6, opacity: 1 } }
+                    }]
+                });
+            }
+
+            // 2. HEATMAP CHART (chart-heatmap)
+            const cHeatmap = getChartInst('chart-heatmap');
+            if (cHeatmap) {
+                const heatMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+                const heatSectors = ['Perbankan', 'Energi', 'Bahan Baku', 'Konsumer', 'Infrastruktur', 'Kesehatan', 'Teknologi', 'Properti'];
+                const heatData = [
+                    [0,0,2.4],[1,0,3.1],[2,0,-1.2],[3,0,1.8],[4,0,4.2],[5,0,-0.8],[6,0,2.5],[7,0,1.1],[8,0,-2.3],[9,0,3.4],[10,0,5.1],[11,0,4.8],
+                    [0,1,5.2],[1,1,4.1],[2,1,6.8],[3,1,-2.4],[4,1,-4.1],[5,1,3.2],[6,1,7.5],[7,1,1.2],[8,1,-1.5],[9,1,-3.2],[10,1,2.1],[11,1,3.5],
+                    [0,2,3.1],[1,2,-1.4],[2,2,4.5],[3,2,6.2],[4,2,2.1],[5,2,-3.1],[6,2,4.8],[7,2,5.2],[8,2,-2.8],[9,2,1.4],[10,2,3.8],[11,2,2.9],
+                    [0,3,1.1],[1,3,0.8],[2,3,1.5],[3,3,2.1],[4,3,-1.2],[5,3,0.5],[6,3,1.8],[7,3,0.4],[8,3,-0.9],[9,3,1.2],[10,3,2.4],[11,3,3.1],
+                    [0,4,-0.5],[1,4,1.2],[2,4,-1.8],[3,4,0.4],[4,4,2.5],[5,4,1.8],[6,4,-0.8],[7,4,2.1],[8,4,1.4],[9,4,-1.1],[10,4,0.9],[11,4,1.5],
+                    [0,5,1.8],[1,5,-0.4],[2,5,0.9],[3,5,-1.2],[4,5,1.5],[5,5,3.2],[6,5,-1.1],[7,5,0.5],[8,5,1.2],[9,5,-0.8],[10,5,1.4],[11,5,2.0],
+                    [0,6,-4.2],[1,6,-2.8],[2,6,5.1],[3,6,7.8],[4,6,-6.2],[5,6,-1.8],[6,6,8.2],[7,6,-3.4],[8,6,-5.1],[9,6,4.1],[10,6,-2.5],[11,6,6.4],
+                    [0,7,-1.2],[1,7,0.5],[2,7,-2.1],[3,7,1.4],[4,7,-0.8],[5,7,0.2],[6,7,2.1],[7,7,-1.5],[8,7,0.4],[9,7,-0.5],[10,7,1.8],[11,7,2.5]
+                ];
+                cHeatmap.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        position: 'top',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            const val = p.data[2];
+                            const sign = val > 0 ? '+' : '';
+                            return `<strong>${heatSectors[p.data[1]]} — ${heatMonths[p.data[0]]}</strong><br/>Return Historis: <b style="color:${val >= 0 ? '#10b981' : '#ef4444'}">${sign}${val}%</b>`;
+                        }
+                    },
+                    grid: { top: 15, right: 70, bottom: 25, left: 85 },
+                    xAxis: {
+                        type: 'category',
+                        data: heatMonths,
+                        splitArea: { show: true },
+                        axisLabel: { color: t.textColor, fontSize: 9.5 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: heatSectors,
+                        splitArea: { show: true },
+                        axisLabel: { color: t.textColor, fontSize: 9.5 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    visualMap: {
+                        min: -5,
+                        max: 8,
+                        calculable: true,
+                        orient: 'vertical',
+                        right: 0,
+                        top: 'center',
+                        inRange: { color: ['#ef4444', '#1e293b', '#10b981'] },
+                        textStyle: { color: t.textColor, fontSize: 9 }
+                    },
+                    series: [{
+                        name: 'Return Sektoral (%)',
+                        type: 'heatmap',
+                        data: heatData,
+                        label: {
+                            show: true,
+                            fontSize: 8.5,
+                            color: '#ffffff',
+                            formatter: function(p) { return (p.data[2] > 0 ? '+' : '') + p.data[2] + '%'; }
+                        },
+                        emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0, 0, 0, 0.5)' } }
+                    }]
+                });
+            }
+
+            // 3. SANKEY CHART (chart-sankey)
+            const cSankey = getChartInst('chart-sankey');
+            if (cSankey) {
+                const sankeyNodes = [
+                    { name: 'Investor Asing Institusi', itemStyle: { color: '#38bdf8' } },
+                    { name: 'Domestik Institusi & Dapen', itemStyle: { color: '#10b981' } },
+                    { name: 'Investor Ritel Domestik', itemStyle: { color: '#f59e0b' } },
+                    { name: 'Sektor Perbankan (IDXFIN)', itemStyle: { color: '#6366f1' } },
+                    { name: 'Sektor Energi (IDXENERGY)', itemStyle: { color: '#ec4899' } },
+                    { name: 'Sektor Bahan Baku (IDXBASIC)', itemStyle: { color: '#14b8a6' } },
+                    { name: 'Sektor Telko (IDXINFRA)', itemStyle: { color: '#8b5cf6' } },
+                    { name: 'BBCA', itemStyle: { color: '#38bdf8' } },
+                    { name: 'BBRI', itemStyle: { color: '#0ea5e9' } },
+                    { name: 'BMRI', itemStyle: { color: '#0284c7' } },
+                    { name: 'BREN', itemStyle: { color: '#f43f5e' } },
+                    { name: 'AMMN', itemStyle: { color: '#10b981' } },
+                    { name: 'TLKM', itemStyle: { color: '#a855f7' } }
+                ];
+                const sankeyLinks = [
+                    { source: 'Investor Asing Institusi', target: 'Sektor Perbankan (IDXFIN)', value: 18.5 },
+                    { source: 'Investor Asing Institusi', target: 'Sektor Bahan Baku (IDXBASIC)', value: 8.2 },
+                    { source: 'Investor Asing Institusi', target: 'Sektor Telko (IDXINFRA)', value: 4.3 },
+                    { source: 'Domestik Institusi & Dapen', target: 'Sektor Perbankan (IDXFIN)', value: 12.4 },
+                    { source: 'Domestik Institusi & Dapen', target: 'Sektor Energi (IDXENERGY)', value: 9.1 },
+                    { source: 'Domestik Institusi & Dapen', target: 'Sektor Bahan Baku (IDXBASIC)', value: 5.6 },
+                    { source: 'Investor Ritel Domestik', target: 'Sektor Energi (IDXENERGY)', value: 7.8 },
+                    { source: 'Investor Ritel Domestik', target: 'Sektor Perbankan (IDXFIN)', value: 6.2 },
+                    { source: 'Investor Ritel Domestik', target: 'Sektor Bahan Baku (IDXBASIC)', value: 4.5 },
+                    { source: 'Sektor Perbankan (IDXFIN)', target: 'BBCA', value: 15.6 },
+                    { source: 'Sektor Perbankan (IDXFIN)', target: 'BBRI', value: 12.1 },
+                    { source: 'Sektor Perbankan (IDXFIN)', target: 'BMRI', value: 9.4 },
+                    { source: 'Sektor Energi (IDXENERGY)', target: 'BREN', value: 11.2 },
+                    { source: 'Sektor Bahan Baku (IDXBASIC)', target: 'AMMN', value: 13.5 },
+                    { source: 'Sektor Telko (IDXINFRA)', target: 'TLKM', value: 4.3 }
+                ];
+                cSankey.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        triggerOn: 'mousemove',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            if (p.dataType === 'edge') {
+                                return `<strong>Aliran Likuiditas Modal</strong><br/>${p.data.source} ➔ ${p.data.target}<br/>Volume Aliran: <b>Rp ${p.data.value} Triliun</b>`;
+                            }
+                            return `<strong>${p.name}</strong><br/>Volume Total Node: <b>Rp ${p.value || '-'} Triliun</b>`;
+                        }
+                    },
+                    series: [{
+                        type: 'sankey',
+                        data: sankeyNodes,
+                        links: sankeyLinks,
+                        emphasis: { focus: 'adjacency' },
+                        nodeWidth: 14,
+                        nodeGap: 10,
+                        layoutIterations: 32,
+                        lineStyle: { color: 'gradient', curveness: 0.5, opacity: 0.45 },
+                        label: { color: t.textColor, fontSize: 9.5, fontWeight: 600 }
+                    }]
+                });
+            }
+
+            // 4. SUNBURST CHART (chart-sunburst)
+            const cSunburst = getChartInst('chart-sunburst');
+            if (cSunburst) {
+                const sunburstData = [{
+                    name: 'IHSG BEI',
+                    itemStyle: { color: '#1e293b' },
+                    children: [
+                        {
+                            name: 'Keuangan',
+                            itemStyle: { color: '#0284c7' },
+                            children: [
+                                {
+                                    name: 'Bank Konvensional',
+                                    itemStyle: { color: '#38bdf8' },
+                                    children: [
+                                        { name: 'BBCA', value: 1245, itemStyle: { color: '#7dd3fc' } },
+                                        { name: 'BBRI', value: 750, itemStyle: { color: '#38bdf8' } },
+                                        { name: 'BMRI', value: 638, itemStyle: { color: '#0ea5e9' } },
+                                        { name: 'BBNI', value: 202, itemStyle: { color: '#0284c7' } }
+                                    ]
+                                },
+                                {
+                                    name: 'Bank Syariah & Lain',
+                                    itemStyle: { color: '#0369a1' },
+                                    children: [
+                                        { name: 'BRIS', value: 132, itemStyle: { color: '#075985' } },
+                                        { name: 'BBTN', value: 48, itemStyle: { color: '#0c4a6e' } }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: 'Energi & Tambang',
+                            itemStyle: { color: '#d97706' },
+                            children: [
+                                {
+                                    name: 'Panas Bumi / EBT',
+                                    itemStyle: { color: '#f59e0b' },
+                                    children: [
+                                        { name: 'BREN', value: 915, itemStyle: { color: '#fbbf24' } },
+                                        { name: 'PGEO', value: 52, itemStyle: { color: '#fcd34d' } }
+                                    ]
+                                },
+                                {
+                                    name: 'Batubara & Migas',
+                                    itemStyle: { color: '#b45309' },
+                                    children: [
+                                        { name: 'ADRO', value: 115, itemStyle: { color: '#d97706' } },
+                                        { name: 'PTBA', value: 34, itemStyle: { color: '#b45309' } },
+                                        { name: 'MEDC', value: 45, itemStyle: { color: '#92400e' } }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: 'Bahan Baku & Nikel',
+                            itemStyle: { color: '#059669' },
+                            children: [
+                                {
+                                    name: 'Tembaga & Emas',
+                                    itemStyle: { color: '#10b981' },
+                                    children: [
+                                        { name: 'AMMN', value: 580, itemStyle: { color: '#34d399' } },
+                                        { name: 'MDKA', value: 62, itemStyle: { color: '#6ee7b7' } }
+                                    ]
+                                },
+                                {
+                                    name: 'Nikel & Bauksit',
+                                    itemStyle: { color: '#047857' },
+                                    children: [
+                                        { name: 'INCO', value: 42, itemStyle: { color: '#10b981' } },
+                                        { name: 'ANTM', value: 41, itemStyle: { color: '#059669' } }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: 'Infrastruktur & Telko',
+                            itemStyle: { color: '#7c3aed' },
+                            children: [
+                                {
+                                    name: 'Telekomunikasi',
+                                    itemStyle: { color: '#8b5cf6' },
+                                    children: [
+                                        { name: 'TLKM', value: 310, itemStyle: { color: '#a78bfa' } },
+                                        { name: 'ISAT', value: 82, itemStyle: { color: '#8b5cf6' } }
+                                    ]
+                                },
+                                {
+                                    name: 'Menara & Jalan Tol',
+                                    itemStyle: { color: '#6d28d9' },
+                                    children: [
+                                        { name: 'TOWR', value: 44, itemStyle: { color: '#5b21b6' } },
+                                        { name: 'JSMR', value: 38, itemStyle: { color: '#4c1d95' } }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }];
+                cSunburst.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            return `<strong>${p.name}</strong><br/>Kapitalisasi Pasar: <b>Rp ${p.value ? p.value.toLocaleString('id-ID') : '-'} Triliun</b>`;
+                        }
+                    },
+                    series: [{
+                        type: 'sunburst',
+                        data: sunburstData,
+                        radius: ['14%', '92%'],
+                        label: { rotate: 'radial', color: '#ffffff', fontSize: 9 },
+                        itemStyle: { borderRadius: 4, borderWidth: 1.5, borderColor: t.isDark ? '#080808' : '#ffffff' },
+                        levels: [
+                            {},
+                            { r0: '14%', r: '35%', label: { rotate: 0, fontWeight: 700 } },
+                            { r0: '35%', r: '65%', label: { align: 'right', fontSize: 9 } },
+                            { r0: '65%', r: '92%', label: { position: 'outside', padding: 2, silent: false, color: t.textColor } }
+                        ]
+                    }]
+                });
+            }
+
+            // 5. TREEMAP CHART (chart-treemap)
+            const cTreemap = getChartInst('chart-treemap');
+            if (cTreemap) {
+                const treemapData = [
+                    {
+                        name: 'Sektor Keuangan (Rp 3,015 T)',
+                        value: 3015,
+                        itemStyle: { color: '#0369a1' },
+                        children: [
+                            { name: 'BBCA (+1.76%)', value: 1245, itemStyle: { color: '#10b981' } },
+                            { name: 'BBRI (+1.22%)', value: 750, itemStyle: { color: '#059669' } },
+                            { name: 'BMRI (+0.74%)', value: 638, itemStyle: { color: '#047857' } },
+                            { name: 'BBNI (-0.45%)', value: 202, itemStyle: { color: '#ef4444' } },
+                            { name: 'BRIS (+2.40%)', value: 132, itemStyle: { color: '#10b981' } },
+                            { name: 'BBTN (+0.80%)', value: 48, itemStyle: { color: '#34d399' } }
+                        ]
+                    },
+                    {
+                        name: 'Sektor Energi (Rp 1,161 T)',
+                        value: 1161,
+                        itemStyle: { color: '#b45309' },
+                        children: [
+                            { name: 'BREN (+3.12%)', value: 915, itemStyle: { color: '#10b981' } },
+                            { name: 'ADRO (+1.45%)', value: 115, itemStyle: { color: '#059669' } },
+                            { name: 'PGEO (+0.50%)', value: 52, itemStyle: { color: '#34d399' } },
+                            { name: 'MEDC (+2.10%)', value: 45, itemStyle: { color: '#10b981' } },
+                            { name: 'PTBA (-1.10%)', value: 34, itemStyle: { color: '#ef4444' } }
+                        ]
+                    },
+                    {
+                        name: 'Sektor Bahan Baku (Rp 725 T)',
+                        value: 725,
+                        itemStyle: { color: '#047857' },
+                        children: [
+                            { name: 'AMMN (+4.20%)', value: 580, itemStyle: { color: '#10b981' } },
+                            { name: 'MDKA (+1.10%)', value: 62, itemStyle: { color: '#059669' } },
+                            { name: 'INCO (-0.80%)', value: 42, itemStyle: { color: '#ef4444' } },
+                            { name: 'ANTM (+0.60%)', value: 41, itemStyle: { color: '#34d399' } }
+                        ]
+                    },
+                    {
+                        name: 'Infrastruktur & Telko (Rp 506 T)',
+                        value: 506,
+                        itemStyle: { color: '#6d28d9' },
+                        children: [
+                            { name: 'TLKM (-0.68%)', value: 310, itemStyle: { color: '#ef4444' } },
+                            { name: 'ISAT (+0.95%)', value: 82, itemStyle: { color: '#34d399' } },
+                            { name: 'TOWR (+0.40%)', value: 44, itemStyle: { color: '#10b981' } },
+                            { name: 'JSMR (+1.15%)', value: 38, itemStyle: { color: '#059669' } }
+                        ]
+                    },
+                    {
+                        name: 'Konsumer & Lainnya (Rp 559 T)',
+                        value: 559,
+                        itemStyle: { color: '#be185d' },
+                        children: [
+                            { name: 'ASII (+0.85%)', value: 210, itemStyle: { color: '#34d399' } },
+                            { name: 'ICBP (+1.20%)', value: 128, itemStyle: { color: '#10b981' } },
+                            { name: 'HMSP (+0.20%)', value: 85, itemStyle: { color: '#6ee7b7' } },
+                            { name: 'GOTO (-2.10%)', value: 78, itemStyle: { color: '#dc2626' } },
+                            { name: 'UNVR (-1.40%)', value: 74, itemStyle: { color: '#ef4444' } }
+                        ]
+                    }
+                ];
+                cTreemap.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            return `<strong>${p.name}</strong><br/>Kapitalisasi Pasar: <b>Rp ${p.value.toLocaleString('id-ID')} Triliun</b>`;
+                        }
+                    },
+                    series: [{
+                        type: 'treemap',
+                        data: treemapData,
+                        roam: false,
+                        leafDepth: 1,
+                        breadcrumb: {
+                            show: true,
+                            itemStyle: { color: t.isDark ? '#1e293b' : '#e2e8f0', textStyle: { color: t.textColor } }
+                        },
+                        label: { show: true, formatter: '{b}\nRp {c} T', fontSize: 9.5, color: '#ffffff' }
+                    }]
+                });
+            }
+
+            // 6. CHART OF BARS (chart-bar)
+            const cBar = getChartInst('chart-bar');
+            if (cBar) {
+                const barTickers = ['ICBP', 'ADRO', 'BRIS', 'BBNI', 'ASII', 'TLKM', 'AMMN', 'BMRI', 'BBRI', 'BBCA'];
+                const barValues = [64.3, 85.1, 98.7, 154.2, 180.5, 215.4, 342.0, 489.1, 612.8, 845.2];
+                cBar.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'shadow' },
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}<br/>Net Foreign Inflow: <b>Rp {c} Miliar</b>'
+                    },
+                    grid: { top: 15, right: 45, bottom: 20, left: 55 },
+                    xAxis: {
+                        type: 'value',
+                        axisLabel: { color: t.textColor, fontSize: 9.5, formatter: '{value}M' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: barTickers,
+                        axisLabel: { color: t.textColor, fontSize: 10, fontWeight: 700 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [{
+                        name: 'Net Foreign Inflow',
+                        type: 'bar',
+                        data: barValues,
+                        itemStyle: {
+                            borderRadius: [0, 4, 4, 0],
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#0ea5e9' },
+                                { offset: 1, color: '#10b981' }
+                            ])
+                        },
+                        label: { show: true, position: 'right', formatter: '{c} M', fontSize: 9, color: t.textColor, fontWeight: 600 }
+                    }]
+                });
+            }
+
+            // 7. COLUMN CHART (chart-column)
+            const cColumn = getChartInst('chart-column');
+            if (cColumn) {
+                const colSectors = ['Financials', 'Basic Mat.', 'Transport', 'Energy', 'Healthcare', 'Consumer', 'Industry', 'Infra', 'Property', 'Technology'];
+                const colValues = [1.42, 1.95, 1.10, 0.85, 0.68, 0.45, 0.38, -0.32, -0.42, -1.15];
+                cColumn.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'shadow' },
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(params) {
+                            const p = params[0];
+                            const sign = p.value >= 0 ? '+' : '';
+                            return `${p.name}<br/>Performa Sektor: <b style="color:${p.value >= 0 ? '#10b981' : '#ef4444'}">${sign}${p.value}%</b>`;
+                        }
+                    },
+                    grid: { top: 25, right: 20, bottom: 45, left: 45 },
+                    xAxis: {
+                        type: 'category',
+                        data: colSectors,
+                        axisLabel: { color: t.textColor, fontSize: 9.5, rotate: 25 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: { color: t.textColor, fontSize: 9.5, formatter: '{value}%' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [{
+                        name: 'Performa Harian',
+                        type: 'bar',
+                        data: colValues.map(v => ({
+                            value: v,
+                            itemStyle: {
+                                color: v >= 0
+                                    ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#10b981' }, { offset: 1, color: '#047857' }])
+                                    : new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#ef4444' }, { offset: 1, color: '#b91c1c' }]),
+                                borderRadius: v >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4]
+                            }
+                        })),
+                        label: {
+                            show: true,
+                            position: 'top',
+                            formatter: function(p) { return (p.value >= 0 ? '+' : '') + p.value + '%'; },
+                            fontSize: 9,
+                            color: t.textColor,
+                            fontWeight: 600
+                        },
+                        markLine: {
+                            data: [{ yAxis: 0 }],
+                            lineStyle: { color: t.textColor, type: 'dashed' },
+                            symbol: 'none'
+                        }
+                    }]
+                });
+            }
+
+            // 8. CHART OF PIE (chart-pie)
+            const cPie = getChartInst('chart-pie');
+            if (cPie) {
+                const pieData = [
+                    { value: 4050, name: 'Sektor Keuangan (34.2%)', itemStyle: { color: '#0ea5e9' } },
+                    { value: 2190, name: 'Bahan Baku & Tambang (18.5%)', itemStyle: { color: '#10b981' } },
+                    { value: 1750, name: 'Energi & Sumber Daya (14.8%)', itemStyle: { color: '#f59e0b' } },
+                    { value: 1325, name: 'Infrastruktur & Telko (11.2%)', itemStyle: { color: '#8b5cf6' } },
+                    { value: 1115, name: 'Konsumer Primer (9.4%)', itemStyle: { color: '#ec4899' } },
+                    { value: 1420, name: 'Industri, Properti, Lainnya (11.9%)', itemStyle: { color: '#64748b' } }
+                ];
+                cPie.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}<br/>Kapitalisasi: <b>Rp {c} Triliun</b> ({d}%)'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        right: 5,
+                        top: 'center',
+                        textStyle: { color: t.textColor, fontSize: 9.5 }
+                    },
+                    series: [{
+                        name: 'Kapitalisasi Sektoral',
+                        type: 'pie',
+                        radius: '72%',
+                        center: ['35%', '50%'],
+                        data: pieData,
+                        emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' } },
+                        label: { show: false }
+                    }]
+                });
+            }
+
+            // 9. CHART OF DONUT (chart-donut)
+            const cDonut = getChartInst('chart-donut');
+            if (cDonut) {
+                const donutData = [
+                    { value: 38.5, name: 'Institusi Asing (38.5%)', itemStyle: { color: '#38bdf8' } },
+                    { value: 31.2, name: 'Domestik Institusi & Korporasi (31.2%)', itemStyle: { color: '#10b981' } },
+                    { value: 17.8, name: 'Investor Ritel Domestik (17.8%)', itemStyle: { color: '#f59e0b' } },
+                    { value: 7.5, name: 'Reksa Dana & Asset Mgmt (7.5%)', itemStyle: { color: '#a855f7' } },
+                    { value: 5.0, name: 'Dana Pensiun & Asuransi (5.0%)', itemStyle: { color: '#ec4899' } }
+                ];
+                cDonut.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}<br/>Pangsa Kepemilikan: <b>{c}%</b>'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        right: 5,
+                        top: 'center',
+                        textStyle: { color: t.textColor, fontSize: 9 }
+                    },
+                    series: [{
+                        name: 'Kepemilikan Investor',
+                        type: 'pie',
+                        radius: ['45%', '72%'],
+                        center: ['32%', '50%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 6,
+                            borderColor: t.isDark ? '#141414' : '#ffffff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: true,
+                            position: 'center',
+                            formatter: '100%\nTOTAL FLOAT',
+                            fontSize: 11,
+                            fontWeight: 700,
+                            color: t.titleColor
+                        },
+                        emphasis: { label: { show: true, fontSize: 12, fontWeight: 700 } },
+                        data: donutData
+                    }]
+                });
+            }
+
+            // 10. CHART OF FUNNEL (chart-funnel)
+            const cFunnel = getChartInst('chart-funnel');
+            if (cFunnel) {
+                const funnelData = [
+                    { value: 100, name: '1. Registrasi Pipeline OJK (85 Calon)', itemStyle: { color: '#0284c7' } },
+                    { value: 72, name: '2. Pre-Marketing & Book Building (61 Calon)', itemStyle: { color: '#0ea5e9' } },
+                    { value: 54, name: '3. Pricing & Underwriting (46 Emiten)', itemStyle: { color: '#38bdf8' } },
+                    { value: 42, name: '4. Penawaran Umum & Allotment (36 Emiten)', itemStyle: { color: '#10b981' } },
+                    { value: 33, name: '5. Sukses Listing Sekunder BEI (28 Emiten)', itemStyle: { color: '#34d399' } }
+                ];
+                cFunnel.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}<br/>Tingkat Konversi: <b>{c}%</b>'
+                    },
+                    series: [{
+                        name: 'Pipeline IPO',
+                        type: 'funnel',
+                        left: '10%',
+                        top: 20,
+                        bottom: 25,
+                        width: '80%',
+                        min: 0,
+                        max: 100,
+                        minSize: '25%',
+                        maxSize: '100%',
+                        sort: 'descending',
+                        gap: 3,
+                        label: {
+                            show: true,
+                            position: 'inside',
+                            formatter: '{b} ({c}%)',
+                            color: '#ffffff',
+                            fontSize: 9,
+                            fontWeight: 600
+                        },
+                        itemStyle: { borderColor: t.isDark ? '#080808' : '#ffffff', borderWidth: 1.5 },
+                        data: funnelData
+                    }]
+                });
+            }
+
+            // 11. CHART OF LINES (chart-lines)
+            const cLines = getChartInst('chart-lines');
+            if (cLines) {
+                const lineDays = Array.from({ length: 30 }, (_, i) => `D-${30 - i}`);
+                const ihsgLine = [7280, 7295, 7310, 7305, 7288, 7312, 7335, 7350, 7342, 7360, 7355, 7372, 7390, 7385, 7398, 7410, 7405, 7420, 7415, 7430, 7422, 7445, 7438, 7450, 7435, 7418, 7425, 7432, 7418, 7421];
+                const lq45Line = [980, 982, 985, 983, 981, 986, 990, 992, 989, 994, 993, 996, 1001, 998, 1003, 1007, 1005, 1010, 1008, 1012, 1009, 1015, 1013, 1016, 1012, 1008, 1011, 1014, 1010, 1012];
+                const idx30Line = [510, 511, 513, 512, 510, 514, 517, 518, 516, 520, 519, 522, 526, 524, 527, 530, 529, 532, 530, 534, 532, 536, 534, 537, 533, 530, 532, 535, 531, 533];
+                const hidivLine = [620, 622, 625, 624, 622, 627, 631, 633, 630, 635, 634, 638, 642, 640, 644, 648, 646, 650, 648, 653, 651, 656, 654, 658, 653, 650, 652, 655, 651, 654];
+                cLines.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 }
+                    },
+                    legend: {
+                        data: ['IHSG', 'LQ45', 'IDX30', 'IDXHIDIV20'],
+                        top: 5,
+                        textStyle: { color: t.textColor, fontSize: 9.5 }
+                    },
+                    grid: { top: 35, right: 35, bottom: 25, left: 45 },
+                    xAxis: {
+                        type: 'category',
+                        data: lineDays,
+                        axisLabel: { color: t.textColor, fontSize: 9, interval: 4 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: 'IHSG',
+                            min: 7200,
+                            max: 7500,
+                            axisLabel: { color: t.textColor, fontSize: 9 },
+                            splitLine: { lineStyle: { color: t.splitLineColor } },
+                            axisLine: { lineStyle: { color: t.gridBorderColor } }
+                        },
+                        {
+                            type: 'value',
+                            name: 'Sub-Indeks',
+                            min: 500,
+                            max: 1050,
+                            axisLabel: { color: t.textColor, fontSize: 9 },
+                            splitLine: { show: false },
+                            axisLine: { lineStyle: { color: t.gridBorderColor } }
+                        }
+                    ],
+                    series: [
+                        { name: 'IHSG', type: 'line', smooth: true, yAxisIndex: 0, data: ihsgLine, lineStyle: { color: '#38bdf8', width: 2.2 }, itemStyle: { color: '#38bdf8' } },
+                        { name: 'LQ45', type: 'line', smooth: true, yAxisIndex: 1, data: lq45Line, lineStyle: { color: '#10b981', width: 1.8 }, itemStyle: { color: '#10b981' } },
+                        { name: 'IDX30', type: 'line', smooth: true, yAxisIndex: 1, data: idx30Line, lineStyle: { color: '#f59e0b', width: 1.6 }, itemStyle: { color: '#f59e0b' } },
+                        { name: 'IDXHIDIV20', type: 'line', smooth: true, yAxisIndex: 1, data: hidivLine, lineStyle: { color: '#ec4899', width: 1.6 }, itemStyle: { color: '#ec4899' } }
+                    ]
+                });
+            }
+
+            // 12. CHART OF COMBINATION (chart-combination)
+            const cComb = getChartInst('chart-combination');
+            if (cComb) {
+                const combDates = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sen+1', 'Sel+1', 'Rab+1', 'Kam+1', 'Jum+1'];
+                const combTurnover = [9.4, 11.2, 14.8, 12.1, 10.5, 13.6, 15.2, 16.4, 13.9, 14.2];
+                const combIHSG = [7320, 7355, 7410, 7390, 7385, 7415, 7438, 7450, 7418, 7421];
+                cComb.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'cross' },
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 }
+                    },
+                    legend: {
+                        data: ['Nilai Transaksi (Rp Triliun)', 'Level Penutupan IHSG'],
+                        top: 5,
+                        textStyle: { color: t.textColor, fontSize: 9.5 }
+                    },
+                    grid: { top: 35, right: 50, bottom: 25, left: 45 },
+                    xAxis: {
+                        type: 'category',
+                        data: combDates,
+                        axisLabel: { color: t.textColor, fontSize: 9.5 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: 'Turnover (T)',
+                            min: 0,
+                            max: 20,
+                            axisLabel: { color: t.textColor, fontSize: 9, formatter: 'Rp {value}T' },
+                            splitLine: { lineStyle: { color: t.splitLineColor } },
+                            axisLine: { lineStyle: { color: t.gridBorderColor } }
+                        },
+                        {
+                            type: 'value',
+                            name: 'IHSG Index',
+                            min: 7250,
+                            max: 7500,
+                            axisLabel: { color: t.textColor, fontSize: 9 },
+                            splitLine: { show: false },
+                            axisLine: { lineStyle: { color: t.gridBorderColor } }
+                        }
+                    ],
+                    series: [
+                        {
+                            name: 'Nilai Transaksi (Rp Triliun)',
+                            type: 'bar',
+                            data: combTurnover,
+                            itemStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    { offset: 0, color: 'rgba(56, 189, 248, 0.85)' },
+                                    { offset: 1, color: 'rgba(56, 189, 248, 0.2)' }
+                                ]),
+                                borderRadius: [4, 4, 0, 0]
+                            }
+                        },
+                        {
+                            name: 'Level Penutupan IHSG',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: combIHSG,
+                            smooth: true,
+                            lineStyle: { color: '#f59e0b', width: 2.8 },
+                            itemStyle: { color: '#f59e0b', borderWidth: 2 }
+                        }
+                    ]
+                });
+            }
+
+            // 13. CHART STACKED - COLUMN (chart-stacked-column)
+            const cStacked = getChartInst('chart-stacked-column');
+            if (cStacked) {
+                const stackBanks = ['BBCA', 'BBRI', 'BMRI', 'BBNI'];
+                const niiData = [75.2, 138.5, 95.8, 41.2];
+                const feeData = [18.4, 21.6, 19.2, 10.8];
+                const trsData = [5.2, 4.8, 8.4, 3.5];
+                const digData = [6.8, 5.4, 7.1, 2.9];
+                cStacked.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'shadow' },
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(params) {
+                            let res = `<strong>${params[0].name} — Komposisi Laba</strong><br/>`;
+                            let total = 0;
+                            params.forEach(p => {
+                                res += `${p.marker} ${p.seriesName}: <b>Rp ${p.value} T</b><br/>`;
+                                total += p.value;
+                            });
+                            res += `<strong>Total: Rp ${total.toFixed(1)} T</strong>`;
+                            return res;
+                        }
+                    },
+                    legend: {
+                        data: ['Bunga Bersih (NII)', 'Fee-Based (FBI)', 'Treasury & FX', 'Digital Ecosystem'],
+                        top: 5,
+                        textStyle: { color: t.textColor, fontSize: 9 }
+                    },
+                    grid: { top: 35, right: 25, bottom: 25, left: 45 },
+                    xAxis: {
+                        type: 'category',
+                        data: stackBanks,
+                        axisLabel: { color: t.textColor, fontSize: 10, fontWeight: 700 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: { color: t.textColor, fontSize: 9, formatter: 'Rp {value}T' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [
+                        { name: 'Bunga Bersih (NII)', type: 'bar', stack: 'total', data: niiData, itemStyle: { color: '#0284c7' } },
+                        { name: 'Fee-Based (FBI)', type: 'bar', stack: 'total', data: feeData, itemStyle: { color: '#10b981' } },
+                        { name: 'Treasury & FX', type: 'bar', stack: 'total', data: trsData, itemStyle: { color: '#f59e0b' } },
+                        { name: 'Digital Ecosystem', type: 'bar', stack: 'total', data: digData, itemStyle: { color: '#ec4899', borderRadius: [4, 4, 0, 0] } }
+                    ]
+                });
+            }
+
+            // 14. CHART OF RADAR (chart-radar)
+            const cRadar = getChartInst('chart-radar');
+            if (cRadar) {
+                cRadar.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 }
+                    },
+                    legend: {
+                        data: ['BBCA', 'BBRI', 'BMRI'],
+                        top: 5,
+                        textStyle: { color: t.textColor, fontSize: 9.5 }
+                    },
+                    radar: {
+                        indicator: [
+                            { name: 'Solvabilitas (CAR)', max: 100 },
+                            { name: 'Profitabilitas (ROE)', max: 100 },
+                            { name: 'Kualitas Aset (NPL)', max: 100 },
+                            { name: 'Efisiensi (BOPO)', max: 100 },
+                            { name: 'CASA Ratio', max: 100 }
+                        ],
+                        radius: '68%',
+                        splitArea: {
+                            show: true,
+                            areaStyle: { color: t.isDark ? ['rgba(255,255,255,0.02)', 'rgba(255,255,255,0.05)'] : ['rgba(0,0,0,0.01)', 'rgba(0,0,0,0.03)'] }
+                        },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } },
+                        axisName: { color: t.textColor, fontSize: 9 }
+                    },
+                    series: [{
+                        name: 'Fundamental Big 3 Banks',
+                        type: 'radar',
+                        data: [
+                            {
+                                value: [96, 92, 98, 95, 94],
+                                name: 'BBCA',
+                                itemStyle: { color: '#38bdf8' },
+                                areaStyle: { color: 'rgba(56, 189, 248, 0.25)' },
+                                lineStyle: { width: 2 }
+                            },
+                            {
+                                value: [92, 96, 88, 89, 90],
+                                name: 'BBRI',
+                                itemStyle: { color: '#10b981' },
+                                areaStyle: { color: 'rgba(16, 185, 129, 0.2)' },
+                                lineStyle: { width: 2 }
+                            },
+                            {
+                                value: [90, 93, 91, 92, 91],
+                                name: 'BMRI',
+                                itemStyle: { color: '#f59e0b' },
+                                areaStyle: { color: 'rgba(245, 158, 11, 0.2)' },
+                                lineStyle: { width: 2 }
+                            }
+                        ]
+                    }]
+                });
+            }
+
+            // 15. CHART OF AREA (chart-area)
+            const cArea = getChartInst('chart-area');
+            if (cArea) {
+                const areaWeeks = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10', 'W11', 'W12', 'W13', 'W14'];
+                const areaFlows = [1.2, 3.5, 2.8, 5.6, 8.1, 12.4, 15.8, 18.2, 17.1, 21.4, 24.8, 27.2, 26.5, 31.2];
+                cArea.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}<br/>Akumulasi Net Flow Asing: <b>+Rp {c} Triliun</b>'
+                    },
+                    grid: { top: 25, right: 25, bottom: 25, left: 45 },
+                    xAxis: {
+                        type: 'category',
+                        data: areaWeeks,
+                        boundaryGap: false,
+                        axisLabel: { color: t.textColor, fontSize: 9.5 },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: { color: t.textColor, fontSize: 9, formatter: '+Rp {value}T' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [{
+                        name: 'Kumulatif Flow Asing',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 6,
+                        data: areaFlows,
+                        lineStyle: { color: '#10b981', width: 2.5 },
+                        itemStyle: { color: '#10b981' },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(16, 185, 129, 0.45)' },
+                                { offset: 1, color: 'rgba(16, 185, 129, 0.02)' }
+                            ])
+                        }
+                    }]
+                });
+            }
+
+            // 16. CHART OF PYRAMID (chart-pyramid)
+            const cPyramid = getChartInst('chart-pyramid');
+            if (cPyramid) {
+                const pyramidData = [
+                    { value: 20, name: 'Premium (P/E >25x) [12 Emiten: AMMN, BREN]', itemStyle: { color: '#ec4899' } },
+                    { value: 40, name: 'Growth Tier (P/E 16-25x) [28 Emiten: BBCA, KLBF]', itemStyle: { color: '#f59e0b' } },
+                    { value: 65, name: 'Fair Valuation (P/E 10-15x) [64 Emiten: BBRI, BMRI]', itemStyle: { color: '#0ea5e9' } },
+                    { value: 85, name: 'Undervalued (P/E 6-10x) [82 Emiten: BBNI, PTBA]', itemStyle: { color: '#10b981' } },
+                    { value: 100, name: 'Deep Value Bargain (P/E <6x) [110 Emiten: ADRO, ITMG]', itemStyle: { color: '#059669' } }
+                ];
+                cPyramid.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: '{b}'
+                    },
+                    series: [{
+                        name: 'Piramida Valuasi',
+                        type: 'funnel',
+                        left: '10%',
+                        top: 20,
+                        bottom: 20,
+                        width: '80%',
+                        sort: 'ascending',
+                        gap: 3,
+                        label: {
+                            show: true,
+                            position: 'inside',
+                            formatter: '{b}',
+                            color: '#ffffff',
+                            fontSize: 9,
+                            fontWeight: 600
+                        },
+                        itemStyle: { borderColor: t.isDark ? '#080808' : '#ffffff', borderWidth: 1.5 },
+                        data: pyramidData
+                    }]
+                });
+            }
+
+            // 17. CHART OF BUBBLE (chart-bubble)
+            const cBubble = getChartInst('chart-bubble');
+            if (cBubble) {
+                const bubbleData = [
+                    [22.5, 21.4, 1245, 'BBCA', 'Finansial'],
+                    [13.8, 19.8, 750, 'BBRI', 'Finansial'],
+                    [11.2, 18.5, 638, 'BMRI', 'Finansial'],
+                    [64.2, 14.1, 915, 'BREN', 'Energi'],
+                    [38.5, 16.2, 580, 'AMMN', 'Bahan Baku'],
+                    [14.5, 18.2, 310, 'TLKM', 'Infrastruktur'],
+                    [7.2, 14.8, 210, 'ASII', 'Industri'],
+                    [5.1, 24.5, 115, 'ADRO', 'Energi'],
+                    [15.6, 20.1, 128, 'ICBP', 'Konsumer'],
+                    [24.1, 54.0, 74, 'UNVR', 'Konsumer'],
+                    [8.4, 13.2, 202, 'BBNI', 'Finansial'],
+                    [16.2, 17.5, 71, 'KLBF', 'Kesehatan']
+                ];
+                cBubble.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            const d = p.data;
+                            return `<strong>${d[3]} (${d[4]})</strong><br/>P/E Ratio: <b>${d[0]}x</b><br/>ROE: <b>${d[1]}%</b><br/>Market Cap: <b>Rp ${d[2]} Triliun</b>`;
+                        }
+                    },
+                    grid: { top: 30, right: 30, bottom: 35, left: 45 },
+                    xAxis: {
+                        type: 'value',
+                        name: 'P/E (x)',
+                        axisLabel: { color: t.textColor, fontSize: 9, formatter: '{value}x' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        name: 'ROE (%)',
+                        axisLabel: { color: t.textColor, fontSize: 9, formatter: '{value}%' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [{
+                        name: 'Valuasi Emiten',
+                        type: 'scatter',
+                        data: bubbleData,
+                        symbolSize: function(val) { return Math.max(16, Math.sqrt(val[2]) * 1.8); },
+                        itemStyle: {
+                            color: function(params) {
+                                const sec = params.data[4];
+                                if (sec === 'Finansial') return '#38bdf8';
+                                if (sec === 'Energi') return '#f59e0b';
+                                if (sec === 'Bahan Baku') return '#10b981';
+                                if (sec === 'Konsumer') return '#ec4899';
+                                if (sec === 'Infrastruktur') return '#8b5cf6';
+                                return '#06b6d4';
+                            },
+                            opacity: 0.82,
+                            borderColor: '#ffffff',
+                            borderWidth: 1
+                        },
+                        label: {
+                            show: true,
+                            formatter: function(p) { return p.data[3]; },
+                            position: 'top',
+                            color: t.textColor,
+                            fontSize: 9,
+                            fontWeight: 700
+                        }
+                    }]
+                });
+            }
+
+            // 18. CHART OF SCATTER (chart-scatter)
+            const cScatter = getChartInst('chart-scatter');
+            if (cScatter) {
+                const scatterPoints = [
+                    [1.85, 24.2, 'BREN'],
+                    [1.62, 19.5, 'AMMN'],
+                    [0.88, 14.2, 'BBCA'],
+                    [1.15, 12.8, 'BBRI'],
+                    [1.05, 13.5, 'BMRI'],
+                    [1.40, 18.1, 'ADRO'],
+                    [0.72, 6.4, 'TLKM'],
+                    [0.95, 8.2, 'ASII'],
+                    [0.65, 9.8, 'ICBP'],
+                    [0.78, 8.5, 'KLBF'],
+                    [0.92, 11.2, 'BBNI']
+                ];
+                cScatter.setOption({
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        backgroundColor: t.tooltipBg,
+                        borderColor: t.tooltipBorder,
+                        textStyle: { color: t.tooltipText, fontSize: 11 },
+                        formatter: function(p) {
+                            if (p.componentType === 'markLine') return p.name;
+                            const d = p.data;
+                            return `<strong>${d[2]}</strong><br/>Beta: <b>${d[0]}</b><br/>Return: <b>${d[1]}%</b><br/>Status: <b>${d[1] >= (6 + d[0] * 6) ? 'Outperform SML (Alpha +)' : 'Underperform SML'}</b>`;
+                        }
+                    },
+                    grid: { top: 30, right: 30, bottom: 35, left: 45 },
+                    xAxis: {
+                        type: 'value',
+                        name: 'Beta (Pasar=1.0)',
+                        min: 0.4,
+                        max: 2.0,
+                        axisLabel: { color: t.textColor, fontSize: 9 },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        name: 'Return (%)',
+                        min: 0,
+                        max: 28,
+                        axisLabel: { color: t.textColor, fontSize: 9, formatter: '{value}%' },
+                        splitLine: { lineStyle: { color: t.splitLineColor } },
+                        axisLine: { lineStyle: { color: t.gridBorderColor } }
+                    },
+                    series: [
+                        {
+                            name: 'Saham Konstituen',
+                            type: 'scatter',
+                            symbolSize: 14,
+                            data: scatterPoints,
+                            itemStyle: {
+                                color: function(p) {
+                                    const beta = p.data[0];
+                                    const ret = p.data[1];
+                                    const sml = 6 + beta * 6;
+                                    return ret >= sml ? '#10b981' : '#ef4444';
+                                },
+                                borderColor: '#ffffff',
+                                borderWidth: 1.5
+                            },
+                            label: {
+                                show: true,
+                                formatter: function(p) { return p.data[2]; },
+                                position: 'right',
+                                color: t.textColor,
+                                fontSize: 9,
+                                fontWeight: 700
+                            },
+                            markLine: {
+                                lineStyle: { type: 'dashed', color: '#f59e0b', width: 2 },
+                                data: [
+                                    [
+                                        { coord: [0.4, 8.4], name: 'Security Market Line (SML: Rf=6%)' },
+                                        { coord: [2.0, 18.0] }
+                                    ]
+                                ],
+                                label: {
+                                    show: true,
+                                    formatter: 'Security Market Line (SML)',
+                                    color: '#f59e0b',
+                                    fontSize: 9
+                                }
+                            }
+                        }
+                    ]
+                });
+            }
+
+            window._charts18Initialized = true;
+        }
+
+        function filterStudioCharts(category, btn) {
+            const pills = document.querySelectorAll('.studio-filter-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.chart-studio-card');
+            cards.forEach(c => {
+                const cat = c.getAttribute('data-cat');
+                if (category === 'ALL' || cat === category) {
+                    c.style.display = 'flex';
+                } else {
+                    c.style.display = 'none';
+                }
+            });
+            setTimeout(resizeAll18Charts, 60);
+        }
+
+        function toggleChartCardFocus(cardId) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            const isFocused = card.classList.toggle('focused');
+            const focusBtn = card.querySelector('.btn-focus-toggle');
+            if (focusBtn) {
+                focusBtn.innerHTML = isFocused ? '✕ Kecilkan' : '⛶ Fokus';
+            }
+            setTimeout(() => {
+                const mount = card.querySelector('.chart-mount-box');
+                if (mount && window.echarts) {
+                    const inst = echarts.getInstanceByDom(mount);
+                    if (inst) inst.resize();
+                }
+            }, 120);
+        }
+
+        function downloadChartImage(mountId, filename) {
+            const mount = document.getElementById(mountId);
+            if (!mount || !window.echarts) return;
+            const inst = echarts.getInstanceByDom(mount);
+            if (!inst) return;
+            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+            const dataUrl = inst.getDataURL({
+                type: 'png',
+                pixelRatio: 2,
+                backgroundColor: isDark ? '#0f0f0f' : '#ffffff'
+            });
+            const link = document.createElement('a');
+            link.download = filename || `${mountId}.png`;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function askGardaAboutChart(chartType, chartTitle) {
+            const input = document.getElementById('chat-input') || document.querySelector('.chat-input');
+            const sendBtn = document.getElementById('chat-send-btn') || document.querySelector('.chat-send-btn');
+            const query = `Garda AI, tolong berikan analisis mendalam, sinyal trading, serta implikasi rotasi modal terkait visualisasi pasar: ${chartTitle}.`;
+            if (input) {
+                input.value = query;
+                if (sendBtn) sendBtn.click();
+            }
+            const gardaCol = document.getElementById('garda-chat-col');
+            if (gardaCol) {
+                gardaCol.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function resizeAll18Charts() {
+            if (!window.chartStudioInstances) return;
+            Object.values(window.chartStudioInstances).forEach(inst => {
+                try {
+                    if (inst && typeof inst.resize === 'function') {
+                        inst.resize();
+                    }
+                } catch(e){}
+            });
+        }
+
+        // Theme and window resize hooks
+        (function() {
+            const origToggleTheme = window.__toggleTheme;
+            window.__toggleTheme = function() {
+                if (typeof origToggleTheme === 'function') origToggleTheme();
+                setTimeout(() => {
+                    if (window._charts18Initialized) {
+                        initAll18Charts(true);
+                    }
+                }, 50);
+            };
+
+            window.addEventListener('resize', () => {
+                if (currentActiveDashboard === 'chart-studio') {
+                    resizeAll18Charts();
+                }
+            });
+        })();
+
     </script>
 </body>
 </html>
