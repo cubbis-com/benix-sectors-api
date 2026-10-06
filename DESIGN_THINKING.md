@@ -1,5 +1,5 @@
 # Dokumen Design Thinking: BE.N.IX — Anvieo Trading Analytics
-## Produk: Garda — AI Market Concierge & Regional News Intelligence
+## Produk: Garda — AI Market Intelligence & Autonomous Financial Newsroom Copilot
 **Sectors Hackathon Indonesia 2026**  
 *Track Rekomendasi: Track 1 (AI Agents & Assistants) dengan Kapabilitas Otonom Track 2 (Automation & Workflows)*
 
@@ -7,11 +7,13 @@
 
 ## Ringkasan Eksekutif (Executive Summary)
 
-**BE.N.IX (Anvieo Trading Analytics)** adalah platform kecerdasan pasar modal dan asisten penasihat bisnis berbasis AI yang dirancang untuk **pelaku usaha UMKM, pengusaha sektor riil, dan investor ritel Indonesia**. 
+**BE.N.IX (Anvieo Trading Analytics)** adalah platform intelijen pasar modal dan asisten riset finansial otonom yang dirancang khusus untuk **tiga kelompok profesional pasar modal: Tim Equity Research di Sekuritas/Asset Management, Redaktur & Jurnalis Media Finansial, serta Divisi Investor Relations (IR) Perusahaan Publik**.
 
-Berbeda dari aplikasi bursa konvensional yang menyajikan tumpukan angka teknikal tanpa konteks, BE.N.IX menghadirkan **Garda**, sebuah **AI Market Concierge berstandar layanan hotel bintang lima**. Garda mengawinkan data kuantitatif bursa dari **Sectors Financial API v2** dengan kurasi kualitatif berita finansial dari **20 portal terkemuka di 4 negara regional (Indonesia, Singapura, Malaysia, Jepang)**. 
+Dalam industri pasar modal modern, kecepatan mengolah data kuantitatif bursa dan menghubungkannya dengan konteks berita aktual adalah kunci utama. Namun, para profesional saat ini terbebani oleh proses manual yang memakan waktu: menyisir puluhan portal berita regional, mengunduh laporan keuangan, menghitung konsentrasi transaksi broker (*bandarmologi*), dan menyusun ringkasan riset atau artikel berita sebelum pasar buka.
 
-Didukung oleh arsitektur **Tim Modular 7 AI Agent Specialists** dan protokol penghemat kuota **Credit Shield (Smart Caching)**, BE.N.IX mentransformasikan data pasar saham menjadi wawasan bisnis praktis yang dapat langsung diterapkan untuk pengambilan keputusan rantai pasok, analisis daya beli industri, dan penanaman modal.
+BE.N.IX menghadirkan **Garda**, sebuah **Autonomous AI Financial Intelligence Copilot**. Garda mengawinkan data kuantitatif bursa dari **Sectors Financial API v2 (IDX & SGX)** dengan agregasi kualitatif berita finansial dari **20 portal terkemuka di 4 negara regional (Indonesia, Singapura, Malaysia, Jepang)**. 
+
+Melalui arsitektur **Tim Modular 7 AI Agent Specialists** dan protokol penghemat kuota **Credit Shield (Smart Caching)**, BE.N.IX mampu menghasilkan *morning market briefs*, analisis valuasi & bandarmologi 3-dimensi, hingga draf artikel berita 5W+1H berstandar jurnalisme ekonomi secara instan dan otomatis melalui portal web serta saluran WhatsApp.
 
 ---
 
@@ -21,12 +23,12 @@ Didukung oleh arsitektur **Tim Modular 7 AI Agent Specialists** dan protokol pen
 │  EMPATHIZE   │──>│    DEFINE    │──>│    IDEATE    │──>│  PROTOTYPE   │──>│     TEST     │
 │   (Empati)   │   │  (Definisi)  │   │   (Ideasi)   │   │ (Prototipe)  │   │  (Pengujian) │
 ├──────────────┤   ├──────────────┤   ├──────────────┤   ├──────────────┤   ├──────────────┤
-│• Pelaku UMKM │   │• Problem St. │   │• Garda AI    │   │• Web Portal  │   │• Test Suite  │
-│• Investor    │   │• 4 Pain Point│   │  Concierge   │   │  OLED Dark   │   │• 40% Usab.   │
-│• Empathy Map │   │• HMW Qs      │   │• 7 AI Skills │   │• Vector Orb  │   │• 30% Story   │
-│• Kesenjangan │   │• User Persona│   │• CreditShield│   │• WA Gateway  │   │• 30% Tech    │
-│  Data Riil   │   │• As-Is vs    │   │• 20 Portals  │   │• REST API    │   │• Benchmark   │
-│              │   │  To-Be       │   │  x 4 Negara  │   │  FastAPI     │   │  Kompetitor  │
+│• Research    │   │• Problem St. │   │• Garda AI    │   │• Web Portal  │   │• Test Suite  │
+│  Associates  │   │• 4 Bottleneck│   │  Copilot     │   │  OLED Dark   │   │• 40% Usab.   │
+│• Redaktur /  │   │• HMW Qs      │   │• 7 AI Skills │   │• Vector Orb  │   │• 30% Story   │
+│  Wartawan    │   │• 3 Persona   │   │• CreditShield│   │• WA Dispatch │   │• 30% Tech    │
+│• Investor    │   │• As-Is vs    │   │• 20 Portals  │   │• REST API    │   │• Benchmark   │
+│  Relations   │   │  To-Be       │   │  x 4 Negara  │   │  FastAPI     │   │  Kompetitor  │
 └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
 ```
 
@@ -34,100 +36,120 @@ Didukung oleh arsitektur **Tim Modular 7 AI Agent Specialists** dan protokol pen
 
 ## FASE 1: EMPATHIZE (Memahami Pengguna & Konteks Nyata)
 
-### 1. Observasi Empiris Pasar Modal Indonesia
-Berdasarkan data KSEI, jumlah investor pasar modal Indonesia telah melampaui 13 juta orang, didominasi oleh generasi muda dan pemilik usaha mandiri. Namun, terdapat kesenjangan besar antara ketersediaan data dengan pemahaman pengguna:
-1. **Bahasa Pasar Terlalu Eksklusif**: Istilah seperti *P/E Ratio*, *Debt-to-Equity*, *Operating Cash Flow*, dan *Bandarmology Net Foreign Flow* terasa mengintimidasi dan sulit dipahami oleh orang awam.
-2. **Ketiadaan Hubungan dengan Sektor Riil**: Pelaku UMKM tidak menyadari bahwa data bursa saham (misal: kinerja emiten ritel $ACES, konsumen pokok $ICBP, atau logistik $ASII) merupakan **cermin langsung dari daya beli masyarakat dan tren industri mereka sendiri**.
-3. **Informasi Terfragmentasi**: Investor harus membuka puluhan tab browser untuk membaca berita di CNBC Indonesia, Bisnis.com, dan Kontan, lalu membandingkannya manual dengan grafik harga saham yang sedang anjlok atau naik.
+### 1. Lanskap Industri Pasar Modal & Kebutuhan Riset
+Pasar modal Asia Tenggara bergerak dalam hitungan detik. Keputusan investasi dan pemberitaan tidak lagi bisa mengandalkan satu sumber data lokal saja:
+1. **Tekanan Deadline Pagi Hari (Pre-Market Rush)**: Sebelum bursa saham dibuka pukul 09.00 WIB, analis sekuritas dan jurnalis ekonomi harus sudah menyelesaikan rangkuman pasar (*Morning Note* / *Opening Bell Article*) berdasarkan kejadian semalam di bursa regional (Singapura, Tokyo, Wall Street).
+2. **Keterpisahan Data Kuantitatif dan Narasi Berita**: Data harga saham, aliran dana asing (*foreign flow*), dan transaksi broker (*broker summary*) berada di terminal data terpisah, sementara narasi penyebab pergerakan berada di puluhan situs berita regional. Mengkorelasikan keduanya membutuhkan 2–3 jam kerja manual setiap hari.
+3. **Beban Penulisan Konten Finansial**: Redaktur berita pasar modal harus mengejar *speed-to-publish* saat saham mengalami lonjakan harga mendadak (*breaking news* / anomali volume), namun seringkali terkendala waktu untuk mengumpulkan data valuasi pendukung (*P/E ratio, laba kuartal, net foreign buy*).
 
 ---
 
-### 2. Profil Persona Pengguna (User Personas)
+### 2. Tiga Profil Persona Pengguna Sasaran (Target User Personas)
 
-#### Persona A: Pak Hendra (48 Tahun) — Pemilik Pabrik & Distributor Bahan Bangunan
-* **Karakter**: Berpengalaman 20 tahun di bisnis riil, tidak punya latar belakang pendidikan finansial, memegang smartphone untuk koordinasi WhatsApp dan cek berita sesaat.
-* **Tujuan**: Ingin mengetahui apakah industri properti dan perumahan tahun 2026 sedang bergairah atau lesu agar bisa mengatur stok produksi semen dan bata ringan.
-* **Frustrasi**: *"Saya pernah download aplikasi saham, tapi pusing lihat grafik lilin (candlestick) dan angka warna-warni. Saya cuma butuh tahu: pengembang perumahan lagi banyak proyek atau sepi? Jangan kasih saya PDF laporan keuangan 60 halaman!"*
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        TIGA SASARAN USER PERSONA                       │
+├────────────────────┬────────────────────┬──────────────────────────────┤
+│  PERSONA 1: RISET  │ PERSONA 2: MEDIA   │ PERSONA 3: EMITEN & KORPORASI│
+│  Reza (29 Tahun)   │ Maya (34 Tahun)    │ Dian (38 Tahun)              │
+│  Equity Research   │ Redaktur Finansial │ Head of Investor Relations   │
+│  Associate         │ Portal Berita      │ Perusahaan Terbuka (IDX/SGX) │
+│  (Sekuritas / AM)  │ (Bisnis/Kontan)    │                              │
+└────────────────────┴────────────────────┴──────────────────────────────┘
+```
 
-#### Persona B: Anisa (28 Tahun) — Pemilik Coffee Shop & Investor Ritel Pemula
-* **Karakter**: Generasi digital-native, memiliki tabungan yang ingin dialokasikan ke saham berdividen stabil (*dividend investing*), sering cemas akibat berita pasar yang sensasional (*FOMO/Panic Selling*).
-* **Tujuan**: Mencari saham kebutuhan pokok yang sehat secara fundamental, rutin membagikan dividen >5%, dan ingin tahu alasan mengapa harga saham favoritnya tiba-tiba turun.
-* **Frustrasi**: *"Kemarin saham bank saya turun 3%. Di media sosial ramai isu krisis, tapi di portal berita dibilang normal profit-taking. Saya tidak tahu mana yang benar karena tidak bisa membaca data transaksi asing dan broker."*
+#### Persona 1: Reza (29 Tahun) — Equity Research Associate di Perusahaan Sekuritas / Manajer Investasi
+* **Peran & Tanggung Jawab**: Membantu Senior Analyst membuat *Daily Morning Note* pukul 07.30 WIB, memantau 30 emiten dalam *coverage list*, menyusun tabel valuasi komparatif, dan melacak aliran dana institusi asing.
+* **Tujuan**: Memangkas waktu riset pagi hari dari 3 jam menjadi 15 menit agar bisa fokus menyusun rekomendasi investasi mendalam (*in-depth equity notes*) untuk *institutional clients*.
+* **Frustrasi**: *"Setiap jam 05.30 subuh saya harus buka Bloomberg/terminal, lalu buka 5 portal berita Singapura & Indonesia untuk cari tahu kenapa semalam bursa regional bergerak, lalu cek data broker satu per satu. Sangat melelahkan dan rawan salah input."*
 
-#### Persona C: Budi (35 Tahun) — Analis Bisnis & Trader Mandiri
-* **Karakter**: Sangat melek data, membutuhkan kecepatan dalam merangkum berita makro regional (Singapura, Malaysia, Jepang) dan mengaitkannya dengan IHSG sebelum jam bursa buka pukul 09.00 WIB.
-* **Tujuan**: Mendapatkan ringkasan *pre-market intelligence* yang terverifikasi tanpa harus membuang waktu 2 jam membaca puluhan situs berita setiap subuh.
-* **Frustrasi**: *"Riset memakan waktu terlalu banyak. Saya butuh kurasi otomatis yang menyaring kebisingan pasar (market noise) dan langsung memberikan fakta data bursa + konfirmasi berita terkait."*
+#### Persona 2: Maya (34 Tahun) — Redaktur Meja Pasar Modal di Media Finansial (e.g. Bisnis/Kontan/CNBC ID)
+* **Peran & Tanggung Jawab**: Memimpin tim wartawan pasar modal, menerbitkan 15–20 artikel berita emiten per hari, memastikan akurasi data 5W+1H, serta membuat ulasan pasar pagi (*Morning Bell*) dan penutupan bursa (*Closing Bell*).
+* **Tujuan**: Menerbitkan berita anomali harga saham dalam hitungan menit pasca bursa dibuka dengan data fundamental dan bandarmologi yang akurat tanpa menunggu draf manual yang lambat.
+* **Frustrasi**: *"Wartawan junior sering menulis berita saham naik atau anjlok tanpa menyertakan data pendukung: siapa broker yang borong sahamnya, berapa net buy asingnya, dan berapa P/E rasionya. Akibatnya artikel terasa hambar dan pembaca mengkritik karena minim data."*
+
+#### Persona 3: Dian (38 Tahun) — Head of Investor Relations (IR) di Perusahaan Terbuka (Emiten IDX & SGX)
+* **Peran & Tanggung Jawab**: Melaporkan pergerakan harga saham perusahaan kepada Direksi & Dewan Komisaris, memantau aktivitas pemegang saham institusi (*institutional shareholder tracking*), memantau valuasi kompetitor industri sejenis (*peer benchmarking*), serta mendeteksi sentimen berita media regional terkait perusahaannya.
+* **Tujuan**: Mengetahui secara instan siapa broker yang sedang mengakumulasi atau melepas saham perusahaan mereka dan sentimen apa yang sedang beredar di media Singapura, Malaysia, atau Indonesia.
+* **Frustrasi**: *"Direksi sering mendadak bertanya: 'Kenapa saham kita turun 4% hari ini padahal kinerja kuartal bagus? Siapa yang jualan?' Saya butuh waktu berjam-jam untuk menarik data broker summary dan mencocokkannya dengan rumor di media."*
 
 ---
 
-### 3. Peta Empati (Empathy Map)
+### 3. Peta Empati Kolektif (Empathy Map)
 
-| Dimensi | Apa yang Dialami Pengguna? |
+| Dimensi | Apa yang Dialami Para Profesional Ini? |
 | :--- | :--- |
-| **Says (Mengatakan)** | • "Bahasanya susah banget dimengerti."<br>• "Gimana prospek bisnis saya kalau bursa lagi turun?"<br>• "Kenapa saham ini tiba-tiba anjlok padahal perusahaannya besar?" |
-| **Thinks (Memikirkan)** | • "Apakah uang dan stok barang saya aman?"<br>• "Pasti data seperti ini cuma untuk orang kaya atau manajer investasi di Jakarta."<br>• "Saya butuh asisten pribadi yang bisa saya ajak ngobrol santai tanpa dihakimi." |
-| **Does (Melakukan)** | • Mengambil keputusan bisnis hanya berdasarkan intuisi atau kabar angin grup WhatsApp.<br>• Membuka aplikasi bursa sebentar lalu menutupnya kembali karena bingung.<br>• Terlambat mengantisipasi lonjakan harga bahan baku industri. |
-| **Feels (Merasakan)** | • **Kewalahan (Overwhelmed)** oleh ledakan data angka mentah.<br>• **Cemas (Anxious)** akan risiko kerugian modal atau penurunan omzet.<br>• **Tertinggal (Excluded)** dari informasi bernilai tinggi yang dinikmati investor institusi. |
+| **Says (Mengatakan)** | • "Bisa cepat rangkumkan kenapa saham $BBCA dan $BMRI dilepas asing pagi ini?"<br>• "Saya butuh draf berita emiten 5W+1H lengkap dengan data valuasi sekarang juga!"<br>• "Bagaimana pergerakan saham kompetitor kita di Singapura dan Malaysia hari ini?" |
+| **Thinks (Memikirkan)** | • "Waktu saya habis untuk pekerjaan kompilasi data manual (*grunt work*), bukan untuk analisis bernilai tinggi."<br>• "Jangan sampai media kami kalah cepat menerbitkan berita dibanding kompetitor."<br>• "Direksi butuh data valid detik ini juga, bukan perkiraan." |
+| **Does (Melakukan)** | • Menyalin angka secara manual dari terminal data ke file Excel atau Google Docs.<br>• Membuka 15 tab berita regional setiap subuh untuk menyisir berita ekonomi Asia Tenggara.<br>• Terlambat mendeteksi anomali akumulasi smart money pada emiten coverage. |
+| **Feels (Merasakan)** | • **Tekanan Waktu Tinggi (High-Stress & Deadline Fatigue)** setiap subuh dan jam penutupan bursa.<br>• **Cemas Ketinggalan Informasi (Fear of Missing Material Facts)** terkait aksi korporasi atau anomali transaksi broker.<br>• **Frustrasi** karena keterbatasan alat bantu yang mampu mengawinkan data angka dengan narasi berita. |
 
 ---
 
 ## FASE 2: DEFINE (Merumuskan Masalah & Kebutuhan Utama)
 
-### 1. Problem Statement Resmi (Sesuai Syarat Hackathon)
-> **"Untuk pemilik usaha UMKM dan investor ritel Indonesia yang kewalahan mengolah data laporan keuangan bursa yang rumit dan berita pasar yang terfragmentasi, BE.N.IX menghadirkan Garda AI Market Concierge yang secara otomatis mengawinkan data kuantitatif Sectors API dengan kurasi berita regional untuk menyajikan wawasan bisnis dan investasi yang jelas, terverifikasi, dan bebas jargon melalui percakapan ramah dan otomasi harian."**
+### 1. Problem Statement Resmi (Sesuai Standar Penjurian Hackathon)
+> **"Bagi Tim Riset Ekuitas di Sekuritas, Jurnalis Media Finansial, dan Divisi Investor Relations Perusahaan Publik yang terbebani oleh proses manual mengompilasi data pasar modal dan menyisir berita regional yang memakan waktu berjam-jam, BE.N.IX menghadirkan Garda — Autonomous AI Market Intelligence Copilot yang secara instan mengawinkan data kuantitatif Sectors API (valuasi, bandarmologi, dan foreign flow) dengan agregasi berita dari 20 portal di 4 negara regional untuk menyajikan analisis terverifikasi, artikel berita 5W+1H siap rilis, dan briefing proaktif via Web & WhatsApp."**
 
 ---
 
-### 2. Empat Pain Points Utama (Root Causes)
-1. **The Context Void (Ketiadaan Konteks Penyebab)**: Data pergerakan harga bursa tidak menjelaskan "mengapa" pergerakan itu terjadi. Tanpa integrasi berita riil, angka fluktuasi saham menjadi buta konteks.
-2. **The SME-Market Disconnect (Kesenjangan UMKM dengan Pasar Modal)**: Pelaku usaha riil belum memiliki jembatan pemikiran untuk memanfaatkan data emiten terbuka sebagai alat *due diligence* vendor dan barometer daya beli masyarakat.
-3. **Credit Quota Fragility (Kerentanan Kuota API)**: Aplikasi yang terus-menerus memanggil endpoint eksternal tanpa mekanisme caching pintar akan cepat kehabisan kuota kredit API dan memperlambat waktu respon (*high latency*).
-4. **Intimidating User Interface (Antarmuka yang Mengintimidasi)**: Dashboard pasar modal umumnya kaku, penuh warna neon yang melelahkan mata, dan tidak memiliki sentuhan interaksi manusiawi.
+### 2. Empat Bottleneck Utama yang Dipecahkan (The 4 Core Bottlenecks)
+
+1. **The Morning Compilation Drain (Beban Kompilasi Pagi Hari)**:
+   - Analis dan redaktur menghabiskan 2–3 jam setiap hari hanya untuk menarik data harga penutupan, moving average, net foreign flow, dan mengumpulkan tautan berita bursa sebelum rapat pagi.
+2. **The Disconnect Between Quantitative Flow and News Narrative (Kesenjangan Angka vs Narasi)**:
+   - Angka kenaikan saham tanpa konteks berita tidak memiliki makna; sebaliknya, berita tanpa data broker dan rasio valuasi adalah gosip belaka. Tidak ada sistem terpadu yang memadukan keduanya secara otomatis.
+3. **Speed-to-Publish Penalty (Kerugian Keterlambatan Penerbitan)**:
+   - Media finansial kehilangan ribuan pembaca dan kredibilitas ketika terlambat memberitakan anomali pergerakan saham karena jurnalis harus menyusun tabel finansial secara manual.
+4. **Quota Exhaustion & Query Latency in Multi-Asset Research (Boros Kuota & Latensi Lambat)**:
+   - Menyisir puluhan emiten secara berulang menghabiskan kuota API dan menimbulkan latensi lambat jika tidak didukung protokol *caching* deterministik.
 
 ---
 
 ### 3. Rumusan "How Might We" (HMW Questions)
-* **HMW 1**: *Bagaimana kita bisa menerjemahkan metrik bursa yang rumit (P/E, ROE, Net Foreign Flow, Broker Summary) menjadi bahasa percakapan bisnis yang santun dan mudah dipahami oleh pemilik warung atau pabrik lokal?*
-* **HMW 2**: *Bagaimana kita bisa mengawinkan lonjakan data kuantitatif Sectors API secara instan dengan kurasi artikel berita aktual dari 20 portal di 4 negara regional?*
-* **HMW 3**: *Bagaimana kita mengamankan kuota kredit API yang terbatas agar sistem tetap responsif (sub-detik) dan hemat biaya melalui arsitektur caching lokal?*
-* **HMW 4**: *Bagaimana kita mengantarkan wawasan pasar penting tersebut secara proaktif tanpa menuntut pengguna membuka dashboard setiap jam (misal: melalui WhatsApp)?*
+
+* **HMW 1**: *Bagaimana kita bisa memangkas waktu pembuatan Morning Market Note dari 2 jam menjadi kurang dari 60 detik menggunakan data Sectors API yang terverifikasi?*
+* **HMW 2**: *Bagaimana kita bisa mengotomasi penulisan artikel berita pasar modal lengkap berkaidah 5W+1H yang menyertakan rasio fundamental, bandarmologi broker, dan sentimen pasar dalam hitungan detik?*
+* **HMW 3**: *Bagaimana kita memberikan tim Investor Relations (IR) visibilitas real-time terhadap akumulasi broker institusi (smart money vs retail) dan sentimen berita media di 4 negara (ID, SG, MY, JP)?*
+* **HMW 4**: *Bagaimana kita menjamin seluruh pemrosesan data bursa multi-emiten berjalan sub-detik tanpa memboroskan kuota kredit API?*
 
 ---
 
-### 4. Perbandingan Alur Pengguna: As-Is vs To-Be
+### 4. Perbandingan Alur Kerja: As-Is vs To-Be
 
 ```
-ALUR LAMA (AS-IS):
-[Bingung Tren Bisnis/Saham] 
-  ──> Buka 10 Tab Berita Berbeda (Sensasional & Penuh Iklan)
-  ──> Buka Laporan Keuangan PDF 50 Halaman (Pusing Membaca Angka)
-  ──> Bertanya di Grup Sosmed (Mendapat Saran Menyesatkan / Pom-Pom)
-  ──> Keputusan Ragu-Ragu & Rawan Rugi
+ALUR KERJA KONVENSIONAL (AS-IS):
+[Pukul 05.30 WIB: Analis/Jurnalis Mulai Bekerja]
+  ──> Buka Terminal Data (Download data transaksi harian IDX & SGX)
+  ──> Buka 15 Tab Browser Berita (CNBC, Bisnis, Nikkei, Straits Times)
+  ──> Buka Spreadsheet Excel (Hitung P/E, konsentrasi broker, foreign net flow)
+  ──> Tulis Manual Catatan Pasar / Draft Berita (Format 5W+1H manual)
+  ──> Pukul 08.45 WIB: Baru selesai, kelelahan, rawan kesalahan data input.
 
-ALUR BE.N.IX (TO-BE):
-[Buka BE.N.IX Web / Terima Pesan WA]
-  ──> Ticker Ribbon & Breaking News Editorial Tersaji Bersih
-  ──> Klik / Tanya Garda: "Gimana industri properti & emiten semen sekarang?"
-  ──> Garda Orchestrator mengecek Credit Shield Cache (12ms)
-  ──> Garda menyintesis Data Sectors + Berita CNBC/Bisnis.com
-  ──> Jawaban tersaji santun, ringkas, disertai audio TTS natural
-  ──> Keputusan Bisnis & Investasi Terukur Berdasarkan Data Valid
+ALUR KERJA MODERN BE.N.IX (TO-BE):
+[Pukul 06.00 WIB: Autonomous Pipeline Berjalan Otonom]
+  ──> Garda Orchestrator mengeksekusi Sectors Engine via Credit Shield (12ms)
+  ──> NLP Scraper merangkum berita 20 portal dari ID, SG, MY, JP
+  ──> Trader AI menghitung Valuasi & Bandarmologi (Akumulasi broker Top-3)
+  ──> Journalist AI menyusun otomatis Artikel Berita 5W+1H + Morning Pulse
+  ──> Pukul 06.01 WIB: Notifikasi ringkas masuk ke WhatsApp Analis/Redaktur/IR
+  ──> Analis/Redaktur membuka Web Portal BE.N.IX: data lengkap, draf artikel 
+      siap edit/publish, dan Garda siap diajak dialog audio TTS interaktif.
 ```
 
 ---
 
 ## FASE 3: IDEATE (Ideasi & Solusi Inovatif)
 
-### 1. Konsep Inti: "AI Market Concierge 5-Bintang"
-Alih-alih membuat dashboard analisis dingin atau bot penjawab kaku, tim melahirkan konsep **Garda**:
-* Berperilaku seperti **Chief Concierge di Hotel Bintang Lima**: Sangat santun, proaktif, menghormati lawan bicara, berbicara dengan empati terhadap bisnis pengguna, dan tidak pernah memberikan saran investasi spekulatif ilegal (*No Financial Advice Disclaimer*).
-* Dilengkapi dengan **avatar visual vector bola kecerdasan buatan (SVG Neural Sphere)** yang hidup dan kemampuan **Text-to-Speech (TTS)** audio suara bahasa Indonesia natural.
+### 1. Konsep Inti: "Autonomous AI Financial Intelligence Copilot"
+BE.N.IX mentransformasikan alur kerja riset pasar modal menjadi sistem otonom cerdas:
+* **Bukan Sekadar Chatbot**: Garda bukan bot penanya biasa, melainkan **Asisten Riset Ekuitas Senior & Editor-in-Chief AI** yang memiliki logika orkestrasi multi-tahap (*multi-step reasoning*), memanggil tool data secara mandiri, dan menyimpan memori percakapan profesional.
+* **Interaksi Dua Arah (Voice & Text)**: Dilengkapi avatar neural vector SVG tajam tanpa raster blur dan kemampuan **Text-to-Speech (TTS)** audio untuk mendengarkan briefing pasar secara hands-free saat tim sedang bersiap di pagi hari.
 
 ---
 
 ### 2. Arsitektur Kolaboratif: Tim Modular 7 Agentic AI Skills
-Sistem memecah beban kognitif AI menjadi 7 peran modular terisolasi berstandar Google Antigravity & Gemini Skills (`.agents/skills/`):
+Beban kerja riset profesional didelegasikan kepada 7 spesialisasi AI independen (`.agents/skills/`):
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -136,7 +158,7 @@ Sistem memecah beban kognitif AI menjadi 7 peran modular terisolasi berstandar G
                                     │
                     ┌───────────────▼───────────────┐
                     │    Garda Chief Orchestrator   │
-                    │  (Pemimpin Redaksi & Maestro) │
+                    │  (Editor-in-Chief & Maestro)  │
                     └───────┬───────────────┬───────┘
                             │               │
         ┌───────────────────┴───┐       ┌───┴───────────────────┐
@@ -155,94 +177,97 @@ Sistem memecah beban kognitif AI menjadi 7 peran modular terisolasi berstandar G
                     └──────────────────────────────┘
 ```
 
-1. **Sectors API Specialist**: Bertanggung jawab atas normalisasi simbol bursa (IDX/SGX), penarikan data 74 endpoint Sectors v2, dan penegakan protokol *Credit Shield*.
-2. **Trader & Market Analyst AI**: Menganalisis 3 dimensi: Valuasi Fundamental (P/E, ROE, Dividen), Bandarmologi (Konsentrasi Broker Top-3), dan Arus Modal Asing (*Net Foreign Flow*).
-3. **Financial Journalist AI (Wartawan Pasar Modal)**: Mengubah analisis kuantitatif menjadi artikel berita naratif berstandar jurnalisme ekonomi Indonesia (5W+1H, Headline memikat, sentimen *Bullish/Bearish*).
-4. **Garda Chief Orchestrator**: Mengatur jadwal penerbitan berita harian, merespons pertanyaan chat pengguna, dan menginisiasi pengiriman WhatsApp broadcast.
-5. **Regional News Scraper & NLP**: Menarik berita ekonomi dari 20 portal ternama di 4 negara (Indonesia, Singapura, Malaysia, Jepang), mencocokkan kata kunci emiten, dan mengklasifikasikan sentimen bahasa.
-6. **Backend Software Engineer AI**: Memastikan pipeline API asinkron (FastAPI + httpx + SQLite) berjalan minim latensi dan tangguh terhadap *rate-limiting*.
-7. **Frontend UI/UX Designer AI**: Merancang antarmuka ramah pengguna berbasis Dark OLED Slate (`#080d1a`), tipografi modern Inter & JetBrains Mono, dan tata letak responsif.
+1. **Sectors API Specialist (`sectors-api-skill`)**:
+   - Menangani abstraksi 74 endpoint Sectors API v2 (IDX & SGX), normalisasi ticker bursa, dan penegakan batas kredit via *Credit Shield*.
+2. **Trader & Market Analyst AI (`trader-analyst-skill`)**:
+   - Melakukan evaluasi kuantitatif 3-dimensi:
+     - *Fundamental*: P/E, P/B, ROE, Dividend Yield, Debt-to-Equity.
+     - *Bandarmologi*: Menganalisis rasio konsentrasi 3 broker teratas dan membedakan aksi broker institusi asing (`AK`, `BK`, `KZ`, `RX`, `ZP`) vs broker ritel domestik (`YP`, `XC`, `PD`).
+     - *Foreign Flow*: Mengidentifikasi akumulasi atau distribusi tersembunyi (*false breakouts*).
+3. **Financial Journalist AI (`financial-journalist-skill`)**:
+   - Menghasilkan draf artikel berita profesional berstandar jurnalisme ekonomi Indonesia (5W+1H, headline atraktif, ringkasan sentimen, dan kutipan data metrik).
+4. **Garda Chief Orchestrator (`garda-orchestrator-skill`)**:
+   - Memimpin orkestrasi otomatis: Menjadwalkan publikasi berita pagi/sore, merespons interaksi riset analis di portal, dan mengirim ringkasan via WhatsApp.
+5. **Regional News Scraper & NLP (`news-scraper-nlp-skill`)**:
+   - Mengekstrak berita finansial dari 20 portal ternama di 4 negara (ID, SG, MY, JP), memetakan nama emiten ke sentimen pasar (*BULLISH / BEARISH / NEUTRAL*).
+6. **Backend Software Engineer AI (`backend-dev-skill`)**:
+   - Arsitek API gateway berbasis FastAPI, query builder teroptimasi, pipeline asinkron, dan skema database SQLite.
+7. **Frontend UI/UX Designer AI (`frontend-dev-skill`)**:
+   - Merancang antarmuka profesional bertaraf Bloomberg Terminal / TradingView dengan palet Dark OLED Slate (`#080d1a`), Running Ticker Ribbon, dan widget interaktif.
 
 ---
 
 ### 3. Protokol Inovasi: Smart Credit Shield Caching
-Untuk mengatasi masalah keterbatasan kuota API di hackathon dan produksi:
-* Setiap panggilan endpoint di-hash secara deterministik: `hash(endpoint + sorted_params)`.
-* Respons disimpan di database lokal SQLite (`gateway.db`) dan memori JSON dengan Time-To-Live (TTL) bertingkat:
-  - Data Master Subsektor & Profil Perusahaan: **24 Jam**
+Dalam riset institusional, puluhan analis sering kali menanyakan emiten yang sama dalam waktu berdekatan. Protokol Credit Shield menyelesaikan masalah ini:
+* **Deterministik Query Hash**: `hash(endpoint + sorted_params)`.
+* **Hierarki TTL Caching di SQLite & Memori JSON**:
+  - Profil Perusahaan & Struktur Industri: **24 Jam**
   - Laporan Keuangan Kuartalan: **6 Jam**
-  - Data Transaksi Harian & Top Movers: **1 Jam**
-  - Broker Summary: **30 Menit**
-* **Hasil Nyata**: Latensi terpangkas dari **~850 ms** (panggilan jaringan ke cloud) menjadi **~12 ms** (pembacaan cache lokal), menghemat 95% kuota kredit Sectors.
-
----
-
-### 4. Kurasi Berita Regional Lintas 4 Negara (Cross-Border Intelligence)
-Pasar modal Indonesia sangat dipengaruhi oleh sentimen ekonomi regional Asia Tenggara dan Asia Timur. Garda mengintegrasikan feeds dari:
-* **Indonesia**: CNBC Indonesia, Bisnis.com, Kontan, Kompas Finansial, Detik Finance.
-* **Singapura**: Channel NewsAsia (CNA), The Straits Times, The Business Times.
-* **Malaysia**: The Edge Malaysia, The Star, Malay Mail, Bernama.
-* **Jepang**: Nikkei Asia, NHK World Business, Japan Times.
+  - Transaksi Harian & Top Gainers/Losers: **1 Jam**
+  - Broker Summary Transaksi: **30 Menit**
+* **Dampak**: Latensi terpangkas dari **~850 ms menjadi ~12 ms**, menjamin ketersediaan data sub-detik dengan konsumsi kuota 0 kredit pada panggilan berulang.
 
 ---
 
 ## FASE 4: PROTOTYPE (Perwujudan & Implementasi Solusi Nyata)
 
-### 1. Tumpukan Teknologi (Technology Stack)
-* **Backend API & Middleware**: Python 3.10+, FastAPI (Asynchronous Native), Pydantic v2 Settings.
-* **Database & Caching**: SQLite (`gateway.db`) via `aiosqlite` & JSON Data Stores untuk cadangan offline instan.
-* **LLM Engine**: Gemma 4 (`gemma4:e4b`) via Inovasi UIT JBT Gateway dengan fallback cerdas.
-* **Data Core**: Sectors Financial API v2 (74 Endpoints, IDX & SGX coverage).
-* **Frontend Portal**: HTML5 Semantik, Pure CSS (OLED Pure Black Slate, Glassmorphism, Zero Raster Blur), Vanilla JavaScript tanpa dependensi berat.
-* **Automasi Notifikasi**: WhatsApp HTTP Gateway Dispatcher (`wa.inovasiuitjbt.uk`).
-* **Agentic Framework**: Google Antigravity & Gemini Workspace Registered Skills.
+### 1. Tumpukan Teknologi Teruji (Production-Grade Stack)
+* **Backend Gateway**: Python 3.10+, FastAPI (Asynchronous Native), Pydantic v2 Settings.
+* **Database & Persistence**: SQLite lokal (`gateway.db`) via `aiosqlite` & JSON Data Stores untuk cadangan offline.
+* **LLM Engine**: Gemma 4 (`gemma4:e4b`) via Inovasi UIT JBT Gateway dengan custom concierge prompt.
+* **Data Core**: Sectors Financial API v2 (74 Endpoints, Cakupan Bursa IDX & SGX).
+* **Frontend Portal**: Pure CSS (OLED Pure Black Slate, Glassmorphism, 100% Vector SVG), Vanilla JS tanpa framework bloated.
+* **Automasi Distribusi**: WhatsApp HTTP Gateway Dispatcher (`wa.inovasiuitjbt.uk`).
+* **Agentic Customization**: Gemini & Antigravity Registered Skills (`.agents/skills/`).
 
 ---
 
-### 2. Fitur-Fitur Nyata Prototipe (Working Features)
+### 2. Fitur-Fitur Nyata Prototipe (Working MVP Features)
 
-| Fitur | Deskripsi & Implementasi Nyata |
+| Fitur Utama | Manfaat untuk Tim Riset, Jurnalis, & IR |
 | :--- | :--- |
-| **Running Ticker Ribbon** | Pita pergerakan harga real-time di bagian atas layar menampilkan IHSG, LQ45, dan saham teraktif dengan kode warna hijau zamrud (`#22c55e`) dan merah kirmizi (`#ef4444`). |
-| **Breaking Editorial News** | Artikel headline pasar modal harian yang ditulis otomatis oleh Wartawan AI lengkap dengan badge sentimen pasar (*BULLISH / BEARISH / NETRAL*) dan estimasi waktu baca. |
-| **Interactive Emiten Deepdive** | Kartu profil emiten interaktif yang menyajikan valuasi (P/E, P/B), dividen yield, rasio utang, serta tombol instan *"Tanya Garda"* per emiten. |
-| **Garda Concierge Chat Drawer** | Panel percakapan interaktif sisi kanan dengan avatar vektor SVG yang bergerak halus, mendukung input pertanyaan bisnis bebas, tombol toggle suara (TTS Audio), dan saran pertanyaan cepat (*Prompt Chips*). |
-| **WhatsApp Pre-Market Briefing** | Otomasi pengiriman ringkasan pasar pagi hari langsung ke nomor WhatsApp investor/pelaku usaha sebelum jam bursa dimulai. |
-| **Screener Query Builder** | Penyaring saham berbasis kriteria fundamental UMKM (misal: mencari emiten ritel berdividen >5% dengan utang rendah). |
+| **Running Ticker Ribbon** | Menampilkan pergerakan real-time indeks utama (IHSG, LQ45) dan saham paling aktif di bursa secara kontinu. |
+| **Breaking Editorial News Feed** | Artikel berita emiten terbit otomatis lengkap dengan badge sentimen pasar (*BULLISH/BEARISH*), tags emiten, dan estimasi waktu baca. |
+| **Interactive Emiten Deepdive** | Kartu profil emiten interaktif yang menyajikan rasio valuasi, yield dividen, segmen pendapatan, dan tombol riset instan *"Tanya Garda"*. |
+| **Garda AI Research Assistant** | Panel percakapan interaktif sisi kanan dengan avatar vektor SVG, mendukung input prompt kustom, tombol audio suara (TTS), dan rekomendasi *prompt chips*. |
+| **Automated WhatsApp Briefing** | Otomasi pengiriman ringkasan pasar pagi (*Pre-Market Pulse*) langsung ke nomor WhatsApp tim riset atau redaktur pukul 06.00 WIB. |
+| **Screener Query Builder** | Penyaring saham cepat berbasis kriteria fundamental dan bandarmologi (misal: mencari emiten dengan akumulasi asing positif dan P/E < 15). |
 
 ---
 
-### 3. Diagram Alur Kerja Prototipe (End-to-End System Flow)
+### 3. Diagram Alur Kerja Sistem (System Sequence Flow)
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as Pengguna (Pelaku UMKM)
+    actor Pro as Analis / Jurnalis / IR
     participant UI as Web Portal (BE.N.IX)
     participant Orch as Garda Orchestrator
     participant Cache as Credit Shield (SQLite)
     participant Sectors as Sectors API v2
+    participant Scraper as Regional News NLP
     participant LLM as Gemma 4 LLM
-    participant WA as WhatsApp Gateway
+    participant WA as WhatsApp Dispatcher
 
-    User->>UI: Buka portal atau ketik: "Gimana prospek ritel & saham ACES?"
+    Pro->>UI: Buka portal atau tanyakan: "Analisis foreign flow & broker BBCA hari ini"
     UI->>Orch: POST /api/v1/agent/query
-    Orch->>Cache: Periksa ketersediaan data lokal (ACES.JK)
-    alt Cache Miss / Kadaluarsa
-        Cache-->>Orch: Tidak ditemukan
-        Orch->>Sectors: GET /v2/company/report/ACES/
-        Sectors-->>Orch: Data Finansial, Valuasi, & Segmen Penjualan
-        Orch->>Cache: Simpan respons ke SQLite (TTL 6 Jam)
-    else Cache Hit (Sub-detik)
+    Orch->>Cache: Cek ketersediaan data lokal (BBCA.JK)
+    alt Cache Hit (Sub-detik)
         Cache-->>Orch: Ambil snapshot data valid (12ms)
+    else Cache Miss / Kadaluarsa
+        Orch->>Sectors: GET /v2/company/report/BBCA/ & /v2/foreign-flow/BBCA/
+        Sectors-->>Orch: Data Finansial, Valuasi, & Aliran Asing
+        Orch->>Cache: Simpan ke SQLite (TTL 30m - 6 Jam)
     end
-    Orch->>LLM: Eksekusi Persona Garda + Prompt Analisis Konteks UMKM
-    LLM-->>Orch: Jawaban Santun & Wawasan Riil Bahasa Indonesia
+    Orch->>Scraper: Ambil berita terkait BBCA dari 20 portal ID & SG
+    Scraper-->>Orch: 3 Berita terkini + Skor Sentimen
+    Orch->>LLM: Eksekusi Persona Garda + Format Riset Analis
+    LLM-->>Orch: Ringkasan Analisis Terstruktur + Sentimen Pasar
     Orch-->>UI: Respons Teks + Audio TTS Stream
-    UI-->>User: Tampilan kartu data + Suara Garda berbicara ramah
-    opt Trigger Otomatis Jam 06.00 WIB
-        Orch->>WA: Kirim WhatsApp Morning Market Pulse
-        WA-->>User: Notifikasi Ringkasan Saham Pagi di HP Pengguna
+    UI-->>Pro: Tampilan tabel data + Suara Garda membacakan ringkasan
+    opt Pukul 06.00 WIB (Otomasi Harian)
+        Orch->>WA: Push Pre-Market Note ke WhatsApp Group Tim Riset / Redaksi
+        WA-->>Pro: Notifikasi WhatsApp diterima sebelum jam kantor
     end
 ```
 
@@ -251,51 +276,51 @@ sequenceDiagram
 ## FASE 5: TEST (Pengujian, Validasi & Evaluasi Dampak)
 
 ### 1. Hasil Pengujian Teknis (Automated Test Suite)
-Tim menjalankan 3 rangkaian pengujian otomatis end-to-end yang dapat diverifikasi oleh juri di repositori GitHub:
-1. **`test_client.py` (Konektivitas & Caching)**:
+Seluruh pengujian teknis telah dijalankan dan tervalidasi 100% pada repositori publik GitHub:
+1. **`test_client.py` (Konektivitas & Credit Shield)**:
    - Status: **PASSED (100%)**
-   - Hasil: Memvalidasi konektivitas ke Sectors API. Panggilan kedua ke endpoint yang sama terbukti dilayani oleh cache lokal SQLite dalam waktu **11,8 ms** dengan konsumsi kuota **0 kredit**.
-2. **`test_agentic_pipeline.py` (Kolaborasi Multi-Agen)**:
+   - Bukti: Panggilan API berulang dilayani oleh SQLite cache dalam waktu **11,8 ms** dengan **0 kredit terpakai**.
+2. **`test_agentic_pipeline.py` (Pipeline Kolaborasi Multi-Agen)**:
    - Status: **PASSED (100%)**
-   - Hasil: Menguji alur orkestrasi emiten `$BBCA` dan `$BMRI`. Data Sectors berhasil dianalisis oleh Trader AI, dirangkai menjadi artikel berita oleh Wartawan AI, disimpan ke database portal, dan diterbitkan tanpa intervensi manual.
-3. **`test_regional_pipeline.py` (Cakupan Regional & Berita)**:
+   - Bukti: Menguji siklus penuh emiten `$BBCA` dan `$BMRI`. Data Sectors ditarik, dianalisis oleh Trader AI, dirangkai menjadi artikel berita oleh Journalist AI, dan tersimpan di database portal secara otonom.
+3. **`test_regional_pipeline.py` (Cakupan Regional & NLP)**:
    - Status: **PASSED (100%)**
-   - Hasil: Memvalidasi penarikan feeds berita regional dan mapping emiten lintas bursa (IDX & SGX).
+   - Bukti: Berhasil menarik agregasi feeds berita dari portal Singapura, Malaysia, dan Jepang serta memetakannya ke sentimen pasar.
 
 ---
 
 ### 2. Matriks Penilaian Terhadap Kriteria Juri Sectors Hackathon
 
-| Kriteria Juri | Bobot | Bagaimana BE.N.IX Memenuhinya Secara Maksimal? |
+| Kriteria Penjurian | Bobot | Mengapa BE.N.IX Unggul Mutlak? |
 | :--- | :---: | :--- |
-| **Real-World Usability** | **40%** | • **Langsung Dapat Dipakai Hari Ini**: Menyelesaikan masalah nyata pelaku UMKM yang butuh membaca tren pasar untuk keputusan rantai pasok dan mitra bisnis.<br>• **Aksesibilitas Tinggi**: Tersedia di web responsif tanpa instalasi rumit serta notifikasi langsung ke WhatsApp yang dipakai seluruh masyarakat Indonesia. |
-| **Video Demo & Storytelling** | **30%** | • **Narasi Berfokus pada Manusia**: Menampilkan kontras dramatis antara kebingungan membaca laporan bursa konvensional vs kemudahan bertanya ke Garda.<br>• **Daya Tarik Visual & Audio**: Menampilkan avatar kecerdasan buatan vektor SVG yang dinamis disertai suara percakapan audio natural. |
-| **Technical Depth & Execution** | **30%** | • **Bukan Mockup / Fake Demo**: Repositori GitHub publik memuat backend FastAPI lengkap, Pydantic v2 validation, pipeline asinkron, dan database SQLite riil.<br>• **Pemanfaatan Maksimal Sectors API**: Mengintegrasikan laporan keuangan, valuasi, perubahan harga, foreign flow, hingga broker summary.<br>• **Credit Shield Caching**: Menunjukkan pemikiran rekayasa perangkat lunak yang matang untuk efisiensi biaya kuota. |
+| **Real-World Usability** | **40%** | • **Solusi Nyata untuk Masalah Nyata**: Menghilangkan 2–3 jam kerja manual tim riset sekuritas, redaktur berita, dan divisi IR setiap hari.<br>• **Distribusi Multi-Kanal**: Berfungsi optimal di web browser modern dan mengirimkan ringkasan instan ke WhatsApp yang digunakan oleh seluruh profesional di Indonesia. |
+| **Video Demo & Storytelling** | **30%** | • **Narasi Profesional yang Memikat**: Menampilkan perbandingan dramatis antara analis yang stres menyalin data manual subuh hari vs kemudahan menerima laporan instan dari Garda.<br>• **Daya Tarik Audio-Visual**: Tampilan portal OLED gelap berstandar Bloomberg Terminal dengan avatar neural SVG dinamis dan suara audio TTS natural. |
+| **Technical Depth & Execution** | **30%** | • **Zero Faked Demo**: Seluruh fitur berfungsi nyata di repositori publik GitHub (`cubbis-com/benix-sectors-api`) dengan arsitektur FastAPI asinkron, validasi Pydantic v2, dan database SQLite lokal.<br>• **Eksplorasi Mendalam Sectors API**: Memanfaatkan 74 endpoint Sectors secara komprehensif (fundamental, valuasi, transaksi harian, broker summary, dan foreign flow).<br>• **Protokol Credit Shield**: Menunjukkan kematangan rekayasa sistem dalam mengelola kuota dan latensi. |
 
 ---
 
-### 3. Matriks Keunggulan Kompetitif vs 3 Pesaing Utama
+### 3. Matriks Keunggulan Kompetitif vs Kompetitor Hackathon
 
 | Dimensi Evaluasi | Sentinel Flow | RowletAI | Scriffle | **BE.N.IX (Garda)** |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pendekatan Interaksi** | Bot Telegram pasif | Dashboard statis Streamlit | Kanvas rakit kartu (DIY) | **AI Concierge 2-Arah (Teks + Suara TTS) + Web Portal** |
-| **Pemahaman Konteks** | Deterministik angka saja | Skor angka statis | Logika node kabel | **Data Kuantitatif Bursa + Berita Aktual 4 Negara** |
-| **Target Pengguna** | Trader teknikal | Investor ritel | Peneliti kuantitatif | **Pelaku UMKM, Investor Ritel, & Profesional Riil** |
-| **Efisiensi Kuota API** | Pembatasan call kaku | Snapshot statis mati | SWR polling (rawan boros) | **Smart SQLite & JSON Credit-Shield (Sub-detik)** |
-| **Cakupan Wilayah** | LQ45 Indonesia saja | Saham Indonesia saja | Saham Indonesia saja | **Multi-Sektor IDX, SGX, & Makro Regional** |
-| **Kelengkapan Kode** | Script utilitas | 1 File monolitik >43k baris | Web Next.js | **Arsitektur Modular 7 AI Agent Skills Bersih** |
+| **Persona Sasaran** | Trader teknikal | Investor ritel | Peneliti kuantitatif | **Tim Riset Sekuritas, Jurnalis Finansial, & Divisi IR** |
+| **Pendekatan Interaksi** | Bot Telegram pasif | Dashboard statis Streamlit | Kanvas rakit kartu (DIY) | **Autonomous AI Copilot 2-Arah (Teks + Suara TTS) + Web Portal** |
+| **Sintesis Berita & Data** | ❌ Angka teknikal saja | ❌ Skor angka statis | ❌ Logika node kabel | **✅ Data Kuantitatif Sectors + 20 Portal Berita 4 Negara** |
+| **Efisiensi Kuota API** | Limit kaku (<1.000 call) | Snapshot statis mati | Polling 2s (boros kuota) | **Smart SQLite & JSON Credit-Shield (Latensi 12ms)** |
+| **Cakupan Pasar** | LQ45 Indonesia saja | Saham Indonesia saja | Saham Indonesia saja | **Multi-Sektor IDX, SGX, & Makro Regional (ID, SG, MY, JP)** |
+| **Kematangan Kode** | Script utilitas | 1 File monolitik >43k baris | Web Next.js | **Arsitektur Modular 7 AI Agent Skills Bersih** |
 
 ---
 
-### 4. Roadmap Pengembangan Masa Depan (Post-Hackathon)
-1. **Fase 1 (Bulan 1-2)**: Integrasi notifikasi interaktif dua arah langsung via WhatsApp Webhook (pengguna dapat membalas chat WhatsApp untuk bertanya ke Garda).
-2. **Fase 2 (Bulan 3-4)**: Fitur *Supply Chain Risk Radar*: Analisis otomatis risiko gagal bayar vendor UMKM dengan membaca skor Altman Z-Score dan Debt-to-Equity emiten rekanan secara periodik.
-3. **Fase 3 (Bulan 5-6)**: Ekspansi integrasi Sectors MCP ke platform produktivitas kantor (Google Workspace / Slack Bot).
+### 4. Rencana Pengembangan Pasca-Hackathon (Roadmap)
+1. **Bulan 1-2 (Interaktivitas WhatsApp Penuh)**: Membuka fitur tanya-jawab dua arah langsung melalui pesan WhatsApp (analis dapat membalas chat WhatsApp untuk meminta deepdive emiten saat sedang dalam perjalanan).
+2. **Bulan 3-4 (Export Draf Berita CMS)**: Integrasi webhook langsung ke Content Management System (WordPress / Ghost) media finansial untuk publikasi artikel berita 1-klik.
+3. **Bulan 5-6 (IR Shareholder Movement Alerts)**: Fitur notifikasi otomatis khusus tim Investor Relations jika terdeteksi broker institusi tertentu mengakumulasi >5% saham emiten mereka dalam kurun waktu 3 hari bursa.
 
 ---
 
 ## Kesimpulan
 
-Design Thinking pada proyek **BE.N.IX (Garda)** membuktikan bahwa inovasi kecerdasan buatan di sektor finansial bukan tentang membuat rumus matematika yang semakin rumit, melainkan tentang **meruntuhkan dinding eksklusivitas data pasar modal** agar dapat dimanfaatkan oleh 64 juta pelaku UMKM Indonesia. 
+Dengan mereposisi sasaran pengguna kepada **Tim Riset Sekuritas, Jurnalis Media Finansial, dan Divisi Investor Relations**, BE.N.IX memiliki proposisi nilai (*Value Proposition*) yang sangat tajam, terukur, dan bernilai ekonomis tinggi. 
 
-Dengan menyatukan data terpercaya **Sectors Financial API v2**, kehangatan interaksi **AI Concierge**, kedalaman kurasi **Berita Regional**, dan ketangguhan arsitektur **Credit Shield**, BE.N.IX siap memimpin kompetisi di **Sectors Hackathon 2026**.
+BE.N.IX tidak hanya menyajikan data, tetapi **mengotomasi beban kerja kognitif para profesional pasar modal**. Menyatukan presisi **Sectors Financial API v2**, keandalan **Credit Shield**, kedalaman kurasi **Berita Regional**, dan kecepatan **Autonomous Multi-Agent AI**, BE.N.IX menjadi solusi paling siap pakai dan berdaya saing tinggi di **Sectors Hackathon 2026**.
