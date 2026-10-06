@@ -174,18 +174,20 @@
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
             position: sticky;
-            top: 36px;
+            top: 38px;
             z-index: 50;
             width: 100%;
+            height: 52px;
         }
         .nav-container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 6px 18px;
+            padding: 0 18px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: nowrap;
             overflow: hidden;
         }
@@ -322,8 +324,16 @@
         .nav-links::-webkit-scrollbar {
             display: none;
         }
+        .nav-links li {
+            list-style: none;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
         .nav-link {
-            padding: 5px 11px;
+            padding: 6px 11px;
             border-radius: 6px;
             color: var(--text-secondary);
             font-size: 12px;
@@ -336,6 +346,7 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            line-height: 1;
         }
         .nav-link:hover, .nav-link.active {
             color: var(--text-main);
@@ -621,20 +632,23 @@
             position: relative;
         }
 
-        @media (max-width: 1180px) {
+        @media (max-width: 768px) {
             .app-layout {
                 flex-direction: column;
             }
             .garda-chat-col {
                 width: 100% !important;
-                height: 780px;
+                height: 600px;
                 position: relative;
                 top: 0;
                 border-left: none;
                 border-top: 1px solid var(--border);
             }
             .portal-content {
-                padding: 14px 16px 20px 16px;
+                padding: 12px 14px 20px 14px;
+            }
+            .right-thumb-dock {
+                display: none;
             }
         }
 
@@ -657,16 +671,25 @@
         .hero-badge-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .hero-badge-row::-webkit-scrollbar {
+            display: none;
         }
         .tag-pill {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
             padding: 3px 8px;
             border-radius: 4px;
             text-transform: uppercase;
+            white-space: nowrap;
+            line-height: 1.2;
         }
         .tag-pill.orange {
             background: rgba(249, 115, 22, 0.15);
@@ -679,10 +702,12 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
         .sentiment-badge {
-            font-size: 11px;
+            font-size: 10.5px;
             font-weight: 700;
             padding: 3px 8px;
             border-radius: 4px;
+            white-space: nowrap;
+            line-height: 1.2;
         }
         .sentiment-badge.BULLISH {
             background: rgba(16, 185, 129, 0.15);
@@ -698,27 +723,31 @@
         }
 
         .hero-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.35;
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
+            line-height: 1.3;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.2px;
+            word-break: break-word;
         }
         .hero-summary {
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--text-secondary);
-            line-height: 1.55;
-            margin-bottom: 18px;
+            line-height: 1.5;
+            margin: 0 0 14px 0;
+            word-break: break-word;
         }
         .hero-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-            padding-top: 12px;
+            padding-top: 10px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .hero-tickers {
             display: flex;
