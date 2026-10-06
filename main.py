@@ -97,6 +97,26 @@ app.include_router(metrics_router, prefix="/api/v1")
 app.include_router(portal_router, prefix="/api/v1")
 app.include_router(agentic_skills_router, prefix="/api/v1")
 
+# Convenient Root Aliases for WhatsApp Webhook / Callback
+from fastapi import Request, BackgroundTasks
+from routers.notifications import handle_whatsapp_callback, verify_whatsapp_webhook
+
+@app.get("/webhook/wa", include_in_schema=False)
+@app.get("/api/webhook/wa", include_in_schema=False)
+@app.get("/callback/wa", include_in_schema=False)
+async def wa_webhook_handshake_root(request: Request):
+    return await verify_whatsapp_webhook(
+        hub_mode=request.query_params.get("hub.mode"),
+        hub_challenge=request.query_params.get("hub.challenge"),
+        hub_verify_token=request.query_params.get("hub.verify_token")
+    )
+
+@app.post("/webhook/wa", include_in_schema=False)
+@app.post("/api/webhook/wa", include_in_schema=False)
+@app.post("/callback/wa", include_in_schema=False)
+async def wa_webhook_post_root(request: Request, background_tasks: BackgroundTasks):
+    return await handle_whatsapp_callback(request=request, background_tasks=background_tasks)
+
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 

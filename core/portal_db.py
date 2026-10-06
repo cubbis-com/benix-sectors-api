@@ -36,8 +36,21 @@ class PortalDBManager:
                     published_at TEXT NOT NULL
                 )
             """)
+            await db.execute("""
+                CREATE TABLE IF NOT EXISTS portal_wa_interactions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    sender TEXT NOT NULL,
+                    sender_name TEXT,
+                    incoming_message TEXT NOT NULL,
+                    reply_message TEXT,
+                    intent TEXT,
+                    status TEXT DEFAULT 'replied',
+                    created_at TEXT NOT NULL
+                )
+            """)
             await db.execute("CREATE INDEX IF NOT EXISTS idx_art_category ON portal_articles(category)")
             await db.execute("CREATE INDEX IF NOT EXISTS idx_art_slug ON portal_articles(slug)")
+            await db.execute("CREATE INDEX IF NOT EXISTS idx_wa_sender ON portal_wa_interactions(sender)")
             await db.commit()
 
             # Auto-seed default articles if table is empty
@@ -216,5 +229,62 @@ class PortalDBManager:
                     "views": row[10] + 1,
                     "published_at": row[11]
                 }
+
+    async def record_wa_interaction(
+        self,
+        sender: str,
+        incoming_message: str,
+        reply_message: Optional[str] = None,
+        sender_name: Optional[str] = None,
+        intent: Optional[str] = None,
+        status: str = "replied"
+    ) -> Dict[str, Any]:
+        """Record an incoming and outgoing WhatsApp interaction."""
+        created_at = time.strftime("%Y-%m-%d %H:%M:%S")
+        async with aiosqlite.connect(self.db_path) as db:
+            cursor = await db.execute("""
+                INSERT INTO portal_wa_interactions (
+                    sender, sender_name, incoming_message, reply_message, intent, status, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (sender, sender_name or "", incoming_message, reply_message or "", intent or "general", status, created_at))
+            await db.commit()
+            interaction_id = cursor.lastrowid
+
+        return {
+            "id": interaction_id,
+            "sender": sender,
+            "sender_name": sender_name,
+            "incoming_message": incoming_message,
+            "reply_message": reply_message,
+            "intent": intent,
+            "status": status,
+            "created_at": created_at
+        }
+
+    async def list_wa_interactions(self, limit: int = 50, sender: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Retrieve recent WhatsApp interactions for audit and monitoring."""
+        interactions = []
+        async with aiosqlite.connect(self.db_path) as db:
+            query = "SELECT id, sender, sender_name, incoming_message, reply_message, intent, status, created_at FROM portal_wa_interactions"
+            params = []
+            if sender:
+                query += " WHERE sender = ?"
+                params.append(sender)
+            query += " ORDER BY id DESC LIMIT ?"
+            params.append(limit)
+
+            async with db.execute(query, tuple(params)) as cursor:
+                async for row in cursor:
+                    interactions.append({
+                        "id": row[0],
+                        "sender": row[1],
+                        "sender_name": row[2],
+                        "incoming_message": row[3],
+                        "reply_message": row[4],
+                        "intent": row[5],
+                        "status": row[6],
+                        "created_at": row[7]
+                    })
+        return interactions
 
 portal_db = PortalDBManager()
