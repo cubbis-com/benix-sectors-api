@@ -110,7 +110,14 @@ async def root_portal():
     """Live Financial News Portal with Pitch Black Theme & Garda AI White Orb Assistant."""
     template_path = Path(__file__).resolve().parent / "templates" / "portal.html"
     if template_path.exists():
-        return HTMLResponse(content=template_path.read_text(encoding="utf-8"))
+        return HTMLResponse(
+            content=template_path.read_text(encoding="utf-8"),
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
+                "Pragma": "no-cache",
+                "Expires": "0"
+            }
+        )
     return HTMLResponse(content="<h1>Portal template not found</h1>", status_code=404)
 
 # ================= REALTIME WEBSOCKET MARKET ALERT FEED =================
