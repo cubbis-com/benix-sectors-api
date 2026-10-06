@@ -5,6 +5,7 @@ Manages news articles, categories, views, and market insights for the web portal
 import time
 import json
 import logging
+from pathlib import Path
 from typing import Optional, List, Dict, Any
 from core.aiosqlite_compat import aiosqlite
 from config import settings
@@ -14,9 +15,10 @@ logger = logging.getLogger("sectors.portal_db")
 class PortalDBManager:
     def __init__(self, db_path: str = settings.DATABASE_PATH):
         self.db_path = db_path
+        self.seed_file = Path(__file__).resolve().parent.parent / "data" / "seed_portal_articles.json"
 
     async def init_db(self):
-        """Create portal tables if not exists."""
+        """Create portal tables if not exists and seed default articles."""
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute("""
                 CREATE TABLE IF NOT EXISTS portal_articles (
@@ -37,6 +39,40 @@ class PortalDBManager:
             await db.execute("CREATE INDEX IF NOT EXISTS idx_art_category ON portal_articles(category)")
             await db.execute("CREATE INDEX IF NOT EXISTS idx_art_slug ON portal_articles(slug)")
             await db.commit()
+
+            # Auto-seed default articles if table is empty
+            async with db.execute("SELECT COUNT(*) FROM portal_articles") as cursor:
+                row = await cursor.fetchone()
+                count = row[0] if row else 0
+
+            if count == 0 and self.seed_file.exists():
+                try:
+                    with open(self.seed_file, "r", encoding="utf-8") as f:
+                        seeds = json.load(f)
+                    for item in seeds:
+                        await db.execute("""
+                            INSERT OR IGNORE INTO portal_articles (
+                                title, slug, summary, content, category, tickers_json,
+                                author, sentiment, sectors_data_json, views, published_at
+                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (
+                            item.get("title", ""),
+                            item.get("slug", ""),
+                            item.get("summary", ""),
+                            item.get("content", ""),
+                            item.get("category", "emiten-focus"),
+                            item.get("tickers_json") or json.dumps(item.get("tickers", [])),
+                            item.get("author", "be.n.ix"),
+                            item.get("sentiment", "NEUTRAL"),
+                            item.get("sectors_data_json") or json.dumps(item.get("sectors_data", {})),
+                            item.get("views", 0),
+                            item.get("published_at", time.strftime("%Y-%m-%d %H:%M:%S"))
+                        ))
+                    await db.commit()
+                    logger.info("Auto-seeded %d portal articles into %s", len(seeds), self.db_path)
+                except Exception as ex:
+                    logger.warning("Error auto-seeding portal articles: %s", ex)
+
             logger.info("Portal database tables initialized at %s", self.db_path)
 
     async def save_article(
@@ -127,6 +163,19 @@ class PortalDBManager:
                         "views": row[8],
                         "published_at": row[9]
                     })
+        if not articles and self.seed_file.exists():
+            try:
+                with open(self.seed_file, "r", encoding="utf-8") as f:
+                    seeds = json.load(f)
+                filtered = seeds
+                if category:
+                    filtered = [a for a in filtered if a.get("category") == category]
+                if ticker:
+                    filtered = [a for a in filtered if ticker.upper() in str(a.get("tickers", []))]
+                articles = filtered[offset:offset + limit]
+            except Exception:
+                pass
+
         return articles
 
     async def get_article(self, slug: str) -> Optional[Dict[str, Any]]:
@@ -138,6 +187,15 @@ class PortalDBManager:
             ) as cursor:
                 row = await cursor.fetchone()
                 if not row:
+                    if self.seed_file.exists():
+                        try:
+                            with open(self.seed_file, "r", encoding="utf-8") as f:
+                                seeds = json.load(f)
+                            for item in seeds:
+                                if item.get("slug") == slug:
+                                    return item
+                        except Exception:
+                            pass
                     return None
 
                 # Increment view count

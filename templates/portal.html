@@ -957,6 +957,14 @@
         .snapshot-row .val.up { color: var(--green-gain); font-weight: 600; }
         .snapshot-row .val.down { color: var(--red-loss); font-weight: 600; }
         .snapshot-row .val.cyan { color: var(--accent-cyan); font-weight: 600; }
+        .flat-chart-arrow {
+            display: inline-block;
+            vertical-align: -1.5px;
+            margin-right: 2px;
+            flex-shrink: 0;
+        }
+        .flat-chart-arrow.up { stroke: var(--green-gain); }
+        .flat-chart-arrow.down { stroke: var(--red-loss); }
 
         /* QUICK GENERATOR BAR (BALANCED 2-COLUMN: SEARCH LEFT, INFO RIGHT) */
         .quick-generator {
@@ -4953,24 +4961,24 @@
                     <!-- Dashboard Monitoring Tabs Navigation -->
                     <nav class="portal-dash-nav" id="portal-dash-nav" aria-label="Monitoring Dashboards">
                         <button type="button" class="dash-tab-btn active" data-view="news-portal" onclick="switchDashboardView('news-portal')">
-                            <span class="tab-icon">📰</span>
+                            <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></span>
                             <span class="tab-title">Portal Berita</span>
                         </button>
                         <button type="button" class="dash-tab-btn" data-view="market-monitor" onclick="switchDashboardView('market-monitor')">
-                            <span class="tab-icon">📊</span>
+                            <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
                             <span class="tab-title">Monitoring Pasar</span>
                         </button>
                         <button type="button" class="dash-tab-btn" data-view="emiten-screener" onclick="switchDashboardView('emiten-screener')">
-                            <span class="tab-icon">🔍</span>
+                            <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
                             <span class="tab-title">Screener & Tabel</span>
                         </button>
                         <button type="button" class="dash-tab-btn" data-view="live-radar" onclick="switchDashboardView('live-radar')">
-                            <span class="tab-icon">⚡</span>
+                            <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
                             <span class="tab-title">Live Alert Radar</span>
                             <span class="tab-badge-live" id="radar-nav-badge">LIVE</span>
                         </button>
                         <button type="button" class="dash-tab-btn" data-view="regional-macro" onclick="switchDashboardView('regional-macro')">
-                            <span class="tab-icon">🌐</span>
+                            <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
                             <span class="tab-title">Makro & Valas</span>
                         </button>
                     </nav>
@@ -4984,12 +4992,12 @@
 
                         <!-- Audio Alert Chime Toggle (Native Web Audio API) -->
                         <button type="button" aria-label="Toggle Audio Alerts" title="Suara Peringatan Pasar (Web Audio API Synthesizer) • Klik untuk Mute/Unmute" class="nav-action-btn" id="btn-market-audio" onclick="toggleMarketAudioAlerts()">
-                            <span id="market-audio-icon">🔊</span>
+                            <span id="market-audio-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
                         </button>
 
                         <!-- Alerts Notification Center Bell & Counter -->
                         <button type="button" aria-label="Pusat Peringatan & Anomali" title="Pusat Peringatan & Radar Anomali Pasar" class="nav-action-btn nav-alert-bell-btn" id="btn-alerts-bell" onclick="openAlertsCenterDrawer()">
-                            <span style="font-size:15px;line-height:1;">🔔</span>
+                            <span style="display:inline-flex;align-items:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
                             <span class="alert-counter-badge" id="alert-counter-badge" style="display:none;">0</span>
                         </button>
 
@@ -5040,7 +5048,7 @@
                                 <!-- Sub-Menu 1: Persona Investor & Saluran WhatsApp MCP -->
                                 <div class="settings-subgroup">
                                     <div class="subgroup-title">
-                                        <span>👤 PERSONA INVESTOR & WA</span>
+                                        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>PERSONA INVESTOR & WA</span>
                                         <span class="item-badge" id="menu-persona-badge">Pengaturan</span>
                                     </div>
                                     <div class="sub-persona-badge" id="settings-persona-pill">
@@ -5071,18 +5079,18 @@
                                 <!-- Sub-Menu 2: MCP Gateway & Smart Cache -->
                                 <div class="settings-subgroup">
                                     <div class="subgroup-title">
-                                        <span>⚡ MCP FEEDS & SMART CACHE</span>
+                                        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>MCP FEEDS & SMART CACHE</span>
                                     </div>
                                     <div class="dropdown-info-row">
-                                        <span class="info-label">📊 Sectors Financial API v2</span>
+                                        <span class="info-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Sectors Financial API v2</span>
                                         <span class="info-val green">Active (Smart Cache)</span>
                                     </div>
                                     <div class="dropdown-info-row">
-                                        <span class="info-label">🌦️ BMKG & Forex Gateway</span>
+                                        <span class="info-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>BMKG & Forex Gateway</span>
                                         <span class="info-val cyan">Online (0 Quota)</span>
                                     </div>
                                     <div class="dropdown-info-row">
-                                        <span class="info-label">🤖 Garda Engine Core</span>
+                                        <span class="info-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/><path d="M9 16h6"/></svg>Garda Engine Core</span>
                                         <span class="info-val cyan">Gemma 4 • iss-uitjbt</span>
                                     </div>
                                     <div class="dropdown-item" onclick="clearLocalCacheAndReload()" style="padding:7px 12px;">
@@ -5124,7 +5132,7 @@
                                 <!-- Sub-Menu 4: Dokumentasi Developer -->
                                 <div class="settings-subgroup">
                                     <div class="subgroup-title">
-                                        <span>🛠️ DOKUMENTASI DEVELOPER</span>
+                                        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;display:inline-block;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>DOKUMENTASI DEVELOPER</span>
                                     </div>
                                     <a href="/docs" target="_blank" class="dropdown-item">
                                         <div class="item-icon">
@@ -5212,9 +5220,9 @@
                             <span>1D Change</span>
                         </div>
                         <div class="snapshot-list" id="gainers-list">
-                            <div class="snapshot-row"><span class="sym">ROCK</span><span class="val up"><span style="color:var(--green-gain);font-size:9.5px;margin-right:2px;">▲</span>+25.0%</span></div>
-                            <div class="snapshot-row"><span class="sym">BBCA</span><span class="val up"><span style="color:var(--green-gain);font-size:9.5px;margin-right:2px;">▲</span>+1.76%</span></div>
-                            <div class="snapshot-row"><span class="sym">BUMI</span><span class="val up"><span style="color:var(--green-gain);font-size:9.5px;margin-right:2px;">▲</span>+1.71%</span></div>
+                            <div class="snapshot-row"><span class="sym">ROCK</span><span class="val up"><svg class="flat-chart-arrow up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>+25.0%</span></div>
+                            <div class="snapshot-row"><span class="sym">BBCA</span><span class="val up"><svg class="flat-chart-arrow up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>+1.76%</span></div>
+                            <div class="snapshot-row"><span class="sym">BUMI</span><span class="val up"><svg class="flat-chart-arrow up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>+1.71%</span></div>
                         </div>
                     </div>
 
@@ -5257,14 +5265,15 @@
                             <input type="text" id="gen-ticker-input" class="generator-input" placeholder="Ketik ticker emiten e.g. TLKM, BREN, ASII, BBCA" maxlength="5">
                         </div>
                         <button class="btn-generate" id="btn-trigger-ai" onclick="generateNewArticle()">
-                            <span>⚡ Tulis Berita</span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <span>Tulis Berita</span>
                         </button>
                     </div>
 
                     <!-- Column 2 (Right): AI Generator Description -->
                     <div class="generator-info-col">
                         <div class="generator-title">
-                            <h3>⚡ Riset Emiten on Demand</h3>
+                            <h3><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Riset Emiten on Demand</h3>
                             <p>Generate analisis & artikel otomatis oleh <strong>be.n.ix</strong> berbasis data Sectors API & IDX.</p>
                         </div>
                     </div>
@@ -5347,12 +5356,12 @@
                         <span class="filter-strip-label">SEKTOR:</span>
                         <div class="filter-pills-scroll">
                             <button class="cat-pill active" onclick="filterNewsBySector('ALL', this)">Semua Sektor</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Financials', this)">🏦 Perbankan</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Consumer Non-Cyclicals', this)">🍜 Konsumsi / FMCG</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Energy', this)">⚡ Energi & Batubara</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Telecommunication', this)">📱 Telko & Digital</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Industrials', this)">🏭 Industri & Konglomerasi</button>
-                            <button class="cat-pill" onclick="filterNewsBySector('Basic Materials', this)">🏗️ Bahan Bangunan</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Financials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 10 12 3 21 10"/><line x1="6" y1="10" x2="6" y2="21"/><line x1="10" y1="10" x2="10" y2="21"/><line x1="14" y1="10" x2="14" y2="21"/><line x1="18" y1="10" x2="18" y2="21"/></svg>Perbankan</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Consumer Non-Cyclicals', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Konsumsi / FMCG</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Energy', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energi & Batubara</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Telecommunication', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Telko & Digital</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Industrials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4L2 8z"/></svg>Industri & Konglomerasi</button>
+                            <button class="cat-pill" onclick="filterNewsBySector('Basic Materials', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>Bahan Bangunan</button>
                         </div>
                     </div>
                 </div>
@@ -5365,7 +5374,7 @@
                     </div>
 
                     <div class="section-header" style="margin-top:14px;">
-                        <h2 style="font-size:16px;">📰 Berita & Riset AI</h2>
+                        <h2 style="font-size:16px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Berita & Riset AI</h2>
                         <span style="font-size:12px;color:var(--text-muted);" id="article-count-label">Memuat artikel...</span>
                     </div>
                     <div class="news-grid" id="articles-grid" style="margin-top:14px;">
@@ -5384,8 +5393,8 @@
                             <button class="country-pill" onclick="filterWireCountry('JP', this)">🇯🇵 Jepang</button>
                         </div>
                         <div class="wire-status-info">
-                            <span class="wire-shield-pill">⚡ 0 Kredit API</span>
-                            <button class="wire-sync-btn" onclick="syncDailyWire()">🔄 Sync</button>
+                            <span class="wire-shield-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 Kredit API</span>
+                            <button class="wire-sync-btn" onclick="syncDailyWire()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:3px;display:inline-block;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>Sync</button>
                         </div>
                     </div>
 
@@ -5440,7 +5449,7 @@
                                     <button type="button" class="chart-type-btn active" id="btn-chart-type-area" onclick="setChartType('area')">Area</button>
                                     <button type="button" class="chart-type-btn" id="btn-chart-type-candle" onclick="setChartType('candle')">Candle</button>
                                 </div>
-                                <span class="tag-pill green" style="font-size:10px;">⚡ 0 CREDIT CACHE</span>
+                                <span class="tag-pill green" style="font-size:10px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 CREDIT CACHE</span>
                             </div>
                         </div>
 
@@ -5491,7 +5500,7 @@
                             <!-- Left: Support & Resistance Matrix -->
                             <div class="sr-card">
                                 <div class="card-sub-header">
-                                    <span>🎯 Level Teknikal Support & Resistance</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Level Teknikal Support & Resistance</span>
                                     <span class="tag-pill cyan" style="font-size:9.5px;">PIVOT CLASSIC</span>
                                 </div>
                                 <table class="sr-levels-table" id="sr-levels-table">
@@ -5507,7 +5516,7 @@
                                         Status Smart Money: <strong style="color:var(--green-gain);" id="sr-flow-status">Akumulasi Asing & Institusi</strong>
                                     </div>
                                     <button type="button" class="row-action-btn" onclick="askGardaCurrentStock()" style="color:var(--accent-orange);border-color:var(--accent-orange);font-weight:700;">
-                                        ⚡ Tanya Garda AI
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Tanya Garda AI
                                     </button>
                                 </div>
                             </div>
@@ -5515,7 +5524,7 @@
                             <!-- Right: Sector Heatmap Performance -->
                             <div class="sector-radar-card">
                                 <div class="card-sub-header">
-                                    <span>🌐 Rotasi Kinerja Sektor Bursa (IDX)</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Rotasi Kinerja Sektor Bursa (IDX)</span>
                                     <span class="tag-pill green" style="font-size:9.5px;">REALTIME</span>
                                 </div>
                                 <div class="sector-heat-list" id="sector-heat-list">
@@ -5598,10 +5607,10 @@
 
                             <div class="screener-actions-right">
                                 <button type="button" class="btn-screener-action" onclick="resetScreenerFilters()">
-                                    <span>🔄 Reset Filter</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reset Filter</span>
                                 </button>
                                 <button type="button" class="btn-screener-action" onclick="exportScreenerCSV()" style="border-color:var(--green-gain);color:var(--green-gain);">
-                                    <span>📥 Unduh CSV</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Unduh CSV</span>
                                 </button>
                             </div>
                         </div>
@@ -5612,7 +5621,7 @@
                                 Menampilkan <strong>23</strong> emiten terkurasi
                             </div>
                             <div style="display:flex;gap:6px;align-items:center;">
-                                <span class="tag-pill green" style="font-size:10px;">⚡ ZERO QUOTA ACTIVE</span>
+                                <span class="tag-pill green" style="font-size:10px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>ZERO QUOTA ACTIVE</span>
                                 <span class="tag-pill cyan" style="font-size:10px;">SQLITE & JSON CACHE</span>
                             </div>
                         </div>
@@ -5658,7 +5667,7 @@
 
                             <div style="display:flex;align-items:center;gap:10px;">
                                 <button type="button" class="btn-screener-action" onclick="triggerAlertSimulation()" style="border-color:var(--accent-orange);color:var(--accent-orange);font-weight:700;">
-                                    <span>⚡ Simulasikan Peringatan Anomali Sekarang</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Simulasikan Peringatan Anomali Sekarang</span>
                                 </button>
                                 <button type="button" class="btn-screener-action" onclick="clearRadarFeed()">
                                     <span>Bersihkan Feed</span>
@@ -5669,7 +5678,7 @@
                         <!-- Radar Filter Pills -->
                         <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
                             <button type="button" class="cat-pill active" onclick="filterRadarFeed('ALL', this)">Semua Peringatan</button>
-                            <button type="button" class="cat-pill" onclick="filterRadarFeed('HIGH', this)">🚨 Prioritas Tinggi</button>
+                            <button type="button" class="cat-pill" onclick="filterRadarFeed('HIGH', this)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--red-loss)" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Prioritas Tinggi</button>
                             <button type="button" class="cat-pill" onclick="filterRadarFeed('FOREIGN_FLOW', this)">Akumulasi Asing</button>
                             <button type="button" class="cat-pill" onclick="filterRadarFeed('BREAKOUT', this)">Breakout Teknikal</button>
                             <button type="button" class="cat-pill" onclick="filterRadarFeed('VOLUME_SURGE', this)">Lonjakan Volume</button>
@@ -5802,7 +5811,7 @@
                     <div class="chat-header-actions">
                         <!-- Voice TTS Audio Button (Default Enabled) -->
                         <button type="button" class="chat-tool-btn" id="btn-tts" onclick="toggleGardaVoice()" title="Suara Garda (TTS) Aktif • Klik untuk Mute">
-                            <span id="tts-icon">🔊</span>
+                            <span id="tts-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></span>
                         </button>
                         <!-- Resize Column Width Toggle Button -->
                         <button type="button" class="chat-tool-btn" id="btn-resize-chat" onclick="toggleChatWidth()" title="Lebarkan / Sempitkan Panel Chat">
@@ -5831,8 +5840,8 @@
 
                 <!-- CONCIERGE PERSONA STATUS BANNER -->
                 <div class="concierge-banner" id="concierge-persona-banner">
-                    <span id="concierge-persona-label">🏢 AI Concierge Keputusan Bisnis UMKM</span>
-                    <span class="shield-badge" id="concierge-wa-badge" onclick="openPersonaModal()" style="cursor:pointer;" title="Klik untuk atur persona investor & nomor WhatsApp">⚙️ Persona</span>
+                    <span id="concierge-persona-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>AI Concierge Keputusan Bisnis UMKM</span>
+                    <span class="shield-badge" id="concierge-wa-badge" onclick="openPersonaModal()" style="cursor:pointer;" title="Klik untuk atur persona investor & nomor WhatsApp"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Persona</span>
                 </div>
 
                 <!-- CHAT MESSAGE FEED -->
@@ -5842,12 +5851,12 @@
                         <br><br>
                         Saya mendampingi para pelaku <strong>UMKM & pemilik usaha Indonesia</strong> memanfaatkan data pasar modal <strong>Sectors Financial API</strong> untuk strategi keputusan bisnis nyata:
                         <br><br>
-                        • <strong>🏢 Vendor Due Diligence:</strong> Evaluasi rasio utang (DER) & arus kas mitra besar sebelum kontrak kerja sama.<br>
-                        • <strong>🍜 Benchmarking Ritel & F&B:</strong> Mengukur denyut daya beli masyarakat lewat emiten consumer goods.<br>
-                        • <strong>🌾 Rantai Pasok Pakan:</strong> Pantau biaya bahan baku jagung/kedelai untuk agribisnis.<br>
-                        • <strong>🏗️ Bahan Bangunan:</strong> Membaca momentum ekspansi konstruksi & perumahan.<br>
-                        • <strong>💰 Saham Dividen Kas UMKM:</strong> Skrining alokasi cadangan kas usaha yang aman & likuid.<br>
-                        • <strong>📊 Custom Data Dashboard:</strong> Mintakan <em>"tampilkan dashboard BBCA"</em> dan saya akan buatkan visualisasi khusus di panel kiri.
+                        • <strong>Vendor Due Diligence:</strong> Evaluasi rasio utang (DER) & arus kas mitra besar sebelum kontrak kerja sama.<br>
+                        • <strong>Benchmarking Ritel & F&B:</strong> Mengukur denyut daya beli masyarakat lewat emiten consumer goods.<br>
+                        • <strong>Rantai Pasok Pakan:</strong> Pantau biaya bahan baku jagung/kedelai untuk agribisnis.<br>
+                        • <strong>Bahan Bangunan:</strong> Membaca momentum ekspansi konstruksi & perumahan.<br>
+                        • <strong>Saham Dividen Kas UMKM:</strong> Skrining alokasi cadangan kas usaha yang aman & likuid.<br>
+                        • <strong>Custom Data Dashboard:</strong> Mintakan <em>"tampilkan dashboard BBCA"</em> dan saya akan buatkan visualisasi khusus di panel kiri.
                         <br><br>
                         Bagaimana saya dapat melayani analisis bisnis Anda hari ini?
                     </div>
@@ -5855,18 +5864,18 @@
 
                 <!-- QUICK PROMPTS CHIPS (BRIEF.MD REAL-WORLD SCENARIOS & NEWS AGGREGATION & CUSTOM DASHBOARDS) -->
                 <div class="quick-prompts">
-                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom data dashboard saham BBCA')">📊 Tampilkan Dashboard BBCA</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom dashboard DBS (D05) di bursa Singapura')">🇸🇬 Dashboard DBS (SGX)</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Buatkan dashboard due diligence solvabilitas mitra TLKM')">🏢 Dashboard Mitra TLKM</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Gimana kondisi saham BBCA hari ini dan apa berita terbarunya?')">📰 BBCA & Berita Hari Ini</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana kondisi saham DBS (D05) di bursa Singapura dan sentimen regionalnya?')">🇸🇬 DBS (D05) Singapura</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana sentimen Bank of Japan dan Nikkei terhadap pergerakan pasar saham ASEAN?')">🇯🇵 Nikkei & Pasar ASEAN</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan ringkasan Pre-Market Briefing 06:30 WIB hari ini')">🌅 Pre-Market Briefing 06:30</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Cek kesehatan bisnis mitra kerja sama besar seperti TLKM atau ICBP (Vendor Due Diligence) agar tidak gagal bayar')">🏢 Cek Mitra (Due Diligence)</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana tren daya beli masyarakat untuk bisnis ritel dan kuliner F&B berdasarkan emiten ICBP, MYOR, dan UNVR?')">🍜 Tren Ritel & F&B</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Saya mau jualan bahan bangunan, bagaimana kondisi industri properti dan konstruksi saat ini?')">🏗️ Bahan Bangunan & Properti</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana risiko rantai pasok dan harga bahan baku pakan ternak ayam berdasarkan laporan CPIN dan JPFA?')">🌾 Rantai Pasok Pakan</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Penyaringan saham dividen tunai aman (Yield >5%, PE <15, utang rendah) untuk cadangan kas bisnis UMKM')">💰 Saham Dividen Kas</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom data dashboard saham BBCA')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Dashboard BBCA</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan custom dashboard DBS (D05) di bursa Singapura')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Dashboard DBS (SGX)</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Buatkan dashboard due diligence solvabilitas mitra TLKM')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Dashboard Mitra TLKM</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Gimana kondisi saham BBCA hari ini dan apa berita terbarunya?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>BBCA & Berita Hari Ini</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana kondisi saham DBS (D05) di bursa Singapura dan sentimen regionalnya?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>DBS (D05) Singapura</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana sentimen Bank of Japan dan Nikkei terhadap pergerakan pasar saham ASEAN?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Nikkei & Pasar ASEAN</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Tampilkan ringkasan Pre-Market Briefing 06:30 WIB hari ini')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Pre-Market Briefing 06:30</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Cek kesehatan bisnis mitra kerja sama besar seperti TLKM atau ICBP (Vendor Due Diligence) agar tidak gagal bayar')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Cek Mitra (Due Diligence)</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana tren daya beli masyarakat untuk bisnis ritel dan kuliner F&B berdasarkan emiten ICBP, MYOR, dan UNVR?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Tren Ritel & F&B</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Saya mau jualan bahan bangunan, bagaimana kondisi industri properti dan konstruksi saat ini?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Bahan Bangunan & Properti</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Bagaimana risiko rantai pasok dan harga bahan baku pakan ternak ayam berdasarkan laporan CPIN dan JPFA?')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg>Rantai Pasok Pakan</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Penyaringan saham dividen tunai aman (Yield >5%, PE <15, utang rendah) untuk cadangan kas bisnis UMKM')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg>Saham Dividen Kas</div>
                 </div>
 
                 <!-- CHAT INPUT BAR -->
@@ -6038,7 +6047,7 @@
             <strong class="footer-brand">BE.N.IX</strong> 
             <span class="footer-sep">•</span> 
             <span class="footer-sub">Anvieo Analytics</span>
-            <span class="footer-badge-shield">⚡ ZERO QUOTA ACTIVE • 0 CREDIT CACHE</span>
+            <span class="footer-badge-shield"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>ZERO QUOTA ACTIVE • 0 CREDIT CACHE</span>
         </div>
         <div class="footer-center">
             <span>Powered by Sectors Financial API v2 & Gemma 4 Garda Engine</span>
@@ -6056,10 +6065,10 @@
             <div class="drawer-header">
                 <div class="drawer-title-group">
                     <div class="drawer-badge-row">
-                        <span class="tag-pill green">⚡ 0 CREDIT LOCAL CACHE</span>
+                        <span class="tag-pill green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 CREDIT LOCAL CACHE</span>
                         <span class="tag-pill cyan">BEBAS KUOTA SECTORS</span>
                     </div>
-                    <h2>🏢 Direktori Perusahaan & Emiten</h2>
+                    <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:6px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Direktori Perusahaan & Emiten</h2>
                     <p>Profil Fundamental Lengkap, Solvabilitas (DER), Vendor Due Diligence & Insight Bisnis UMKM</p>
                 </div>
                 <button type="button" class="drawer-close-btn" onclick="closeCompanyDrawer()" title="Tutup Direktori">✕</button>
@@ -6097,7 +6106,7 @@
                 <!-- Right: Emiten Deep Detail Panel -->
                 <div class="drawer-company-detail" id="drawer-company-detail">
                     <div class="detail-empty-state">
-                        <div style="font-size:36px;margin-bottom:10px;">🏢</div>
+                        <div style="margin-bottom:10px;display:flex;justify-content:center;color:var(--text-muted);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg></div>
                         <h4 style="font-size:15px;color:var(--text-main);margin-bottom:6px;">Pilih Emiten untuk Melihat Analisis</h4>
                         <p style="font-size:12px;max-width:320px;line-height:1.5;">Klik salah satu kartu saham di sebelah kiri untuk melihat rincian solvabilitas kredit, risiko wanprestasi mitra, dan benchmarking harga untuk UMKM.</p>
                     </div>
@@ -6111,7 +6120,7 @@
         <div class="modal-container">
             <div class="modal-drawer-header">
                 <div style="display:flex;align-items:center;gap:10px;min-width:0;flex:1;">
-                    <span style="font-size:20px;">📰</span>
+                    <span style="display:inline-flex;align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></span>
                     <div style="min-width:0;">
                         <span class="tag-pill orange" id="modal-header-category">BERITA & RISET PASAR</span>
                         <span style="font-size:12px;color:var(--text-muted);margin-left:8px;" id="modal-header-time"></span>
@@ -6152,7 +6161,7 @@
 
             <form id="persona-form" onsubmit="handleSavePersona(event)" class="persona-modal-body">
                 <div class="persona-mcp-notice">
-                    <div class="notice-icon">⚡</div>
+                    <div class="notice-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                     <div class="notice-text">
                         <strong>Integrasi Sectors MCP & WhatsApp Gateway:</strong>
                         <span>Perubahan harga signifikan, sentimen regional & briefing harian diproses otomatis dan dikirim langsung ke WhatsApp Anda tanpa konsumsi kuota berlebih.</span>
@@ -6162,7 +6171,7 @@
                 <div class="persona-field">
                     <label for="persona-name">Nama Investor / Panggilan <span class="req">*</span></label>
                     <div class="input-with-icon">
-                        <span class="field-icon">👤</span>
+                        <span class="field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
                         <input type="text" id="persona-name" class="persona-input" placeholder="Contoh: Rendy Ariawindana / Budi" required>
                     </div>
                 </div>
@@ -6170,7 +6179,7 @@
                 <div class="persona-field">
                     <label for="persona-phone">Nomor WhatsApp Aktif <span class="req">*</span></label>
                     <div class="input-with-icon">
-                        <span class="field-icon">📱</span>
+                        <span class="field-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
                         <input type="tel" id="persona-phone" class="persona-input" placeholder="Contoh: 6281234567890 (Gunakan kode negara 62)" required pattern="^[0-9+]{9,16}$">
                     </div>
                     <span class="field-hint">Nomor digunakan untuk menerima alert breakout, sentimen tinggi, dan morning note otomatis.</span>
@@ -6179,23 +6188,23 @@
                 <div class="persona-field">
                     <label for="persona-type">Gaya Investasi / Persona Utama <span class="req">*</span></label>
                     <select id="persona-type" class="persona-select">
-                        <option value="trader_agresif">🚀 Trader Agresif / Scalper (Momentum, Volatilitas & Top Gainer IDX)</option>
-                        <option value="value_investor">💎 Value Investor & Dividen Hunter (Valuasi PBV/PER Murah, Kas Kuat)</option>
-                        <option value="swing_trader">📈 Swing Trader (Trend Following 1-4 Minggu, Akumulasi Smart Money)</option>
-                        <option value="umkm_bisnis">🏢 Pengusaha & Solvabilitas UMKM (Analisis Solvabilitas Mitra & Kas)</option>
-                        <option value="analis_institusi">📊 Analis Portofolio / Institusi (Riset Mendalam, Multi-Sektor IDX/SGX)</option>
+                        <option value="trader_agresif">Trader Agresif / Scalper (Momentum, Volatilitas & Top Gainer IDX)</option>
+                        <option value="value_investor">Value Investor & Dividen Hunter (Valuasi PBV/PER Murah, Kas Kuat)</option>
+                        <option value="swing_trader">Swing Trader (Trend Following 1-4 Minggu, Akumulasi Smart Money)</option>
+                        <option value="umkm_bisnis">Pengusaha & Solvabilitas UMKM (Analisis Solvabilitas Mitra & Kas)</option>
+                        <option value="analis_institusi">Analis Portofolio / Institusi (Riset Mendalam, Multi-Sektor IDX/SGX)</option>
                     </select>
                 </div>
 
                 <div class="persona-field">
                     <label for="persona-sector">Sektor Fokus yang Dipantau</label>
                     <select id="persona-sector" class="persona-select">
-                        <option value="Perbankan & Finansial">🏦 Perbankan & Finansial (BBCA, BBRI, BMRI, BBNI)</option>
-                        <option value="Energi & Komoditas">⚡ Energi & Komoditas (ADRO, PTBA, MEDC, ANTM)</option>
-                        <option value="Konsumer & Ritel">🛒 Konsumer & Ritel (ICBP, INDF, UNVR, AMRT)</option>
-                        <option value="Teknologi & Digital">💻 Teknologi & Digital (GOTO, BUKA, EMTK)</option>
-                        <option value="Infrastruktur & Telco">📡 Infrastruktur & Telekomunikasi (TLKM, ISAT, TOWR)</option>
-                        <option value="Seluruh Sektor (Diversifikasi)">🌐 Seluruh Sektor IHSG & Regional ASEAN</option>
+                        <option value="Perbankan & Finansial">Perbankan & Finansial (BBCA, BBRI, BMRI, BBNI)</option>
+                        <option value="Energi & Komoditas">Energi & Komoditas (ADRO, PTBA, MEDC, ANTM)</option>
+                        <option value="Konsumer & Ritel">Konsumer & Ritel (ICBP, INDF, UNVR, AMRT)</option>
+                        <option value="Teknologi & Digital">Teknologi & Digital (GOTO, BUKA, EMTK)</option>
+                        <option value="Infrastruktur & Telco">Infrastruktur & Telekomunikasi (TLKM, ISAT, TOWR)</option>
+                        <option value="Seluruh Sektor (Diversifikasi)">Seluruh Sektor IHSG & Regional ASEAN</option>
                     </select>
                 </div>
 
@@ -6204,11 +6213,11 @@
                     <div class="persona-checkboxes">
                         <label class="persona-check-item">
                             <input type="checkbox" id="persona-alert-briefing" checked>
-                            <span>🌅 <strong>Morning Market Pulse</strong> (Briefing pukul 06:00 WIB sebelum bursa buka)</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><strong>Morning Market Pulse</strong> (Briefing pukul 06:00 WIB sebelum bursa buka)</span>
                         </label>
                         <label class="persona-check-item">
                             <input type="checkbox" id="persona-alert-breakout" checked>
-                            <span>⚡ <strong>Alert Anomali & Breakout</strong> (Perubahan harga/volume > 3% dan lonjakan sentimen)</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><strong>Alert Anomali & Breakout</strong> (Perubahan harga/volume > 3% dan lonjakan sentimen)</span>
                         </label>
                     </div>
                 </div>
@@ -6219,7 +6228,7 @@
                         <span>Simpan Persona & Masuk Dashboard</span>
                     </button>
                     <button type="button" class="btn-persona-test-wa" onclick="testSendWhatsAppFromModal()">
-                        <span>📲 Tes Kirim WhatsApp</span>
+                        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Tes Kirim WhatsApp</span>
                     </button>
                 </div>
                 <div id="persona-status-msg" style="display:none;font-size:12px;margin-top:6px;padding:8px 12px;border-radius:6px;text-align:center;"></div>
@@ -6232,8 +6241,8 @@
         <div class="sentiment-modal-container">
             <div class="modal-custom-header">
                 <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
-                    <div style="width:38px;height:38px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">
-                        📊
+                    <div style="width:38px;height:38px;border-radius:8px;background:var(--bg-surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-main);flex-shrink:0;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
                     </div>
                     <div style="min-width:0;">
                         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
@@ -6265,8 +6274,8 @@
         <div class="competitor-modal-container">
             <div class="modal-custom-header">
                 <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
-                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#ef4444;flex-shrink:0;">
-                        🛡️
+                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;color:#ef4444;flex-shrink:0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <div style="min-width:0;">
                         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
@@ -6292,8 +6301,8 @@
         <div class="competitor-modal-container">
             <div class="modal-custom-header">
                 <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
-                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;color:#a855f7;flex-shrink:0;">
-                        🦉
+                    <div style="width:40px;height:40px;border-radius:8px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;color:#a855f7;flex-shrink:0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                     </div>
                     <div style="min-width:0;">
                         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
@@ -6320,15 +6329,15 @@
             <div class="drawer-header">
                 <div class="drawer-title-group">
                     <div class="drawer-badge-row">
-                        <span class="tag-pill orange">⚡ WEBSOCKET REAL-TIME RADAR</span>
+                        <span class="tag-pill orange"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>WEBSOCKET REAL-TIME RADAR</span>
                         <span class="tag-pill green">100% DETERMINISTIK</span>
                     </div>
-                    <h2>🔔 Pusat Notifikasi & Anomali Pasar</h2>
+                    <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:6px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Pusat Notifikasi & Anomali Pasar</h2>
                     <p>Aliran peringatan real-time yang dideteksi oleh Deterministic Integrity Engine (BE.N.IX Market Anomaly Watchdog)</p>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;">
                     <button type="button" class="btn-screener-action" onclick="triggerAlertSimulation()" style="font-size:11px;">
-                        ⚡ Uji Simulasi
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Uji Simulasi
                     </button>
                     <button type="button" class="drawer-close-btn" onclick="closeAlertsCenterDrawer()" title="Tutup Drawer">✕</button>
                 </div>
@@ -6348,6 +6357,22 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
+        // Global Flat SVG Vector Icons for Financial Chart Trends
+        const FLAT_CHART_UP = `<svg class="flat-chart-arrow up" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green-gain)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:2px;display:inline-block;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>`;
+        const FLAT_CHART_DOWN = `<svg class="flat-chart-arrow down" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--red-loss)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:2px;display:inline-block;"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>`;
+        const SVG_CHART_BAR = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`;
+        const SVG_BOLT = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`;
+        const SVG_BUILDING = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="2"></line><line x1="8" y1="6" x2="10" y2="6"></line><line x1="8" y1="10" x2="10" y2="10"></line><line x1="8" y1="14" x2="10" y2="14"></line><line x1="8" y1="18" x2="10" y2="18"></line><line x1="14" y1="6" x2="16" y2="6"></line><line x1="14" y1="10" x2="16" y2="10"></line><line x1="14" y1="14" x2="16" y2="14"></line><line x1="14" y1="18" x2="16" y2="18"></line></svg>`;
+        const SVG_SYNC = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`;
+        const SVG_VOLUME_ON = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>`;
+        const SVG_VOLUME_OFF = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
+
+        function getChartTrendArrow(isUp, isDown) {
+            if (isUp) return FLAT_CHART_UP;
+            if (isDown) return FLAT_CHART_DOWN;
+            return '';
+        }
+
         let allArticles = [];
         let currentCategory = null;
 
@@ -6405,13 +6430,13 @@
                 container.innerHTML = `
                     <div class="weather-compact-strip">
                         <div class="weather-compact-left">
-                            ${cur.icon_url ? `<img src="${cur.icon_url}" style="width:22px;height:22px;object-fit:contain;" alt="BMKG" />` : `<span style="font-size:18px;">${cur.icon || '🌤️'}</span>`}
+                            ${cur.icon_url ? `<img src="${cur.icon_url}" style="width:22px;height:22px;object-fit:contain;" alt="BMKG" />` : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.94 10.94A5 5 0 0 0 9 6.07"></path><path d="M17.5 21a4.5 4.5 0 0 0 1.5-8.74 6 6 0 0 0-11.82 2.06A4.5 4.5 0 0 0 7.5 21h10z"></path></svg>`}
                             <span class="weather-compact-temp">${cur.temp_c || 31}°C</span>
                             <span class="weather-compact-cond">${cur.condition || 'Cerah Berawan'}</span>
                             <span class="weather-compact-station">${cleanSt}</span>
                         </div>
                         <div class="weather-compact-right">
-                            <span>💧 ${cur.humidity_pct || 72}% • 💨 ${windSpd} km/h</span>
+                            <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>${cur.humidity_pct || 72}% • <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>${windSpd} km/h</span>
                             <span style="color:var(--accent-orange);border-left:1px solid var(--border);padding-left:6px;" title="Prakiraan 3 Hari BMKG">${forecastPill}</span>
                         </div>
                     </div>
@@ -6483,7 +6508,7 @@
                         const isUp = String(chg).includes('+') || (!String(chg).includes('-') && num > 0);
                         const isDown = String(chg).includes('-') || num < 0;
                         const chgClass = isUp ? 'up' : (isDown ? 'down' : '');
-                        const arrow = isUp ? '<span style="color:var(--green-gain);font-size:9px;margin-right:2px;">▲</span>' : (isDown ? '<span style="color:var(--red-loss);font-size:9px;margin-right:2px;">▼</span>' : '');
+                        const arrow = getChartTrendArrow(isUp, isDown);
                         const sign = isUp && !String(chg).startsWith('+') ? '+' : '';
                         const rateDisplay = item.rate_formatted || (item.beli ? `B:${item.beli_formatted}` : `Rp ${(item.rate || 0).toLocaleString()}`);
 
@@ -6750,7 +6775,7 @@
                                     <span class="sentiment-badge ${hero.sentiment}">${hero.sentiment}</span>
                                     <span style="font-size:11px;color:var(--text-muted);white-space:nowrap;">${hero.read_time_minutes || 4} min read</span>
                                     <button type="button" class="wire-ask-btn" onclick="event.stopPropagation(); openCompanySentimentModal('${heroPrimaryTicker}')" style="margin-left:auto;padding:3px 9px;font-size:11px;">
-                                        <span>📊 Sentimen ${heroPrimaryTicker}</span>
+                                        <span>${SVG_CHART_BAR} Sentimen ${heroPrimaryTicker}</span>
                                     </button>
                                 </div>
                                 <h2 class="hero-title">${hero.title}</h2>
@@ -6799,7 +6824,7 @@
                                     <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;">
                                         ${(a.tickers || []).map(t => `<span class="hero-ticker-pill" onclick="event.stopPropagation(); openCompanySentimentModal('${t}')" title="Sentimen $${t}">$${t}</span>`).join(' ')}
                                         <button type="button" class="wire-ask-btn" onclick="event.stopPropagation(); openCompanySentimentModal('${primTicker}')" style="padding:2px 7px;font-size:9.5px;">
-                                            <span>📊 Sentimen</span>
+                                            <span>${SVG_CHART_BAR} Sentimen</span>
                                         </button>
                                     </div>
                                     <span style="white-space:nowrap;flex-shrink:0;">${d} WIB</span>
@@ -6870,7 +6895,7 @@
 
         async function syncDailyWire() {
             const btn = event ? event.target : null;
-            if (btn) btn.innerText = '🔄 Syncing...';
+            if (btn) btn.innerHTML = `${SVG_SYNC} Syncing...`;
             try {
                 const res = await fetch('/api/v1/portal/trigger-scrape?force=true', { method: 'POST' });
                 const d = await res.json();
@@ -6879,7 +6904,7 @@
             } catch (err) {
                 alert("Gagal sinkronisasi wire: " + err);
             } finally {
-                if (btn) btn.innerText = '🔄 Sync Wire';
+                if (btn) btn.innerHTML = `${SVG_SYNC} Sync Wire`;
             }
         }
 
@@ -6925,7 +6950,7 @@
                             <div>
                                 <div class="wire-card-top">
                                     <span class="wire-portal-title">
-                                        <span style="font-size:13px;">📡</span> ${h.source}
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M2 12a10 10 0 0 1 10-10"></path><path d="M2 17a15 15 0 0 1 15-15"></path><path d="M2 22a20 20 0 0 1 20-20"></path><circle cx="2" cy="22" r="2"></circle></svg>${h.source}
                                     </span>
                                     <div style="display:flex;gap:6px;align-items:center;">
                                         <span class="wire-country-flag">${flag} • ${isEng ? 'EN' : 'ID'}</span>
@@ -6943,10 +6968,10 @@
                                 </div>
                                 <div style="display:flex;gap:6px;align-items:center;">
                                     <button class="wire-ask-btn" onclick='openCompanySentimentModal("${primTicker}")' style="background:rgba(56,189,248,0.12);color:var(--accent-cyan);border-color:rgba(56,189,248,0.3);">
-                                        <span>📊 Sentimen</span>
+                                        <span>${SVG_CHART_BAR} Sentimen</span>
                                     </button>
                                     <button class="wire-ask-btn" onclick='askGardaAboutNews("${escapedTitle}", ${tickersJson})'>
-                                        <span>⚡ Tanya Garda</span>
+                                        <span>${SVG_BOLT} Tanya Garda</span>
                                     </button>
                                 </div>
                             </div>
@@ -6968,7 +6993,7 @@
                             const pct = ((g.price_change_percent || 0) * 100);
                             const isUp = pct > 0;
                             const isDown = pct < 0;
-                            const arrow = isUp ? '<span style="color:var(--green-gain);font-size:9.5px;margin-right:2px;">▲</span>' : (isDown ? '<span style="color:var(--red-loss);font-size:9.5px;margin-right:2px;">▼</span>' : '');
+                            const arrow = getChartTrendArrow(isUp, isDown);
                             const sign = isUp ? '+' : '';
                             const chgClass = isUp ? 'val up' : (isDown ? 'val down' : 'val');
                             return `
@@ -7059,7 +7084,7 @@
                 if (l.toLowerCase().includes('*disclaimer:') || l.toLowerCase().startsWith('disclaimer:')) {
                     if (inList) { html.push('</ul>'); inList = false; }
                     const cleanDisc = l.replace(/^\*+|\*+$/g, '');
-                    html.push(`<div class="article-disclaimer"><span class="disc-icon">⚖️</span><p>${cleanDisc}</p></div>`);
+                    html.push(`<div class="article-disclaimer"><span class="disc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></span><p>${cleanDisc}</p></div>`);
                     continue;
                 }
                 
@@ -7145,7 +7170,7 @@
                         <!-- 2. Deskripsi & Ringkasan Eksekutif -->
                         <div class="article-exec-card">
                             <div class="exec-card-title">
-                                <span>⚡</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1.5px;margin-right:4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
                                 <span>DESKRIPSI & RINGKASAN EKSEKUTIF</span>
                             </div>
                             <p class="exec-card-text">${article.summary}</p>
@@ -7154,32 +7179,32 @@
                         <!-- 3. Keterangan-Keterangan Lainnya (Panel Metadata) -->
                         <div class="article-intel-panel">
                             <div class="intel-panel-title">
-                                <span>📋</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></span>
                                 <span>KETERANGAN & METADATA</span>
                             </div>
                             <div class="intel-panel-grid">
                                 <div class="intel-item">
-                                    <span class="intel-lbl">✍️ Penulis / Redaksi</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>Penulis / Redaksi</span>
                                     <span class="intel-val">${article.author || 'GARDA DESK'}</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl">📅 Tanggal Terbit</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Tanggal Terbit</span>
                                     <span class="intel-val">${d} WIB</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl">⏱️ Estimasi Baca</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Estimasi Baca</span>
                                     <span class="intel-val">${article.read_time_minutes || 4} Menit</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl">👁️ Total Pembaca</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Total Pembaca</span>
                                     <span class="intel-val">${article.views || 42} Pembaca</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl">🌐 Asal Negara / Bahasa</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Asal Negara / Bahasa</span>
                                     <span class="intel-val">${countryLabel} • ${isEng ? 'English' : 'Indonesia'}</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl">🛡️ Kuota Data</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Kuota Data</span>
                                     <span class="intel-val" style="color:var(--accent-orange);">0 Credit Shield</span>
                                 </div>
                             </div>
@@ -7188,7 +7213,7 @@
                         <!-- 4. Emiten Terkait (Jika Ada) -->
                         ${(article.tickers && article.tickers.length > 0) ? `
                             <div class="article-emiten-bar">
-                                <span class="emiten-bar-label">🏢 Emiten Terkait:</span>
+                                <span class="emiten-bar-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="2"></line></svg>Emiten Terkait:</span>
                                 <div class="emiten-bar-pills">
                                     ${article.tickers.map(t => `
                                         <div class="emiten-bar-item">
@@ -7206,14 +7231,14 @@
                         <div class="article-actions-panel">
                             <button type="button" class="btn-action-primary" onclick="askGardaAboutNews('${(article.title || '').replace(/'/g, "\\'")}', ${JSON.stringify(article.tickers || []).replace(/"/g, '&quot;')})">
                                 <span class="garda-orb-btn"></span>
-                                <span>⚡ Tanya Analisis Garda AI</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Tanya Analisis Garda AI</span>
                             </button>
                             <div class="btn-action-row">
                                 <button type="button" class="btn-action-secondary" onclick="openCompanySentimentModal('${primTicker}')">
-                                    <span>📊 Sentimen $${primTicker}</span>
+                                    <span>${SVG_CHART_BAR} Sentimen $${primTicker}</span>
                                 </button>
                                 <button type="button" class="btn-action-secondary" onclick="openCompanyDrawer('${primTicker}')">
-                                    <span>🏢 Profil Saham</span>
+                                    <span>${SVG_BUILDING} Profil Saham</span>
                                 </button>
                             </div>
                             <button type="button" class="btn-action-tertiary" onclick="copyCurrentArticleUrl(this)">
@@ -7225,7 +7250,7 @@
                         <!-- 6. Rekomendasi Berita & Riset Terkait -->
                         ${(related && related.length > 0) ? `
                             <div class="article-related-box">
-                                <div class="related-box-title">📖 RISET & BERITA TERKAIT</div>
+                                <div class="related-box-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>RISET & BERITA TERKAIT</div>
                                 <div class="related-cards-col">
                                     ${related.map(r => `
                                         <div class="related-card-item" onclick="openModal('${r.id || r.slug}')">
@@ -7249,7 +7274,7 @@
                                 <span class="tag-pill orange">${(article.category || 'EMITEN').toUpperCase().replace('-', ' ')}</span>
                                 <span class="sentiment-badge ${article.sentiment}">${article.sentiment}</span>
                                 <span class="origin-badge">${countryLabel} • ${isEng ? 'English' : 'Bahasa Indonesia'}</span>
-                                <span style="font-size:11.5px;color:var(--text-muted);font-family:var(--font-mono);margin-left:auto;">⏱️ ${article.read_time_minutes || 4} min read • 👁️ ${article.views || 42} Views</span>
+                                <span style="font-size:11.5px;color:var(--text-muted);font-family:var(--font-mono);margin-left:auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>${article.read_time_minutes || 4} min read • <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${article.views || 42} Views</span>
                             </div>
                             <h1 class="article-right-title">${article.title}</h1>
                             <div class="article-right-subbar">
@@ -7269,11 +7294,11 @@
                         <!-- Footer Kanan / End of Reading Note -->
                         <div class="article-right-footer">
                             <div style="font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;gap:6px;">
-                                <span>⚡</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
                                 <span>Dipublikasikan secara resmi di jaringan intelijen pasar BE.N.IX & AI Newsroom.</span>
                             </div>
                             <button type="button" class="drawer-action-btn" onclick="copyCurrentArticleUrl(this)">
-                                <span>🔗 Salin Tautan</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>Salin Tautan</span>
                             </button>
                         </div>
                     </div>
@@ -7331,9 +7356,9 @@
                 const num = parseFloat(chg.replace(/[^0-9.-]/g, ''));
                 const isUp = chg.includes('+') || (!chg.includes('-') && num > 0);
                 const isDown = chg.includes('-') || num < 0;
-                const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+                const arrow = getChartTrendArrow(isUp, isDown);
                 if (chgEl) {
-                    chgEl.innerText = `${arrow}${chg}`;
+                    chgEl.innerHTML = `${arrow}${chg}`;
                     chgEl.style.color = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : 'var(--text-secondary)');
                 }
 
@@ -7423,14 +7448,14 @@
                     <!-- 3. MACRO CAUSAL CORRELATION ANALYSIS (KURS, POLITIK, BMKG CUACA) -->
                     <div style="margin-top:6px;">
                         <h4 style="font-size:13px;font-weight:700;color:var(--text-main);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
-                            <span>🌐</span>
+                            <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
                             <span>Analisis Korelasi Makro Kausal (Valas, Politik & Iklim BMKG)</span>
                         </h4>
                         <div class="macro-corr-grid">
                             <!-- Forex Correlation -->
                             <div class="macro-corr-card">
                                 <div class="macro-corr-header" style="color:var(--green-gain);">
-                                    <span>💱</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg></span>
                                     <span>Hubungan Nilai Tukar (Kurs)</span>
                                 </div>
                                 <div style="font-size:11px;font-weight:700;color:var(--text-main);">
@@ -7444,7 +7469,7 @@
                             <!-- Politics Correlation -->
                             <div class="macro-corr-card">
                                 <div class="macro-corr-header" style="color:var(--accent-orange);">
-                                    <span>🏛️</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><line x1="3" y1="21" x2="21" y2="21"></line><line x1="3" y1="10" x2="21" y2="10"></line><polyline points="5 10 5 21"></polyline><polyline points="19 10 19 21"></polyline><polyline points="10 10 10 21"></polyline><polyline points="14 10 14 21"></polyline><polygon points="12 2 2 7 22 7"></polygon></svg></span>
                                     <span>Hubungan Politik & Regulasi</span>
                                 </div>
                                 <div style="font-size:11px;font-weight:700;color:var(--text-main);">
@@ -7458,7 +7483,7 @@
                             <!-- Weather & Climate BMKG Correlation -->
                             <div class="macro-corr-card">
                                 <div class="macro-corr-header" style="color:var(--accent-cyan);">
-                                    <span>🌦️</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.94 10.94A5 5 0 0 0 9 6.07"></path><path d="M17.5 21a4.5 4.5 0 0 0 1.5-8.74 6 6 0 0 0-11.82 2.06A4.5 4.5 0 0 0 7.5 21h10z"></path></svg></span>
                                     <span>Hubungan Cuaca & BMKG</span>
                                 </div>
                                 <div style="font-size:11px;font-weight:700;color:var(--text-main);">
@@ -7474,11 +7499,11 @@
                     <!-- 4. ACTION BAR -->
                     <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;">
                         <button type="button" class="btn-ask-garda-stock" style="flex:1;margin-top:0;" onclick="askGardaAboutStock('${cleanSym}', '${(data.company_name || '').replace(/'/g, "\\'")}')">
-                            <span>⚡ Diskusikan Sentimen ${cleanSym} dengan Garda AI</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Diskusikan Sentimen ${cleanSym} dengan Garda AI</span>
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </button>
                         <button type="button" class="cat-pill" style="padding:10px 16px;font-size:12px;" onclick="closeCompanySentimentModal(); openCompanyDrawer(); selectCompanyDetail('${cleanSym}');">
-                            <span>🏢 Buka Profil Fundamental Penuh (0Cr)</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="2"></line></svg>Buka Profil Fundamental Penuh (0Cr)</span>
                         </button>
                     </div>
                 `;
@@ -7537,7 +7562,7 @@
                             </div>
                         </div>
                         <div style="display:flex;gap:8px;align-items:center;">
-                            <span class="tag-pill green">⚡ 0 Credit API Quota Leak</span>
+                            <span class="tag-pill green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>0 Credit API Quota Leak</span>
                             <span class="tag-pill cyan">Panggilan: ${budget.total_calls_today || 142} / ${budget.max_calls_per_day || 1000} per hari (${budget.budget_utilization_pct || 14.2}%)</span>
                         </div>
                     </div>
@@ -7551,7 +7576,7 @@
                             <!-- Rule 1: Volume Spurt -->
                             <div class="watchdog-card sentinel-card ${r1.status === 'TRIGGERED' ? 'triggered' : ''}">
                                 <div class="watchdog-badge-strip sentinel-badge-strip">
-                                    <span style="font-size:18px;">📊</span>
+                                    <span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>
                                     <span class="tag-pill ${r1.status === 'TRIGGERED' ? 'orange' : 'cyan'}" style="font-size:9.5px;">${r1.status || 'NORMAL'}</span>
                                 </div>
                                 <h4 style="font-size:13px;font-weight:700;color:var(--text-main);">${r1.rule_name || 'Volume Spurt Detection'}</h4>
@@ -7567,7 +7592,7 @@
                             <!-- Rule 2: Sector Outlier -->
                             <div class="watchdog-card sentinel-card ${r2.status === 'TRIGGERED' ? 'triggered' : ''}">
                                 <div class="watchdog-badge-strip sentinel-badge-strip">
-                                    <span style="font-size:18px;">⚡</span>
+                                    <span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
                                     <span class="tag-pill ${r2.status === 'TRIGGERED' ? 'orange' : 'cyan'}" style="font-size:9.5px;">${r2.status || 'NORMAL'}</span>
                                 </div>
                                 <h4 style="font-size:13px;font-weight:700;color:var(--text-main);">${r2.rule_name || 'Sector Outlier Detection'}</h4>
@@ -7583,7 +7608,7 @@
                             <!-- Rule 3: Foreign Flow Reversal -->
                             <div class="watchdog-card sentinel-card ${r3.status === 'TRIGGERED' ? 'triggered' : ''}">
                                 <div class="watchdog-badge-strip sentinel-badge-strip">
-                                    <span style="font-size:18px;">🌊</span>
+                                    <span style="display:inline-flex;align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c.6 0 1.2-.2 1.7-.6 1-.8 2.6-.8 3.6 0 1 .8 2.6.8 3.6 0 1-.8 2.6-.8 3.6 0 1 .8 2.6.8 3.6 0 .5.4 1.1.6 1.7.6"></path><path d="M2 18c.6 0 1.2-.2 1.7-.6 1-.8 2.6-.8 3.6 0 1 .8 2.6.8 3.6 0 1-.8 2.6-.8 3.6 0 1 .8 2.6.8 3.6 0 .5.4 1.1.6 1.7.6"></path></svg></span>
                                     <span class="tag-pill ${r3.status === 'TRIGGERED' ? 'orange' : 'cyan'}" style="font-size:9.5px;">${r3.status || 'NORMAL'}</span>
                                 </div>
                                 <h4 style="font-size:13px;font-weight:700;color:var(--text-main);">${r3.rule_name || 'Foreign Flow Reversal'}</h4>
@@ -7602,7 +7627,7 @@
                     <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:14px;">
                         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
                             <div style="font-size:12px;font-weight:700;color:var(--text-main);display:flex;align-items:center;gap:6px;">
-                                <span>📱</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span>
                                 <span>Simulasi Telegram Alert Dispatcher (Anti-Spam Cooldown Lock)</span>
                             </div>
                             <span class="tag-pill green" style="font-size:9px;">COOLDOWN 15 MIN ACTIVE</span>
@@ -7854,7 +7879,7 @@
             const btn = document.getElementById('btn-tts');
             const icon = document.getElementById('tts-icon');
             if (btn && icon) {
-                icon.innerText = isGardaVoiceEnabled ? '🔊' : '🔇';
+                icon.innerHTML = isGardaVoiceEnabled ? SVG_VOLUME_ON : SVG_VOLUME_OFF;
                 btn.title = isGardaVoiceEnabled ? 'Suara Garda (TTS) Aktif • Klik untuk Mute' : 'Suara Garda Dimatikan • Klik untuk Aktifkan';
                 if (!isGardaVoiceEnabled) btn.classList.add('muted');
             }
@@ -7867,7 +7892,7 @@
             const btn = document.getElementById('btn-tts');
             const icon = document.getElementById('tts-icon');
             if (btn && icon) {
-                icon.innerText = isGardaVoiceEnabled ? '🔊' : '🔇';
+                icon.innerHTML = isGardaVoiceEnabled ? SVG_VOLUME_ON : SVG_VOLUME_OFF;
                 btn.title = isGardaVoiceEnabled ? 'Suara Garda (TTS) Aktif • Klik untuk Mute' : 'Suara Garda Dimatikan • Klik untuk Aktifkan';
                 if (isGardaVoiceEnabled) {
                     btn.classList.remove('muted');
@@ -8075,14 +8100,14 @@
 
             const isUp = data.isUp || String(data.change).includes('+');
             const isDown = !data.isUp || String(data.change).includes('-');
-            const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+            const arrow = getChartTrendArrow(isUp, isDown);
             const chgClass = isUp ? 'val up' : 'val down';
 
             slot.innerHTML = `
                 <div class="dashboard-header-bar">
                     <div>
                         <div class="dashboard-meta-tag">
-                            <span>⚡ GARDA AI CONCIERGE</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>GARDA AI CONCIERGE</span>
                             <span>•</span>
                             <span>CUSTOM DATA DASHBOARD</span>
                             <span>•</span>
@@ -8147,19 +8172,19 @@
                 <div class="dashboard-columns-split">
                     <div class="dashboard-box">
                         <div class="dashboard-box-title">
-                            <span>🏢 Evaluasi Due Diligence Mitra UMKM</span>
+                            <span>${SVG_BUILDING} Evaluasi Due Diligence Mitra UMKM</span>
                         </div>
                         <div class="dashboard-box-content">
                             ${data.recommendation}
                             <div style="margin-top:10px;padding:8px;background:rgba(56,189,248,0.06);border-radius:6px;border:1px solid rgba(56,189,248,0.15);font-size:11.5px;color:var(--accent-cyan);">
-                                <strong>💡 Concierge Insight:</strong> Solvabilitas aman memungkinkan pelaku UMKM memberikan termin PO normal tanpa risiko keterlambatan pembayaran signifikan.
+                                <strong><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;display:inline-block;"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path></svg>Concierge Insight:</strong> Solvabilitas aman memungkinkan pelaku UMKM memberikan termin PO normal tanpa risiko keterlambatan pembayaran signifikan.
                             </div>
                         </div>
                     </div>
 
                     <div class="dashboard-box">
                         <div class="dashboard-box-title">
-                            <span>📰 Korelasi Berita Regional Terkini (News Wire)</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>Korelasi Berita Regional Terkini (News Wire)</span>
                         </div>
                         <div class="dashboard-box-content">
                             <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
@@ -8181,10 +8206,10 @@
                     </div>
                     <div style="display:flex;gap:8px;">
                         <button class="dashboard-act-btn" onclick="sendPrompt('Analisis lebih mendalam valuasi dan risiko bisnis saham ${sym}')">
-                            <span>💬 Tanya Detail ke Garda</span>
+                            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Tanya Detail ke Garda</span>
                         </button>
                         <button class="dashboard-act-btn" onclick="sendPrompt('Bandingkan kondisi fundamental ${sym} dengan kompetitor sejenisnya')">
-                            <span>🔄 Bandingkan Kompetitor</span>
+                            <span>${SVG_SYNC} Bandingkan Kompetitor</span>
                         </button>
                     </div>
                 </div>
@@ -8527,9 +8552,9 @@
             str = str.replace(/_{2,}/g, ''); // remaining unclosed __
             str = str.replace(/~{2,}/g, ''); // strikethrough artifacts
 
-            // 11. Format positive / negative data indicators (+ is green ▲, - is red ▼)
-            str = str.replace(/(^|\s)(\+[\d.,]+%?)/g, '$1<span style="color:var(--green-gain);font-weight:700;display:inline-flex;align-items:center;gap:2px;"><span style="font-size:9.5px;">▲</span>$2</span>');
-            str = str.replace(/(^|\s)(-[\d.,]+%?)/g, '$1<span style="color:var(--red-loss);font-weight:700;display:inline-flex;align-items:center;gap:2px;"><span style="font-size:9.5px;">▼</span>$2</span>');
+            // 11. Format positive / negative data indicators (+ is green chart arrow up, - is red chart arrow down)
+            str = str.replace(/(^|\s)(\+[\d.,]+%?)/g, `$1<span style="color:var(--green-gain);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_UP}$2</span>`);
+            str = str.replace(/(^|\s)(-[\d.,]+%?)/g, `$1<span style="color:var(--red-loss);font-weight:700;display:inline-flex;align-items:center;gap:2px;">${FLAT_CHART_DOWN}$2</span>`);
 
             // 12. Linebreaks & Paragraphs
             const lines = str.split('\n');
@@ -8603,7 +8628,7 @@
                 if (isDashboardQuery) {
                     responseHtml = `
                         <div style="margin-bottom:10px;padding:6px 10px;background:rgba(56,189,248,0.10);border-radius:6px;border:1px solid rgba(56,189,248,0.25);font-size:11.5px;color:var(--accent-cyan);display:flex;align-items:center;gap:6px;">
-                            <span>📊</span>
+                            <span>${SVG_CHART_BAR}</span>
                             <span><strong>Custom Data Dashboard:</strong> Visualisasi khusus untuk <strong>${detectedTicker}</strong> telah ditampilkan di panel kiri.</span>
                         </div>
                     ` + responseHtml;
@@ -8614,7 +8639,7 @@
                     responseHtml += `
                         <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
                             <div style="font-size:11px;color:var(--accent-cyan);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:5px;">
-                                <span>📰 Referensi Berita Terkorelasikan (${data.news_referenced.length} Portal):</span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;display:inline-block;"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>Referensi Berita Terkorelasikan (${data.news_referenced.length} Portal):</span>
                             </div>
                             <div style="display:flex;flex-direction:column;gap:6px;">
                                 ${data.news_referenced.map(n => `
@@ -9267,7 +9292,7 @@
                 const num = parseFloat(chg.replace(/[^0-9.-]/g, ''));
                 const isUp = chg.includes('+') || (!chg.includes('-') && num > 0);
                 const isDown = chg.includes('-') || num < 0;
-                const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+                const arrow = getChartTrendArrow(isUp, isDown);
                 const chgClass = isUp ? 'up' : (isDown ? 'down' : '');
                 const formattedPrice = typeof c.last_price === 'number' ? c.last_price.toLocaleString('id-ID') : c.last_price;
 
@@ -9277,7 +9302,7 @@
                             <span class="card-ticker">${c.symbol}</span>
                             <div class="card-price-wrap">
                                 <span>${formattedPrice}</span>
-                                <span class="${chgClass}" style="margin-left:4px;">${arrow}${chg}</span>
+                                <span class="${chgClass}" style="margin-left:4px;display:inline-flex;align-items:center;">${arrow}${chg}</span>
                             </div>
                         </div>
                         <div class="card-name">${c.company_name || c.symbol}</div>
@@ -9313,7 +9338,7 @@
             const num = parseFloat(chg.replace(/[^0-9.-]/g, ''));
             const isUp = chg.includes('+') || (!chg.includes('-') && num > 0);
             const isDown = chg.includes('-') || num < 0;
-            const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+            const arrow = getChartTrendArrow(isUp, isDown);
             const chgColor = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : 'var(--text-secondary)');
             const formattedPrice = typeof company.last_price === 'number' ? company.last_price.toLocaleString('id-ID') : company.last_price;
 
@@ -9330,7 +9355,7 @@
                         </div>
                         <div style="text-align:right;">
                             <div style="font-size:22px;font-weight:800;font-family:var(--font-mono);color:var(--text-main);">${formattedPrice}</div>
-                            <div style="font-size:13px;font-weight:700;font-family:var(--font-mono);color:${chgColor};">${arrow}${chg}</div>
+                            <div style="font-size:13px;font-weight:700;font-family:var(--font-mono);color:${chgColor};display:inline-flex;align-items:center;">${arrow}${chg}</div>
                         </div>
                     </div>
                 </div>
@@ -9358,7 +9383,7 @@
                 <!-- Vendor Due Diligence Callout -->
                 <div class="insight-callout-card orange">
                     <div class="insight-callout-title">
-                        <span>🏢</span>
+                        <span>${SVG_BUILDING}</span>
                         <span>Vendor Due Diligence (Evaluasi Kemitraan & Kontrak Kerja Sama)</span>
                     </div>
                     <div class="insight-callout-text">
@@ -9369,7 +9394,7 @@
                 <!-- Insight Bisnis Nyata UMKM Callout -->
                 <div class="insight-callout-card">
                     <div class="insight-callout-title">
-                        <span>💡</span>
+                        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;"><line x1="9" y1="18" x2="15" y2="18"></line><line x1="10" y1="22" x2="14" y2="22"></line><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path></svg></span>
                         <span>Insight Pasar Riil bagi Pelaku UMKM</span>
                     </div>
                     <div class="insight-callout-text">
@@ -9391,12 +9416,12 @@
 
                 <!-- Action Button: Tanya Garda -->
                 <button type="button" class="btn-ask-garda-stock" onclick="askGardaAboutStock('${company.symbol}', '${(company.company_name || '').replace(/'/g, "\\'")}')">
-                    <span>⚡ Tanya Analisis Lanjutan ke Garda AI Concierge</span>
+                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Tanya Analisis Lanjutan ke Garda AI Concierge</span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
 
                 <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-muted);font-family:var(--font-mono);">
-                    🛡️ Bebas Kuota: Data disimpan dalam cache lokal SQLite & JSON middleware.
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Bebas Kuota: Data disimpan dalam cache lokal SQLite & JSON middleware.
                 </div>
             `;
         }
@@ -9630,7 +9655,7 @@
             marketAudioEnabled = !marketAudioEnabled;
             localStorage.setItem('bx-market-audio', marketAudioEnabled);
             const icon = document.getElementById('market-audio-icon');
-            if (icon) icon.innerText = marketAudioEnabled ? '🔊' : '🔇';
+            if (icon) icon.innerHTML = marketAudioEnabled ? SVG_VOLUME_ON : SVG_VOLUME_OFF;
             const btn = document.getElementById('btn-market-audio');
             if (btn) btn.title = marketAudioEnabled ? 'Suara Peringatan Aktif (Klik untuk Mute)' : 'Suara Peringatan Dimatikan (Klik untuk Aktifkan)';
         }
@@ -9651,7 +9676,7 @@
             const chgVal = alert.change_pct !== undefined ? alert.change_pct : (alert.price_change_pct || 0);
             const isUp = chgVal > 0;
             const isDown = chgVal < 0;
-            const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+            const arrow = getChartTrendArrow(isUp, isDown);
             const chgStr = isUp ? `${arrow}+${chgVal}%` : (isDown ? `${arrow}${chgVal}%` : `${chgVal}%`);
             const chgClass = isUp ? 'color:var(--green-gain)' : (isDown ? 'color:var(--red-loss)' : 'color:var(--text-secondary)');
             const formattedPrice = typeof alert.price === 'number' ? alert.price.toLocaleString('id-ID') : (alert.last_price || 'Rp 10.125');
@@ -9659,20 +9684,20 @@
             toast.innerHTML = `
                 <div class="toast-top-row">
                     <div class="toast-badge-title">
-                        <span>⚡ LIVE MARKET ANOMALY</span>
+                        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>LIVE MARKET ANOMALY</span>
                         <span class="tag-pill ${isHigh ? 'orange' : 'cyan'}" style="font-size:9px;">${alert.severity || 'ALERT'}</span>
                     </div>
                     <span class="toast-time">${timeStr} WIB</span>
                 </div>
                 <div class="toast-headline">
                     <span style="color:var(--accent-orange);font-family:var(--font-mono);font-size:15px;font-weight:800;">${alert.symbol || 'IDX'}</span>
-                    <span style="margin-left:6px;font-family:var(--font-mono);font-weight:700;${chgClass};">${chgStr}</span>
+                    <span style="margin-left:6px;font-family:var(--font-mono);font-weight:700;${chgClass};display:inline-flex;align-items:center;">${chgStr}</span>
                     <span style="font-size:11.5px;color:var(--text-muted);font-family:var(--font-mono);margin-left:4px;">(Rp ${formattedPrice})</span>
                 </div>
                 <div class="toast-msg">${alert.description || alert.message || 'Anomali terdeteksi oleh mesin deterministik.'}</div>
                 <div class="toast-footer-actions">
-                    <button type="button" class="toast-btn primary" onclick="openChartForTicker('${alert.symbol}')">📊 Buka di Chart</button>
-                    <button type="button" class="toast-btn" onclick="askGardaAboutAlert('${alert.symbol}', '${(alert.description || '').replace(/'/g, "\\'")}')">⚡ Tanya Garda</button>
+                    <button type="button" class="toast-btn primary" onclick="openChartForTicker('${alert.symbol}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Buka di Chart</button>
+                    <button type="button" class="toast-btn" onclick="askGardaAboutAlert('${alert.symbol}', '${(alert.description || '').replace(/'/g, "\\'")}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Tanya Garda</button>
                     <button type="button" class="toast-btn" onclick="this.closest('.ws-toast-card').remove()">✕</button>
                 </div>
             `;
@@ -9737,27 +9762,27 @@
             const chgVal = a.change_pct !== undefined ? a.change_pct : (a.price_change_pct || 0);
             const isUp = chgVal > 0;
             const isDown = chgVal < 0;
-            const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+            const arrow = getChartTrendArrow(isUp, isDown);
             const chgStr = isUp ? `${arrow}+${chgVal}%` : (isDown ? `${arrow}${chgVal}%` : `${chgVal}%`);
             const chgClass = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : 'var(--text-secondary)');
 
             return `
                 <div class="radar-alert-card ${isHigh ? 'high' : (isBuy ? 'buy' : '')}">
                     <div class="radar-alert-icon-box">
-                        ${isHigh ? '🚨' : (isBuy ? '🟢' : '⚡')}
+                        ${isHigh ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red-loss)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' : (isBuy ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-gain)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>')}
                     </div>
                     <div class="radar-alert-content">
                         <h4>
                             <span class="table-ticker-badge">${a.symbol || 'IDX'}</span>
-                            <span style="font-family:var(--font-mono);color:${chgClass};font-size:12.5px;">${chgStr}</span>
+                            <span style="font-family:var(--font-mono);color:${chgClass};font-size:12.5px;display:inline-flex;align-items:center;">${chgStr}</span>
                             <span class="tag-pill ${isHigh ? 'orange' : 'cyan'}" style="font-size:9px;">${a.trigger_type || 'ALERT'}</span>
                             <span style="font-size:10.5px;color:var(--text-muted);font-family:var(--font-mono);font-weight:400;margin-left:auto;">${timeStr} WIB</span>
                         </h4>
                         <p>${a.description || a.message || 'Peringatan anomali pasar terdeteksi.'}</p>
                     </div>
                     <div class="radar-alert-actions">
-                        <button type="button" class="row-action-btn" onclick="openChartForTicker('${a.symbol}')">📊 Chart</button>
-                        <button type="button" class="row-action-btn" onclick="askGardaAboutAlert('${a.symbol}', '${(a.description || '').replace(/'/g, "\\'")}')">⚡ Garda</button>
+                        <button type="button" class="row-action-btn" onclick="openChartForTicker('${a.symbol}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Chart</button>
+                        <button type="button" class="row-action-btn" onclick="askGardaAboutAlert('${a.symbol}', '${(a.description || '').replace(/'/g, "\\'")}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Garda</button>
                     </div>
                 </div>
             `;
@@ -10155,7 +10180,7 @@
             const lastP = points[points.length - 1].price;
             const isUp = def.change > 0;
             const isDown = def.change < 0;
-            const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+            const arrow = getChartTrendArrow(isUp, isDown);
 
             const elPrice = document.getElementById('kpi-last-price');
             const elChg = document.getElementById('kpi-change');
@@ -10168,7 +10193,7 @@
 
             if (elPrice) elPrice.innerText = typeof lastP === 'number' && lastP > 100 ? `Rp ${lastP.toLocaleString('id-ID')}` : `${lastP}`;
             if (elChg) {
-                elChg.innerText = `${arrow}${isUp ? '+' : ''}${def.change}%`;
+                elChg.innerHTML = `${arrow}${isUp ? '+' : ''}${def.change}%`;
                 elChg.className = `stock-kpi-val ${isUp ? 'gain' : (isDown ? 'loss' : '')}`;
             }
             if (elRange) elRange.innerText = `${def.low || (lastP * 0.98).toFixed(0)} - ${def.high || (lastP * 1.02).toFixed(0)}`;
@@ -10390,7 +10415,7 @@
                 const num = parseFloat(chg.replace(/[^0-9.-]/g, ''));
                 const isUp = chg.includes('+') || (!chg.includes('-') && num > 0);
                 const isDown = chg.includes('-') || num < 0;
-                const arrow = isUp ? '▲ ' : (isDown ? '▼ ' : '');
+                const arrow = getChartTrendArrow(isUp, isDown);
                 const chgColor = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : 'var(--text-secondary)');
                 const formattedPrice = typeof s.last_price === 'number' ? `Rp ${s.last_price.toLocaleString('id-ID')}` : s.last_price;
                 const formattedCap = typeof s.market_cap_trillion === 'number' ? `Rp ${s.market_cap_trillion.toLocaleString('id-ID')} T` : s.market_cap_trillion;
@@ -10425,9 +10450,9 @@
                             <span title="${s.vendor_due_diligence || ''}">${s.smart_money_status || s.operating_cash_flow || 'Likuid & Sehat'}</span>
                         </td>
                         <td style="text-align:center;">
-                            <button type="button" class="row-action-btn" onclick="openChartForTicker('${s.symbol}')" title="Buka Chart Interaktif">📊 Chart</button>
-                            <button type="button" class="row-action-btn" onclick="openCompanyDrawer(); selectCompanyDetail('${s.symbol}');" title="Buka Detail Fundamental">🏢 Profil</button>
-                            <button type="button" class="row-action-btn" style="color:var(--accent-orange);border-color:var(--accent-orange);" onclick="askGardaAboutStock('${s.symbol}', '${(s.company_name || '').replace(/'/g, "\\'")}')" title="Tanya Garda AI">⚡ Tanya</button>
+                            <button type="button" class="row-action-btn" onclick="openChartForTicker('${s.symbol}')" title="Buka Chart Interaktif"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Chart</button>
+                            <button type="button" class="row-action-btn" onclick="openCompanyDrawer(); selectCompanyDetail('${s.symbol}');" title="Buka Detail Fundamental"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/></svg>Profil</button>
+                            <button type="button" class="row-action-btn" style="color:var(--accent-orange);border-color:var(--accent-orange);" onclick="askGardaAboutStock('${s.symbol}', '${(s.company_name || '').replace(/'/g, "\\'")}')" title="Tanya Garda AI"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Tanya</button>
                         </td>
                     </tr>
                 `;
