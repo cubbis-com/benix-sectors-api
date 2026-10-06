@@ -1,13 +1,12 @@
-# Dokumen Design Thinking: BE.N.IX — Anvieo Trading Analytics
-## Produk: Garda — AI Market Intelligence & Autonomous Financial Newsroom Copilot
-**Sectors Hackathon Indonesia 2026**  
+# BE.N.IX — AI Market Intelligence & Autonomous Financial Newsroom Copilot
+**Kerangka Design Thinking | Sectors Hackathon Indonesia 2026**  
 *Track Rekomendasi: Track 1 (AI Agents & Assistants) dengan Kapabilitas Otonom Track 2 (Automation & Workflows)*
 
 ---
 
 ## Ringkasan Eksekutif (Executive Summary)
 
-**BE.N.IX (Anvieo Trading Analytics)** adalah platform intelijen pasar modal dan asisten riset finansial otonom yang dirancang khusus untuk **tiga kelompok profesional pasar modal: Tim Equity Research di Sekuritas/Asset Management, Redaktur & Jurnalis Media Finansial, serta Divisi Investor Relations (IR) Perusahaan Publik**.
+**BE.N.IX (AI Market Intelligence & Autonomous Financial Newsroom Copilot)** adalah platform intelijen pasar modal dan asisten riset finansial otonom yang dirancang khusus untuk **tiga kelompok profesional pasar modal: Tim Equity Research di Sekuritas/Asset Management, Redaktur & Jurnalis Media Finansial, serta Divisi Investor Relations (IR) Perusahaan Publik**.
 
 Dalam industri pasar modal modern, kecepatan mengolah data kuantitatif bursa dan menghubungkannya dengan konteks berita aktual adalah kunci utama. Namun, para profesional saat ini terbebani oleh proses manual yang memakan waktu: menyisir puluhan portal berita regional, mengunduh laporan keuangan, menghitung konsentrasi transaksi broker (*bandarmologi*), dan menyusun ringkasan riset atau artikel berita sebelum pasar buka.
 
