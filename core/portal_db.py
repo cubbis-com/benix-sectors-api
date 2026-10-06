@@ -47,7 +47,7 @@ class PortalDBManager:
         content: str,
         category: str,
         tickers: List[str],
-        author: str = "Wartawan AI Garda",
+        author: str = "be.n.ix",
         sentiment: str = "NEUTRAL",
         sectors_data: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:

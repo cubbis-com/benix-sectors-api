@@ -23,31 +23,31 @@ BMKG_CACHE_PATH = DATA_DIR / "bmkg_weather_store.json"
 # Key Indonesian Economic & Financial Hubs (Matching exact adm4 codes from contoh/peta.php)
 BMKG_STATIONS = {
     "jakarta": {
-        "name": "DKI Jakarta (Bursa Efek Indonesia / Finansial)",
+        "name": "DKI Jakarta (BEI)",
         "code": "31.72.05.1003",  # Exact code from contoh/peta.php line 3476 (Jakarta Pusat / BEI)
         "region": "DKI Jakarta",
         "sector_relevance": "Pusat Pasar Modal, Perbankan, Korporasi, & Konsumsi Ritel Terbesar"
     },
     "surabaya": {
-        "name": "Surabaya (Hub Logistik & Industri Timur)",
+        "name": "Surabaya (Jatim)",
         "code": "35.78.01.1001",
         "region": "Jawa Timur",
         "sector_relevance": "Pelabuhan Tanjung Perak, Ekspor Manufaktur, & Industri Semen/Pakan"
     },
     "medan": {
-        "name": "Medan (Hub Perkebunan Sawit & Agribisnis)",
+        "name": "Medan (Sumut)",
         "code": "12.71.01.1001",
         "region": "Sumatera Utara",
         "sector_relevance": "Komoditas CPO (Minyak Sawit), Agribisnis Pangan, & Logistik Selat Malaka"
     },
     "balikpapan": {
-        "name": "Balikpapan & IKN (Hub Energi, Migas & Batubara)",
+        "name": "Balikpapan & IKN",
         "code": "64.71.01.1001",
         "region": "Kalimantan Timur",
         "sector_relevance": "Jalur Pengapalan Tongkang Batubara, Kilang Pertamina, & Proyek Konstruksi IKN"
     },
     "makassar": {
-        "name": "Makassar (Pintu Gerbang Mineral & Nikel)",
+        "name": "Makassar (Sulsel)",
         "code": "73.71.01.1001",
         "region": "Sulawesi Selatan",
         "sector_relevance": "Hub Smelter Nikel Sulawesi, Perikanan, & Distribusi Indonesia Timur"
@@ -115,7 +115,7 @@ BMKG_GEOSPATIAL_FEEDS = {
 
 DEFAULT_BMKG_SNAPSHOT = {
     "jakarta": {
-        "station": "DKI Jakarta (Bursa Efek Indonesia / Finansial)",
+        "station": "DKI Jakarta (BEI)",
         "adm4_code": "31.72.05.1003",
         "current": {
             "temp_c": 31.0,

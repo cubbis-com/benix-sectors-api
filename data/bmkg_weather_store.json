@@ -1,17 +1,17 @@
 {
   "jakarta": {
-    "station": "DKI Jakarta (Bursa Efek Indonesia / Finansial)",
+    "station": "DKI Jakarta (BEI)",
     "adm4_code": "31.72.05.1003",
     "current": {
-      "temp_c": 31,
-      "humidity_pct": 62,
+      "temp_c": 29,
+      "humidity_pct": 73,
       "condition": "Berawan",
       "weather_code": "3",
-      "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg",
-      "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg",
-      "wind_speed_kmh": 60.5,
+      "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg",
+      "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg",
+      "wind_speed_kmh": 32.4,
       "wind_dir": "N",
-      "updated_at": "2026-10-06 15:00:00"
+      "updated_at": "2026-10-06 20:00:00"
     },
     "forecast_3d": [
       {
@@ -19,15 +19,15 @@
         "date": "2026-10-06",
         "condition": "Berawan",
         "temp_min": 29,
-        "temp_max": 31,
-        "rain_prob": "2%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg"
+        "temp_max": 29,
+        "rain_prob": "0%",
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg"
       },
       {
         "day": "Besok",
         "date": "2026-10-07",
         "condition": "Cerah",
-        "temp_min": 25,
+        "temp_min": 26,
         "temp_max": 30,
         "rain_prob": "0%",
         "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
@@ -35,11 +35,11 @@
       {
         "day": "Lusa",
         "date": "2026-10-08",
-        "condition": "Cerah",
+        "condition": "Berawan",
         "temp_min": 26,
         "temp_max": 30,
         "rain_prob": "0%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg"
       }
     ],
     "sector_impact": {

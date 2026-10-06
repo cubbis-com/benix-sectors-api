@@ -1,6 +1,207 @@
 {
   "base": "IDR",
-  "updated_at": "Hari ini, Bank Indonesia / JISDOR Realtime",
+  "updated_at": "Realtime, Bank Indonesia (JISDOR), BCA e-Rate & Bursa Efek (IDX)",
+  "current_source": "BI",
+  "sources": {
+    "BI": {
+      "name": "Bank Indonesia",
+      "short_name": "BI (JISDOR)",
+      "subtitle": "Kurs Acuan JISDOR & Transaksi Bank Indonesia",
+      "badge": "JISDOR Resmi",
+      "type": "acuan",
+      "icon": "🏦",
+      "rates": {
+        "USD": {
+          "currency": "USD (US Dollar)",
+          "flag": "🇺🇸",
+          "rate": 17892.58,
+          "rate_formatted": "Rp 17.892",
+          "change_1d": "+0.32%",
+          "trend": "PENGUATAN_USD"
+        },
+        "SGD": {
+          "currency": "SGD (Singapore Dollar)",
+          "flag": "🇸🇬",
+          "rate": 11845.0,
+          "rate_formatted": "Rp 11.845",
+          "change_1d": "+0.18%",
+          "trend": "STABIL_MENGUAT"
+        },
+        "EUR": {
+          "currency": "EUR (Euro)",
+          "flag": "🇪🇺",
+          "rate": 17210.0,
+          "rate_formatted": "Rp 17.210",
+          "change_1d": "-0.12%",
+          "trend": "KONSOLIDASI"
+        },
+        "JPY": {
+          "currency": "JPY (100 Yen)",
+          "flag": "🇯🇵",
+          "rate": 104.8,
+          "rate_formatted": "Rp 104,80",
+          "change_1d": "+0.45%",
+          "trend": "MENGUAT"
+        },
+        "CNY": {
+          "currency": "CNY (Chinese Yuan)",
+          "flag": "🇨🇳",
+          "rate": 2215.0,
+          "rate_formatted": "Rp 2.215",
+          "change_1d": "+0.08%",
+          "trend": "STABIL"
+        },
+        "MYR": {
+          "currency": "MYR (Malaysian Ringgit)",
+          "flag": "🇲🇾",
+          "rate": 3550.0,
+          "rate_formatted": "Rp 3.550",
+          "change_1d": "+0.15%",
+          "trend": "STABIL"
+        }
+      }
+    },
+    "BCA": {
+      "name": "Bank Central Asia (BCA)",
+      "short_name": "BCA (e-Rate)",
+      "subtitle": "Kurs e-Rate & TT Counter Perbankan Komersial",
+      "badge": "e-Rate BCA",
+      "type": "spread",
+      "icon": "💳",
+      "rates": {
+        "USD": {
+          "currency": "USD (US Dollar)",
+          "flag": "🇺🇸",
+          "beli": 17872.58,
+          "jual": 17912.58,
+          "beli_formatted": "Rp 17.872",
+          "jual_formatted": "Rp 17.912",
+          "rate": 17892.58,
+          "rate_formatted": "Rp 17.892",
+          "change_1d": "+0.30%",
+          "trend": "PENGUATAN_USD"
+        },
+        "SGD": {
+          "currency": "SGD (Singapore Dollar)",
+          "flag": "🇸🇬",
+          "beli": 11825.0,
+          "jual": 11865.0,
+          "beli_formatted": "Rp 11.825",
+          "jual_formatted": "Rp 11.865",
+          "rate": 11845.0,
+          "rate_formatted": "Rp 11.845",
+          "change_1d": "+0.15%",
+          "trend": "STABIL"
+        },
+        "EUR": {
+          "currency": "EUR (Euro)",
+          "flag": "🇪🇺",
+          "beli": 17175.0,
+          "jual": 17245.0,
+          "beli_formatted": "Rp 17.175",
+          "jual_formatted": "Rp 17.245",
+          "rate": 17210.0,
+          "rate_formatted": "Rp 17.210",
+          "change_1d": "-0.10%",
+          "trend": "KONSOLIDASI"
+        },
+        "JPY": {
+          "currency": "JPY (100 Yen)",
+          "flag": "🇯🇵",
+          "beli": 104.5,
+          "jual": 105.1,
+          "beli_formatted": "Rp 104,50",
+          "jual_formatted": "Rp 105,10",
+          "rate": 104.8,
+          "rate_formatted": "Rp 104,80",
+          "change_1d": "+0.40%",
+          "trend": "MENGUAT"
+        },
+        "CNY": {
+          "currency": "CNY (Chinese Yuan)",
+          "flag": "🇨🇳",
+          "beli": 2200.0,
+          "jual": 2230.0,
+          "beli_formatted": "Rp 2.200",
+          "jual_formatted": "Rp 2.230",
+          "rate": 2215.0,
+          "rate_formatted": "Rp 2.215",
+          "change_1d": "+0.07%",
+          "trend": "STABIL"
+        },
+        "MYR": {
+          "currency": "MYR (Malaysian Ringgit)",
+          "flag": "🇲🇾",
+          "beli": 3530.0,
+          "jual": 3570.0,
+          "beli_formatted": "Rp 3.530",
+          "jual_formatted": "Rp 3.570",
+          "rate": 3550.0,
+          "rate_formatted": "Rp 3.550",
+          "change_1d": "+0.12%",
+          "trend": "STABIL"
+        }
+      }
+    },
+    "IDX": {
+      "name": "Bursa Efek Indonesia (IDX)",
+      "short_name": "Bursa Efek (IDX)",
+      "subtitle": "Kurs Referensi Transaksi Valas & Penyelesaian BEI",
+      "badge": "Kliring BEI",
+      "type": "acuan",
+      "icon": "📈",
+      "rates": {
+        "USD": {
+          "currency": "USD (US Dollar)",
+          "flag": "🇺🇸",
+          "rate": 17887.58,
+          "rate_formatted": "Rp 17.887",
+          "change_1d": "+0.29%",
+          "trend": "PENGUATAN_USD"
+        },
+        "SGD": {
+          "currency": "SGD (Singapore Dollar)",
+          "flag": "🇸🇬",
+          "rate": 11840.0,
+          "rate_formatted": "Rp 11.840",
+          "change_1d": "+0.16%",
+          "trend": "STABIL"
+        },
+        "EUR": {
+          "currency": "EUR (Euro)",
+          "flag": "🇪🇺",
+          "rate": 17205.0,
+          "rate_formatted": "Rp 17.205",
+          "change_1d": "-0.14%",
+          "trend": "KONSOLIDASI"
+        },
+        "JPY": {
+          "currency": "JPY (100 Yen)",
+          "flag": "🇯🇵",
+          "rate": 104.75,
+          "rate_formatted": "Rp 104,75",
+          "change_1d": "+0.42%",
+          "trend": "MENGUAT"
+        },
+        "CNY": {
+          "currency": "CNY (Chinese Yuan)",
+          "flag": "🇨🇳",
+          "rate": 2212.0,
+          "rate_formatted": "Rp 2.212",
+          "change_1d": "+0.06%",
+          "trend": "STABIL"
+        },
+        "MYR": {
+          "currency": "MYR (Malaysian Ringgit)",
+          "flag": "🇲🇾",
+          "rate": 3548.0,
+          "rate_formatted": "Rp 3.548",
+          "change_1d": "+0.14%",
+          "trend": "STABIL"
+        }
+      }
+    }
+  },
   "rates": {
     "USD": {
       "currency": "USD (US Dollar)",
@@ -104,5 +305,10 @@
       ],
       "pressured_stocks": []
     }
+  },
+  "exporters_vs_importers": {
+    "usd_idr_status": "Pelemahan Terkendali",
+    "exporters_stance": "Diuntungkan (Natural Hedge pendapatan USD > beban IDR: ADRO, PTBA, MEDC)",
+    "importers_stance": "Beban Biaya Impor & Utang Valas (ICBP, KLBF, INDF, GIAA)"
   }
 }

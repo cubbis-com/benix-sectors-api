@@ -148,21 +148,21 @@ class SentinelFlowEngine:
 
         tg_feed = [
             {
-                "channel": "Institutional Sentinel Telegram",
+                "channel": "Live Market Alert Telegram Desk",
                 "timestamp": a["triggered_at"],
                 "cooldown_remaining": "14m 20s",
-                "message": f"🚨 [SENTINEL FLOW ALERT] ${a['ticker']}\nRule: {a['rule_name']}\nMetric: {a['metric']}\nStatus: Anti-Spam Lock Engaged"
+                "message": f"🚨 [LIVE MARKET ALERT] ${a['ticker']}\nRule: {a['rule_name']}\nMetric: {a['metric']}\nStatus: Anti-Spam Lock Engaged"
             }
             for a in anomalies
         ]
 
         telegram_messages = [
-            f"🚨 [SENTINEL FLOW ALERT]\nTicker: ${a['ticker']}\nRule: {a['rule_name']}\nMetric: {a['metric']}\nStatus: Anti-Spam Lock Engaged\nTimestamp: {a['triggered_at']}"
+            f"🚨 [LIVE MARKET ALERT]\nTicker: ${a['ticker']}\nRule: {a['rule_name']}\nMetric: {a['metric']}\nStatus: Anti-Spam Lock Engaged\nTimestamp: {a['triggered_at']}"
             for a in anomalies
         ]
 
         return {
-            "engine": "Sentinel Flow (Deterministic Integrity & Anomaly Engine)",
+            "engine": "Market Anomaly Watchdog (Deterministic Integrity Engine)",
             "market_session": session_info,
             "session_status": {
                 "is_market_open": session_info.get("is_trading_active", False),

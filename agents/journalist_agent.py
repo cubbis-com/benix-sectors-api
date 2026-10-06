@@ -87,7 +87,7 @@ class FinancialJournalistAgent:
         content_lines.append("### Kesimpulan Redaksi")
         content_lines.append(f"Dengan mempertimbangkan fundamental yang kokoh dan konfirmasi transaksi bursa terkini, saham {symbol} memiliki daya tarik tersendiri bagi portofolio investasi. Pelaku pasar disarankan tetap memantau rilis kinerja laporan keuangan kuartalan berikutnya.\n")
         content_lines.append("---")
-        content_lines.append("*Disclaimer: Informasi ini disusun secara otomatis oleh Wartawan AI Garda menggunakan data terverifikasi Sectors Financial API. Berita ini bertujuan sebagai edukasi dan analisis pasar, bukan ajakan untuk membeli atau menjual efek tertentu. Keputusan investasi sepenuhnya berada di tangan investor.*")
+        content_lines.append("*Disclaimer: Informasi ini disusun secara otomatis oleh be.n.ix menggunakan data terverifikasi Sectors Financial API. Berita ini bertujuan sebagai edukasi dan analisis pasar, bukan ajakan untuk membeli atau menjual efek tertentu. Keputusan investasi sepenuhnya berada di tangan investor.*")
 
         full_content = "\n".join(content_lines)
         summary = f"Analisis mendalam saham {symbol} ({company_name}): Kapitalisasi Rp {mcap_trillion:,.2f}T, evaluasi rasio P/E {pe_str}, dinamika foreign flow, dan peta level support/resistance."
@@ -99,7 +99,7 @@ class FinancialJournalistAgent:
             "content": full_content,
             "category": "emiten-focus",
             "tickers": [symbol],
-            "author": "Wartawan AI Garda",
+            "author": "be.n.ix",
             "sentiment": bias,
             "sectors_data": stock_data
         }
@@ -156,7 +156,7 @@ class FinancialJournalistAgent:
         content_lines.append("\n### 🧭 Catatan Redaksi untuk Investor")
         content_lines.append("Para pengamat pasar menyarankan investor untuk tetap berpegang pada disiplin manajemen risiko dan fokus pada saham-saham dengan fundamental laba bersih bertumbuh serta likuiditas harian yang memadai.\n")
         content_lines.append("---")
-        content_lines.append("*Disclaimer: Diterbitkan oleh Tim Jurnalisme AI Garda berdasarkan analitik data Sectors Financial API. Bukan merupakan rekomendasi finansial terikat.*")
+        content_lines.append("*Disclaimer: Diterbitkan oleh be.n.ix berdasarkan analitik data Sectors Financial API. Bukan merupakan rekomendasi finansial terikat.*")
 
         full_content = "\n".join(content_lines)
         summary = f"Rangkuman komprehensif pasar saham hari ini: Deretan saham top gainers, emiten paling aktif diperdagangkan, dan arah likuiditas bursa."
@@ -171,7 +171,7 @@ class FinancialJournalistAgent:
             "content": full_content,
             "category": "market-pulse",
             "tickers": tickers,
-            "author": "Redaksi Pasar Modal Garda",
+            "author": "be.n.ix",
             "sentiment": "BULLISH" if "BULLISH" in sentiment else "BEARISH" if "BEARISH" in sentiment else "NEUTRAL",
             "sectors_data": pulse_data
         }

@@ -27,6 +27,12 @@ from routers.metrics import router as metrics_router
 from routers.portal import router as portal_router
 from routers.agentic_skills import router as agentic_skills_router
 
+import asyncio
+import json
+import time
+from fastapi import WebSocket, WebSocketDisconnect
+from core.market_websocket import market_ws_manager
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
@@ -43,10 +49,12 @@ async def lifespan(app: FastAPI):
     await local_market_db.init_sqlite()
     from core.news_scraper import news_aggregator
     await news_aggregator.ensure_daily_scrape()
-    logger.info("Gateway, Portal DB, Local Market DB & Daily News Wire initialized. Ready to serve requests.")
+    broadcaster_task = asyncio.create_task(market_ws_manager.start_broadcaster_loop())
+    logger.info("Gateway, Portal DB, Local Market DB & WebSocket Broadcaster initialized. Ready to serve requests.")
     yield
     # Shutdown
     logger.info("Shutting down Sectors Gateway...")
+    broadcaster_task.cancel()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -97,12 +105,67 @@ if static_dir.exists():
     app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
 @app.get("/", response_class=HTMLResponse, tags=["Portal News & Dashboard"])
+@app.get("/portal", response_class=HTMLResponse, include_in_schema=False)
 async def root_portal():
     """Live Financial News Portal with Pitch Black Theme & Garda AI White Orb Assistant."""
     template_path = Path(__file__).resolve().parent / "templates" / "portal.html"
     if template_path.exists():
         return HTMLResponse(content=template_path.read_text(encoding="utf-8"))
     return HTMLResponse(content="<h1>Portal template not found</h1>", status_code=404)
+
+# ================= REALTIME WEBSOCKET MARKET ALERT FEED =================
+@app.websocket("/ws/market-alerts")
+async def websocket_market_alerts(websocket: WebSocket):
+    """
+    Realtime WebSocket streaming market shifts, price breakouts,
+    unusual volume surges, and foreign accumulation alerts.
+    """
+    await market_ws_manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            try:
+                payload = json.loads(data)
+                action = payload.get("action")
+                if action == "trigger_simulation":
+                    alert = market_ws_manager.generate_random_alert()
+                    await market_ws_manager.broadcast_alert(alert)
+                elif action == "ping":
+                    await websocket.send_json({"type": "pong", "time": time.time()})
+            except Exception:
+                pass
+    except WebSocketDisconnect:
+        market_ws_manager.disconnect(websocket)
+    except Exception:
+        market_ws_manager.disconnect(websocket)
+
+@app.get("/api/v1/market/alert-history", tags=["Market Monitoring"])
+async def get_market_alert_history():
+    """Returns recent market alerts received via WebSocket stream."""
+    return {
+        "status": "success",
+        "alerts": market_ws_manager.alert_history,
+        "active_ws_clients": len(market_ws_manager.active_connections)
+    }
+
+@app.post("/api/v1/market/broadcast-alert", tags=["Market Monitoring"])
+async def broadcast_manual_market_alert():
+    """Triggers an instantaneous market alert simulation via WebSocket."""
+    alert = market_ws_manager.generate_random_alert()
+    broadcasted = await market_ws_manager.broadcast_alert(alert)
+    return {"status": "broadcasted", "alert": broadcasted}
+
+@app.get("/api/v1/market/screener-stocks", tags=["Market Screener"])
+async def get_screener_stocks():
+    """Returns enriched local stocks list for interactive screener table (0 credit)."""
+    from core.local_market_db import DEFAULT_SEED_MARKET
+    stocks_dict = DEFAULT_SEED_MARKET.get("stocks", {})
+    stocks_list = list(stocks_dict.values())
+    return {
+        "status": "success",
+        "total": len(stocks_list),
+        "stocks": stocks_list
+    }
 
 if __name__ == "__main__":
     import uvicorn
