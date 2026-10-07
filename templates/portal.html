@@ -1288,7 +1288,7 @@
             flex-shrink: 0;
         }
 
-        /* BINTANG AI STAR AVATAR & ANIMATION (Garda AI Core) - NON-CIRCULAR DESIGN */
+        /* GARDA AI NEURAL NETWORK CORE (GEMMA 4) - NON-CIRCULAR SQUIRCLE CONTAINER (NO ROUND BORDER) */
         .neural-sphere-box {
             position: relative;
             width: 36px;
@@ -1297,31 +1297,31 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%);
             border: 1px solid rgba(56, 189, 248, 0.35);
-            border-radius: 9px !important; /* Non-circular squircle badge */
-            overflow: visible;
+            border-radius: 9px !important; /* Non-circular squircle badge - bebas border bulat */
+            overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .neural-sphere-box:hover {
             transform: scale(1.06);
-            border-color: rgba(0, 242, 254, 0.6);
+            border-color: rgba(0, 242, 254, 0.65);
             box-shadow: 0 4px 14px rgba(0, 242, 254, 0.3);
         }
         .neural-sphere-box.thinking {
-            border-color: rgba(0, 242, 254, 0.8);
-            box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
-            animation: starSquirclePulse 1.6s ease-in-out infinite;
+            border-color: rgba(0, 242, 254, 0.85);
+            box-shadow: 0 0 16px rgba(0, 242, 254, 0.45);
+            animation: neuralSquirclePulse 1.6s ease-in-out infinite;
         }
-        @keyframes starSquirclePulse {
+        @keyframes neuralSquirclePulse {
             0%, 100% {
                 border-color: rgba(56, 189, 248, 0.5);
                 box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
             }
             50% {
-                border-color: rgba(168, 85, 247, 0.8);
-                box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+                border-color: rgba(168, 85, 247, 0.85);
+                box-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
             }
         }
         [data-theme="light"] .neural-sphere-box {
@@ -1334,69 +1334,12 @@
             box-shadow: 0 0 14px rgba(2, 132, 199, 0.35);
         }
 
-        /* Bintang AI SVG Animation Styling (Non-circular) */
-        .ai-star-svg {
+        .garda-neural-canvas {
+            width: 36px;
+            height: 36px;
             display: block;
-            width: 22px;
-            height: 22px;
-            overflow: visible;
-            filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.4));
-            transition: all 0.3s ease;
-        }
-        .ai-star-main {
-            transform-origin: 12px 12px;
-            animation: aiStarBreathing 3.2s ease-in-out infinite;
-        }
-        .ai-star-sparkle-1 {
-            transform-origin: 19px 4px;
-            animation: aiSparkleTwinkle 2.4s ease-in-out infinite;
-        }
-        .ai-star-sparkle-2 {
-            transform-origin: 5px 19px;
-            animation: aiSparkleTwinkle 2.8s ease-in-out 0.8s infinite;
-        }
-
-        @keyframes aiStarBreathing {
-            0%, 100% {
-                transform: scale(0.95) rotate(-2deg);
-                filter: drop-shadow(0 0 3px rgba(0, 242, 254, 0.35));
-            }
-            50% {
-                transform: scale(1.06) rotate(2deg);
-                filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
-            }
-        }
-        @keyframes aiSparkleTwinkle {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(0.65);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-        }
-
-        /* Active Thinking Animation (Berkilau & Berdenyut Dinamis Tanpa Lingkaran) */
-        .neural-sphere-box.thinking .ai-star-svg {
-            filter: drop-shadow(0 0 8px #00f2fe) drop-shadow(0 0 15px #a855f7);
-        }
-        .neural-sphere-box.thinking .ai-star-main {
-            animation: aiStarThinking 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-        .neural-sphere-box.thinking .ai-star-sparkle-1 {
-            animation: aiSparkleTwinkle 0.8s ease-in-out infinite;
-        }
-        .neural-sphere-box.thinking .ai-star-sparkle-2 {
-            animation: aiSparkleTwinkle 0.9s ease-in-out 0.25s infinite;
-        }
-        @keyframes aiStarThinking {
-            0%, 100% {
-                transform: scale(0.92) rotate(-5deg);
-            }
-            50% {
-                transform: scale(1.18) rotate(5deg);
-            }
+            border-radius: 8px !important; /* Non-circular squircle canvas */
+            pointer-events: none;
         }
 
 
@@ -8094,27 +8037,8 @@
                 
                 <!-- HEADER WITH DEEP LEARNING NEURAL NETWORK AVATAR & CONTROLS -->
                 <div class="chat-header">
-                    <div class="neural-sphere-box" id="neural-sphere-box" title="Garda AI Core (Gemma 4)">
-                        <!-- BINTANG AI AVATAR & SPARKLES (NON-CIRCULAR ANIMATION) -->
-                        <svg class="ai-star-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
-                            <defs>
-                                <linearGradient id="garda-star-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#00f2fe" />
-                                    <stop offset="50%" stop-color="#38bdf8" />
-                                    <stop offset="100%" stop-color="#a855f7" />
-                                </linearGradient>
-                                <linearGradient id="garda-sparkle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#38bdf8" />
-                                    <stop offset="100%" stop-color="#fbbf24" />
-                                </linearGradient>
-                            </defs>
-                            <!-- Bintang Utama 4 Sudut AI Modern -->
-                            <path class="ai-star-main" d="m12 2-2.1 6.3a2 2 0 0 1-1.3 1.3L2 12l6.6 2.4a2 2 0 0 1 1.3 1.3L12 22l2.1-6.3a2 2 0 0 1 1.3-1.3L22 12l-6.6-2.4a2 2 0 0 1-1.3-1.3L12 2Z" fill="url(#garda-star-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
-                            <!-- Sparkle Bintang Kanan Atas -->
-                            <path class="ai-star-sparkle-1" d="M19 1.5v4M17 3.5h4" stroke="url(#garda-sparkle-grad)" stroke-width="1.8" stroke-linecap="round" />
-                            <!-- Sparkle Bintang Kiri Bawah -->
-                            <path class="ai-star-sparkle-2" d="M5 17.5v3M3.5 19h3" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
+                    <div class="neural-sphere-box" id="neural-sphere-box" title="Garda AI Neural Core (Gemma 4)">
+                        <canvas id="garda-neural-canvas" class="garda-neural-canvas" width="72" height="72"></canvas>
                     </div>
                     <div class="chat-title">
                         <h3>Garda AI Concierge <span class="live-dot" style="margin-left:3px;"></span></h3>
@@ -11917,11 +11841,187 @@
             }
         }
         
-        // ================= BINTANG AI STAR CORE (GEMMA 4) =================
-        // Fully GPU-accelerated CSS keyframe animations (Bintang AI Star & Sparkles, non-circular)
+        // ================= GARDA AI NEURAL NETWORK CORE (GEMMA 4) =================
+        // Dynamic 3D Interconnected Synaptic Neural Network (Fibonacci Lattice, Depth Fading, Accelerating Rotation)
         function initGardaNeuralSphere() {
-            // Animated via pure SVG + CSS keyframes (aiStarBreathing, aiSparkleTwinkle, aiStarThinking)
-            // No CPU/Canvas loop or spherical circle required.
+            const canvas = document.getElementById('garda-neural-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const box = document.getElementById('neural-sphere-box');
+            const cx = 36;
+            const cy = 36;
+            const sphereRadius = 22.0;
+
+            // Exactly 12 clean nodes distributed on a 3D sphere (Fibonacci lattice)
+            const numNodes = 12;
+            const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+            const rawNodes = [];
+            const palette = [
+                '#38bdf8', // Neon Cyan
+                '#a855f7', // Violet
+                '#818cf8', // Indigo
+                '#34d399', // Emerald
+                '#fb923c', // Amber
+                '#06b6d4'  // Deep Cyan
+            ];
+
+            for (let i = 0; i < numNodes; i++) {
+                const y = 1 - (i / (numNodes - 1)) * 2; // from 1 to -1
+                const radiusAtY = Math.sqrt(Math.max(0, 1 - y * y));
+                const theta = phi * i;
+                const x = Math.cos(theta) * radiusAtY;
+                const z = Math.sin(theta) * radiusAtY;
+                rawNodes.push({
+                    id: i,
+                    x0: x * sphereRadius,
+                    y0: y * sphereRadius,
+                    z0: z * sphereRadius,
+                    color: palette[i % palette.length],
+                    phase: i * 0.52
+                });
+            }
+
+            // Precompute 3D edges: connect each node to its 3 nearest neighbors in 3D
+            const edges = [];
+            for (let i = 0; i < rawNodes.length; i++) {
+                const dists = [];
+                for (let j = 0; j < rawNodes.length; j++) {
+                    if (i === j) continue;
+                    const d = Math.hypot(
+                        rawNodes[i].x0 - rawNodes[j].x0,
+                        rawNodes[i].y0 - rawNodes[j].y0,
+                        rawNodes[i].z0 - rawNodes[j].z0
+                    );
+                    dists.push({ j, d });
+                }
+                dists.sort((a, b) => a.d - b.d);
+                for (let k = 0; k < 3; k++) {
+                    const j = dists[k].j;
+                    const a = Math.min(i, j);
+                    const b = Math.max(i, j);
+                    if (!edges.some(e => e.a === a && e.b === b)) {
+                        edges.push({ a, b });
+                    }
+                }
+            }
+
+            let rotY = 0;
+            let rotX = 0.25;
+
+            function renderNeural3DSphere() {
+                const isThinking = box && box.classList.contains('thinking');
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+                // Smooth slow 3D rotation (accelerates in thinking mode)
+                const speedY = isThinking ? 0.012 : 0.0035;
+                const speedX = isThinking ? 0.004 : 0.0012;
+                rotY += speedY;
+                rotX += speedX;
+
+                const cosY = Math.cos(rotY);
+                const sinY = Math.sin(rotY);
+                const cosX = Math.cos(rotX);
+                const sinX = Math.sin(rotX);
+
+                const projected = [];
+                const fov = 100;
+
+                for (let i = 0; i < rawNodes.length; i++) {
+                    const n = rawNodes[i];
+                    // Rotate around Y axis
+                    const x1 = n.x0 * cosY - n.z0 * sinY;
+                    const z1 = n.z0 * cosY + n.x0 * sinY;
+
+                    // Rotate around X axis
+                    const y2 = n.y0 * cosX - z1 * sinX;
+                    const z2 = z1 * cosX + n.y0 * sinX;
+
+                    // Perspective projection
+                    const scale = fov / (fov + z2 + 8);
+                    const px = cx + x1 * scale;
+                    const py = cy + y2 * scale;
+
+                    projected.push({
+                        id: n.id,
+                        px,
+                        py,
+                        z: z2,
+                        color: n.color
+                    });
+                }
+
+                // Clear canvas
+                ctx.clearRect(0, 0, 72, 72);
+
+                // 1. Draw Synaptic Edges with Depth Fading
+                for (let i = 0; i < edges.length; i++) {
+                    const e = edges[i];
+                    const p1 = projected[e.a];
+                    const p2 = projected[e.b];
+                    const avgZ = (p1.z + p2.z) / 2;
+                    const zFactor = Math.max(0, Math.min(1, (avgZ + sphereRadius) / (2 * sphereRadius)));
+
+                    ctx.beginPath();
+                    ctx.moveTo(p1.px, p1.py);
+                    ctx.lineTo(p2.px, p2.py);
+
+                    if (isLight) {
+                        const alpha = 0.12 + zFactor * 0.35;
+                        ctx.strokeStyle = `rgba(2, 132, 199, ${alpha.toFixed(2)})`;
+                        ctx.lineWidth = 0.55 + zFactor * 0.35;
+                    } else {
+                        const alpha = 0.14 + zFactor * 0.45;
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(2)})`;
+                        ctx.lineWidth = 0.55 + zFactor * 0.35;
+                    }
+                    ctx.stroke();
+                }
+
+                // 2. Draw 3D Nodes sorted from back to front
+                const sortedNodes = projected.slice().sort((a, b) => a.z - b.z);
+
+                for (let i = 0; i < sortedNodes.length; i++) {
+                    const n = sortedNodes[i];
+                    const zFactor = Math.max(0, Math.min(1, (n.z + sphereRadius) / (2 * sphereRadius)));
+                    const radius = 1.4 + zFactor * 0.9; // 1.4px to 2.3px
+                    const alpha = 0.35 + zFactor * 0.65;
+
+                    // Dark backing circle so nodes cleanly pop against lines
+                    ctx.beginPath();
+                    ctx.arc(n.px, n.py, radius + 0.6, 0, Math.PI * 2);
+                    ctx.fillStyle = isLight ? '#ffffff' : '#070b14';
+                    ctx.fill();
+
+                    // Glowing Node Core
+                    ctx.beginPath();
+                    ctx.arc(n.px, n.py, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = n.color;
+                    ctx.globalAlpha = alpha;
+                    if (zFactor > 0.4) {
+                        ctx.shadowColor = n.color;
+                        ctx.shadowBlur = isThinking ? 6 : 3;
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                    ctx.globalAlpha = 1.0;
+
+                    // Specular Highlight on front nodes
+                    if (zFactor > 0.5) {
+                        ctx.beginPath();
+                        ctx.arc(n.px - 0.4, n.py - 0.4, radius * 0.35, 0, Math.PI * 2);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.globalAlpha = 0.85;
+                        ctx.fill();
+                        ctx.globalAlpha = 1.0;
+                    }
+                }
+
+                requestAnimationFrame(renderNeural3DSphere);
+            }
+
+            requestAnimationFrame(renderNeural3DSphere);
         }
 
         // 7. Settings Dropdown Toggle & Click Outside Handler
