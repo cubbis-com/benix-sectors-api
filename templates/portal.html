@@ -188,9 +188,11 @@
             height: 52px;
         }
         .nav-container {
+            width: 100%;
             max-width: 100%;
-            margin: 0 auto;
-            padding: 0 18px;
+            margin: 0;
+            padding: 0 20px;
+            box-sizing: border-box;
             height: 100%;
             display: flex;
             align-items: center;
@@ -636,17 +638,18 @@
             transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* MAIN CONTENT AREA */
+        /* MAIN CONTENT AREA - FIT WIDTH ON ALL SCREENS */
         .portal-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 14px;
-            padding: 16px 24px 32px 24px;
+            padding: 16px 20px 32px 20px;
             min-width: 0;
-            max-width: 1440px;
+            max-width: 100%;
             width: 100%;
-            margin: 0 auto;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         /* ================= RIGHT COLUMN: GARDA AI DEDICATED FULL-HEIGHT COLUMN ================= */
@@ -669,7 +672,7 @@
             will-change: width, transform;
         }
 
-        /* SLIDE CLOSED STATE FOR GARDA */
+        /* SLIDE CLOSED STATE FOR GARDA (FIT WIDTH EXPANSION ACROSS EVERY PAGE) */
         .app-layout.garda-closed .garda-chat-col {
             width: 0 !important;
             min-width: 0 !important;
@@ -679,6 +682,32 @@
             border-left: none !important;
             transform: translateX(40px);
             overflow: hidden !important;
+            flex: 0 0 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .app-layout.garda-closed .portal-main-col {
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: 1 1 100% !important;
+        }
+        .app-layout.garda-closed .portal-content {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            box-sizing: border-box;
+        }
+        .app-layout.garda-closed .dash-view-pane {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box;
+        }
+        @media (min-width: 1780px) {
+            .app-layout.garda-closed .chart-studio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .garda-chat-panel {
@@ -1259,7 +1288,7 @@
             flex-shrink: 0;
         }
 
-        /* 3D NEURAL SPHERICAL NETWORK AVATAR (Garda AI Core) */
+        /* BINTANG AI STAR AVATAR & ANIMATION (Garda AI Core) - NON-CIRCULAR DESIGN */
         .neural-sphere-box {
             position: relative;
             width: 36px;
@@ -1268,48 +1297,106 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            background: radial-gradient(circle at 35% 35%, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.95));
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 50% !important;
-            overflow: hidden;
-            box-shadow: 0 0 8px rgba(56, 189, 248, 0.12);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.8) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 9px !important; /* Non-circular squircle badge */
+            overflow: visible;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .neural-sphere-box:hover {
-            transform: scale(1.05);
-            border-color: rgba(56, 189, 248, 0.45);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+            transform: scale(1.06);
+            border-color: rgba(0, 242, 254, 0.6);
+            box-shadow: 0 4px 14px rgba(0, 242, 254, 0.3);
         }
         .neural-sphere-box.thinking {
-            border-color: rgba(56, 189, 248, 0.65);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35), inset 0 0 8px rgba(56, 189, 248, 0.2);
-            animation: neuralPulseGlow 1.8s infinite ease-in-out;
+            border-color: rgba(0, 242, 254, 0.8);
+            box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
+            animation: starSquirclePulse 1.6s ease-in-out infinite;
         }
-        @keyframes neuralPulseGlow {
+        @keyframes starSquirclePulse {
             0%, 100% {
-                border-color: rgba(56, 189, 248, 0.4);
-                box-shadow: 0 0 10px rgba(56, 189, 248, 0.22);
+                border-color: rgba(56, 189, 248, 0.5);
+                box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
             }
             50% {
-                border-color: rgba(168, 85, 247, 0.65);
-                box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+                border-color: rgba(168, 85, 247, 0.8);
+                box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
             }
         }
         [data-theme="light"] .neural-sphere-box {
-            background: radial-gradient(circle at 35% 35%, #ffffff, #e2e8f0);
-            border-color: rgba(2, 132, 199, 0.25);
-            box-shadow: 0 0 8px rgba(2, 132, 199, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-color: rgba(2, 132, 199, 0.35);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         [data-theme="light"] .neural-sphere-box.thinking {
-            border-color: rgba(2, 132, 199, 0.6);
-            box-shadow: 0 0 14px rgba(2, 132, 199, 0.3);
+            border-color: rgba(2, 132, 199, 0.8);
+            box-shadow: 0 0 14px rgba(2, 132, 199, 0.35);
         }
-        .garda-neural-canvas {
-            width: 36px;
-            height: 36px;
+
+        /* Bintang AI SVG Animation Styling (Non-circular) */
+        .ai-star-svg {
             display: block;
-            border-radius: 50% !important;
-            pointer-events: none;
+            width: 22px;
+            height: 22px;
+            overflow: visible;
+            filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.4));
+            transition: all 0.3s ease;
+        }
+        .ai-star-main {
+            transform-origin: 12px 12px;
+            animation: aiStarBreathing 3.2s ease-in-out infinite;
+        }
+        .ai-star-sparkle-1 {
+            transform-origin: 19px 4px;
+            animation: aiSparkleTwinkle 2.4s ease-in-out infinite;
+        }
+        .ai-star-sparkle-2 {
+            transform-origin: 5px 19px;
+            animation: aiSparkleTwinkle 2.8s ease-in-out 0.8s infinite;
+        }
+
+        @keyframes aiStarBreathing {
+            0%, 100% {
+                transform: scale(0.95) rotate(-2deg);
+                filter: drop-shadow(0 0 3px rgba(0, 242, 254, 0.35));
+            }
+            50% {
+                transform: scale(1.06) rotate(2deg);
+                filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+            }
+        }
+        @keyframes aiSparkleTwinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.65);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        /* Active Thinking Animation (Berkilau & Berdenyut Dinamis Tanpa Lingkaran) */
+        .neural-sphere-box.thinking .ai-star-svg {
+            filter: drop-shadow(0 0 8px #00f2fe) drop-shadow(0 0 15px #a855f7);
+        }
+        .neural-sphere-box.thinking .ai-star-main {
+            animation: aiStarThinking 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .neural-sphere-box.thinking .ai-star-sparkle-1 {
+            animation: aiSparkleTwinkle 0.8s ease-in-out infinite;
+        }
+        .neural-sphere-box.thinking .ai-star-sparkle-2 {
+            animation: aiSparkleTwinkle 0.9s ease-in-out 0.25s infinite;
+        }
+        @keyframes aiStarThinking {
+            0%, 100% {
+                transform: scale(0.92) rotate(-5deg);
+            }
+            50% {
+                transform: scale(1.18) rotate(5deg);
+            }
         }
 
 
@@ -1562,7 +1649,6 @@
         }
 
         /* CHAT MESSAGE LIST (FLEX FILL & SMOOTH SCROLL) */
-        /* CHAT MESSAGE LIST (FLEX FILL & SMOOTH SCROLL) */
         .chat-messages {
             flex: 1 1 auto;
             min-height: 0;
@@ -1577,6 +1663,21 @@
             flex-direction: column;
             gap: 14px;
             background: var(--chat-feed-bg);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+        }
+        .chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-orange);
         }
         .msg-bubble {
             width: 100%;
@@ -1589,7 +1690,8 @@
             padding: 12px 14px;
             word-break: break-word;
             overflow-wrap: anywhere;
-            overflow-x: hidden;
+            overflow: visible !important;
+            max-height: none !important;
         }
         .msg-bubble.user {
             max-width: 88%;
@@ -1663,24 +1765,25 @@
             border: 1px solid var(--border);
             background: var(--bg-surface);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
         }
         .garda-table-wrap::-webkit-scrollbar {
-            height: 6px;
+            height: 4px;
         }
         .garda-table-wrap::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.08);
-            border-radius: 3px;
+            background: transparent;
         }
         .garda-table-wrap::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
         }
         .garda-table-wrap::-webkit-scrollbar-thumb:hover {
             background: var(--accent-orange);
         }
         .garda-rec-table {
             width: 100%;
-            min-width: 520px;
+            min-width: 100%;
             border-collapse: collapse;
             font-size: 11px;
             text-align: left;
@@ -1822,6 +1925,7 @@
             display: flex;
             gap: 8px;
             flex-shrink: 0;
+            align-items: flex-end;
         }
         .chat-input {
             flex-grow: 1;
@@ -1831,7 +1935,14 @@
             padding: 9px 13px;
             color: var(--text-main);
             font-size: 13px;
+            font-family: inherit;
             outline: none;
+            resize: none;
+            overflow-y: hidden;
+            min-height: 38px;
+            max-height: 120px;
+            box-sizing: border-box;
+            line-height: 1.45;
         }
         .chat-input:focus {
             border-color: var(--accent-orange);
@@ -1997,37 +2108,29 @@
             }
         }
 
-        /* KOLOM KIRI (Left Column: Gambar, Deskripsi, Keterangan, Tombol-tombol) */
+        /* KOLOM KIRI (Left Column: Hero, Summary, Tombol Aksi - Bebas Scroll & Fit Layar) */
         .article-left-col {
             position: sticky;
             top: 16px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            max-height: calc(100vh - 90px);
-            overflow-y: auto;
-            padding-right: 8px;
+            gap: 14px;
+            /* KOLOM KIRI TIDAK SCROLL: Tetap statis dan fit di viewport */
+            overflow: visible;
             box-sizing: border-box;
-        }
-        .article-left-col::-webkit-scrollbar {
-            width: 4px;
-        }
-        .article-left-col::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 4px;
+            width: 100%;
         }
         @media (max-width: 880px) {
             .article-left-col {
                 position: static;
-                max-height: none;
-                padding-right: 0;
+                overflow: visible;
             }
         }
         .article-hero-banner {
             position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            max-height: 250px;
+            max-height: 230px;
             border-radius: 10px;
             overflow: hidden;
             background: var(--bg-surface);
@@ -2075,7 +2178,7 @@
             border-right: 1px solid rgba(249, 115, 22, 0.15);
             border-bottom: 1px solid rgba(249, 115, 22, 0.15);
             border-radius: 0 8px 8px 0;
-            padding: 14px 16px;
+            padding: 12px 14px;
             flex-shrink: 0;
         }
         .exec-card-title {
@@ -2087,101 +2190,14 @@
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: var(--accent-orange);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .exec-card-text {
-            font-size: 13.5px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.55;
             color: #f1f5f9;
             margin: 0;
             font-weight: 500;
-        }
-        .article-intel-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px 16px;
-            flex-shrink: 0;
-        }
-        .intel-panel-title {
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .intel-panel-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-        .intel-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-        }
-        .intel-lbl {
-            color: var(--text-muted);
-        }
-        .intel-val {
-            color: var(--text-main);
-            font-weight: 600;
-            font-family: var(--font-mono);
-        }
-        .article-emiten-bar {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            padding: 12px 14px;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-        .emiten-bar-label {
-            font-size: 11.5px;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-        .emiten-bar-pills {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .emiten-bar-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-        .emiten-bar-item .sym {
-            font-family: var(--font-mono);
-            font-weight: 800;
-            font-size: 12px;
-            color: var(--accent-orange);
-        }
-        .emiten-bar-item button {
-            background: transparent;
-            border: none;
-            color: var(--accent-cyan);
-            font-size: 11px;
-            cursor: pointer;
-            padding: 0 2px;
-            font-weight: 600;
-        }
-        .emiten-bar-item button:hover {
-            text-decoration: underline;
         }
         .article-actions-panel {
             display: flex;
@@ -2194,8 +2210,8 @@
             border: none;
             color: #ffffff;
             font-weight: 700;
-            font-size: 13px;
-            padding: 10px 16px;
+            font-size: 12.5px;
+            padding: 10px 14px;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -2219,9 +2235,9 @@
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.3);
             color: var(--accent-cyan);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
-            padding: 8px 10px;
+            padding: 7px 10px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.18s ease;
@@ -2236,9 +2252,9 @@
             background: var(--bg-surface);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
-            padding: 8px 12px;
+            padding: 7px 12px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.18s ease;
@@ -2253,19 +2269,284 @@
             border-color: var(--accent-orange);
         }
         .garda-orb-btn {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #ffffff;
             box-shadow: 0 0 8px #ffffff;
             display: inline-block;
         }
-        .article-related-box {
-            background: var(--bg-surface);
+
+        /* ================= KOMPONEN YANG DIPINDAHKAN KE KOLOM KANAN ================= */
+        /* 1. Emiten Terkait Bar (Kolom Kanan) */
+        .article-emiten-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.65);
             border: 1px solid var(--border);
+            padding: 10px 14px;
             border-radius: 8px;
-            padding: 12px 14px;
-            flex-shrink: 0;
+            margin-bottom: 18px;
+        }
+        .emiten-bar-label {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .emiten-bar-pills {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .emiten-bar-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 3px 8px;
+            border-radius: 6px;
+            transition: all 0.18s ease;
+        }
+        .emiten-bar-item.active {
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.12);
+        }
+        .emiten-bar-item .sym {
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 12px;
+            color: var(--accent-orange);
+            cursor: pointer;
+        }
+        .emiten-bar-item button {
+            background: transparent;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 11px;
+            cursor: pointer;
+            padding: 0 2px;
+            font-weight: 600;
+        }
+        .emiten-bar-item button:hover {
+            text-decoration: underline;
+        }
+
+        /* 2. Informasi & Chart Sentimen Emiten di Market (Kolom Kanan) */
+        .article-sentiment-widget {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.45));
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+        .sentiment-widget-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 14px;
+        }
+        .sentiment-widget-title-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .sentiment-widget-title {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sentiment-widget-meta-strip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .sentiment-chart-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 18px;
+            align-items: center;
+        }
+        @media (max-width: 960px) {
+            .sentiment-chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sentiment-canvas-wrapper {
+            position: relative;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .sentiment-chart-canvas {
+            width: 100%;
+            height: 190px;
+        }
+        .sentiment-score-legend {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 6px 4px 2px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 4px;
+        }
+        .sentiment-intel-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sentiment-intel-item {
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 9px 12px;
+            font-size: 12px;
+        }
+        .sentiment-intel-item.pos {
+            border-left: 3px solid var(--green-gain);
+        }
+        .sentiment-intel-item.neg {
+            border-left: 3px solid var(--red-loss);
+        }
+        .sentiment-intel-item.macro {
+            border-left: 3px solid var(--accent-cyan);
+        }
+        .intel-item-head {
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .intel-item-body {
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+        .sentiment-drilldown-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .sentiment-drilldown-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            color: var(--accent-cyan);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .sentiment-drilldown-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: #ffffff;
+        }
+
+        /* 3. Keterangan & Metadata Panel (Kolom Kanan) */
+        .article-intel-panel {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 22px;
+            box-sizing: border-box;
+        }
+        .intel-panel-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .intel-panel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px 18px;
+        }
+        @media (max-width: 980px) {
+            .intel-panel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .intel-panel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .intel-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+        }
+        .intel-lbl {
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+        }
+        .intel-val {
+            color: var(--text-main);
+            font-weight: 600;
+            font-family: var(--font-mono);
+            text-align: right;
+        }
+
+        /* 4. Rekomendasi Berita & Riset Terkait (Kolom Kanan - Bawah Artikel) */
+        .article-related-box {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 28px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
         }
         .related-box-title {
             font-size: 11px;
@@ -2273,31 +2554,46 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            margin-bottom: 8px;
-        }
-        .related-cards-col {
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
             display: flex;
-            flex-direction: column;
-            gap: 8px;
+            align-items: center;
+            gap: 6px;
+        }
+        .related-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 768px) {
+            .related-cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .related-card-item {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px 12px;
+            border-radius: 8px;
+            padding: 12px 14px;
             cursor: pointer;
             transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 72px;
         }
         .related-card-item:hover {
             border-color: var(--accent-orange);
-            transform: translateX(2px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
         }
         .related-item-title {
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1.35;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -2308,6 +2604,7 @@
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         /* KOLOM KANAN (Right Column: Judul, Konten Lengkap, Analisis) */
@@ -3884,6 +4181,17 @@
                 position: static;
             }
         }
+        .news-portal-split.sdg-active {
+            display: block !important;
+        }
+        .news-portal-split.sdg-active .news-filter-col {
+            display: none !important;
+        }
+        .news-portal-split.sdg-active .news-feed-col {
+            flex: 1 1 100% !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
 
         /* Filter Panel inside Left Column */
         .news-filter-panel {
@@ -4037,56 +4345,65 @@
             }
         }
 
-        /* ================= 2030 ESG & SDG HORIZON MODULE (BENCHMARK MERGE) ================= */
+        /* ================= 2030 ESG & SDG HORIZON MODULE ================= */
         .sdg-horizon-container {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-top: 14px;
+            gap: 16px;
+            margin-top: 6px;
         }
         .sdg-countdown-card {
-            background: linear-gradient(135deg, rgba(255, 178, 36, 0.06) 0%, rgba(10, 12, 14, 0.95) 100%);
-            border: 1px solid rgba(255, 178, 36, 0.3);
+            background: linear-gradient(135deg, rgba(255, 178, 36, 0.05) 0%, rgba(15, 23, 42, 0.88) 100%);
+            border: 1px solid rgba(255, 178, 36, 0.28);
             border-radius: 10px;
-            padding: 20px 22px;
+            padding: 16px 20px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
         .sdg-countdown-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 14px;
+        }
+        .sdg-countdown-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 3px 0;
+            letter-spacing: -0.2px;
+            color: var(--text-main);
         }
         .sdg-clock-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 16px 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .sdg-clock-tile {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
+            background: rgba(10, 14, 20, 0.7);
+            border: 1px solid rgba(255, 178, 36, 0.3);
             border-radius: 6px;
-            padding: 12px 8px;
+            padding: 6px 12px;
             text-align: center;
+            min-width: 60px;
         }
         .sdg-clock-num {
             font-family: var(--font-mono);
-            font-size: 30px;
+            font-size: 17px;
             font-weight: 800;
             color: var(--accent-orange);
-            line-height: 1;
+            line-height: 1.1;
+            letter-spacing: 0.5px;
         }
         .sdg-clock-unit {
             font-family: var(--font-mono);
-            font-size: 9.5px;
+            font-size: 8.5px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 4px;
+            letter-spacing: 0.6px;
+            margin-top: 2px;
         }
         .sdg-progress-track {
             width: 100%;
@@ -4097,95 +4414,386 @@
             position: relative;
             margin: 14px 0 6px 0;
         }
-        .sdg-progress-fill {
+        .sdg-track-fill {
             height: 100%;
             background: linear-gradient(90deg, #10b981 0%, #06b6d4 50%, #FFB224 100%);
             border-radius: 3px;
             transition: width 0.5s ease;
         }
-        .sdg-milestones-row {
+        .sdg-track-milestones {
             display: flex;
             justify-content: space-between;
-            font-size: 9.5px;
+            font-size: 10px;
             font-family: var(--font-mono);
             color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 6px;
         }
         .sdg-windows-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin-top: 14px;
+        }
+        @media (max-width: 1100px) {
+            .sdg-windows-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 768px) {
             .sdg-windows-grid { grid-template-columns: 1fr; }
-            .sdg-clock-grid { grid-template-columns: repeat(2, 1fr); }
+            .sdg-clock-grid { flex-wrap: wrap; }
         }
-        .sdg-window-tile {
+        .sdg-window-card {
             background: var(--bg-surface);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 8px 10px;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        .sdg-window-card:hover {
+            border-color: rgba(255, 178, 36, 0.45);
+            transform: translateY(-2px);
+        }
+        .sdg-window-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .sdg-window-desc {
             font-size: 10.5px;
-            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.4;
         }
-        .sdg-window-tile.active {
-            border-color: var(--accent-orange);
-            background: rgba(255, 178, 36, 0.08);
+        .sdg-window-badge {
+            font-size: 9.5px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
         }
-        .sdg-window-tile.active::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: var(--accent-orange);
+        .sdg-window-badge.active {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
+        .sdg-window-badge.pending {
+            background: rgba(255, 178, 36, 0.15);
+            color: #ffb224;
+            border: 1px solid rgba(255, 178, 36, 0.3);
+        }
+        .sdg-window-badge.info {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        /* VISUAL ANALYTICS ROW (PIE/DONUT CHART & PILLAR PROGRESS) */
+        .sdg-charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        @media (max-width: 960px) {
+            .sdg-charts-grid { grid-template-columns: 1fr; }
+        }
+        .sdg-chart-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sdg-chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .sdg-chart-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sdg-chart-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .sdg-kpi-summary-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        @media (max-width: 900px) {
+            .sdg-kpi-summary-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        .sdg-kpi-tile {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .sdg-kpi-label {
+            font-size: 10px;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sdg-kpi-value {
+            font-size: 15px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            color: var(--text-main);
+        }
+        .sdg-kpi-sub {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        /* SIGNALS GRID */
         .sdg-signals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 14px;
-            margin-top: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+        @media (max-width: 1200px) {
+            .sdg-signals-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .sdg-signals-grid { grid-template-columns: 1fr; }
         }
         .sdg-signal-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-left: 4px solid var(--accent-orange);
+            border-left: 3px solid var(--accent-orange);
             border-radius: 8px;
-            padding: 14px 16px;
+            padding: 12px 14px;
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
         .sdg-signal-card:hover {
-            border-color: var(--accent-orange);
+            border-color: rgba(255, 178, 36, 0.5);
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
-        .sdg-gauges-row {
+        .sdg-signal-top {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            background: var(--bg-surface);
-            border-radius: 6px;
-            padding: 8px 6px;
-            margin: 4px 0;
         }
-        .sdg-gauge-item {
+        .sdg-ticker-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-orange);
+            background: rgba(255, 178, 36, 0.12);
+            border: 1px solid rgba(255, 178, 36, 0.3);
+            border-radius: 4px;
+            padding: 2px 7px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .sdg-ticker-tag:hover {
+            background: var(--accent-orange);
+            color: #ffffff;
+        }
+        .sdg-score-pill {
+            font-family: var(--font-mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 2px 7px;
+            border-radius: 999px;
+        }
+        .sdg-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .sdg-target-badge {
+            font-size: 9.5px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .sdg-desc-text {
+            font-size: 11.5px;
+            line-height: 1.48;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        /* EXPLANATION LEGEND BAR FOR CONFLUENCE METRICS */
+        .sdg-metrics-legend-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+        .sdg-metric-guide-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            cursor: help;
+        }
+        .sdg-metric-guide-item strong {
+            color: var(--text-main);
+        }
+        .guide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* CIRCULAR PROGRESS BAR GAUGES ROW */
+        .sdg-gauges-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 6px;
+            margin-top: 4px;
+        }
+        .sdg-circular-gauge {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            text-align: center;
+            gap: 3px;
+            cursor: help;
+            transition: transform 0.15s ease;
         }
-        .sdg-gauge-val {
+        .sdg-circular-gauge:hover {
+            transform: translateY(-2px);
+        }
+        .gauge-svg-wrap {
+            position: relative;
+            width: 38px;
+            height: 38px;
+        }
+        .gauge-svg {
+            width: 38px;
+            height: 38px;
+            transform: rotate(-90deg);
+        }
+        .gauge-track {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.08);
+            stroke-width: 3.2;
+        }
+        [data-theme="light"] .gauge-track {
+            stroke: rgba(0, 0, 0, 0.08);
+        }
+        .gauge-progress {
+            fill: none;
+            stroke-width: 3.2;
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.5s ease;
+        }
+        .gauge-center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-main);
+            font-size: 9.5px;
+            font-weight: 800;
+            line-height: 1;
         }
-        .sdg-gauge-lbl {
+        .gauge-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.15;
+        }
+        .gauge-title {
             font-size: 9px;
+            font-weight: 800;
             font-family: var(--font-mono);
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+        }
+        .gauge-sub {
+            font-size: 8px;
             color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* MATRIX TABLE */
+        .sdg-matrix-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-top: 10px;
+        }
+        .sdg-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            margin-top: 12px;
+        }
+        .sdg-matrix-table th {
+            text-align: left;
+            padding: 8px 12px;
+            background: var(--bg-surface);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sdg-matrix-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            vertical-align: middle;
+        }
+        .sdg-matrix-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .sdg-matrix-table tr:last-child td {
+            border-bottom: none;
         }
 
         /* ================= MODAL DIALOGS CONVERTED TO RIGHT SLIDER DRAWERS (MAX-WIDTH 90%) ================= */
@@ -6124,32 +6732,32 @@
                                 <div class="sdg-countdown-card">
                                     <div class="sdg-countdown-header">
                                         <div>
-                                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-                                                <span style="font-size:10px;font-family:var(--font-mono);font-weight:700;color:var(--accent-orange);letter-spacing:1px;text-transform:uppercase;">UN AGENDA 2030 • IDX EXECUTION HORIZON</span>
+                                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+                                                <span style="font-size:10px;font-family:var(--font-mono);font-weight:700;color:var(--accent-orange);letter-spacing:1px;text-transform:uppercase;">UN AGENDA 2030 • IDX NET-ZERO 2030 HORIZON</span>
                                                 <span class="wire-shield-pill" style="border-color:rgba(255,178,36,0.3);background:rgba(255,178,36,0.1);color:#ffb224;">Target 31 Des 2030</span>
                                             </div>
-                                            <h3 style="font-size:18px;font-weight:700;margin:0 0 4px 0;letter-spacing:-0.3px;">Waktu Menuju Tenggat SDG & Net-Zero 2030</h3>
-                                            <p style="font-size:12px;color:var(--text-muted);margin:0;">Pemantauan komitmen capex transisi hijau emiten IHSG, POJK 51, dan Taksonomi Hijau Indonesia 2.0.</p>
+                                            <h3>Waktu Menuju Tenggat Net-Zero & POJK 51 (2030)</h3>
+                                            <p style="font-size:11.5px;color:var(--text-muted);margin:0;">Pemantauan dekarbonisasi emiten IHSG, kepatuhan POJK 51, dan Taksonomi Hijau OJK 2.0.</p>
                                         </div>
-                                    </div>
 
-                                    <!-- 4-TILE LIVE COUNTDOWN CLOCK -->
-                                    <div class="sdg-clock-grid">
-                                        <div class="sdg-clock-tile">
-                                            <div class="sdg-clock-num" id="sdg-clock-days">1,546</div>
-                                            <div class="sdg-clock-unit">Hari</div>
-                                        </div>
-                                        <div class="sdg-clock-tile">
-                                            <div class="sdg-clock-num" id="sdg-clock-hours">09</div>
-                                            <div class="sdg-clock-unit">Jam</div>
-                                        </div>
-                                        <div class="sdg-clock-tile">
-                                            <div class="sdg-clock-num" id="sdg-clock-mins">03</div>
-                                            <div class="sdg-clock-unit">Menit</div>
-                                        </div>
-                                        <div class="sdg-clock-tile">
-                                            <div class="sdg-clock-num" id="sdg-clock-secs">33</div>
-                                            <div class="sdg-clock-unit">Detik</div>
+                                        <!-- 4-TILE LIVE COUNTDOWN CLOCK -->
+                                        <div class="sdg-clock-grid">
+                                            <div class="sdg-clock-tile">
+                                                <div class="sdg-clock-num" id="sdg-clock-days">1,546</div>
+                                                <div class="sdg-clock-unit">Hari</div>
+                                            </div>
+                                            <div class="sdg-clock-tile">
+                                                <div class="sdg-clock-num" id="sdg-clock-hours">09</div>
+                                                <div class="sdg-clock-unit">Jam</div>
+                                            </div>
+                                            <div class="sdg-clock-tile">
+                                                <div class="sdg-clock-num" id="sdg-clock-mins">03</div>
+                                                <div class="sdg-clock-unit">Menit</div>
+                                            </div>
+                                            <div class="sdg-clock-tile">
+                                                <div class="sdg-clock-num" id="sdg-clock-secs">33</div>
+                                                <div class="sdg-clock-unit">Detik</div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -6158,53 +6766,126 @@
                                         <div class="sdg-track-fill" style="width: 68.4%;"></div>
                                     </div>
                                     <div class="sdg-track-milestones">
-                                        <span>2015 Adopsi SDG</span>
+                                        <span>2015 Adopsi Global</span>
                                         <span style="color:var(--accent-orange);font-weight:700;">● Sekarang (2026: 68.4% Berjalan)</span>
                                         <span>2027 Mid-Review</span>
-                                        <span style="font-weight:700;color:var(--text-main);">2030 Deadline</span>
+                                        <span style="font-weight:700;color:var(--text-main);">2030 Net-Zero Target</span>
                                     </div>
 
                                     <!-- 5 OPERATING WINDOWS -->
                                     <div class="sdg-windows-grid">
-                                        <div class="sdg-window-item">
+                                        <div class="sdg-window-card">
                                             <div class="sdg-window-title">Window 1: Capex Transisi</div>
-                                            <div class="sdg-window-desc">Ekspansi EBT, PLTS atap, efisiensi energi emiten manufaktur & tambang.</div>
+                                            <div class="sdg-window-desc">Ekspansi EBT, PLTS atap, & efisiensi operasional manufaktur/tambang.</div>
                                             <div class="sdg-window-badge active">● Active High</div>
                                         </div>
-                                        <div class="sdg-window-item">
+                                        <div class="sdg-window-card">
                                             <div class="sdg-window-title">Window 2: POJK 51 Disclosure</div>
-                                            <div class="sdg-window-desc">Kewajiban pelaporan Laporan Keberlanjutan tahunan untuk 900+ emiten.</div>
+                                            <div class="sdg-window-desc">Kewajiban Laporan Keberlanjutan tahunan untuk 900+ emiten IHSG.</div>
                                             <div class="sdg-window-badge active">● Mandatory 100%</div>
                                         </div>
-                                        <div class="sdg-window-item">
+                                        <div class="sdg-window-card">
                                             <div class="sdg-window-title">Window 3: Bauran EBT 23%</div>
-                                            <div class="sdg-window-desc">Target proporsi energi bersih nasional dalam bauran energi primer.</div>
+                                            <div class="sdg-window-desc">Target proporsi energi bersih nasional (realisasi saat ini: 15.2%).</div>
                                             <div class="sdg-window-badge pending">● Progress 15.2%</div>
                                         </div>
-                                        <div class="sdg-window-item">
+                                        <div class="sdg-window-card">
                                             <div class="sdg-window-title">Window 4: IDXCarbon Trade</div>
                                             <div class="sdg-window-desc">Bursa karbon terintegrasi sertifikat pengurangan emisi (SPE-GRK).</div>
                                             <div class="sdg-window-badge active">● Terintegrasi</div>
                                         </div>
-                                        <div class="sdg-window-item">
-                                            <div class="sdg-window-title">Window 5: Taksonomi 2.0</div>
-                                            <div class="sdg-window-desc">Standar pembiayaan perbankan hijau (Financed Emissions Criteria).</div>
-                                            <div class="sdg-window-badge active">● Standar OJK</div>
+                                        <div class="sdg-window-card">
+                                            <div class="sdg-window-title">Window 5: Taksonomi OJK 2.0</div>
+                                            <div class="sdg-window-desc">Kriteria pembiayaan perbankan hijau (Financed Emissions Criteria).</div>
+                                            <div class="sdg-window-badge info">● Standar OJK</div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- 2. CONFLUENCE SIGNALS STREAM (BENCHMARK MERGE) -->
-                                <div style="display:flex;flex-direction:column;gap:12px;">
+                                <!-- 2. VISUAL ANALYTICS DASHBOARD: ECHARTS CHARTS -->
+                                <div class="sdg-charts-grid">
+                                    <!-- CHART A: DONUT SECTOR DISTRIBUTION -->
+                                    <div class="sdg-chart-box">
+                                        <div class="sdg-chart-header">
+                                            <div>
+                                                <div class="sdg-chart-title">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+                                                    Distribusi Inisiatif ESG Sektor IHSG
+                                                </div>
+                                                <div class="sdg-chart-subtitle">Proporsi kepatuhan & pelaporan inisiatif POJK 51 (1,153 Bukti)</div>
+                                            </div>
+                                            <span class="wire-shield-pill" style="color:var(--accent-cyan);border-color:rgba(56,189,248,0.3);">ECharts Pie</span>
+                                        </div>
+                                        <div id="sdg-donut-chart" style="width: 100%; height: 260px;"></div>
+                                    </div>
+
+                                    <!-- CHART B: HORIZONTAL PILLAR PROGRESS -->
+                                    <div class="sdg-chart-box">
+                                        <div class="sdg-chart-header">
+                                            <div>
+                                                <div class="sdg-chart-title">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                                    Pencapaian Pilar ESG & Taksonomi 2.0
+                                                </div>
+                                                <div class="sdg-chart-subtitle">Evaluasi pilar Lingkungan (E), Sosial (S), dan Tata Kelola (G)</div>
+                                            </div>
+                                            <span class="wire-shield-pill" style="color:#10b981;border-color:rgba(16,185,129,0.3);">Progress 2030</span>
+                                        </div>
+                                        <div id="sdg-pillar-chart" style="width: 100%; height: 260px;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- EXECUTIVE KPI METRIC CARDS -->
+                                <div class="sdg-kpi-summary-row">
+                                    <div class="sdg-kpi-tile">
+                                        <span class="sdg-kpi-label">Green Financing</span>
+                                        <span class="sdg-kpi-value" style="color:#10b981;">Rp 1,420 T</span>
+                                        <span class="sdg-kpi-sub">Kredit Berkelanjutan Big 4 Bank</span>
+                                    </div>
+                                    <div class="sdg-kpi-tile">
+                                        <span class="sdg-kpi-label">Bauran EBT Nasional</span>
+                                        <span class="sdg-kpi-value" style="color:var(--accent-orange);">15.2% / 23%</span>
+                                        <span class="sdg-kpi-sub">Target Energi Bersih 2030</span>
+                                    </div>
+                                    <div class="sdg-kpi-tile">
+                                        <span class="sdg-kpi-label">Kepatuhan POJK 51</span>
+                                        <span class="sdg-kpi-value" style="color:var(--accent-cyan);">900+ Emiten</span>
+                                        <span class="sdg-kpi-sub">Wajib Sustainability Report</span>
+                                    </div>
+                                    <div class="sdg-kpi-tile">
+                                        <span class="sdg-kpi-label">Bursa IDXCarbon</span>
+                                        <span class="sdg-kpi-value" style="color:#a855f7;">1.24 Jt Ton</span>
+                                        <span class="sdg-kpi-sub">Volume SPE-GRK Terverifikasi</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. CONFLUENCE SIGNALS STREAM -->
+                                <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
                                     <div class="section-header" style="margin:4px 0 0 0;">
                                         <div>
-                                            <h2 style="font-size:15px;display:flex;align-items:center;gap:6px;">
+                                            <h2 style="font-size:14.5px;display:flex;align-items:center;gap:6px;">
                                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
                                                 Sinyal Konfluensi Emiten × Agenda 2030
                                             </h2>
-                                            <p style="font-size:11.5px;color:var(--text-muted);margin:2px 0 0 0;">Pilar Confluence: Menggabungkan Bukti SDG + Siklus Capex + Data Transaksi & Valuasi Sectors API.</p>
+                                            <p style="font-size:11px;color:var(--text-muted);margin:2px 0 0 0;">Konfluensi: Menggabungkan Bukti SDG + Siklus Capex + Data Transaksi & Valuasi Sectors API.</p>
                                         </div>
-                                        <span class="wire-shield-pill">7 Emiten Tier-1</span>
+                                        <span class="wire-shield-pill">6 Emiten Tier-1</span>
+                                    </div>
+
+                                    <!-- PENJELASAN PERSENTASE & METRIK KONFLUENSI -->
+                                    <div class="sdg-metrics-legend-bar">
+                                        <div class="sdg-metric-guide-item" title="SDG Evidence (Bukti Nyata): Mengukur pembuktian capex riil, realisasi energi terbarukan, dan kepatuhan POJK 51 emiten terhadap pilar SDG.">
+                                             <span class="guide-dot" style="background:#10b981;"></span>
+                                             <span class="guide-label"><strong>SDG EV (Evidence):</strong> Bukti Nyata Capex Hijau & Kepatuhan POJK 51</span>
+                                         </div>
+                                         <div class="sdg-metric-guide-item" title="Timing (Kesiapan Siklus): Mengukur keselarasan jadwal penyelesaian proyek capex emiten dengan milestone regulasi Agenda 2030.">
+                                             <span class="guide-dot" style="background:var(--accent-orange);"></span>
+                                             <span class="guide-label"><strong>TIMING:</strong> Kesiapan Siklus Capex & Milestone 2026–2030</span>
+                                         </div>
+                                         <div class="sdg-metric-guide-item" title="Market (Resonansi Pasar): Mengukur validasi rasio valuasi wajar (P/E, P/B), kesehatan solvabilitas, dan arus likuiditas Sectors API.">
+                                             <span class="guide-dot" style="background:var(--accent-cyan);"></span>
+                                             <span class="guide-label"><strong>MARKET:</strong> Resonansi Valuasi & Solvabilitas Sectors API</span>
+                                         </div>
                                     </div>
 
                                     <div class="sdg-signals-grid">
@@ -6218,24 +6899,51 @@
                                                 <span class="sdg-score-pill">94.2% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 7 Energi Terjangkau & Bersih</span>
-                                                <span class="sdg-target-badge">SDG 13 Aksi Iklim</span>
+                                                <span class="sdg-target-badge" style="color:#fcc30b;border-color:rgba(252,195,11,0.3);">● SDG 7 Energi Bersih</span>
+                                                <span class="sdg-target-badge" style="color:#48773e;border-color:rgba(72,119,62,0.3);">● SDG 13 Aksi Iklim</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Ekspansi capex panas bumi hingga kapasitas terpasang 1.5 GW di 2030. Arus kas operasional stabil didukung kontrak jangka panjang PLN dan penjualan kredit karbon SPE-GRK di IDXCarbon.
+                                                Ekspansi capex panas bumi kapasitas 1.5 GW di 2030. Arus kas stabil didukung kontrak PLN dan kredit karbon SPE-GRK di IDXCarbon.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">96%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 96% skor bukti implementasi EBT panas bumi dan kepatuhan POJK 51">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="96, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">96%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">94%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 94% skor momentum siklus capex 1.5 GW menjelang target 2030">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="94, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">94%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">91%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 91% skor konfirmasi valuasi, solvabilitas utang rendah & margin kas stabil Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="91, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">91%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -6250,24 +6958,51 @@
                                                 <span class="sdg-score-pill">92.8% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 8 Pekerjaan Layak & UMKM</span>
-                                                <span class="sdg-target-badge">SDG 1 Tanpa Kemiskinan</span>
+                                                <span class="sdg-target-badge" style="color:#a21942;border-color:rgba(162,25,66,0.3);">● SDG 8 UMKM Layak</span>
+                                                <span class="sdg-target-badge" style="color:#e5243b;border-color:rgba(229,36,59,0.3);">● SDG 1 Inklusi Mikro</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Penyaluran portofolio pembiayaan berkelanjutan (Sustainable Financing) mencapai 66.8% total kredit (Rp 777 T), mendominasi inklusi keuangan mikro dan pilar sosial POJK 51.
+                                                Penyaluran pembiayaan berkelanjutan mencapai 66.8% total kredit (Rp 777 T), mendominasi inklusi keuangan mikro dan pilar sosial POJK 51.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">95%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 95% skor pembiayaan berkelanjutan dan portofolio hijau perbankan">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="95, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">95%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">91%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 91% skor akselerasi kredit mikro dan target bauran keuangan inklusif">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="91, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">91%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">92%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 92% skor rasio permodalan CAR kokoh, dividen yield tinggi & likuiditas Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">92%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -6282,24 +7017,51 @@
                                                 <span class="sdg-score-pill">89.5% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 9 Industri & Inovasi</span>
-                                                <span class="sdg-target-badge">SDG 12 Konsumsi Berkelanjutan</span>
+                                                <span class="sdg-target-badge" style="color:#f36e25;border-color:rgba(243,110,37,0.3);">● SDG 9 Ekosistem EV</span>
+                                                <span class="sdg-target-badge" style="color:#cf8d2a;border-color:rgba(207,141,42,0.3);">● SDG 12 Rantai Pasok</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Ekspansi ekosistem EV roda dua & empat, investasi di infrastruktur pengisian daya, dan penetrasi alat berat elektrik Komatsu via UNTR untuk dekarbonisasi rantai pasok industri.
+                                                Ekspansi ekosistem EV roda dua & empat, investasi SPKLU, dan penetrasi alat berat elektrik Komatsu via UNTR untuk dekarbonisasi industri.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">88%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 88% skor bukti pengembangan ekosistem EV dan infrastruktur hijau">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">88%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">89%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 89% skor momentum adopsi kendaraan listrik dan ekspansi SPKLU nasional">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">89%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">91%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 91% skor valuasi P/E menarik, kas operasional melimpah & neraca sehat Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="91, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">91%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -6314,24 +7076,51 @@
                                                 <span class="sdg-score-pill">86.4% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 7 Transisi Energi</span>
-                                                <span class="sdg-target-badge">SDG 15 Keberlanjutan Darat</span>
+                                                <span class="sdg-target-badge" style="color:#fcc30b;border-color:rgba(252,195,11,0.3);">● SDG 7 Transisi Energi</span>
+                                                <span class="sdg-target-badge" style="color:#56c02b;border-color:rgba(86,192,43,0.3);">● SDG 15 Reklamasi</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Pilot project transisi energi: pembangunan PLTS pasca-tambang Ombilin (200 MW) dan PLTS jalan tol Bali-Mandara, didukung dividen yield tinggi dan neraca kas solid.
+                                                Pilot project transisi energi: pembangunan PLTS pasca-tambang Ombilin (200 MW) dan PLTS jalan tol Bali-Mandara dengan dividen yield tinggi.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">84%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 84% skor proyek PLTS lahan pasca-tambang dan reklamasi lahan">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="84, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">84%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">88%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 88% skor fase transisi EBT menuju target net-zero batubara">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">88%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">87%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 87% skor dividen yield premium, likuiditas transaksi & kas kuat Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="87, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">87%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -6346,24 +7135,51 @@
                                                 <span class="sdg-score-pill">88.7% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 9 Hilirisasi Industri</span>
-                                                <span class="sdg-target-badge">SDG 12 Rantai Pasok Hijau</span>
+                                                <span class="sdg-target-badge" style="color:#f36e25;border-color:rgba(243,110,37,0.3);">● SDG 9 Smelter Bersih</span>
+                                                <span class="sdg-target-badge" style="color:#cf8d2a;border-color:rgba(207,141,42,0.3);">● SDG 12 Tembaga EV</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Smelter tembaga Batu Hijau Sumbawa Barat beroperasi komersial untuk mensuplai katoda tembaga baterai kendaraan listrik global dengan efisiensi energi terbarukan.
+                                                Smelter tembaga Batu Hijau beroperasi komersial mensuplai katoda tembaga baterai kendaraan listrik global dengan efisiensi energi terbarukan.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">91%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 91% skor pasokan tembaga EV global & efisiensi emisi smelter">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="91, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">91%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">86%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 86% skor kesiapan operasional komersial penuh fasilitas smelter tembaga">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="86, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">86%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">89%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 89% skor market cap jumbo, likuiditas transaksi & inflow investor global Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">89%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -6378,77 +7194,117 @@
                                                 <span class="sdg-score-pill">85.3% Konfluensi</span>
                                             </div>
                                             <div class="sdg-tag-row">
-                                                <span class="sdg-target-badge">SDG 11 Kota Berkelanjutan</span>
-                                                <span class="sdg-target-badge">SDG 13 Net Zero Mobility</span>
+                                                <span class="sdg-target-badge" style="color:#f99d26;border-color:rgba(249,157,38,0.3);">● SDG 11 Kota Hijau</span>
+                                                <span class="sdg-target-badge" style="color:#48773e;border-color:rgba(72,119,62,0.3);">● SDG 13 Armada Listrik</span>
                                             </div>
                                             <p class="sdg-desc-text">
-                                                Inisiatif 50/30 Bluebird: Target pengurangan 50% emisi karbon pada 2030 dengan adopsi armada taksi listrik (EV) serta instalasi solar rooftop di seluruh pool utama.
+                                                Inisiatif 50/30 Bluebird: Target pemangkasan 50% emisi karbon pada 2030 dengan adopsi armada taksi listrik (EV) dan solar rooftop pool utama.
                                             </p>
                                             <div class="sdg-gauges-row">
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:#10b981;">87%</div>
-                                                    <div class="sdg-gauge-label">SDG Ev</div>
+                                                <div class="sdg-circular-gauge" title="SDG EV (Evidence): 87% skor bukti adopsi armada taksi listrik dan instalasi solar rooftop pool">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="#10b981" stroke-dasharray="87, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:#10b981;">87%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">SDG EV</span>
+                                                        <span class="gauge-sub">Bukti Nyata</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-orange);">83%</div>
-                                                    <div class="sdg-gauge-label">Timing</div>
+                                                <div class="sdg-circular-gauge" title="TIMING: 83% skor tahapan peremajaan armada menuju target 50/30 tahun 2030">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-orange)" stroke-dasharray="83, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-orange);">83%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">TIMING</span>
+                                                        <span class="gauge-sub">Siklus Capex</span>
+                                                    </div>
                                                 </div>
-                                                <div class="sdg-gauge-item">
-                                                    <div class="sdg-gauge-val" style="color:var(--accent-cyan);">86%</div>
-                                                    <div class="sdg-gauge-label">Market</div>
+                                                <div class="sdg-circular-gauge" title="MARKET: 86% skor pemulihan mobilitas perkotaan, efisiensi beban bahan bakar & valuasi Sectors API">
+                                                    <div class="gauge-svg-wrap">
+                                                        <svg class="gauge-svg" viewBox="0 0 36 36">
+                                                            <path class="gauge-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                            <path class="gauge-progress" stroke="var(--accent-cyan)" stroke-dasharray="86, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                        </svg>
+                                                        <span class="gauge-center-text" style="color:var(--accent-cyan);">86%</span>
+                                                    </div>
+                                                    <div class="gauge-meta">
+                                                        <span class="gauge-title">MARKET</span>
+                                                        <span class="gauge-sub">Valuasi Data</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- 3. SECTOR × SDG ACTIVITY MATRIX -->
+                                <!-- 4. SECTOR × SDG ACTIVITY MATRIX -->
                                 <div class="sdg-matrix-card">
-                                    <div class="sdg-matrix-header">
-                                        <h3 style="font-size:14px;font-weight:700;margin:0 0 3px 0;display:flex;align-items:center;gap:6px;">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                                            Matriks Aktivitas 11 Sektor IDX × 17 SDG
-                                        </h3>
-                                        <p style="font-size:11px;color:var(--text-muted);margin:0;">Pemetaan densitas pengungkapan inisiatif keberlanjutan dan bukti kepatuhan Tier 1 emiten bursa efek.</p>
+                                    <div class="sdg-chart-header">
+                                        <div>
+                                            <div class="sdg-chart-title">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                                Matriks Aktivitas 11 Sektor IDX × 17 SDG
+                                            </div>
+                                            <div class="sdg-chart-subtitle">Pemetaan densitas pengungkapan inisiatif keberlanjutan dan bukti kepatuhan Tier 1 emiten IHSG</div>
+                                        </div>
+                                        <span class="wire-shield-pill" style="color:#10b981;border-color:rgba(16,185,129,0.3);">POJK 51 Verified</span>
                                     </div>
-                                    <div class="sdg-matrix-grid">
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Perbankan & Financials</div>
-                                            <div class="sdg-matrix-cell">SDG 1, 8, 10</div>
-                                            <div class="sdg-matrix-cell" style="color:#10b981;font-weight:700;">● Tinggi (342 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Kredit Hijau Rp 1,420 T</div>
-                                        </div>
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Energi & EBT</div>
-                                            <div class="sdg-matrix-cell">SDG 7, 12, 13</div>
-                                            <div class="sdg-matrix-cell" style="color:#10b981;font-weight:700;">● Tinggi (218 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Ekspansi Geothermal & PLTS</div>
-                                        </div>
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Industri & Otomotif</div>
-                                            <div class="sdg-matrix-cell">SDG 9, 11, 12</div>
-                                            <div class="sdg-matrix-cell" style="color:var(--accent-orange);font-weight:700;">● Menengah (174 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Rantai Pasok EV & Baterai</div>
-                                        </div>
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Material Dasar & Tambang</div>
-                                            <div class="sdg-matrix-cell">SDG 6, 12, 15</div>
-                                            <div class="sdg-matrix-cell" style="color:var(--accent-orange);font-weight:700;">● Menengah (156 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Smelter Bersih & Reklamasi</div>
-                                        </div>
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Barang Konsumen Primer</div>
-                                            <div class="sdg-matrix-cell">SDG 2, 3, 12</div>
-                                            <div class="sdg-matrix-cell" style="color:var(--accent-cyan);font-weight:700;">● Stabil (128 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Ketahanan Pangan & Kemasan</div>
-                                        </div>
-                                        <div class="sdg-matrix-row">
-                                            <div class="sdg-matrix-cell sector-name">Infrastruktur & Telko</div>
-                                            <div class="sdg-matrix-cell">SDG 9, 11</div>
-                                            <div class="sdg-matrix-cell" style="color:var(--accent-cyan);font-weight:700;">● Stabil (95 Bukti)</div>
-                                            <div class="sdg-matrix-cell">Digital Connectivity & Tower</div>
-                                        </div>
-                                    </div>
+                                    <table class="sdg-matrix-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Sektor IHSG</th>
+                                                <th>Fokus SDG Primer</th>
+                                                <th>Densitas Inisiatif</th>
+                                                <th>Contoh Implementasi & Transaksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Perbankan & Financials</td>
+                                                <td><span class="sdg-target-badge" style="color:#38bdf8;border-color:rgba(56,189,248,0.3);">SDG 1, 8, 10</span></td>
+                                                <td><span style="color:#10b981;font-weight:700;font-family:var(--font-mono);">● Tinggi (342 Bukti)</span></td>
+                                                <td>Kredit Pembiayaan Berkelanjutan Rp 1,420 T</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Energi Bersih & EBT</td>
+                                                <td><span class="sdg-target-badge" style="color:#10b981;border-color:rgba(16,185,129,0.3);">SDG 7, 12, 13</span></td>
+                                                <td><span style="color:#10b981;font-weight:700;font-family:var(--font-mono);">● Tinggi (218 Bukti)</span></td>
+                                                <td>Ekspansi Geothermal 1.5 GW & PLTS Industri</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Industri & Otomotif</td>
+                                                <td><span class="sdg-target-badge" style="color:#ffb224;border-color:rgba(255,178,36,0.3);">SDG 9, 11, 12</span></td>
+                                                <td><span style="color:var(--accent-orange);font-weight:700;font-family:var(--font-mono);">● Menengah (174 Bukti)</span></td>
+                                                <td>Ekosistem Rantai Pasok EV & SPKLU Publik</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Material Dasar & Tambang</td>
+                                                <td><span class="sdg-target-badge" style="color:#a855f7;border-color:rgba(168,85,247,0.3);">SDG 6, 12, 15</span></td>
+                                                <td><span style="color:var(--accent-orange);font-weight:700;font-family:var(--font-mono);">● Menengah (156 Bukti)</span></td>
+                                                <td>Smelter Tembaga Bersih & Reklamasi Tambang</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Barang Konsumen Primer</td>
+                                                <td><span class="sdg-target-badge" style="color:#ec4899;border-color:rgba(236,72,153,0.3);">SDG 2, 3, 12</span></td>
+                                                <td><span style="color:var(--accent-cyan);font-weight:700;font-family:var(--font-mono);">● Stabil (128 Bukti)</span></td>
+                                                <td>Kemasan Biodegradable & Ketahanan Pangan</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight:700;color:var(--text-main);">Infrastruktur & Telko</td>
+                                                <td><span class="sdg-target-badge" style="color:#6366f1;border-color:rgba(99,102,241,0.3);">SDG 9, 11</span></td>
+                                                <td><span style="color:var(--accent-cyan);font-weight:700;font-family:var(--font-mono);">● Stabil (95 Bukti)</span></td>
+                                                <td>Green Data Center & Menara Solar Hybrid</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -7238,9 +8094,27 @@
                 
                 <!-- HEADER WITH DEEP LEARNING NEURAL NETWORK AVATAR & CONTROLS -->
                 <div class="chat-header">
-                    <div class="neural-sphere-box" id="neural-sphere-box" title="Garda AI Neural Core (Gemma 4)">
-                        <!-- 3D Neural Spherical Constellation (12 Connected Nodes) -->
-                        <canvas id="garda-neural-canvas" class="garda-neural-canvas" width="72" height="72"></canvas>
+                    <div class="neural-sphere-box" id="neural-sphere-box" title="Garda AI Core (Gemma 4)">
+                        <!-- BINTANG AI AVATAR & SPARKLES (NON-CIRCULAR ANIMATION) -->
+                        <svg class="ai-star-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <defs>
+                                <linearGradient id="garda-star-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f2fe" />
+                                    <stop offset="50%" stop-color="#38bdf8" />
+                                    <stop offset="100%" stop-color="#a855f7" />
+                                </linearGradient>
+                                <linearGradient id="garda-sparkle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#38bdf8" />
+                                    <stop offset="100%" stop-color="#fbbf24" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Bintang Utama 4 Sudut AI Modern -->
+                            <path class="ai-star-main" d="m12 2-2.1 6.3a2 2 0 0 1-1.3 1.3L2 12l6.6 2.4a2 2 0 0 1 1.3 1.3L12 22l2.1-6.3a2 2 0 0 1 1.3-1.3L22 12l-6.6-2.4a2 2 0 0 1-1.3-1.3L12 2Z" fill="url(#garda-star-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
+                            <!-- Sparkle Bintang Kanan Atas -->
+                            <path class="ai-star-sparkle-1" d="M19 1.5v4M17 3.5h4" stroke="url(#garda-sparkle-grad)" stroke-width="1.8" stroke-linecap="round" />
+                            <!-- Sparkle Bintang Kiri Bawah -->
+                            <path class="ai-star-sparkle-2" d="M5 17.5v3M3.5 19h3" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
                     </div>
                     <div class="chat-title">
                         <h3>Garda AI Concierge <span class="live-dot" style="margin-left:3px;"></span></h3>
@@ -7322,7 +8196,7 @@
 
                 <!-- CHAT INPUT BAR -->
                 <div class="chat-input-area">
-                    <input type="text" id="chat-input" class="chat-input" placeholder="Tanya analisis bisnis atau emiten ke Garda..." onkeypress="handleInputKey(event)">
+                    <textarea id="chat-input" class="chat-input" rows="1" placeholder="Tanya analisis bisnis atau emiten ke Garda..." oninput="autoResizeChatInput(this)" onkeydown="handleChatInputKeyDown(event)"></textarea>
                     <button class="btn-chat-send" onclick="sendChatMessage()" title="Kirim">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -7349,12 +8223,11 @@
                     <button type="button" class="dock-btn dock-btn-garda active" id="dock-btn-garda" onclick="toggleGardaSlide()" aria-label="Garda AI Concierge">
                         <span class="dock-pulse-dot"></span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 8V4H8"></path>
-                            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-                            <path d="M2 14h2"></path>
-                            <path d="M20 14h2"></path>
-                            <path d="M15 13v2"></path>
-                            <path d="M9 13v2"></path>
+                            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                            <path d="M5 3v4"></path>
+                            <path d="M3 5h4"></path>
+                            <path d="M21 17v4"></path>
+                            <path d="M19 19h4"></path>
                         </svg>
                     </button>
                 </div>
@@ -7861,6 +8734,17 @@
             await loadMoversTicker();
             loadScreenerStocks();
             loadAlertHistory();
+
+            // Hash deep-linking handler on initial page load
+            if (window.location.hash) {
+                const hashId = window.location.hash.replace('#', '');
+                setTimeout(() => {
+                    const el = document.getElementById(hashId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 750);
+            }
         });
 
         // ================= BMKG WEATHER & FOREX LOADERS (COMPACT SLIM STRIP) =================
@@ -8235,7 +9119,7 @@
                                         <span>${SVG_CHART_BAR} Sentimen ${heroPrimaryTicker}</span>
                                     </button>
                                 </div>
-                                <h2 class="hero-title">${hero.title}</h2>
+                                <h2 class="hero-title"><a href="javascript:void(0)" onclick="openModal('${hero.id || hero.slug}')" style="color:inherit;text-decoration:none;">${hero.title}</a></h2>
                                 <p class="hero-summary">${hero.summary}</p>
                             </div>
                             <div class="hero-footer">
@@ -8274,7 +9158,7 @@
                             </div>
                             <div class="article-content-body">
                                 <div>
-                                    <h3 class="title">${a.title}</h3>
+                                    <h3 class="title"><a href="javascript:void(0)" onclick="openModal('${a.id || a.slug}')" style="color:inherit;text-decoration:none;">${a.title}</a></h3>
                                     <p class="summary">${a.summary}</p>
                                 </div>
                                 <div class="card-footer">
@@ -8320,8 +9204,10 @@
             const viewEditorial = document.getElementById('editorial-view');
             const viewWire = document.getElementById('wire-view');
             const viewSdg = document.getElementById('sdg2030-view');
+            const portalSplit = document.querySelector('.news-portal-split');
 
             if (tab === 'wire') {
+                if (portalSplit) portalSplit.classList.remove('sdg-active');
                 if (btnEditorial) btnEditorial.classList.remove('active');
                 if (btnSdg) btnSdg.classList.remove('active');
                 if (btnWire) btnWire.classList.add('active');
@@ -8332,6 +9218,7 @@
                     loadRegionalWire(currentWireCountry);
                 }
             } else if (tab === 'sdg2030') {
+                if (portalSplit) portalSplit.classList.add('sdg-active');
                 if (btnEditorial) btnEditorial.classList.remove('active');
                 if (btnWire) btnWire.classList.remove('active');
                 if (btnSdg) btnSdg.classList.add('active');
@@ -8339,7 +9226,9 @@
                 if (viewWire) viewWire.style.display = 'none';
                 if (viewSdg) viewSdg.style.display = 'block';
                 initSDGCountdownTimer();
+                setTimeout(renderSdgEsgCharts, 50);
             } else {
+                if (portalSplit) portalSplit.classList.remove('sdg-active');
                 if (btnWire) btnWire.classList.remove('active');
                 if (btnSdg) btnSdg.classList.remove('active');
                 if (btnEditorial) btnEditorial.classList.add('active');
@@ -8348,6 +9237,146 @@
                 if (viewEditorial) viewEditorial.style.display = 'block';
             }
         }
+
+        let sdgDonutChartInstance = null;
+        let sdgPillarChartInstance = null;
+
+        function renderSdgEsgCharts() {
+            if (typeof echarts === 'undefined') return;
+
+            const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+            const textColor = isDark ? '#f8fafc' : '#0f172a';
+            const subTextColor = isDark ? '#94a3b8' : '#64748b';
+
+            // 1. Donut / Pie Chart (Sector Distribution)
+            const donutDom = document.getElementById('sdg-donut-chart');
+            if (donutDom) {
+                if (!sdgDonutChartInstance) {
+                    sdgDonutChartInstance = echarts.init(donutDom);
+                }
+                const donutOpt = {
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{b}: <b>{c} Inisiatif</b> ({d}%)',
+                        backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                        borderColor: isDark ? '#334155' : '#e2e8f0',
+                        textStyle: { color: textColor, fontSize: 11.5 }
+                    },
+                    legend: {
+                        orient: 'horizontal',
+                        bottom: 0,
+                        itemWidth: 10,
+                        itemHeight: 10,
+                        textStyle: { color: subTextColor, fontSize: 10 }
+                    },
+                    series: [
+                        {
+                            name: 'Sektor ESG',
+                            type: 'pie',
+                            radius: ['38%', '68%'],
+                            center: ['50%', '42%'],
+                            avoidLabelOverlap: true,
+                            itemStyle: {
+                                borderRadius: 5,
+                                borderColor: isDark ? '#0b0f19' : '#ffffff',
+                                borderWidth: 2
+                            },
+                            label: {
+                                show: true,
+                                position: 'outside',
+                                formatter: '{b}\n{d}%',
+                                color: subTextColor,
+                                fontSize: 9.5
+                            },
+                            labelLine: {
+                                length: 8,
+                                length2: 10,
+                                lineStyle: { color: subTextColor }
+                            },
+                            data: [
+                                { value: 342, name: 'Finansial & Banking', itemStyle: { color: '#38bdf8' } },
+                                { value: 218, name: 'Energi Bersih & EBT', itemStyle: { color: '#10b981' } },
+                                { value: 174, name: 'Manufaktur & EV', itemStyle: { color: '#ffb224' } },
+                                { value: 156, name: 'Material & Smelter', itemStyle: { color: '#a855f7' } },
+                                { value: 128, name: 'Konsumsi Berkelanjutan', itemStyle: { color: '#ec4899' } },
+                                { value: 95, name: 'Infrastruktur & Telko', itemStyle: { color: '#6366f1' } },
+                                { value: 40, name: 'Agribisnis Hijau', itemStyle: { color: '#14b8a6' } }
+                            ]
+                        }
+                    ]
+                };
+                sdgDonutChartInstance.setOption(donutOpt);
+                sdgDonutChartInstance.resize();
+            }
+
+            // 2. Pillar Progress Chart (Horizontal Bar)
+            const pillarDom = document.getElementById('sdg-pillar-chart');
+            if (pillarDom) {
+                if (!sdgPillarChartInstance) {
+                    sdgPillarChartInstance = echarts.init(pillarDom);
+                }
+                const pillarOpt = {
+                    backgroundColor: 'transparent',
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: { type: 'shadow' },
+                        formatter: function(params) {
+                            const p0 = params[0];
+                            return `${p0.name}<br/>Capaian Target 2030: <b>${p0.value}%</b>`;
+                        },
+                        backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                        borderColor: isDark ? '#334155' : '#e2e8f0',
+                        textStyle: { color: textColor, fontSize: 11.5 }
+                    },
+                    grid: {
+                        top: 25,
+                        left: '4%',
+                        right: '12%',
+                        bottom: 25,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        max: 100,
+                        axisLabel: { formatter: '{value}%', color: subTextColor, fontSize: 10 },
+                        splitLine: { lineStyle: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: ['Tata Kelola (G)', 'Sosial (S)', 'Lingkungan (E)'],
+                        axisLabel: { color: textColor, fontSize: 11, fontWeight: 600 }
+                    },
+                    series: [
+                        {
+                            name: 'Realisasi Capaian',
+                            type: 'bar',
+                            barWidth: 18,
+                            data: [
+                                { value: 94.6, itemStyle: { color: '#ffb224', borderRadius: [0, 4, 4, 0] } },
+                                { value: 82.1, itemStyle: { color: '#38bdf8', borderRadius: [0, 4, 4, 0] } },
+                                { value: 68.4, itemStyle: { color: '#10b981', borderRadius: [0, 4, 4, 0] } }
+                            ],
+                            label: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{c}%',
+                                color: textColor,
+                                fontSize: 11,
+                                fontWeight: 700
+                            }
+                        }
+                    ]
+                };
+                sdgPillarChartInstance.setOption(pillarOpt);
+                sdgPillarChartInstance.resize();
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            if (sdgDonutChartInstance) sdgDonutChartInstance.resize();
+            if (sdgPillarChartInstance) sdgPillarChartInstance.resize();
+        });
 
         function resetAllNewsFilters() {
             currentNewsSearch = '';
@@ -8683,7 +9712,7 @@
 
             content.innerHTML = `
                 <div class="article-reader-grid">
-                    <!-- ================= KOLOM KIRI: GAMBAR, DESKRIPSI, KETERANGAN, TOMBOL-TOMBOL ================= -->
+                    <!-- ================= KOLOM KIRI: GAMBAR, DESKRIPSI, TOMBOL-TOMBOL (BEBAS SCROLL) ================= -->
                     <div class="article-left-col">
                         <!-- 1. Hero Image Banner -->
                         <div class="article-hero-banner">
@@ -8707,11 +9736,83 @@
                             <p class="exec-card-text">${article.summary}</p>
                         </div>
 
-                        <!-- 3. Keterangan-Keterangan Lainnya (Panel Metadata) -->
+                        <!-- 3. Tombol-Tombol Aksi Utama -->
+                        <div class="article-actions-panel">
+                            <button type="button" class="btn-action-primary" onclick="askGardaAboutNews('${(article.title || '').replace(/'/g, "\\'")}', ${JSON.stringify(article.tickers || []).replace(/"/g, '&quot;')})">
+                                <span class="garda-orb-btn"></span>
+                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Tanya Analisis Garda AI</span>
+                            </button>
+                            <div class="btn-action-row">
+                                <button type="button" class="btn-action-secondary" onclick="openCompanySentimentModal('${primTicker}')">
+                                    <span>${SVG_CHART_BAR} Sentimen $${primTicker}</span>
+                                </button>
+                                <button type="button" class="btn-action-secondary" onclick="openCompanyDrawer('${primTicker}')">
+                                    <span>${SVG_BUILDING} Profil Saham</span>
+                                </button>
+                            </div>
+                            <button type="button" class="btn-action-tertiary" onclick="copyCurrentArticleUrl(this)">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                <span>Salin Tautan Artikel</span>
+                            </button>
+                            ${(article.url || article.source_url) ? `
+                            <a href="${article.url || article.source_url}" target="_blank" rel="noopener noreferrer" class="btn-action-tertiary" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:rgba(56,189,248,0.08);border-color:rgba(56,189,248,0.28);color:var(--accent-cyan);">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                <span>Kunjungi Sumber Asli Berita</span>
+                            </a>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <!-- ================= KOLOM KANAN: JUDUL, EMITEN TERKAIT, CHART SENTIMEN, METADATA, KONTEN, RISET TERKAIT ================= -->
+                    <div class="article-right-col">
+                        <!-- 1. Header & Title -->
+                        <div class="article-right-header">
+                            <div class="article-breadcrumb-strip">
+                                <span class="tag-pill orange">${(article.category || 'EMITEN').toUpperCase().replace('-', ' ')}</span>
+                                <span class="sentiment-badge ${article.sentiment}">${article.sentiment}</span>
+                                <span class="origin-badge">${countryLabel} • ${isEng ? 'English' : 'Bahasa Indonesia'}</span>
+                                <span style="font-size:11.5px;color:var(--text-muted);font-family:var(--font-mono);margin-left:auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>${article.read_time_minutes || 4} min read • <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${article.views || 42} Views</span>
+                            </div>
+                            <h1 class="article-right-title">${article.title}</h1>
+                            <div class="article-right-subbar">
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <span style="font-size:12px;font-weight:700;color:var(--text-main);">Desk Riset:</span>
+                                    <span style="font-size:12px;color:var(--accent-cyan);">${article.author || 'GARDA FINANCIAL DESK'}</span>
+                                </div>
+                                <span style="font-size:11.5px;color:var(--text-muted);">Diterbitkan: ${d} WIB • Sectors API Intelligence</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Emiten Terkait (Pindah ke Kolom Kanan) -->
+                        ${(article.tickers && article.tickers.length > 0) ? `
+                            <div class="article-emiten-bar">
+                                <span class="emiten-bar-label">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="2"></line></svg>
+                                    Emiten Terkait:
+                                </span>
+                                <div class="emiten-bar-pills" id="article-emiten-pills-list">
+                                    ${article.tickers.map((t, idx) => `
+                                        <div class="emiten-bar-item ${t === primTicker ? 'active' : ''}" id="emiten-bar-item-${t}">
+                                            <span class="sym" onclick="switchArticleSentimentTicker('${t}')" title="Klik untuk fokus sentimen $${t}">$${t}</span>
+                                            <button type="button" onclick="switchArticleSentimentTicker('${t}')" title="Tampilkan grafik sentimen $${t}">Chart</button>
+                                            <span style="color:var(--border);">•</span>
+                                            <button type="button" onclick="openCompanySentimentModal('${t}')">Detail</button>
+                                            <span style="color:var(--border);">•</span>
+                                            <button type="button" onclick="openCompanyDrawer('${t}')">Profil</button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- 3. INFORMASI & CHART SENTIMEN EMITEN DI MARKET -->
+                        <div id="article-sentiment-widget-mount"></div>
+
+                        <!-- 4. KETERANGAN & METADATA (Pindah ke Kolom Kanan) -->
                         <div class="article-intel-panel">
                             <div class="intel-panel-title">
                                 <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></span>
-                                <span>KETERANGAN & METADATA</span>
+                                <span>KETERANGAN & METADATA RISET</span>
                             </div>
                             <div class="intel-panel-grid">
                                 <div class="intel-item">
@@ -8731,7 +9832,7 @@
                                     <span class="intel-val">${article.views || 42} Pembaca</span>
                                 </div>
                                 <div class="intel-item">
-                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Asal Negara / Bahasa</span>
+                                    <span class="intel-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Asal / Bahasa</span>
                                     <span class="intel-val">${countryLabel} • ${isEng ? 'English' : 'Indonesia'}</span>
                                 </div>
                                 <div class="intel-item">
@@ -8741,88 +9842,33 @@
                             </div>
                         </div>
 
-                        <!-- 4. Emiten Terkait (Jika Ada) -->
-                        ${(article.tickers && article.tickers.length > 0) ? `
-                            <div class="article-emiten-bar">
-                                <span class="emiten-bar-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:3px;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="2"></line></svg>Emiten Terkait:</span>
-                                <div class="emiten-bar-pills">
-                                    ${article.tickers.map(t => `
-                                        <div class="emiten-bar-item">
-                                            <span class="sym">$${t}</span>
-                                            <button type="button" onclick="openCompanySentimentModal('${t}')">Sentimen</button>
-                                            <span style="color:var(--border);">•</span>
-                                            <button type="button" onclick="openCompanyDrawer('${t}')">Profil</button>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        ` : ''}
-
-                        <!-- 5. Tombol-Tombol Aksi Utama -->
-                        <div class="article-actions-panel">
-                            <button type="button" class="btn-action-primary" onclick="askGardaAboutNews('${(article.title || '').replace(/'/g, "\\'")}', ${JSON.stringify(article.tickers || []).replace(/"/g, '&quot;')})">
-                                <span class="garda-orb-btn"></span>
-                                <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:3px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Tanya Analisis Garda AI</span>
-                            </button>
-                            <div class="btn-action-row">
-                                <button type="button" class="btn-action-secondary" onclick="openCompanySentimentModal('${primTicker}')">
-                                    <span>${SVG_CHART_BAR} Sentimen $${primTicker}</span>
-                                </button>
-                                <button type="button" class="btn-action-secondary" onclick="openCompanyDrawer('${primTicker}')">
-                                    <span>${SVG_BUILDING} Profil Saham</span>
-                                </button>
-                            </div>
-                            <button type="button" class="btn-action-tertiary" onclick="copyCurrentArticleUrl(this)">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                <span>Salin Tautan Artikel</span>
-                            </button>
+                        <!-- 5. Konten Lengkap Artikel (Markdown Formatted) -->
+                        <div class="article-prose">
+                            ${parsedContent}
                         </div>
 
-                        <!-- 6. Rekomendasi Berita & Riset Terkait -->
+                        <!-- 6. RISET & BERITA TERKAIT (Pindah ke Kolom Kanan Bawah Artikel) -->
                         ${(related && related.length > 0) ? `
                             <div class="article-related-box">
-                                <div class="related-box-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>RISET & BERITA TERKAIT</div>
-                                <div class="related-cards-col">
+                                <div class="related-box-title">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1.5px;margin-right:4px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                    RISET & BERITA TERKAIT
+                                </div>
+                                <div class="related-cards-grid">
                                     ${related.map(r => `
                                         <div class="related-card-item" onclick="openModal('${r.id || r.slug}')">
                                             <div class="related-item-title">${r.title}</div>
                                             <div class="related-item-meta">
-                                                <span style="color:var(--accent-orange);font-weight:600;">${(r.category || 'EMITEN').toUpperCase()}</span>
-                                                <span>${r.tickers && r.tickers.length > 0 ? '$' + r.tickers.join(', $') : ''}</span>
+                                                <span style="color:var(--accent-orange);font-weight:700;">${(r.category || 'EMITEN').toUpperCase()}</span>
+                                                <span style="font-family:var(--font-mono);">${r.tickers && r.tickers.length > 0 ? '$' + r.tickers.join(', $') : ''}</span>
                                             </div>
                                         </div>
                                     `).join('')}
                                 </div>
                             </div>
                         ` : ''}
-                    </div>
 
-                    <!-- ================= KOLOM KANAN: JUDUL, KONTEN LENGKAP & ANALISIS ================= -->
-                    <div class="article-right-col">
-                        <!-- Header & Title -->
-                        <div class="article-right-header">
-                            <div class="article-breadcrumb-strip">
-                                <span class="tag-pill orange">${(article.category || 'EMITEN').toUpperCase().replace('-', ' ')}</span>
-                                <span class="sentiment-badge ${article.sentiment}">${article.sentiment}</span>
-                                <span class="origin-badge">${countryLabel} • ${isEng ? 'English' : 'Bahasa Indonesia'}</span>
-                                <span style="font-size:11.5px;color:var(--text-muted);font-family:var(--font-mono);margin-left:auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>${article.read_time_minutes || 4} min read • <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${article.views || 42} Views</span>
-                            </div>
-                            <h1 class="article-right-title">${article.title}</h1>
-                            <div class="article-right-subbar">
-                                <div style="display:flex;align-items:center;gap:8px;">
-                                    <span style="font-size:12px;font-weight:700;color:var(--text-main);">Desk Riset:</span>
-                                    <span style="font-size:12px;color:var(--accent-cyan);">${article.author || 'GARDA FINANCIAL DESK'}</span>
-                                </div>
-                                <span style="font-size:11.5px;color:var(--text-muted);">Diterbitkan: ${d} WIB • Sectors API Intelligence</span>
-                            </div>
-                        </div>
-
-                        <!-- Konten Lengkap Artikel (Markdown Formatted) -->
-                        <div class="article-prose">
-                            ${parsedContent}
-                        </div>
-
-                        <!-- Footer Kanan / End of Reading Note -->
+                        <!-- 7. Footer Kanan / End of Reading Note -->
                         <div class="article-right-footer">
                             <div style="font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;gap:6px;">
                                 <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px;margin-right:2px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
@@ -8837,15 +9883,236 @@
             `;
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
+
+            // Load Sentiment Widget & Interactive ECharts Model in the right column
+            loadArticleSentimentWidget(primTicker);
         }
 
         function closeModal() {
             document.getElementById('article-modal').classList.remove('open');
             document.body.style.overflow = 'auto';
+            if (window.__articleSentimentChartInstance) {
+                try { window.__articleSentimentChartInstance.dispose(); } catch(e){}
+                window.__articleSentimentChartInstance = null;
+            }
         }
 
         function closeModalOnOverlay(e) {
             if (e.target.id === 'article-modal') closeModal();
+        }
+
+        // ================= ARTICLE SENTIMENT WIDGET & CHART MODEL =================
+        let currentActiveSentimentTicker = null;
+
+        async function switchArticleSentimentTicker(ticker) {
+            if (!ticker) return;
+            const cleanSym = ticker.trim().toUpperCase().replace('$', '');
+            currentActiveSentimentTicker = cleanSym;
+            
+            // Update active pill highlight
+            document.querySelectorAll('.emiten-bar-item').forEach(el => el.classList.remove('active'));
+            const activeEl = document.getElementById(`emiten-bar-item-${cleanSym}`);
+            if (activeEl) activeEl.classList.add('active');
+            
+            await loadArticleSentimentWidget(cleanSym);
+        }
+
+        async function loadArticleSentimentWidget(symbol) {
+            const cleanSym = (symbol || 'BBCA').trim().toUpperCase().replace('$', '');
+            currentActiveSentimentTicker = cleanSym;
+            const container = document.getElementById('article-sentiment-widget-mount');
+            if (!container) return;
+
+            container.innerHTML = `
+                <div class="article-sentiment-widget" style="min-height:140px;display:flex;align-items:center;justify-content:center;">
+                    <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);display:flex;align-items:center;gap:8px;">
+                        <span style="display:inline-block;width:12px;height:12px;border:2px solid rgba(56,189,248,0.25);border-top-color:var(--accent-cyan);border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <span>Menganalisis sentimen pasar & grafik model untuk $${cleanSym}...</span>
+                    </div>
+                </div>
+            `;
+
+            try {
+                const res = await fetch(`/api/v1/portal/company-sentiment/${cleanSym}`);
+                if (!res.ok) throw new Error('Sentiment fetch error');
+                const data = await res.json();
+                if (!data) return;
+
+                const companyName = data.company_name || cleanSym;
+                const sector = data.sector || 'Ekuitas IDX';
+                const metrics = data.stock_metrics || {};
+                const lastPrice = metrics.last_price != null ? metrics.last_price : '-';
+                const formattedPrice = typeof lastPrice === 'number' ? 'Rp ' + lastPrice.toLocaleString('id-ID') : (String(lastPrice).startsWith('Rp') ? lastPrice : (lastPrice !== '-' ? 'Rp ' + lastPrice : '-'));
+                const chg = String(metrics.change_pct || '+0.0%');
+                const isUp = chg.includes('+');
+                const isDown = chg.includes('-') && !chg.includes('+0');
+                const chgColor = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : '#94a3b8');
+
+                const score = data.sentiment_score || {};
+                const bullPct = score.bullish_pct != null ? score.bullish_pct : 65;
+                const neutPct = score.neutral_pct != null ? score.neutral_pct : 20;
+                const bearPct = score.bearish_pct != null ? score.bearish_pct : 15;
+                const overall = score.overall || 'BULLISH';
+                const overallVerdict = overall === 'BULLISH' ? '🟢 BULLISH (Akumulasi Pasar)' : (overall === 'BEARISH' ? '🔴 BEARISH (Koreksi / Waspada)' : '🟡 NETRAL (Konsolidasi)');
+                const overallColor = overall === 'BULLISH' ? 'var(--green-gain)' : (overall === 'BEARISH' ? 'var(--red-loss)' : '#f59e0b');
+
+                const posNews = data.positive_news || [];
+                const negNews = data.negative_news || [];
+                const macro = data.macro_correlations || {};
+                const fx = macro.forex_currency || {};
+                const pol = macro.politics_and_regulation || {};
+
+                const topPosTitle = posNews[0]?.title || `Pertumbuhan kinerja laba & arus dividen ${cleanSym} solid`;
+                const topNegTitle = negNews[0]?.title || `Fluktuasi suku bunga acuan & ketidakpastian makro global`;
+                const fxStatus = fx.impact_status || fx.exposure_type || 'Posisi Valas Terkendali';
+                const polStatus = pol.status || 'Kebijakan Kondusif';
+
+                container.innerHTML = `
+                    <div class="article-sentiment-widget">
+                        <div class="sentiment-widget-head">
+                            <div class="sentiment-widget-title-area">
+                                <span class="sentiment-widget-title">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--accent-cyan);"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                    SENTIMEN PASAR & INDIKATOR EMITEN
+                                </span>
+                                <span style="background:rgba(249,115,22,0.15);color:var(--accent-orange);border:1px solid rgba(249,115,22,0.3);padding:2px 8px;border-radius:4px;font-weight:800;font-family:var(--font-mono);font-size:11.5px;">$${cleanSym}</span>
+                                <span style="font-size:12px;color:var(--text-muted);">${companyName} • ${sector}</span>
+                            </div>
+                            <div class="sentiment-widget-meta-strip">
+                                ${formattedPrice !== '-' ? `<span style="font-family:var(--font-mono);font-weight:700;font-size:12.5px;color:var(--text-main);">${formattedPrice} <span style="color:${chgColor};">(${chg})</span></span>` : ''}
+                                <span style="font-size:11.5px;font-weight:700;color:${overallColor};background:rgba(0,0,0,0.35);padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);">${overallVerdict}</span>
+                            </div>
+                        </div>
+
+                        <div class="sentiment-chart-grid">
+                            <!-- Sisi Kiri: Chart Model Interaktif -->
+                            <div class="sentiment-canvas-wrapper">
+                                <div id="article-sentiment-chart-canvas" class="sentiment-chart-canvas"></div>
+                                <div class="sentiment-score-legend">
+                                    <span style="color:var(--green-gain);">🟢 Bullish: ${bullPct}%</span>
+                                    <span style="color:#94a3b8;">⚪ Netral: ${neutPct}%</span>
+                                    <span style="color:var(--red-loss);">🔴 Bearish: ${bearPct}%</span>
+                                </div>
+                            </div>
+
+                            <!-- Sisi Kanan: Katalis Pasar & Makro Intel -->
+                            <div class="sentiment-intel-col">
+                                <div class="sentiment-intel-item pos">
+                                    <div class="intel-item-head" style="color:var(--green-gain);">
+                                        <span>🟢</span>
+                                        <span>Katalis Pertumbuhan & Berita Positif</span>
+                                    </div>
+                                    <div class="intel-item-body">${topPosTitle}</div>
+                                </div>
+
+                                <div class="sentiment-intel-item neg">
+                                    <div class="intel-item-head" style="color:var(--red-loss);">
+                                        <span>🔴</span>
+                                        <span>Faktor Risiko & Kewaspadaan Pasar</span>
+                                    </div>
+                                    <div class="intel-item-body">${topNegTitle}</div>
+                                </div>
+
+                                <div class="sentiment-intel-item macro">
+                                    <div class="intel-item-head" style="color:var(--accent-cyan);">
+                                        <span>🌐</span>
+                                        <span>Transmisi Makro (Kurs Valas & Kebijakan)</span>
+                                    </div>
+                                    <div class="intel-item-body">
+                                        <strong>Valas USD/IDR:</strong> ${fxStatus} • <strong>Regulasi:</strong> ${polStatus}
+                                    </div>
+                                </div>
+
+                                <div class="sentiment-drilldown-row">
+                                    <span style="font-size:10.5px;color:var(--text-muted);font-family:var(--font-mono);">Model: AI FinNLP Sentiment Matrix</span>
+                                    <button type="button" class="sentiment-drilldown-btn" onclick="openCompanySentimentModal('${cleanSym}')">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        <span>Buka Detail Sentimen Lengkap</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Render ECharts Sentiment Donut/Gauge
+                setTimeout(() => {
+                    const chartDom = document.getElementById('article-sentiment-chart-canvas');
+                    if (chartDom && window.echarts) {
+                        if (window.__articleSentimentChartInstance) {
+                            try { window.__articleSentimentChartInstance.dispose(); } catch(e){}
+                        }
+                        const myChart = echarts.init(chartDom);
+                        window.__articleSentimentChartInstance = myChart;
+
+                        const chartOption = {
+                            backgroundColor: 'transparent',
+                            tooltip: {
+                                trigger: 'item',
+                                backgroundColor: '#0f172a',
+                                borderColor: '#334155',
+                                textStyle: { color: '#f8fafc', fontSize: 11, fontFamily: 'monospace' },
+                                formatter: '{b}: <b>{c}%</b>'
+                            },
+                            series: [
+                                {
+                                    name: 'Sentimen Pasar',
+                                    type: 'pie',
+                                    radius: ['55%', '82%'],
+                                    center: ['50%', '50%'],
+                                    avoidLabelOverlap: false,
+                                    itemStyle: {
+                                        borderRadius: 5,
+                                        borderColor: '#0f172a',
+                                        borderWidth: 2
+                                    },
+                                    label: {
+                                        show: true,
+                                        position: 'center',
+                                        formatter: function() {
+                                            return `{score|${bullPct}%}\n{lbl|${overall}}`;
+                                        },
+                                        rich: {
+                                            score: {
+                                                fontSize: 22,
+                                                fontWeight: '800',
+                                                color: overall === 'BULLISH' ? '#10b981' : (overall === 'BEARISH' ? '#ef4444' : '#f59e0b'),
+                                                fontFamily: 'monospace',
+                                                lineHeight: 26
+                                            },
+                                            lbl: {
+                                                fontSize: 10,
+                                                fontWeight: '700',
+                                                color: '#94a3b8',
+                                                letterSpacing: 1
+                                            }
+                                        }
+                                    },
+                                    emphasis: {
+                                        scale: true,
+                                        scaleSize: 4
+                                    },
+                                    data: [
+                                        { value: bullPct, name: 'Bullish (Akumulasi)', itemStyle: { color: '#10b981' } },
+                                        { value: neutPct, name: 'Netral (Konsolidasi)', itemStyle: { color: '#64748b' } },
+                                        { value: bearPct, name: 'Bearish (Distribusi)', itemStyle: { color: '#ef4444' } }
+                                    ]
+                                }
+                            ]
+                        };
+                        myChart.setOption(chartOption);
+                    }
+                }, 30);
+
+            } catch (err) {
+                console.error('Error loading article sentiment widget:', err);
+                container.innerHTML = `
+                    <div class="article-sentiment-widget" style="padding:12px 16px;font-size:11.5px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;">
+                        <span>Sentimen pasar untuk $${cleanSym} siap diakses via modal Sentimen.</span>
+                        <button type="button" class="btn-action-secondary" onclick="openCompanySentimentModal('${cleanSym}')" style="padding:4px 8px;font-size:11px;">Buka Sentimen $${cleanSym}</button>
+                    </div>
+                `;
+            }
         }
 
         document.addEventListener('keydown', (e) => {
@@ -9764,8 +11031,26 @@
         }
 
         // 5. Garda AI Chat Logic with Gemma 4 LLM
+        function autoResizeChatInput(el) {
+            if (!el) return;
+            el.style.height = 'auto';
+            const newH = Math.min(el.scrollHeight, 120);
+            el.style.height = (newH > 38 ? newH : 38) + 'px';
+        }
+
+        function handleChatInputKeyDown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+                const input = document.getElementById('chat-input');
+                if (input) {
+                    input.style.height = '38px';
+                }
+            }
+        }
+
         function handleInputKey(e) {
-            if (e.key === 'Enter') sendChatMessage();
+            handleChatInputKeyDown(e);
         }
 
         // =========================================================================
@@ -9806,8 +11091,16 @@
             const btn = document.getElementById('dock-btn-garda');
             if (layout && layout.classList.contains('garda-closed')) {
                 layout.classList.remove('garda-closed');
+                localStorage.setItem('bx-garda-closed', 'false');
             }
             if (btn) btn.classList.add('active');
+
+            window.dispatchEvent(new Event('resize'));
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+                if (typeof resizeAll18Charts === 'function') resizeAll18Charts();
+                if (typeof renderMarketChartCanvas === 'function') renderMarketChartCanvas();
+            }, 350);
 
             const chatCol = document.getElementById('garda-chat-col');
             if (chatCol && window.innerWidth < 1024) {
@@ -10535,6 +11828,7 @@
             userMsg.innerText = message;
             chatFeed.appendChild(userMsg);
             input.value = '';
+            input.style.height = '38px';
             chatFeed.scrollTop = chatFeed.scrollHeight;
 
             // Trigger Neural Sphere Thinking Acceleration
@@ -10623,187 +11917,11 @@
             }
         }
         
-        // ================= 3D NEURAL SPHERICAL NETWORK (GEMMA 4 CORE) =================
-        // Rotating 3D Neural Constellation with 12 Interconnected Synaptic Nodes & Depth Projection
+        // ================= BINTANG AI STAR CORE (GEMMA 4) =================
+        // Fully GPU-accelerated CSS keyframe animations (Bintang AI Star & Sparkles, non-circular)
         function initGardaNeuralSphere() {
-            const canvas = document.getElementById('garda-neural-canvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            if (!ctx) return;
-
-            const box = document.getElementById('neural-sphere-box');
-            const cx = 36;
-            const cy = 36;
-            const sphereRadius = 22.0;
-
-            // Exactly 12 clean nodes distributed on a 3D sphere (Fibonacci lattice)
-            const numNodes = 12;
-            const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
-            const rawNodes = [];
-            const palette = [
-                '#38bdf8', // Neon Cyan
-                '#a855f7', // Violet
-                '#818cf8', // Indigo
-                '#34d399', // Emerald
-                '#fb923c', // Amber
-                '#06b6d4'  // Deep Cyan
-            ];
-
-            for (let i = 0; i < numNodes; i++) {
-                const y = 1 - (i / (numNodes - 1)) * 2; // from 1 to -1
-                const radiusAtY = Math.sqrt(Math.max(0, 1 - y * y));
-                const theta = phi * i;
-                const x = Math.cos(theta) * radiusAtY;
-                const z = Math.sin(theta) * radiusAtY;
-                rawNodes.push({
-                    id: i,
-                    x0: x * sphereRadius,
-                    y0: y * sphereRadius,
-                    z0: z * sphereRadius,
-                    color: palette[i % palette.length],
-                    phase: i * 0.52
-                });
-            }
-
-            // Precompute 3D edges: connect each node to its 3 nearest neighbors in 3D
-            const edges = [];
-            for (let i = 0; i < rawNodes.length; i++) {
-                const dists = [];
-                for (let j = 0; j < rawNodes.length; j++) {
-                    if (i === j) continue;
-                    const d = Math.hypot(
-                        rawNodes[i].x0 - rawNodes[j].x0,
-                        rawNodes[i].y0 - rawNodes[j].y0,
-                        rawNodes[i].z0 - rawNodes[j].z0
-                    );
-                    dists.push({ j, d });
-                }
-                dists.sort((a, b) => a.d - b.d);
-                for (let k = 0; k < 3; k++) {
-                    const j = dists[k].j;
-                    const a = Math.min(i, j);
-                    const b = Math.max(i, j);
-                    if (!edges.some(e => e.a === a && e.b === b)) {
-                        edges.push({ a, b });
-                    }
-                }
-            }
-
-            let rotY = 0;
-            let rotX = 0.25;
-
-            function renderNeural3DSphere() {
-                const isThinking = box && box.classList.contains('thinking');
-                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-
-                // Smooth slow 3D rotation (accelerates in thinking mode)
-                const speedY = isThinking ? 0.012 : 0.0035;
-                const speedX = isThinking ? 0.004 : 0.0012;
-                rotY += speedY;
-                rotX += speedX;
-
-                const cosY = Math.cos(rotY);
-                const sinY = Math.sin(rotY);
-                const cosX = Math.cos(rotX);
-                const sinX = Math.sin(rotX);
-
-                const projected = [];
-                const fov = 100;
-
-                for (let i = 0; i < rawNodes.length; i++) {
-                    const n = rawNodes[i];
-                    // Rotate around Y axis
-                    const x1 = n.x0 * cosY - n.z0 * sinY;
-                    const z1 = n.z0 * cosY + n.x0 * sinY;
-
-                    // Rotate around X axis
-                    const y2 = n.y0 * cosX - z1 * sinX;
-                    const z2 = z1 * cosX + n.y0 * sinX;
-
-                    // Perspective projection
-                    const scale = fov / (fov + z2 + 8);
-                    const px = cx + x1 * scale;
-                    const py = cy + y2 * scale;
-
-                    projected.push({
-                        id: n.id,
-                        px,
-                        py,
-                        z: z2,
-                        color: n.color
-                    });
-                }
-
-                // Clear canvas
-                ctx.clearRect(0, 0, 72, 72);
-
-                // 1. Draw Synaptic Edges with Depth Fading (No traveling dots on lines)
-                for (let i = 0; i < edges.length; i++) {
-                    const e = edges[i];
-                    const p1 = projected[e.a];
-                    const p2 = projected[e.b];
-                    const avgZ = (p1.z + p2.z) / 2;
-                    const zFactor = Math.max(0, Math.min(1, (avgZ + sphereRadius) / (2 * sphereRadius)));
-
-                    ctx.beginPath();
-                    ctx.moveTo(p1.px, p1.py);
-                    ctx.lineTo(p2.px, p2.py);
-
-                    if (isLight) {
-                        const alpha = 0.12 + zFactor * 0.35;
-                        ctx.strokeStyle = `rgba(2, 132, 199, ${alpha.toFixed(2)})`;
-                        ctx.lineWidth = 0.55 + zFactor * 0.35;
-                    } else {
-                        const alpha = 0.14 + zFactor * 0.45;
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(2)})`;
-                        ctx.lineWidth = 0.55 + zFactor * 0.35;
-                    }
-                    ctx.stroke();
-                }
-
-                // 2. Draw 3D Nodes sorted from back to front
-                const sortedNodes = projected.slice().sort((a, b) => a.z - b.z);
-
-                for (let i = 0; i < sortedNodes.length; i++) {
-                    const n = sortedNodes[i];
-                    const zFactor = Math.max(0, Math.min(1, (n.z + sphereRadius) / (2 * sphereRadius)));
-                    const radius = 1.4 + zFactor * 0.9; // 1.4px to 2.3px
-                    const alpha = 0.35 + zFactor * 0.65;
-
-                    // Dark backing circle so nodes cleanly pop against lines
-                    ctx.beginPath();
-                    ctx.arc(n.px, n.py, radius + 0.6, 0, Math.PI * 2);
-                    ctx.fillStyle = isLight ? '#ffffff' : '#070b14';
-                    ctx.fill();
-
-                    // Glowing Node Core
-                    ctx.beginPath();
-                    ctx.arc(n.px, n.py, radius, 0, Math.PI * 2);
-                    ctx.fillStyle = n.color;
-                    ctx.globalAlpha = alpha;
-                    if (zFactor > 0.4) {
-                        ctx.shadowColor = n.color;
-                        ctx.shadowBlur = isThinking ? 6 : 3;
-                    }
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                    ctx.globalAlpha = 1.0;
-
-                    // Specular Highlight on front nodes
-                    if (zFactor > 0.5) {
-                        ctx.beginPath();
-                        ctx.arc(n.px - 0.4, n.py - 0.4, radius * 0.35, 0, Math.PI * 2);
-                        ctx.fillStyle = '#ffffff';
-                        ctx.globalAlpha = 0.85;
-                        ctx.fill();
-                        ctx.globalAlpha = 1.0;
-                    }
-                }
-
-                requestAnimationFrame(renderNeural3DSphere);
-            }
-
-            requestAnimationFrame(renderNeural3DSphere);
+            // Animated via pure SVG + CSS keyframes (aiStarBreathing, aiSparkleTwinkle, aiStarThinking)
+            // No CPU/Canvas loop or spherical circle required.
         }
 
         // 7. Settings Dropdown Toggle & Click Outside Handler
@@ -10868,9 +11986,32 @@
                     btn.setAttribute('data-tooltip', 'Garda AI Concierge (Klik: Tutup Panel)');
                 }
             }
+
+            window.dispatchEvent(new Event('resize'));
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+                if (typeof resizeAll18Charts === 'function') resizeAll18Charts();
+                if (typeof renderMarketChartCanvas === 'function') renderMarketChartCanvas();
+            }, 350);
         }
 
         function scrollToSection(id) {
+            try {
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState(null, null, '#' + id);
+                }
+            } catch (e) {}
+
+            if (typeof switchDashboardView === 'function' && typeof currentActiveDashboard !== 'undefined' && currentActiveDashboard !== 'news-portal') {
+                switchDashboardView('news-portal');
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 180);
+                return;
+            }
             const el = document.getElementById(id);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -10878,6 +12019,19 @@
         }
 
         function focusWartawanAI() {
+            if (typeof switchDashboardView === 'function' && typeof currentActiveDashboard !== 'undefined' && currentActiveDashboard !== 'news-portal') {
+                switchDashboardView('news-portal');
+                setTimeout(() => {
+                    const input = document.getElementById('gen-ticker-input');
+                    if (input) {
+                        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        input.focus();
+                        input.style.borderColor = 'var(--accent-orange)';
+                        setTimeout(() => { input.style.borderColor = ''; }, 2000);
+                    }
+                }, 180);
+                return;
+            }
             const input = document.getElementById('gen-ticker-input');
             if (input) {
                 input.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -11292,6 +12446,14 @@
             const chgColor = isUp ? 'var(--green-gain)' : (isDown ? 'var(--red-loss)' : 'var(--text-secondary)');
             const formattedPrice = typeof company.last_price === 'number' ? company.last_price.toLocaleString('id-ID') : company.last_price;
 
+            const isSgx = company.symbol === 'D05';
+            const idxUrl = isSgx 
+                ? 'https://www.sgx.com/securities/stocks?security=D05' 
+                : `https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/detail-profile-perusahaan-tercatat/?kodeEmiten=${company.symbol}`;
+            const yfTicker = isSgx ? 'D05.SI' : `${company.symbol}.JK`;
+            const yfUrl = `https://finance.yahoo.com/quote/${yfTicker}/`;
+            const gFinanceUrl = `https://www.google.com/finance/quote/${company.symbol}:${isSgx ? 'SGX' : 'IDX'}`;
+
             detailPanel.innerHTML = `
                 <div class="detail-header-block">
                     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
@@ -11361,6 +12523,28 @@
                     <div>
                         <span style="color:var(--text-muted);">Arus Kas:</span>
                         <strong style="color:var(--accent-cyan);margin-left:4px;">${company.operating_cash_flow || 'Positif Sehat'}</strong>
+                    </div>
+                </div>
+
+                <!-- Direct Verified External Links -->
+                <div style="margin-bottom:14px;">
+                    <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:6px;display:flex;align-items:center;gap:5px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        <span>TAUTAN RESMI BURSA & PASAR KEUANGAN</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+                        <a href="${idxUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 6px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.3);border-radius:6px;color:var(--accent-cyan);font-size:11px;font-weight:600;text-decoration:none;transition:all 0.2s ease;">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            <span>${isSgx ? 'Bursa SGX' : 'Profil BEI (IDX)'}</span>
+                        </a>
+                        <a href="${yfUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 6px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:6px;color:var(--accent-orange);font-size:11px;font-weight:600;text-decoration:none;transition:all 0.2s ease;">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                            <span>Yahoo Finance</span>
+                        </a>
+                        <a href="${gFinanceUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 6px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-radius:6px;color:#10b981;font-size:11px;font-weight:600;text-decoration:none;transition:all 0.2s ease;">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <span>Google Finance</span>
+                        </a>
                     </div>
                 </div>
 
@@ -13844,6 +15028,9 @@
                     window.__gardaRenderedCharts.forEach(c => {
                         try { c.resize(); } catch(e){}
                     });
+                }
+                if (window.__articleSentimentChartInstance) {
+                    try { window.__articleSentimentChartInstance.resize(); } catch(e){}
                 }
             });
         })();

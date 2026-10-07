@@ -3,43 +3,43 @@
     "station": "DKI Jakarta (BEI)",
     "adm4_code": "31.72.05.1003",
     "current": {
-      "temp_c": 29,
-      "humidity_pct": 69,
-      "condition": "Cerah Berawan",
-      "weather_code": "2",
-      "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah berawan-pm.svg",
-      "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah berawan-pm.svg",
-      "wind_speed_kmh": 32.4,
-      "wind_dir": "N",
-      "updated_at": "2026-10-06 22:00:00"
+      "temp_c": 27,
+      "humidity_pct": 76,
+      "condition": "Cerah",
+      "weather_code": "0",
+      "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg",
+      "icon_url": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg",
+      "wind_speed_kmh": 17.3,
+      "wind_dir": "S",
+      "updated_at": "2026-10-07 23:00:00"
     },
     "forecast_3d": [
       {
         "day": "Hari Ini",
-        "date": "2026-10-06",
-        "condition": "Cerah Berawan",
-        "temp_min": 29,
-        "temp_max": 29,
+        "date": "2026-10-07",
+        "condition": "Cerah",
+        "temp_min": 27,
+        "temp_max": 27,
         "rain_prob": "0%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah berawan-pm.svg"
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
       },
       {
         "day": "Besok",
-        "date": "2026-10-07",
-        "condition": "Berawan",
-        "temp_min": 26,
-        "temp_max": 31,
-        "rain_prob": "0%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg"
-      },
-      {
-        "day": "Lusa",
         "date": "2026-10-08",
-        "condition": "Berawan",
+        "condition": "Cerah",
         "temp_min": 26,
         "temp_max": 30,
         "rain_prob": "0%",
-        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-pm.svg"
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
+      },
+      {
+        "day": "Lusa",
+        "date": "2026-10-09",
+        "condition": "Cerah",
+        "temp_min": 27,
+        "temp_max": 30,
+        "rain_prob": "2%",
+        "icon": "https://api-apps.bmkg.go.id/storage/icon/cuaca/cerah-pm.svg"
       }
     ],
     "sector_impact": {

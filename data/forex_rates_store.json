@@ -14,8 +14,8 @@
         "USD": {
           "currency": "USD (US Dollar)",
           "flag": "🇺🇸",
-          "rate": 17892.58,
-          "rate_formatted": "Rp 17.892",
+          "rate": 17901.96,
+          "rate_formatted": "Rp 17.901",
           "change_1d": "+0.32%",
           "trend": "PENGUATAN_USD"
         },
@@ -72,12 +72,12 @@
         "USD": {
           "currency": "USD (US Dollar)",
           "flag": "🇺🇸",
-          "beli": 17872.58,
-          "jual": 17912.58,
-          "beli_formatted": "Rp 17.872",
-          "jual_formatted": "Rp 17.912",
-          "rate": 17892.58,
-          "rate_formatted": "Rp 17.892",
+          "beli": 17881.96,
+          "jual": 17921.96,
+          "beli_formatted": "Rp 17.881",
+          "jual_formatted": "Rp 17.921",
+          "rate": 17901.96,
+          "rate_formatted": "Rp 17.901",
           "change_1d": "+0.30%",
           "trend": "PENGUATAN_USD"
         },
@@ -154,8 +154,8 @@
         "USD": {
           "currency": "USD (US Dollar)",
           "flag": "🇺🇸",
-          "rate": 17887.58,
-          "rate_formatted": "Rp 17.887",
+          "rate": 17896.96,
+          "rate_formatted": "Rp 17.896",
           "change_1d": "+0.29%",
           "trend": "PENGUATAN_USD"
         },
@@ -206,8 +206,8 @@
     "USD": {
       "currency": "USD (US Dollar)",
       "flag": "🇺🇸",
-      "rate": 17892.58,
-      "rate_formatted": "Rp 17.892",
+      "rate": 17901.96,
+      "rate_formatted": "Rp 17.901",
       "change_1d": "+0.32%",
       "trend": "PENGUATAN_USD",
       "impact_summary": "Dolar AS menguat tipis seiring ekspektasi arah suku bunga The Fed. Menguntungkan emiten eksportir komoditas, namun menekan margin emiten dengan utang valas atau impor gandum/kedelai.",
