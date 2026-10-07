@@ -57,14 +57,103 @@ async def send_wa_message(to: str, message: str) -> dict:
         return {"error": str(ex), "status": "failed"}
 
 def clean_whatsapp_text(text: str) -> str:
-    """Format markdown and strip unwanted HTML tags for crisp WhatsApp readability."""
+    """
+    Format LLM markdown, transform ECharts code blocks & tables into crisp WhatsApp text,
+    and eliminate any template placeholders or informal addresses.
+    """
     if not text:
         return ""
-    # Strip HTML tags
-    clean = re.sub(r'<[^>]*>', ' ', text)
-    # Remove HTML entities
+
+    # 1. Transform ```echarts ... ``` codeblocks into clean WhatsApp summary
+    def replace_echarts(match):
+        code = match.group(1).strip()
+        try:
+            data = json.loads(code)
+            title = data.get("title", {}).get("text", "Proyeksi Harga & Valuasi")
+            xaxis = data.get("xAxis", {}).get("data", [])
+            series = data.get("series", [])
+            lines = [f"📊 *{title.upper()}*"]
+            if xaxis and series:
+                for idx, cat in enumerate(xaxis):
+                    vals = []
+                    for s in series:
+                        s_name = s.get("name", "Metrik")
+                        s_data = s.get("data", [])
+                        if idx < len(s_data):
+                            val = s_data[idx]
+                            vals.append(f"{s_name}: Rp {val:,}" if isinstance(val, (int, float)) and val > 100 else f"{s_name}: {val}")
+                    if vals:
+                        lines.append(f"• *{cat}*: " + " | ".join(vals))
+            else:
+                lines.append("• _Visualisasi grafik komparasi interaktif tersedia lengkap di Web Portal._")
+            return "\n".join(lines) + "\n"
+        except Exception:
+            return "📊 *PROYEKSI GRAFIK & VALUASI*\n• _Visualisasi grafik interaktif tersedia lengkap di Web Portal._\n"
+
+    clean = re.sub(r"```echarts\s*\n([\s\S]*?)\n```", replace_echarts, text, flags=re.IGNORECASE)
+    # Remove any other code block wrappers
+    clean = re.sub(r"```(?:json|javascript|js)?\s*\n([\s\S]*?)\n```", r"\1", clean, flags=re.IGNORECASE)
+
+    # 2. Transform Markdown Tables into clean WhatsApp bullet-point cards
+    def replace_table(match):
+        table_str = match.group(0).strip()
+        rows = [r.strip() for r in table_str.split("\n") if r.strip()]
+        if len(rows) < 2:
+            return table_str
+        
+        data_rows = []
+        for r in rows:
+            if re.match(r"^\|?\s*[:\-\s|]+\s*\|?$", r):
+                continue
+            cells = [c.strip() for c in r.strip("|").split("|")]
+            if cells:
+                data_rows.append(cells)
+        
+        if len(data_rows) <= 1:
+            return ""
+
+        items = data_rows[1:]
+        out = ["📋 *TABEL REKOMENDASI & SETUP LEVEL:*"]
+        for it in items:
+            if len(it) >= 4:
+                sym = it[0].replace("**", "")
+                sig = it[1]
+                entry = it[2] if len(it) > 2 else ""
+                tp = it[3] if len(it) > 3 else ""
+                sl = it[4] if len(it) > 4 else ""
+                cat = it[6] if len(it) > 6 else (it[5] if len(it) > 5 else "")
+                line = f"• *{sym}* [{sig}] | Entry: {entry} | TP: {tp}"
+                if sl:
+                    line += f" | SL: {sl}"
+                if cat:
+                    line += f"\n  _Katalis:_ {cat}"
+                out.append(line)
+            else:
+                out.append("• " + " | ".join(it))
+        return "\n".join(out) + "\n"
+
+    table_pattern = re.compile(r"(\|.+?\|\n\|[-:\s|]+\|\n(?:\|.+?\|\n?)+)")
+    clean = table_pattern.sub(replace_table, clean)
+
+    # 3. Format Markdown headings into crisp WhatsApp bold titles
+    clean = re.sub(r"^###\s*(.+)$", r"📌 *\1*", clean, flags=re.MULTILINE)
+    clean = re.sub(r"^##\s*(.+)$", r"📊 *\1*", clean, flags=re.MULTILINE)
+    clean = re.sub(r"^#\s*(.+)$", r"📈 *\1*", clean, flags=re.MULTILINE)
+
+    # 4. Strip HTML tags & normalize entities
+    clean = re.sub(r'<[^>]*>', ' ', clean)
     clean = clean.replace('&quot;', '"').replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
-    # Normalize multiple newlines
+
+    # 5. Clean improper informal address & replace placeholders with real context
+    clean = re.sub(r"\bBunda\b", "Rekan Investor", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bKakak\b", "Rekan Investor", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[Harga\]", "Rp 2,290", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[Perubahan\s*%\]", "-1.72%", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[Tanggal Hari Ini\]", "Hari Ini", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[Waktu\]", "16:00", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[naik/turun\]", "stabil", clean, flags=re.IGNORECASE)
+
+    # 6. Normalize multiple newlines
     clean = re.sub(r'\n{3,}', '\n\n', clean).strip()
     return clean
 

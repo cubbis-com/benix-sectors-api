@@ -380,6 +380,8 @@ def format_verified_dossier(
     else:
         lines.append("Tidak ada kejadian luar biasa atau aksi korporasi mendadak tercatat hari ini.")
 
+    return "\n".join(lines)
+
 def sanitize_garda_markdown(text: str) -> str:
     """
     Sanitizes LLM markdown output to ensure charts and tables render flawlessly:
@@ -597,9 +599,32 @@ async def process_agent_query(payload: AgentQueryRequest):
             retrieved_data[sym] = stock_payload
             await local_market_db.save_stock_locally(sym, stock_payload)
 
-        # Retrieve News Context
+        # Retrieve News Context & Match Seed Articles if query refers to specific headlines
         n_items = await news_aggregator.get_news_context_for_ticker(sym, limit=4)
         referenced_news.extend(n_items)
+
+        # Check if query directly references our editorial portal headlines (e.g. Membedah Prospek Fundamental ...)
+        try:
+            from core.local_market_db import BASE_DIR
+            seed_path = BASE_DIR / "data" / "seed_portal_articles.json"
+            if seed_path.exists():
+                with open(seed_path, "r", encoding="utf-8") as f:
+                    seed_arts = json.load(f)
+                for art in seed_arts:
+                    title_art = art.get("title", "")
+                    if sym.upper() in title_art and any(w in payload.query.lower() for w in ["membedah", "arus dana", "fundamental", "prospek", "sentimen"]):
+                        referenced_news.insert(0, {
+                            "source": "Garda Financial Desk",
+                            "country": "ID",
+                            "title": title_art,
+                            "summary": art.get("content", "")[:380],
+                            "sentiment": "BULLISH" if "UNDERVALUED" in art.get("content", "") else "NEUTRAL",
+                            "published_at": art.get("published_at", "06 October 2026")
+                        })
+                        break
+        except Exception as _ex:
+            logger.debug("Seed article matching skipped: %s", _ex)
+
         summary = f"Analisis data komprehensif emiten {sym} untuk perspektif bisnis."
 
     # ----------------- 2. Multi-Stock Comparison -----------------
@@ -716,11 +741,13 @@ ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, GRAFIK ECHARTS & TABEL REKOMENDASI):
    - Gunakan sinyal: STRONG BUY, BUY ON WEAKNESS, ACCUMULATE, HOLD, atau TAKE PROFIT.
    - JANGAN membuat garis putus-putus manual; SELALU gunakan format tabel pipa markdown standar di atas.
 
-4. FAKTA BERBASIS DATA NYATA (ZERO HALLUCINATION):
+4. FAKTA BERBASIS DATA NYATA (ZERO HALLUCINATION & ZERO PLACEHOLDERS):
    - Setiap angka harga, P/E, Dividen, Net Foreign Flow wajib bersumber dari DOSSIER di atas.
+   - DILARANG KERAS mengeluarkan teks template bertanda kurung siku seperti [Harga], [Perubahan %], [Tanggal Hari Ini], [Waktu], [naik/turun], atau variabel kosong apapun! Semua angka WAJIB angka riil konkret dari Dossier.
+   - DILARANG KERAS menyapa pengguna dengan sebutan "Bunda", "Kakak", atau sapaan informal lainnya. Gunakan sebutan profesional: "Rekan Investor", "Bapak/Ibu", atau langsung fokus ke analisis pasar.
    - Hubungkan kausalitas antara pergerakan angka transaksi dengan berita resmi dari portal terkait.
 
-5. STRUKTUR LAPORAN RINGKAS & PADAT:
+5. STRUKTUR LAPORAN RINGKAS & PADAT (KONSISTEN DENGAN WEB & WHATSAPP):
    ### RINGKASAN EKSEKUTIF PASAR
    ### VISUALISASI PROYEKSI HARGA & TARGET
    ### TABEL REKOMENDASI & SETUP LEVEL EKSEKUSI
