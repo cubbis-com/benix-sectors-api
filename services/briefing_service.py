@@ -57,7 +57,7 @@ async def generate_daily_market_briefing() -> Dict[str, Any]:
     else:
         msg_lines.append("- _Data volume pasar sedang diperbarui_")
 
-    msg_lines.append("\n💡 _Disajikan otomatis oleh Garda AI Agent Gateway via Sectors API._")
+    msg_lines.append("\n💡 _Disajikan otomatis oleh Garda AI Market Intelligence Desk._")
     msg_lines.append("🔗 _Ketik 'analisis [TICKER]' untuk deep-dive fundamental emiten._")
 
     full_message = "\n".join(msg_lines)

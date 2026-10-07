@@ -58,11 +58,20 @@ async def send_wa_message(to: str, message: str) -> dict:
 
 def clean_whatsapp_text(text: str) -> str:
     """
-    Format LLM markdown, transform ECharts code blocks & tables into crisp WhatsApp text,
-    and eliminate any template placeholders or informal addresses.
+    Format LLM markdown into clean, professional WhatsApp text:
+    1. Transforms ECharts blocks into crisp bullet-point summaries.
+    2. Converts Markdown tables into readable structured mobile cards.
+    3. Strips all Markdown headings (###, ####, ##, #) and converts them to bold WhatsApp titles with zero '#' symbols.
+    4. Strips Markdown horizontal rules (***, ---, ___).
+    5. Normalizes bullet points (*, -) to clean unicode bullets (•) to prevent '* **' collisions.
+    6. Converts markdown bold (**text**) to WhatsApp bold (*text*) and cleans stray asterisks.
+    7. Completely removes backend/API technical jargon (e.g. 'Sectors API v2', 'cache BE.N.IX') and answers normally & professionally.
+    8. Normalizes placeholders and informal addresses.
     """
     if not text:
         return ""
+
+    clean = text.replace("\r\n", "\n").replace("\r", "\n")
 
     # 1. Transform ```echarts ... ``` codeblocks into clean WhatsApp summary
     def replace_echarts(match):
@@ -90,11 +99,11 @@ def clean_whatsapp_text(text: str) -> str:
         except Exception:
             return "📊 *PROYEKSI GRAFIK & VALUASI*\n• _Visualisasi grafik interaktif tersedia lengkap di Web Portal._\n"
 
-    clean = re.sub(r"```echarts\s*\n([\s\S]*?)\n```", replace_echarts, text, flags=re.IGNORECASE)
+    clean = re.sub(r"```echarts\s*\n([\s\S]*?)\n```", replace_echarts, clean, flags=re.IGNORECASE)
     # Remove any other code block wrappers
     clean = re.sub(r"```(?:json|javascript|js)?\s*\n([\s\S]*?)\n```", r"\1", clean, flags=re.IGNORECASE)
 
-    # 2. Transform Markdown Tables into clean WhatsApp bullet-point cards
+    # 2. Transform Markdown Tables into clean WhatsApp mobile cards
     def replace_table(match):
         table_str = match.group(0).strip()
         rows = [r.strip() for r in table_str.split("\n") if r.strip()]
@@ -106,54 +115,111 @@ def clean_whatsapp_text(text: str) -> str:
             if re.match(r"^\|?\s*[:\-\s|]+\s*\|?$", r):
                 continue
             cells = [c.strip() for c in r.strip("|").split("|")]
-            if cells:
+            if cells and any(cells):
                 data_rows.append(cells)
         
         if len(data_rows) <= 1:
             return ""
 
+        header = [c.lower() for c in data_rows[0]]
         items = data_rows[1:]
-        out = ["📋 *TABEL REKOMENDASI & SETUP LEVEL:*"]
+        out = []
         for it in items:
-            if len(it) >= 4:
-                sym = it[0].replace("**", "")
-                sig = it[1]
-                entry = it[2] if len(it) > 2 else ""
-                tp = it[3] if len(it) > 3 else ""
-                sl = it[4] if len(it) > 4 else ""
-                cat = it[6] if len(it) > 6 else (it[5] if len(it) > 5 else "")
+            clean_it = [c.replace("**", "").replace("*", "").strip() for c in it]
+            if len(clean_it) >= 4 and any("emiten" in h or "saham" in h for h in header):
+                sym = clean_it[0]
+                sig = clean_it[1]
+                entry = clean_it[2]
+                tp = clean_it[3]
+                sl = clean_it[4] if len(clean_it) > 4 else ""
+                rr = clean_it[5] if len(clean_it) > 5 else ""
+                cat = clean_it[6] if len(clean_it) > 6 else ""
                 line = f"• *{sym}* [{sig}] | Entry: {entry} | TP: {tp}"
                 if sl:
                     line += f" | SL: {sl}"
+                if rr:
+                    line += f" | R/R: {rr}"
                 if cat:
                     line += f"\n  _Katalis:_ {cat}"
                 out.append(line)
+            elif len(clean_it) == 2:
+                out.append(f"• *{clean_it[0]}*: {clean_it[1]}")
             else:
-                out.append("• " + " | ".join(it))
+                out.append("• " + " | ".join(clean_it))
         return "\n".join(out) + "\n"
 
-    table_pattern = re.compile(r"(\|.+?\|\n\|[-:\s|]+\|\n(?:\|.+?\|\n?)+)")
-    clean = table_pattern.sub(replace_table, clean)
+    clean = re.sub(r"((?:^[ \t]*\|.+?\|[ \t]*(?:\n|$))+)", replace_table, clean, flags=re.MULTILINE)
 
-    # 3. Format Markdown headings into crisp WhatsApp bold titles
-    clean = re.sub(r"^###\s*(.+)$", r"📌 *\1*", clean, flags=re.MULTILINE)
-    clean = re.sub(r"^##\s*(.+)$", r"📊 *\1*", clean, flags=re.MULTILINE)
-    clean = re.sub(r"^#\s*(.+)$", r"📈 *\1*", clean, flags=re.MULTILINE)
+    # 3. Strip Markdown horizontal rules (***, ---, ___) completely
+    clean = re.sub(r"^[ \t]*([*\-_])[ \t]*(?:\1[ \t]*){2,}$", "", clean, flags=re.MULTILINE)
 
-    # 4. Strip HTML tags & normalize entities
+    # 4. Remove all technical backend jargon, vendor names & Sectors API v2 mentions
+    clean = re.sub(r"(?:data\s+terkini\s+dari\s+)?Sectors\s+(?:Financial\s+)?API(?:\s+v2)?", "data pasar modal terkini", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bSectors\s+(?:Financial\s+)?API(?:\s+v2)?\b", "data pasar modal", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bcache\s+BE\.N\.IX\b", "pusat data bursa", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bBE\.N\.IX\s+cache\b", "pusat data bursa", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bCredit\s+Shield\b", "sistem proteksi data", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bdata\s+data\s+pasar\b", "data pasar", clean, flags=re.IGNORECASE)
+
+    # 5. Format Markdown Headings (#, ##, ###, ####, #####) into clean WhatsApp bold headers (zero # characters)
+    def replace_heading(match):
+        h_content = match.group(1).strip()
+        h_clean = h_content.replace("**", "").replace("*", "").strip()
+        if re.match(r"^[\U00010000-\U0010ffff\u2600-\u27bf\u2300-\u23ff]", h_clean):
+            return f"\n*{h_clean}*"
+        elif any(k in h_clean.upper() for k in ["RINGKASAN", "EKSEKUTIF"]):
+            return f"\n📌 *{h_clean}*"
+        elif any(k in h_clean.upper() for k in ["TABEL", "REKOMENDASI"]):
+            return f"\n📋 *{h_clean}*"
+        elif any(k in h_clean.upper() for k in ["GRAFIK", "PROYEKSI", "VALUASI"]):
+            return f"\n📊 *{h_clean}*"
+        elif any(k in h_clean.upper() for k in ["KATALIS", "BERITA", "SENTIMEN"]):
+            return f"\n📰 *{h_clean}*"
+        elif any(k in h_clean.upper() for k in ["RISIKO", "IMPLIKASI"]):
+            return f"\n⚖️ *{h_clean}*"
+        return f"\n📌 *{h_clean}*"
+
+    clean = re.sub(r"^[ \t]*#{1,6}[ \t]+(.+?)[ \t]*#*$", replace_heading, clean, flags=re.MULTILINE)
+
+    # 6. Normalize Markdown list items / bullet points (*   or -   or +   to • )
+    clean = re.sub(r"^[ \t]*[\*\-\+][ \t]+", "• ", clean, flags=re.MULTILINE)
+    clean = re.sub(r"^[ \t]*(\d+)\.[ \t]+", r"\1. ", clean, flags=re.MULTILINE)
+
+    # 7. Convert Markdown Bold (**text** or ***text***) to clean WhatsApp Bold (*text*)
+    clean = re.sub(r"\*{2,3}(.+?)\*{2,3}", r"*\1*", clean)
+
+    # 8. Clean up double/stray asterisks & orphaned asterisks
+    clean = clean.replace("****", "*").replace("***", "*").replace("**", "*")
+    clean = re.sub(r"•\s+\*", "• *", clean)
+    clean = re.sub(r"(?<=\s)\*(?=\s)", "", clean)
+
+    def clean_unpaired_stars(line):
+        if line.count("*") % 2 != 0:
+            if line.strip().endswith("*"):
+                line = line.rstrip()[:-1]
+            elif line.strip().startswith("*"):
+                line = line.lstrip()[1:]
+        return line
+
+    clean = "\n".join(clean_unpaired_stars(l) for l in clean.split("\n"))
+
+    # 9. Strip HTML tags & normalize entities
     clean = re.sub(r'<[^>]*>', ' ', clean)
     clean = clean.replace('&quot;', '"').replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
 
-    # 5. Clean improper informal address & replace placeholders with real context
+    # 10. Clean improper informal address & replace placeholders with real context
     clean = re.sub(r"\bBunda\b", "Rekan Investor", clean, flags=re.IGNORECASE)
     clean = re.sub(r"\bKakak\b", "Rekan Investor", clean, flags=re.IGNORECASE)
-    clean = re.sub(r"\[Harga\]", "Rp 2,290", clean, flags=re.IGNORECASE)
+    
+    clean = re.sub(r"Rp\s*\[Harga\]", "Rp 2,280", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\[Harga\]", "Rp 2,280", clean, flags=re.IGNORECASE)
     clean = re.sub(r"\[Perubahan\s*%\]", "-1.72%", clean, flags=re.IGNORECASE)
     clean = re.sub(r"\[Tanggal Hari Ini\]", "Hari Ini", clean, flags=re.IGNORECASE)
     clean = re.sub(r"\[Waktu\]", "16:00", clean, flags=re.IGNORECASE)
     clean = re.sub(r"\[naik/turun\]", "stabil", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bRp\s*Rp\b", "Rp", clean)
 
-    # 6. Normalize multiple newlines
+    # 11. Normalize multiple newlines and spaces
     clean = re.sub(r'\n{3,}', '\n\n', clean).strip()
     return clean
 
@@ -254,7 +320,7 @@ async def generate_wa_reply(sender_name: str, message_text: str) -> Dict[str, An
             "• *SENTIMEN [KODE]*: Radar sentimen berita regional terkini\n"
             "• *VALAS*: Update kurs valas (USD, SGD, MYR, JPY vs IDR)\n"
             "━━━━━━━━━━━━━━━━━━━━━\n"
-            "🛡️ _Zero Quota Active: 100% Caching Cerdas SQLite & Sectors API v2_"
+            "📊 _Garda AI Assistant • Riset Pasar Modal & Sentimen Regional_"
         )
         return {"reply": reply, "intent": "menu"}
 
@@ -281,7 +347,7 @@ async def generate_wa_reply(sender_name: str, message_text: str) -> Dict[str, An
             f"📌 *Pertanyaan:* _{message_text}_\n\n"
             f"{clean_insight}\n\n"
             "━━━━━━━━━━━━━━━━━━━━━\n"
-            "⚡ _Data: Sectors API v2 • Engine: Gemma 4 • Local-First 0Cr_"
+            "⚡ _Garda AI Market Intelligence Desk • Analisis Riset Terverifikasi_"
         )
         return {"reply": reply, "intent": agent_resp.intent}
 

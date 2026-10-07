@@ -11204,7 +11204,7 @@
 
             showPersonaStatus('⏳ Mengirim notifikasi selamat datang via WhatsApp Gateway...', 'info');
             try {
-                const message = `*Halo ${name}!* 🛡️\n\nPersona Anda sebagai *${styleLabel}* berhasil tersimpan di sistem *BE.N.IX & Garda AI Market Intelligence*.\n\nAnda akan menerima:\n• 🌅 Morning Briefing (06:00 WIB)\n• ⚡ Alert Anomali Breakout & Sentimen\n• 🏢 Due Diligence Emiten Mitra Bisnis\n\n_Integrasi Sectors API v2 • iss-uitjbt Gateway._`;
+                const message = `*Halo ${name}!* 🛡️\n\nPersona Anda sebagai *${styleLabel}* berhasil tersimpan di sistem *BE.N.IX & Garda AI Market Intelligence*.\n\nAnda akan menerima:\n• 🌅 Morning Briefing (06:00 WIB)\n• ⚡ Alert Anomali Breakout & Sentimen\n• 🏢 Due Diligence Emiten Mitra Bisnis\n\n_Garda AI Market Intelligence Desk • Riset Pasar Modal Terverifikasi._`;
                 const res = await fetch('/api/v1/notifications/whatsapp/send', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

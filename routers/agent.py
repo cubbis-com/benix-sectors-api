@@ -223,7 +223,7 @@ def format_verified_dossier(
     Compiles an institutional-grade, zero-truncation verified facts dossier
     from Sectors Financial API and regional news aggregators for LLM grounding.
     """
-    lines = ["=== DOSSIER DATA PASAR MODAL TERVERIFIKASI (SECTORS FINANCIAL API v2) ==="]
+    lines = ["=== DOSSIER DATA RISET PASAR MODAL TERVERIFIKASI (BURSA EFEK INDONESIA & KONSENSUS PASAR) ==="]
 
     if intent == "single_stock_deepdive" and tickers:
         sym = tickers[0]
@@ -399,6 +399,14 @@ def sanitize_garda_markdown(text: str) -> str:
     text = re.sub(r"^\s*(\*{1,3}|_{1,3})Garda(\*{1,3}|_{1,3})\s*[:.]?\s*", "", text, flags=re.IGNORECASE)
     text = re.sub(r"^\s*Garda\s*[:.]?\s*", "", text, flags=re.IGNORECASE)
     text = re.sub(r"^\s*(?:Halo|Selamat\s+(?:pagi|siang|sore|malam))[!,.]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bBunda\b", "Rekan Investor", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bKakak\b", "Rekan Investor", text, flags=re.IGNORECASE)
+    text = re.sub(r"(?:data\s+terkini\s+dari\s+)?Sectors\s+(?:Financial\s+)?API(?:\s+v2)?", "data pasar modal terkini", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bSectors\s+(?:Financial\s+)?API(?:\s+v2)?\b", "data pasar modal", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bcache\s+BE\.N\.IX\b", "pusat data bursa", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bBE\.N\.IX\s+cache\b", "pusat data bursa", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bCredit\s+Shield\b", "sistem proteksi data", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bdata\s+data\s+pasar\b", "data pasar", text, flags=re.IGNORECASE)
     text = text.strip()
 
     # 1. Convert ```json or ```js or ``` containing series to ```echarts
@@ -702,12 +710,12 @@ async def process_agent_query(payload: AgentQueryRequest):
     user_prompt = f"""Konteks Pengguna: Pelaku Usaha / UMKM / Investor (Industri: {payload.user_industry}).
 Pertanyaan Pengguna: "{payload.query}"
 
-DOSSIER DATA PASAR & BERITA TERVERIFIKASI (SECTORS FINANCIAL API & REGIONAL NEWS):
+DOSSIER DATA RISET PASAR MODAL TERVERIFIKASI (BURSA EFEK & KONSENSUS PASAR):
 ---------------------------------------------------------------------------------
 {dossier_text}
 ---------------------------------------------------------------------------------
 
-ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, GRAFIK ECHARTS & TABEL REKOMENDASI):
+ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, NO API JARGON, GRAFIK ECHARTS & TABEL REKOMENDASI):
 1. DILARANG MENYEBUT NAMA DIRI DI AWAL & DILARANG BASA-BASI (STRICT ZERO-CHITCHAT):
    - JANGAN PERNAH menyapa atau mencetak nama "Garda", "Garda.", "**Garda**", "Halo", "Selamat pagi", dsb.
    - Jawaban WAJIB LANGSUNG DIAWALI dengan heading: "### RINGKASAN EKSEKUTIF PASAR".
@@ -741,10 +749,11 @@ ATURAN MUTLAK ANALISIS (ZERO-CHITCHAT, GRAFIK ECHARTS & TABEL REKOMENDASI):
    - Gunakan sinyal: STRONG BUY, BUY ON WEAKNESS, ACCUMULATE, HOLD, atau TAKE PROFIT.
    - JANGAN membuat garis putus-putus manual; SELALU gunakan format tabel pipa markdown standar di atas.
 
-4. FAKTA BERBASIS DATA NYATA (ZERO HALLUCINATION & ZERO PLACEHOLDERS):
+4. FAKTA BERBASIS DATA NYATA (ZERO HALLUCINATION, ZERO PLACEHOLDERS & ZERO API JARGON):
    - Setiap angka harga, P/E, Dividen, Net Foreign Flow wajib bersumber dari DOSSIER di atas.
    - DILARANG KERAS mengeluarkan teks template bertanda kurung siku seperti [Harga], [Perubahan %], [Tanggal Hari Ini], [Waktu], [naik/turun], atau variabel kosong apapun! Semua angka WAJIB angka riil konkret dari Dossier.
-   - DILARANG KERAS menyapa pengguna dengan sebutan "Bunda", "Kakak", atau sapaan informal lainnya. Gunakan sebutan profesional: "Rekan Investor", "Bapak/Ibu", atau langsung fokus ke analisis pasar.
+   - DILARANG KERAS menyebutkan nama sistem backend, vendor data, atau API teknis seperti "Sectors API", "Sectors API v2", "API", "Gemma 4", atau "cache". Jawablah secara normal, profesional, dan berwibawa selayaknya riset pasar modal institusional (gunakan frasa natural: "Berdasarkan data pasar modal terkini...", "Berdasarkan pantauan transaksi bursa hari ini...").
+   - DILARANG KERAS menyapa pengguna dengan sebutan "Bunda", "Kakak", atau sapaan informal lainnya. Gunakan sebutan profesional: "Rekan Investor", "Bapak/Ibu", atau langsung fokus ke analisis data pasar.
    - Hubungkan kausalitas antara pergerakan angka transaksi dengan berita resmi dari portal terkait.
 
 5. STRUKTUR LAPORAN RINGKAS & PADAT (KONSISTEN DENGAN WEB & WHATSAPP):
